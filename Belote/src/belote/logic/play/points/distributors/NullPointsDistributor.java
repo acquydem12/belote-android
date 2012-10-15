@@ -13,8 +13,7 @@ import belote.bean.Game;
 import belote.bean.announce.Announce;
 
 /**
- * WinGamePointsDistributor distributor class.
- * Points distributor class for win game.
+ * WinGamePointsDistributor distributor class. Points distributor class for win game.
  * @author Dimitar Karamanov
  */
 public final class NullPointsDistributor extends PointsDistributor {
@@ -32,7 +31,7 @@ public final class NullPointsDistributor extends PointsDistributor {
      * @param normalAnnounce announce.
      */
     public void distributeTeamsPointsNormalGame(Announce normalAnnounce) {
-        //Do nothing it's NULL object pattern implementation
+        // Do nothing it's NULL object pattern implementation
     }
 
     /**
@@ -40,7 +39,7 @@ public final class NullPointsDistributor extends PointsDistributor {
      * @param normalAnnounce announce.
      */
     public void distributeTeamsPointsDoubleGame(Announce normalAnnounce) {
-        //Do nothing it's NULL object pattern implementation
+        // Do nothing it's NULL object pattern implementation
     }
 
     /**
@@ -48,6 +47,6 @@ public final class NullPointsDistributor extends PointsDistributor {
      * @param normalAnnounce announce.
      */
     public void distributeTeamsPointsRedoubleGame(Announce normalAnnounce) {
-        //Do nothing it's NULL object pattern implementation
+        // Do nothing it's NULL object pattern implementation
     }
 }

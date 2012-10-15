@@ -20,9 +20,9 @@ public final class PointsInfo implements Serializable {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -6993520653948056582L;
+    private static final long serialVersionUID = -6993520653948056582L;
 
-	/**
+    /**
      * Current game points.
      */
     private int cardPoints = 0;

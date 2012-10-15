@@ -12,19 +12,18 @@ package belote.bean.pack;
 import java.io.Serializable;
 
 import belote.bean.pack.card.Card;
-import belote.bean.pack.square.SquareIterator;
-import belote.bean.pack.square.Square;
-import belote.bean.pack.sequence.Sequence;
-import belote.bean.pack.sequence.SequenceType;
-import belote.bean.pack.sequence.SequenceIterator;
-import belote.bean.pack.card.suit.SuitIterator;
-import belote.bean.pack.card.suit.Suit;
 import belote.bean.pack.card.rank.Rank;
 import belote.bean.pack.card.rank.RankIterator;
+import belote.bean.pack.card.suit.Suit;
+import belote.bean.pack.card.suit.SuitIterator;
+import belote.bean.pack.sequence.Sequence;
+import belote.bean.pack.sequence.SequenceIterator;
+import belote.bean.pack.sequence.SequenceType;
+import belote.bean.pack.square.Square;
+import belote.bean.pack.square.SquareIterator;
 
 /**
- * PackExtraAnnouncesManager class.
- * A help facade for extracting equal cards and sequences from the pack.
+ * PackExtraAnnouncesManager class. A help facade for extracting equal cards and sequences from the pack.
  * @author Dimitar Karamanov
  */
 public class PackExtraAnnouncesManager implements Serializable {
@@ -32,9 +31,9 @@ public class PackExtraAnnouncesManager implements Serializable {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -7740837122383291209L;
+    private static final long serialVersionUID = -7740837122383291209L;
 
-	/**
+    /**
      * Max sequence cards number.
      */
     private final static int MAX_SEQUENCE_CARD_COUNT = 5;
@@ -81,11 +80,11 @@ public class PackExtraAnnouncesManager implements Serializable {
      */
     public final int getAnnouncePoints() {
         int result = 0;
-        //Equals points
+        // Equals points
         for (SquareIterator it = pack.getSquaresList().iterator(); it.hasNext();) {
             result += it.next().getPoints();
         }
-        //Sequences points
+        // Sequences points
         for (SequenceIterator it = pack.getSequencesList().iterator(); it.hasNext();) {
             result += it.next().getPoints();
         }
@@ -157,15 +156,15 @@ public class PackExtraAnnouncesManager implements Serializable {
      */
     private void createSequence(final int count, final Card card) {
         switch (count) {
-            case ST_020_COUNT:
-                pack.getSequencesList().add(new Sequence(card, SequenceType.Tierce));
-                break;
-            case ST_050_COUNT:
-                pack.getSequencesList().add(new Sequence(card, SequenceType.Quarte));
-                break;
-            case ST_100_COUNT:
-                pack.getSequencesList().add(new Sequence(card, SequenceType.Quint));
-                break;
+        case ST_020_COUNT:
+            pack.getSequencesList().add(new Sequence(card, SequenceType.Tierce));
+            break;
+        case ST_050_COUNT:
+            pack.getSequencesList().add(new Sequence(card, SequenceType.Quarte));
+            break;
+        case ST_100_COUNT:
+            pack.getSequencesList().add(new Sequence(card, SequenceType.Quint));
+            break;
         }
     }
 }

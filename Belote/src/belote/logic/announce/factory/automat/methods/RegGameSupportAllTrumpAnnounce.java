@@ -24,8 +24,7 @@ import belote.logic.announce.factory.automat.methods.suitDeterminators.JackNineA
 import belote.logic.announce.factory.automat.methods.suitDeterminators.SequenceSuit;
 
 /**
- * RegGameSupportAllTrumpAnnounce class.
- * Announce factory method which creates support all trump announce.
+ * RegGameSupportAllTrumpAnnounce class. Announce factory method which creates support all trump announce.
  * @author Dimitar Karamanov
  */
 public final class RegGameSupportAllTrumpAnnounce extends ConditionListMethod {

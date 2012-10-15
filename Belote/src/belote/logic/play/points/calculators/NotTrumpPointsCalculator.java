@@ -14,8 +14,7 @@ import belote.bean.Team;
 import belote.bean.points.PointsInfo;
 
 /**
- * NTPointsCalculator class.
- * Points calculator class for No Trump game.
+ * NTPointsCalculator class. Points calculator class for No Trump game.
  * @author Dimitar Karamanov
  */
 public final class NotTrumpPointsCalculator extends PointsCalculator {
@@ -40,13 +39,13 @@ public final class NotTrumpPointsCalculator extends PointsCalculator {
     public void calculateTeamPoints(Team team) {
         final PointsInfo gamePointsInfo = team.getPointsInfo();
         gamePointsInfo.resetAllPoints();
-        //Calculate cards points
+        // Calculate cards points
         gamePointsInfo.setCardPoints(team.getHandsPoints());
-        //Calculate capot' points
+        // Calculate capot' points
         gamePointsInfo.setCapotPoints(team.getCapotPoints());
-        //Calculate last hand
+        // Calculate last hand
         calculateLastHand(team);
-        //Calculate total points
+        // Calculate total points
         final int total = (gamePointsInfo.getCardPoints() + gamePointsInfo.getLastHand()) * 2 + gamePointsInfo.getCapotPoints();
         gamePointsInfo.setTotalPoints(total);
     }

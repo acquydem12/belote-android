@@ -12,19 +12,19 @@ package belote.bean;
 import java.io.Serializable;
 
 import belote.base.Assert;
-import belote.bean.points.PointsInfo;
-import belote.bean.points.PointsList;
 import belote.base.ComparableObject;
-import belote.bean.pack.square.Square;
-import belote.bean.pack.square.SquareIterator;
-import belote.bean.pack.square.SquareList;
 import belote.bean.pack.Pack;
 import belote.bean.pack.PackIterator;
 import belote.bean.pack.card.rank.Rank;
+import belote.bean.pack.card.suit.Suit;
 import belote.bean.pack.sequence.Sequence;
 import belote.bean.pack.sequence.SequenceIterator;
 import belote.bean.pack.sequence.SequenceList;
-import belote.bean.pack.card.suit.Suit;
+import belote.bean.pack.square.Square;
+import belote.bean.pack.square.SquareIterator;
+import belote.bean.pack.square.SquareList;
+import belote.bean.points.PointsInfo;
+import belote.bean.points.PointsList;
 
 /**
  * Team class.
@@ -35,9 +35,9 @@ public final class Team implements Serializable {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 3269463892642834632L;
+    private static final long serialVersionUID = 3269463892642834632L;
 
-	/**
+    /**
      * Capot extra points.
      */
     private static final int CAPOT_EXTRA_POINTS = 90;
@@ -84,7 +84,7 @@ public final class Team implements Serializable {
 
     /**
      * Constructor.
-     *
+     * 
      * @param ID of the team.
      */
     public Team(final int ID) {
@@ -219,10 +219,8 @@ public final class Team implements Serializable {
     /**
      * Compares announces with announces of the provided team.
      * @param team provided team.
-     * @return int value which may be:
-     *         = 0 if this team announces are equal to the provided team announces
-     *         > 0 if this team announces are bigger to the provided team announces
-     *         < 0 if this team announces are smaller to the provided team announces
+     * @return int value which may be: = 0 if this team announces are equal to the provided team announces > 0 if this team announces are bigger to the provided
+     *         team announces < 0 if this team announces are smaller to the provided team announces
      */
     public int compareAnnouncesTo(final Team team) {
         int result = compareSquaresTo(team);
@@ -237,10 +235,8 @@ public final class Team implements Serializable {
     /**
      * Compares equals with equals of the provided team.
      * @param team provided team.
-     * @return int value which may be:
-     *         = 0 if this team equals are equal to the provided team equals
-     *         > 0 if this team equals are bigger to the provided team equals
-     *         < 0 if this team equals are smaller to the provided team equals
+     * @return int value which may be: = 0 if this team equals are equal to the provided team equals > 0 if this team equals are bigger to the provided team
+     *         equals < 0 if this team equals are smaller to the provided team equals
      */
     private int compareSquaresTo(final Team team) {
         final Square maxSquare = getMaxSquare();
@@ -252,10 +248,8 @@ public final class Team implements Serializable {
     /**
      * Compares sequence with sequence of the provided team.
      * @param team provided team.
-     * @return int value which may be:
-     *         = 0 if this team sequence are equal to the provided team sequence
-     *         > 0 if this team sequence are bigger to the provided team sequence
-     *         < 0 if this team sequence are smaller to the provided team sequence
+     * @return int value which may be: = 0 if this team sequence are equal to the provided team sequence > 0 if this team sequence are bigger to the provided
+     *         team sequence < 0 if this team sequence are smaller to the provided team sequence
      */
     private int compareSequencesTo(final Team team) {
         final Sequence maxSequence = getMaxSequence();

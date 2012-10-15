@@ -10,12 +10,11 @@
 package belote.bean.pack.card;
 
 import belote.base.ComparableObject;
-import belote.bean.pack.card.suit.Suit;
 import belote.bean.pack.card.rank.Rank;
+import belote.bean.pack.card.suit.Suit;
 
 /**
- * Card class.
- * Represents a pack card object.
+ * Card class. Represents a pack card object.
  * @author Dimitar Karamanov
  */
 public final class Card extends ComparableObject {
@@ -23,10 +22,10 @@ public final class Card extends ComparableObject {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -8015898545101203826L;
+    private static final long serialVersionUID = -8015898545101203826L;
 
-	/**
-     * Card's Suit  {Spade,Heart,Diamond,Club}.
+    /**
+     * Card's Suit {Spade,Heart,Diamond,Club}.
      */
     private final Suit suit;
 
@@ -101,10 +100,8 @@ public final class Card extends ComparableObject {
     /**
      * Compares this card with the specified object(card) for order.
      * @param obj specified object (card).
-     * @return int value which may be:
-     *         = 0 if this card and the specified object(card) are equal
-     *         > 0 if this card is bigger than the specified object(card)
-     *         < 0 if this card is less than the specified object(card)
+     * @return int value which may be: = 0 if this card and the specified object(card) are equal > 0 if this card is bigger than the specified object(card) < 0
+     *         if this card is less than the specified object(card)
      */
     public int compareTo(final Object obj) {
         final Card compCard = (Card) obj;
@@ -112,26 +109,20 @@ public final class Card extends ComparableObject {
     }
 
     /**
-     * Compares this card's rank with the specified card's rank for order using appropriate rank compare 
-     * method depending on comparable mode.
+     * Compares this card's rank with the specified card's rank for order using appropriate rank compare method depending on comparable mode.
      * @param card which rank is used to compare
-     * @return int value which may be:
-     *         = 0 if this card's rank and the specified card's rank are equal
-     *         > 0 if this card's rank is bigger than the specified card's rank
-     *         < 0 if this card's rank is less than the specified card's rank
+     * @return int value which may be: = 0 if this card's rank and the specified card's rank are equal > 0 if this card's rank is bigger than the specified
+     *         card's rank < 0 if this card's rank is less than the specified card's rank
      */
     public int compareRankTo(final Card card) {
         return compareRankTo(card.getRank());
     }
 
     /**
-     * Compares this card's rank with the specified rank for order using appropriate rank compare method 
-     * depending on comparable mode.
+     * Compares this card's rank with the specified rank for order using appropriate rank compare method depending on comparable mode.
      * @param rank used to compare
-     * @return int value which may be:
-     *         = 0 if this card's rank and the specified rank are equal
-     *         > 0 if this card's rank is bigger than the specified rank
-     *         < 0 if this card's rank is less than the specified rank
+     * @return int value which may be: = 0 if this card's rank and the specified rank are equal > 0 if this card's rank is bigger than the specified rank < 0 if
+     *         this card's rank is less than the specified rank
      */
     public int compareRankTo(final Rank rank) {
         return comparableMode.compareRankTo(this.rank, rank);
@@ -159,10 +150,9 @@ public final class Card extends ComparableObject {
     }
 
     /**
-     * Returns a string representation of the object. The return name is based on class short name.
-     * This method has to be used only for debug purpose when the project is not compiled with ofbuscating.
-     * Don't use this method to represent the object. When the project is compiled with ofbuscating the
-     * class name is not the same.
+     * Returns a string representation of the object. The return name is based on class short name. This method has to be used only for debug purpose when the
+     * project is not compiled with ofbuscating. Don't use this method to represent the object. When the project is compiled with ofbuscating the class name is
+     * not the same.
      * @return String a string representation of the object.
      */
     public String toString() {
@@ -178,11 +168,9 @@ public final class Card extends ComparableObject {
     }
 
     /**
-     * Checks if this card and specified card are from same suit and this card rank is bigger then 
-     * specified card's rank.
+     * Checks if this card and specified card are from same suit and this card rank is bigger then specified card's rank.
      * @param card with which is checked
-     * @return boolean true if this card and specified card suit are equal and this card rank is bigger
-     * than specified card's rank false otherwise.
+     * @return boolean true if this card and specified card suit are equal and this card rank is bigger than specified card's rank false otherwise.
      */
     public boolean isSameSuitBiggerCard(final Card card) {
         return card == null || (card.getSuit().equals(suit) && compareTo(card) > 0);
@@ -213,8 +201,7 @@ public final class Card extends ComparableObject {
     }
 
     /**
-     * Returns previous card from the same suit or this if this card is the less one from the suit 
-     * depending on the card's comparable mode.
+     * Returns previous card from the same suit or this if this card is the less one from the suit depending on the card's comparable mode.
      * @return Card previous card or this.
      */
     public Card getSameSuitCardBefore() {
@@ -225,8 +212,7 @@ public final class Card extends ComparableObject {
     }
 
     /**
-     * Returns next card from the same suit or this if this card is the best one from the suit depending 
-     * on the card's comparable mode.
+     * Returns next card from the same suit or this if this card is the best one from the suit depending on the card's comparable mode.
      * @return Card next card or this.
      */
     public Card getSameSuitCardAfter() {

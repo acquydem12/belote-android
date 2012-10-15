@@ -14,8 +14,7 @@ import belote.bean.Player;
 import belote.bean.announce.Announce;
 
 /**
- * SuitToAllTrumpAnnounce class.
- * Transforms suit announce to all trump one when the last declared announce is higher than current.
+ * SuitToAllTrumpAnnounce class. Transforms suit announce to all trump one when the last declared announce is higher than current.
  * @author Dimitar Karamanov
  */
 public final class SuitToAllTrumpAnnounce extends BaseAnnounceTransformer {

@@ -34,7 +34,7 @@ public abstract class BaseCardValidator implements Validatable {
 
     /**
      * Returns if there are no other played card yet, false otherwise
-     * @param attackCard  first play card (may be null if there is no played card yet)
+     * @param attackCard first play card (may be null if there is no played card yet)
      */
     private final boolean isTrickAttackPlayer(final Card attackCard) {
         return attackCard == null;
@@ -83,8 +83,8 @@ public abstract class BaseCardValidator implements Validatable {
     }
 
     /**
-     * Validates player card template method which returns true if the player is the first attack player or
-     * check for the specific realization in the ancestors classes.
+     * Validates player card template method which returns true if the player is the first attack player or check for the specific realization in the ancestors
+     * classes.
      * @param player which card is validated.
      * @param card provided card.
      * @return boolean true if the card is valid, false otherwise.

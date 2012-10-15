@@ -37,7 +37,7 @@ public class ColorGameCardValidator extends BaseCardValidator {
      * @return boolean true if the card is valid, false otherwise.
      */
     public boolean validateNoAttackPlayerCard(final Player player, final Card card, final Card attackCard) {
-        //The attack card is from trump suit
+        // The attack card is from trump suit
         if (attackCard.getSuit().equals(getTrumpSuit())) {
             return validatePlayerCardTrumpAttack(player, card, attackCard);
         } else {
@@ -85,12 +85,13 @@ public class ColorGameCardValidator extends BaseCardValidator {
      */
     private boolean validatePlayerCardNoTrumpAttack(final Player player, final Card card, final Card attackCard) {
         if (isSameSuitCard(card, attackCard)) {
-            return true; //The player has no from the attack suit
+            return true; // The player has no from the attack suit
         }
         if (!player.getCards().hasSuitCard(attackCard.getSuit())) {
-            //Return true if the player has no trump card
+            // Return true if the player has no trump card
             if (!player.getCards().hasSuitCard(getTrumpSuit())) {
-                return true; //Check if is played trump card yet (somebody had played trump card befor the player)
+                return true; // Check if is played trump card yet (somebody had
+                             // played trump card befor the player)
             }
             if (game.getTrickCards().hasSuitCard(getTrumpSuit())) {
                 if (validatePlayBiggerTrumpCard(player, card, attackCard)) {

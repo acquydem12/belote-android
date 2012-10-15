@@ -20,9 +20,9 @@ public final class SequenceType extends ComparableObject {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 961246918139208205L;
+    private static final long serialVersionUID = 961246918139208205L;
 
-	/**
+    /**
      * Type for sequence 100.
      */
     private final static int TYPE_100 = 100;
@@ -76,10 +76,8 @@ public final class SequenceType extends ComparableObject {
     /**
      * Compares this sequence type with the specified sequence type.
      * @param obj specified object.
-     * @return int value which may be
-     *         = 0 if this sequence type and the specified sequence type are equal
-     *         > 0 if this sequence type is bigger than the specified sequence type
-     *         < 0 if this sequence type is less than the specified sequence type
+     * @return int value which may be = 0 if this sequence type and the specified sequence type are equal > 0 if this sequence type is bigger than the specified
+     *         sequence type < 0 if this sequence type is less than the specified sequence type
      */
     public int compareTo(final Object obj) {
         final SequenceType sequenceType = (SequenceType) obj;
@@ -114,10 +112,9 @@ public final class SequenceType extends ComparableObject {
     }
 
     /**
-     * Returns a string representation of the object. The return name is based on class short name.
-     * This method has to be used only for debug purpose when the project is not compiled with ofbuscating.
-     * Don't use this method to represent the object. When the project is compiled with ofbuscating the
-     * class name is not the same.
+     * Returns a string representation of the object. The return name is based on class short name. This method has to be used only for debug purpose when the
+     * project is not compiled with ofbuscating. Don't use this method to represent the object. When the project is compiled with ofbuscating the class name is
+     * not the same.
      * @return String a string representation of the object.
      */
     public String toString() {

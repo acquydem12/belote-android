@@ -25,13 +25,12 @@ import com.karamanov.beloteGame.R;
 import com.karamanov.beloteGame.gui.graphics.PlayerNameDecorator;
 import com.karamanov.beloteGame.gui.graphics.ShortPlayerNameDecorator;
 
-
 /**
  * TextDecorator class.
  * @author Dimitar Karamanov
  */
 public final class TextDecorator {
-	
+
     /**
      * Announce types container.
      */
@@ -58,23 +57,23 @@ public final class TextDecorator {
     private final Hashtable<Rank, String> ranks = new Hashtable<Rank, String>();
 
     private final String doubleAnnounce;
-    
+
     private final String redoubleAnnounce;
-    
+
     private final Context context;
-    
+
     /**
      * Constructor.
      */
     public TextDecorator(Context context) {
-    	this.context = context;
-    	
-        //Announce types initialization
+        this.context = context;
+
+        // Announce types initialization
         announceTypes.put(AnnounceType.Normal, context.getString(R.string.OrdinaryAnnounce));
         announceTypes.put(AnnounceType.Double, context.getString(R.string.DoubleAnnounce));
         announceTypes.put(AnnounceType.Redouble, context.getString(R.string.RedoubleAnnounce));
 
-        //Announce suits initialization
+        // Announce suits initialization
         announceSuits.put(AnnounceSuit.AllTrump, context.getString(R.string.AllTrumpsAnnounce));
         announceSuits.put(AnnounceSuit.Club, context.getString(R.string.ClubsAnnounce));
         announceSuits.put(AnnounceSuit.Diamond, context.getString(R.string.DiamondsAnnounce));
@@ -83,7 +82,7 @@ public final class TextDecorator {
         announceSuits.put(AnnounceSuit.Pass, context.getString(R.string.PassAnnounce));
         announceSuits.put(AnnounceSuit.NotTrump, context.getString(R.string.NotTrumpsAnnounce));
 
-        //Short announce suits initialization
+        // Short announce suits initialization
         shortAnnounceSuits.put(AnnounceSuit.AllTrump, context.getString(R.string.AllTrumpsAnnounceShort));
         shortAnnounceSuits.put(AnnounceSuit.Club, context.getString(R.string.ClubsAnnounceShort));
         shortAnnounceSuits.put(AnnounceSuit.Diamond, context.getString(R.string.DiamondsAnnounceShort));
@@ -92,7 +91,7 @@ public final class TextDecorator {
         shortAnnounceSuits.put(AnnounceSuit.Pass, context.getString(R.string.PassAnnounceShort));
         shortAnnounceSuits.put(AnnounceSuit.NotTrump, context.getString(R.string.NotTrumpsAnnounceShort));
 
-        //Rank signs initialization
+        // Rank signs initialization
         rankSigns.put(Rank.Ace, context.getString(R.string.AceSign));
         rankSigns.put(Rank.King, context.getString(R.string.KingSign));
         rankSigns.put(Rank.Queen, context.getString(R.string.QueenSign));
@@ -102,7 +101,7 @@ public final class TextDecorator {
         rankSigns.put(Rank.Eight, context.getString(R.string.EightSign));
         rankSigns.put(Rank.Seven, context.getString(R.string.SevenSign));
 
-        //Rank signs initialization
+        // Rank signs initialization
         ranks.put(Rank.Ace, context.getString(R.string.Ace));
         ranks.put(Rank.King, context.getString(R.string.King));
         ranks.put(Rank.Queen, context.getString(R.string.Queen));
@@ -111,7 +110,7 @@ public final class TextDecorator {
         ranks.put(Rank.Nine, context.getString(R.string.Nine));
         ranks.put(Rank.Eight, context.getString(R.string.Eight));
         ranks.put(Rank.Seven, context.getString(R.string.Seven));
-        
+
         doubleAnnounce = context.getString(R.string.DoubleAnnounce);
         redoubleAnnounce = context.getString(R.string.RedoubleAnnounce);
     }
@@ -220,16 +219,16 @@ public final class TextDecorator {
      * @return String game announce text.
      */
     private ArrayList<String> getAnnounceText(final AnnounceList announceList, final boolean normal) {
-    	ArrayList<String> result = new ArrayList<String>();
-        //final StringBuffer result = new StringBuffer();
+        ArrayList<String> result = new ArrayList<String>();
+        // final StringBuffer result = new StringBuffer();
         final Announce lastNormalAnnounce = announceList.getOpenContractAnnounce();
 
         if (lastNormalAnnounce != null) {
             if (normal) {
-            	PlayerNameDecorator decorator = new PlayerNameDecorator(lastNormalAnnounce.getPlayer());
+                PlayerNameDecorator decorator = new PlayerNameDecorator(lastNormalAnnounce.getPlayer());
                 result.add(getAnnounceSuitShort(lastNormalAnnounce.getAnnounceSuit()) + " " + decorator.decorate(context));
             } else {
-            	ShortPlayerNameDecorator decorator = new ShortPlayerNameDecorator(lastNormalAnnounce.getPlayer());
+                ShortPlayerNameDecorator decorator = new ShortPlayerNameDecorator(lastNormalAnnounce.getPlayer());
                 result.add("(" + decorator.decorate(context) + ")");
             }
 
@@ -239,45 +238,45 @@ public final class TextDecorator {
                 Announce announce = iterator.next();
 
                 if (announce.getType().equals(AnnounceType.Double)) {
-                	if (normal) {
-                    	PlayerNameDecorator decorator = new PlayerNameDecorator(announce.getPlayer());
-                    	result.add(doubleAnnounce + " " + decorator.decorate(context));
-                	} else {
-                		ShortPlayerNameDecorator decorator = new ShortPlayerNameDecorator(announce.getPlayer());
-                		result.add(doubleAnnounce + " " + decorator.decorate(context));
-                	}
+                    if (normal) {
+                        PlayerNameDecorator decorator = new PlayerNameDecorator(announce.getPlayer());
+                        result.add(doubleAnnounce + " " + decorator.decorate(context));
+                    } else {
+                        ShortPlayerNameDecorator decorator = new ShortPlayerNameDecorator(announce.getPlayer());
+                        result.add(doubleAnnounce + " " + decorator.decorate(context));
+                    }
                 }
 
                 if (announce.getType().equals(AnnounceType.Redouble)) {
-                	if (normal) {
-                    	PlayerNameDecorator decorator = new PlayerNameDecorator(announce.getPlayer());
-                    	result.add(redoubleAnnounce + " " + decorator.decorate(context));
-                	} else {
-                    	ShortPlayerNameDecorator decorator = new ShortPlayerNameDecorator(announce.getPlayer());
-                    	result.add(redoubleAnnounce + " " + decorator.decorate(context));
-                	}
+                    if (normal) {
+                        PlayerNameDecorator decorator = new PlayerNameDecorator(announce.getPlayer());
+                        result.add(redoubleAnnounce + " " + decorator.decorate(context));
+                    } else {
+                        ShortPlayerNameDecorator decorator = new ShortPlayerNameDecorator(announce.getPlayer());
+                        result.add(redoubleAnnounce + " " + decorator.decorate(context));
+                    }
                 }
             }
         }
         return result;
     }
 
-	public String getShortAnnounceTextEx(AnnounceList announceList) {
-		return transformToString(getShortAnnounceText(announceList));
-	}
-	
-	private String transformToString(ArrayList<String> v){
-		StringBuilder sb = new StringBuilder();
-    	for (String s : v) {
-    		if (sb.length() != 0) {
-    			sb.append(" ");
-    		}
-    		sb.append(s);
-    	}
-		return sb.toString();
-	}
-	
-	/**
+    public String getShortAnnounceTextEx(AnnounceList announceList) {
+        return transformToString(getShortAnnounceText(announceList));
+    }
+
+    private String transformToString(ArrayList<String> v) {
+        StringBuilder sb = new StringBuilder();
+        for (String s : v) {
+            if (sb.length() != 0) {
+                sb.append(" ");
+            }
+            sb.append(s);
+        }
+        return sb.toString();
+    }
+
+    /**
      * Returns text representation of the current game announce.
      * @param announceList
      * @return String game announce text.

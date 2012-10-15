@@ -11,7 +11,6 @@ package belote.bean.pack.card;
 
 import java.io.Serializable;
 
-import belote.bean.pack.card.Card;
 import belote.bean.pack.card.rank.Rank;
 
 /**
@@ -23,9 +22,9 @@ public abstract class CardComparableMode implements Serializable {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -5914095706786960457L;
+    private static final long serialVersionUID = -5914095706786960457L;
 
-	/**
+    /**
      * CardCompare objects.
      */
     public static final CardComparableMode Standard = new CardComparableModeStandard();
@@ -104,14 +103,11 @@ public abstract class CardComparableMode implements Serializable {
     public abstract int getPoints(final Rank rank);
 
     /**
-     * Compares rank with the specified rank for order using appropriate rank compare method depending on 
-     * comparable mode.
+     * Compares rank with the specified rank for order using appropriate rank compare method depending on comparable mode.
      * @param rank which will be compare to other one.
      * @param object the comparable object.
-     * @return int value which may be:
-     *         = 0 if this rank and the specified rank are equal
-     *         > 0 if this rank is bigger than the specified rank
-     *         < 0 if this rank is less than the specified rank
+     * @return int value which may be: = 0 if this rank and the specified rank are equal > 0 if this rank is bigger than the specified rank < 0 if this rank is
+     *         less than the specified rank
      */
     public abstract int compareRankTo(final Rank rank, final Rank object);
 
@@ -123,21 +119,17 @@ public abstract class CardComparableMode implements Serializable {
     public abstract boolean isMajorRank(final Rank rank);
 
     /**
-     * Compares card with the specified card for order using appropriate card compare method depending on 
-     * comparable mode.
+     * Compares card with the specified card for order using appropriate card compare method depending on comparable mode.
      * @param card which will be compare to other one.
      * @param object the comparable object.
-     * @return int value which may be:
-     *         = 0 if this card and the specified card are equal
-     *         > 0 if this card is bigger than the specified card
-     *         < 0 if this card is less than the specified card
+     * @return int value which may be: = 0 if this card and the specified card are equal > 0 if this card is bigger than the specified card < 0 if this card is
+     *         less than the specified card
      */
     public abstract int compareCardTo(final Card card, final Card object);
 }
 
 /**
- * CardComparableModeNormal class.
- * Represents normal card compare mode.
+ * CardComparableModeNormal class. Represents normal card compare mode.
  * @author Dimitar Karamanov
  */
 final class CardComparableModeStandard extends CardComparableMode {
@@ -145,8 +137,8 @@ final class CardComparableModeStandard extends CardComparableMode {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -1040118466593806321L;
-	/**
+    private static final long serialVersionUID = -1040118466593806321L;
+    /**
      * CardCompare's constant.
      */
     private static final int COMPARE_MODE_NO = 0;
@@ -194,14 +186,11 @@ final class CardComparableModeStandard extends CardComparableMode {
     }
 
     /**
-     * Compares rank with the specified rank for order using appropriate rank compare method depending on \
-     * comparable mode.
+     * Compares rank with the specified rank for order using appropriate rank compare method depending on \ comparable mode.
      * @param rank which will be compare to other one.
      * @param object the comparable object.
-     * @return int value which may be:
-     *         = 0 if this rank and the specified rank are equal
-     *         > 0 if this rank is bigger than the specified rank
-     *         < 0 if this rank is less than the specified rank
+     * @return int value which may be: = 0 if this rank and the specified rank are equal > 0 if this rank is bigger than the specified rank < 0 if this rank is
+     *         less than the specified rank
      */
     public int compareRankTo(final Rank rank, final Rank object) {
         return rank.compareTo(object);
@@ -217,14 +206,11 @@ final class CardComparableModeStandard extends CardComparableMode {
     }
 
     /**
-     * Compares card with the specified card for order using appropriate card compare method depending on 
-     * comparable mode.
+     * Compares card with the specified card for order using appropriate card compare method depending on comparable mode.
      * @param card which will be compare to other one.
      * @param object the comparable object.
-     * @return int value which may be:
-     *         = 0 if this card and the specified card are equal
-     *         > 0 if this card is bigger than the specified card
-     *         < 0 if this card is less than the specified card
+     * @return int value which may be: = 0 if this card and the specified card are equal > 0 if this card is bigger than the specified card < 0 if this card is
+     *         less than the specified card
      */
     public int compareCardTo(final Card card, final Card object) {
         return card.getStHash() - object.getStHash();
@@ -232,9 +218,8 @@ final class CardComparableModeStandard extends CardComparableMode {
 }
 
 /**
- * CardComparableModeNotTrump class.
- * Represents not trump card compare mode.
- *
+ * CardComparableModeNotTrump class. Represents not trump card compare mode.
+ * 
  * @author Dimitar Karamanov
  */
 final class CardComparableModeNotTrump extends CardComparableMode {
@@ -242,8 +227,8 @@ final class CardComparableModeNotTrump extends CardComparableMode {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 7765669382591454371L;
-	/**
+    private static final long serialVersionUID = 7765669382591454371L;
+    /**
      * CardCompare's constant.
      */
     private static final int COMPARE_MODE_NT = 1;
@@ -291,14 +276,11 @@ final class CardComparableModeNotTrump extends CardComparableMode {
     }
 
     /**
-     * Compares rank with the specified rank for order using appropriate rank compare method depending on 
-     * comparable mode.
+     * Compares rank with the specified rank for order using appropriate rank compare method depending on comparable mode.
      * @param rank which will be compare to other one.
      * @param object the comparable object.
-     * @return int value which may be:
-     *         = 0 if this rank and the specified rank are equal
-     *         > 0 if this rank is bigger than the specified rank
-     *         < 0 if this rank is less than the specified rank
+     * @return int value which may be: = 0 if this rank and the specified rank are equal > 0 if this rank is bigger than the specified rank < 0 if this rank is
+     *         less than the specified rank
      */
     public int compareRankTo(final Rank rank, final Rank object) {
         return rank.compareToNT(object);
@@ -314,14 +296,11 @@ final class CardComparableModeNotTrump extends CardComparableMode {
     }
 
     /**
-     * Compares card with the specified card for order using appropriate card compare method depending on 
-     * comparable mode.
+     * Compares card with the specified card for order using appropriate card compare method depending on comparable mode.
      * @param card which will be compare to other one.
      * @param object the comparable object.
-     * @return int value which may be:
-     *         = 0 if this card and the specified card are equal
-     *         > 0 if this card is bigger than the specified card
-     *         < 0 if this card is less than the specified card
+     * @return int value which may be: = 0 if this card and the specified card are equal > 0 if this card is bigger than the specified card < 0 if this card is
+     *         less than the specified card
      */
     public int compareCardTo(final Card card, final Card object) {
         return card.getNtHash() - object.getNtHash();
@@ -329,8 +308,7 @@ final class CardComparableModeNotTrump extends CardComparableMode {
 }
 
 /**
- * CardComparableModeAllTrump class.
- * Represents all trump card compare mode.
+ * CardComparableModeAllTrump class. Represents all trump card compare mode.
  * @author Dimitar Karamanov
  */
 final class CardComparableModeAllTrump extends CardComparableMode {
@@ -338,8 +316,8 @@ final class CardComparableModeAllTrump extends CardComparableMode {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -5148641246538269211L;
-	/**
+    private static final long serialVersionUID = -5148641246538269211L;
+    /**
      * CardCompare's constant.
      */
     private static final int COMPARE_MODE_AT = 2;
@@ -387,14 +365,11 @@ final class CardComparableModeAllTrump extends CardComparableMode {
     }
 
     /**
-     * Compares rank with the specified rank for order using appropriate rank compare method depending on 
-     * comparable mode.
+     * Compares rank with the specified rank for order using appropriate rank compare method depending on comparable mode.
      * @param rank which will be compare to other one.
      * @param object the comparable object.
-     * @return int value which may be:
-     *         = 0 if this rank and the specified rank are equal
-     *         > 0 if this rank is bigger than the specified rank
-     *         < 0 if this rank is less than the specified rank
+     * @return int value which may be: = 0 if this rank and the specified rank are equal > 0 if this rank is bigger than the specified rank < 0 if this rank is
+     *         less than the specified rank
      */
     public int compareRankTo(final Rank rank, final Rank object) {
         return rank.compareToAT(object);
@@ -410,14 +385,11 @@ final class CardComparableModeAllTrump extends CardComparableMode {
     }
 
     /**
-     * Compares card with the specified card for order using appropriate card compare method depending on 
-     * comparable mode.
+     * Compares card with the specified card for order using appropriate card compare method depending on comparable mode.
      * @param card which will be compare to other one.
      * @param object the comparable object.
-     * @return int value which may be:
-     *         = 0 if this card and the specified card are equal
-     *         > 0 if this card is bigger than the specified card
-     *         < 0 if this card is less than the specified card
+     * @return int value which may be: = 0 if this card and the specified card are equal > 0 if this card is bigger than the specified card < 0 if this card is
+     *         less than the specified card
      */
     public int compareCardTo(final Card card, final Card object) {
         return card.getAtHash() - object.getAtHash();

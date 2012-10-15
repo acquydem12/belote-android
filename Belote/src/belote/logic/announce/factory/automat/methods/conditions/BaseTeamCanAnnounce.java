@@ -53,7 +53,7 @@ public abstract class BaseTeamCanAnnounce implements AnnounceCondition {
      * @return boolean true if the condition fits, false otherwise.
      */
     public final boolean process(final Player player) {
-		final int oppositeTeamPoints = game.getOppositeTeam(player).getPoints().getAllPoints();
+        final int oppositeTeamPoints = game.getOppositeTeam(player).getPoints().getAllPoints();
         final int playerTeamPoints = player.getTeam().getPoints().getAllPoints();
         final int extraPoints = getExtraPoints(player);
 

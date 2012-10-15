@@ -20,9 +20,9 @@ public abstract class AnnounceSuit extends ComparableObject {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -2463912940977232511L;
+    private static final long serialVersionUID = -2463912940977232511L;
 
-	/**
+    /**
      * Pass announce constant.
      */
     public static final AnnounceSuit Pass = new Pass();
@@ -79,24 +79,21 @@ public abstract class AnnounceSuit extends ComparableObject {
     }
 
     /**
-     * Color suit classes are Club, Diamond, Heart and Spade. If the objects is instance of some of them the
-     * result is true otherwise is false.
+     * Color suit classes are Club, Diamond, Heart and Spade. If the objects is instance of some of them the result is true otherwise is false.
      * @return boolean true if is color suit false otherwise.
      */
     public abstract boolean isColorSuit();
 
     /**
-     * Returns the game base points for that announce suit. The points are used in double and redouble
-     * calculation.
+     * Returns the game base points for that announce suit. The points are used in double and redouble calculation.
      * @return int belote game base points.
      */
     public abstract int getBasePoints();
 
     /**
-     * Returns a string representation of the object. The return name is based on class short name.
-     * This method has to be used only for debug purpose when the project is not compiled with ofbuscating.
-     * Don't use this method to represent the object. When the project is compiled with ofbuscating the
-     * class name is not the same.
+     * Returns a string representation of the object. The return name is based on class short name. This method has to be used only for debug purpose when the
+     * project is not compiled with ofbuscating. Don't use this method to represent the object. When the project is compiled with ofbuscating the class name is
+     * not the same.
      * @return String a string representation of the object.
      */
     public final String toString() {
@@ -106,10 +103,8 @@ public abstract class AnnounceSuit extends ComparableObject {
     /**
      * Compares this announce suit with the specified object(announce suit) for order.
      * @param obj specified object (announce suit).
-     * @return int value which may be:
-     *         = 0 if this announce suit and the specified object(announce suit) are equal
-     *         > 0 if this announce suit is bigger than the specified object(announce suit)
-     *         < 0 if this announce suit is less than the specified object(announce suit)
+     * @return int value which may be: = 0 if this announce suit and the specified object(announce suit) are equal > 0 if this announce suit is bigger than the
+     *         specified object(announce suit) < 0 if this announce suit is less than the specified object(announce suit)
      */
     public final int compareTo(Object obj) {
         final AnnounceSuit announceSuit = (AnnounceSuit) obj;

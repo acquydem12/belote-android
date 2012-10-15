@@ -22,8 +22,7 @@ import belote.logic.play.strategy.automat.methods.ColorObligatoryStandardTrumpCa
 import belote.logic.play.strategy.automat.methods.ColorObligatoryTrumpRoundLastCard;
 
 /**
- * ColorNoTrumpAttackObligatoryFirstRuffCardExecutor executor.
- * Implements the obligatory rules for defense player to play obligatory trump card in a color game.
+ * ColorNoTrumpAttackObligatoryFirstRuffCardExecutor executor. Implements the obligatory rules for defense player to play obligatory trump card in a color game.
  * @author Dimitar Karamanov
  */
 public final class ColorNoTrumpAttackObligatoryFirstRuffCardExecutor extends PlayCardExecutor {
@@ -34,7 +33,7 @@ public final class ColorNoTrumpAttackObligatoryFirstRuffCardExecutor extends Pla
      */
     public ColorNoTrumpAttackObligatoryFirstRuffCardExecutor(final Game game) {
         super(game);
-        //Register play card methods.
+        // Register play card methods.
         register(new ColorObligatoryTrumpRoundLastCard(game));
         register(new ColorObligatorySafeTrumpCard(game));
         register(new ColorObligatoryStandardTrumpCard(game));

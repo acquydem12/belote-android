@@ -18,9 +18,9 @@ public final class Jack extends Rank {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -160442047557096206L;
+    private static final long serialVersionUID = -160442047557096206L;
 
-	/**
+    /**
      * Constructor.
      */
     protected Jack() {

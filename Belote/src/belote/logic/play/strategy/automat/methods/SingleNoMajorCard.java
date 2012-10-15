@@ -17,9 +17,7 @@ import belote.bean.pack.card.suit.SuitIterator;
 import belote.logic.play.strategy.automat.methods.base.BaseMethod;
 
 /**
- * SingleNoMajorCard class.
- * PlayCardMethod which implements the logic of playing the minimum by rank single no maximum left
- * no major suit card.
+ * SingleNoMajorCard class. PlayCardMethod which implements the logic of playing the minimum by rank single no maximum left no major suit card.
  * @author Dimitar Karamanov
  */
 public final class SingleNoMajorCard extends BaseMethod {

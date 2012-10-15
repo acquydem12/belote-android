@@ -16,9 +16,8 @@ import belote.logic.play.strategy.automat.base.PlayCardMethod;
 import belote.logic.play.strategy.automat.methods.base.BaseMethod;
 
 /**
- * SingleCardToPartner class.
- * PlayCardMethod which implements the logic of playing single card to partner if he is the best card player
- * and have played the maximum left suit card.
+ * SingleCardToPartner class. PlayCardMethod which implements the logic of playing single card to partner if he is the best card player and have played the
+ * maximum left suit card.
  * @author Dimitar Karamanov
  */
 public final class MaxSingleNoHandCardToPartner extends BaseMethod {

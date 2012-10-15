@@ -9,11 +9,11 @@
  */
 package belote.bean.pack.card.suit;
 
-import belote.base.IntegerIterator;
-
 import java.io.Serializable;
 import java.util.Enumeration;
 import java.util.Hashtable;
+
+import belote.base.IntegerIterator;
 
 /**
  * SuitCountHashTable class.
@@ -24,9 +24,9 @@ public final class SuitCountHashTable implements Serializable {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 1804382243836131584L;
-	
-	/**
+    private static final long serialVersionUID = 1804382243836131584L;
+
+    /**
      * Internal system collection object.
      */
     private final Hashtable<Suit, Integer> hashTable = new Hashtable<Suit, Integer>();
@@ -99,8 +99,7 @@ public final class SuitCountHashTable implements Serializable {
     }
 
     /**
-     * SuitIteratorImpl class.
-     * Implements SuitIterator interface.
+     * SuitIteratorImpl class. Implements SuitIterator interface.
      */
     private class SuitIteratorImpl implements SuitIterator {
 
@@ -135,8 +134,7 @@ public final class SuitCountHashTable implements Serializable {
     }
 
     /**
-     * IntegerIteratorImpl class.
-     * Implements IntegerIterator interface.
+     * IntegerIteratorImpl class. Implements IntegerIterator interface.
      */
     private class IntegerIteratorImpl implements IntegerIterator {
 

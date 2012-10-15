@@ -15,15 +15,15 @@ package belote.logic.announce.factory.automat.methods.conditions.base;
  */
 public interface AnnounceConditionIterator {
 
-	/**
-	 * Returns true if the iteration has more elements.
-	 * @return boolean true if the iteration has more elements false otherwise.
-	 */
-	boolean hasNext();
+    /**
+     * Returns true if the iteration has more elements.
+     * @return boolean true if the iteration has more elements false otherwise.
+     */
+    boolean hasNext();
 
-	/**
-	 * Returns the next element in the iteration.
-	 * @return AnnounceCondition the next element in the iteration.
-	 */
-	AnnounceCondition next();
+    /**
+     * Returns the next element in the iteration.
+     * @return AnnounceCondition the next element in the iteration.
+     */
+    AnnounceCondition next();
 }

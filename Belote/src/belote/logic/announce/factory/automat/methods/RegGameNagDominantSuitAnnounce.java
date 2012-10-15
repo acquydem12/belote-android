@@ -23,8 +23,7 @@ import belote.logic.announce.factory.automat.methods.suitDeterminators.DominantS
 import belote.logic.announce.factory.automat.methods.suitDeterminators.base.SuitDeterminator;
 
 /**
- * RegGameNagDominantSuitAnnounce class.
- * Announce factory method which creates nag color suit announce.
+ * RegGameNagDominantSuitAnnounce class. Announce factory method which creates nag color suit announce.
  * @author Dimitar Karamanov
  */
 public final class RegGameNagDominantSuitAnnounce extends ConditionListMethod {
@@ -39,13 +38,20 @@ public final class RegGameNagDominantSuitAnnounce extends ConditionListMethod {
         super(game);
         suitDeterminator = new DominantSuit();
         addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Jack, suitDeterminator), new RankCount(Rank.Ace, 1)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Jack, suitDeterminator), new HasCard(Rank.Nine, suitDeterminator)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Jack, suitDeterminator), new HasCard(Rank.Ace, suitDeterminator)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Jack, suitDeterminator), new HasCard(Rank.Ten, suitDeterminator)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Nine, suitDeterminator), new HasCard(Rank.Ace, suitDeterminator), new RankCount(Rank.Ace, 2)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 4), new HasCard(Rank.Nine, suitDeterminator), new HasCard(Rank.Ace, suitDeterminator)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 4), new HasCard(Rank.Nine, suitDeterminator), new HasCard(Rank.Ten, suitDeterminator)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 4), new HasCard(Rank.Nine, suitDeterminator), new HasCard(Rank.King, suitDeterminator), new HasCard(Rank.Queen, suitDeterminator)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Jack, suitDeterminator), new HasCard(Rank.Nine,
+                suitDeterminator)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Jack, suitDeterminator), new HasCard(Rank.Ace,
+                suitDeterminator)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Jack, suitDeterminator), new HasCard(Rank.Ten,
+                suitDeterminator)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Nine, suitDeterminator), new HasCard(Rank.Ace,
+                suitDeterminator), new RankCount(Rank.Ace, 2)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 4), new HasCard(Rank.Nine, suitDeterminator), new HasCard(Rank.Ace,
+                suitDeterminator)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 4), new HasCard(Rank.Nine, suitDeterminator), new HasCard(Rank.Ten,
+                suitDeterminator)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 4), new HasCard(Rank.Nine, suitDeterminator), new HasCard(Rank.King,
+                suitDeterminator), new HasCard(Rank.Queen, suitDeterminator)));
         addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 4), new HasCard(Rank.Jack, suitDeterminator)));
         addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 5), new HasCard(Rank.Nine, suitDeterminator)));
     }

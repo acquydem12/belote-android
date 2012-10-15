@@ -17,9 +17,8 @@ import belote.logic.play.strategy.automat.methods.ColorNoTrumpAttackSuitHookCard
 import belote.logic.play.strategy.automat.methods.MinSuitCard;
 
 /**
- * ColorDefenceSuitCard executor.
- * Implements the obligatory rules for defence player when the attack card is not from trump suit.
- * Used in ColorDefenceCard executor.
+ * ColorDefenceSuitCard executor. Implements the obligatory rules for defence player when the attack card is not from trump suit. Used in ColorDefenceCard
+ * executor.
  * @author Dimitar Karamanov
  */
 public final class ColorDefenceNoTrumpAttackCard extends PlayCardExecutor {
@@ -30,7 +29,7 @@ public final class ColorDefenceNoTrumpAttackCard extends PlayCardExecutor {
      */
     public ColorDefenceNoTrumpAttackCard(final Game game) {
         super(game);
-        //Register play card methods.
+        // Register play card methods.
         register(new ColorNoTrumpAttackEnemyTrumpCard(game));
         register(new ColorNoTrumpAttackSuitHookCard(game));
         register(new ColorNoTrumpAttackMaxSuitLeftCard(game));

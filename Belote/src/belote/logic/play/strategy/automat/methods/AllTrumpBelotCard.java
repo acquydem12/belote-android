@@ -18,8 +18,7 @@ import belote.bean.pack.card.suit.SuitIterator;
 import belote.logic.play.strategy.automat.methods.base.BaseMethod;
 
 /**
- * BelotCard class.
- * PlayCardMethod which implements the logic of playing a belot in all trump game.
+ * BelotCard class. PlayCardMethod which implements the logic of playing a belot in all trump game.
  * @author Dimitar Karamanov
  */
 public final class AllTrumpBelotCard extends BaseMethod {

@@ -18,8 +18,8 @@ public final class Heart extends Suit {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -7054021151876037143L;
-	/**
+    private static final long serialVersionUID = -7054021151876037143L;
+    /**
      * Heart ID constant.
      */
     private static final int ID = 2;

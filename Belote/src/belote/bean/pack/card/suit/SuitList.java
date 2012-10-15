@@ -14,8 +14,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * SuitList class.
- * Wrapper class of system collection used to hold and access Suit instances.
+ * SuitList class. Wrapper class of system collection used to hold and access Suit instances.
  * @author Dimitar Karamanov
  */
 public final class SuitList implements Serializable {
@@ -23,8 +22,8 @@ public final class SuitList implements Serializable {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -7015889465999912329L;
-	/**
+    private static final long serialVersionUID = -7015889465999912329L;
+    /**
      * Internal container collection.
      */
     private ArrayList<Suit> collection = new ArrayList<Suit>();
@@ -104,8 +103,7 @@ public final class SuitList implements Serializable {
     }
 
     /**
-     * SuitIteratorImpl class.
-     * Implements SuitIterator interface.
+     * SuitIteratorImpl class. Implements SuitIterator interface.
      */
     private class SuitIteratorImpl implements SuitIterator {
 

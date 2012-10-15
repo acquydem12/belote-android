@@ -38,8 +38,8 @@ import com.karamanov.beloteGame.text.TextDecorator;
  * @author Dimitar Karamanov
  */
 public class AnnounceDialog extends Dialog {
-	
-	private final LinearLayout vertical;
+
+    private final LinearLayout vertical;
 
     /**
      * Pass button.
@@ -140,9 +140,9 @@ public class AnnounceDialog extends Dialog {
      * Text decorator of game beans object (Suit, Rank, Announce ...)
      */
     private final TextDecorator decorator;
-    
+
     private final BooleanFlag wait;
-    
+
     /**
      * Constructor.
      * @param game a BelotGame instance.
@@ -153,22 +153,21 @@ public class AnnounceDialog extends Dialog {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         getWindow().setBackgroundDrawableResource(R.drawable.announce_dlg);
-        
-        
+
         wait = new BooleanFlag();
         int dip5 = Belote.fromPixelToDip(context, 5);
         int dip15 = Belote.fromPixelToDip(context, 15);
-                
+
         vertical = new LinearLayout(context);
         vertical.setOrientation(LinearLayout.VERTICAL);
-        vertical.setPadding(dip5, dip5, dip5, dip5);        
-        
+        vertical.setPadding(dip5, dip5, dip5, dip5);
+
         announceLabel = new TextView(context);
         announceLabel.setId(1);
         announceLabel.setTextColor(Color.rgb(255, 99, 71));
         announceLabel.setGravity(Gravity.CENTER_HORIZONTAL);
         vertical.addView(announceLabel);
-        
+
         TableLayout tl = new TableLayout(context);
 
         this.game = game;
@@ -176,36 +175,36 @@ public class AnnounceDialog extends Dialog {
 
         MyFieldChangeListener mfl = new MyFieldChangeListener();
 
-        //First Row
-        //Second Row
+        // First Row
+        // Second Row
         TableRow row = new TableRow(context);
-        //Left
+        // Left
         jrbClubs = new AnnounceButtonField(context, context.getString(R.string.ClubsAnnounce));
         jrbClubs.setOnClickListener(mfl);
-        
+
         pClub = new ImageView(context);
         pClub.setImageResource(R.drawable.club);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         lp.gravity = Gravity.CENTER;
         lp.rightMargin = dip5;
         pClub.setLayoutParams(lp);
-        
+
         LinearLayout relative = new LinearLayout(context);
-        
+
         relative.addView(pClub);
         relative.addView(jrbClubs);
-        
+
         TableRow.LayoutParams trlp = new TableRow.LayoutParams();
         trlp.weight = 0.5f;
         relative.setLayoutParams(trlp);
         row.addView(relative);
-        //Right
+        // Right
         jrbNotTrump = new AnnounceButtonField(context, context.getString(R.string.NotTrumpsAnnounce));
         jrbNotTrump.setOnClickListener(mfl);
-        
+
         pAllAces = new ImageView(context);
         pAllAces.setImageResource(R.drawable.all_aces);
-        
+
         relative = new LinearLayout(context);
         lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         lp.gravity = Gravity.CENTER;
@@ -218,176 +217,174 @@ public class AnnounceDialog extends Dialog {
         trlp.weight = 0.5f;
         relative.setLayoutParams(trlp);
         row.addView(relative);
-        
+
         tl.addView(row);
-        
-        //Third Row
+
+        // Third Row
         row = new TableRow(context);
-        //Left
+        // Left
         jrbDiamonds = new AnnounceButtonField(context, context.getString(R.string.DiamondsAnnounce));
         jrbDiamonds.setOnClickListener(mfl);
-        
+
         pDiamond = new ImageView(context);
-        pDiamond.setImageResource(R.drawable.diamond) ;
+        pDiamond.setImageResource(R.drawable.diamond);
         lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         lp.gravity = Gravity.CENTER;
         lp.rightMargin = dip5;
         pDiamond.setLayoutParams(lp);
-        
+
         relative = new LinearLayout(context);
         relative.addView(pDiamond);
         relative.addView(jrbDiamonds);
-        
+
         trlp = new TableRow.LayoutParams();
         trlp.weight = 0.5f;
         relative.setLayoutParams(trlp);
         row.addView(relative);
 
-        //Right
+        // Right
         jrbAllTrump = new AnnounceButtonField(context, context.getString(R.string.AllTrumpsAnnounce));
         jrbAllTrump.setOnClickListener(mfl);
-        
+
         pAllJacks = new ImageView(context);
         pAllJacks.setImageResource(R.drawable.all_jacks);
         lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         lp.gravity = Gravity.CENTER;
         lp.leftMargin = dip15;
         pAllJacks.setLayoutParams(lp);
-        
+
         relative = new LinearLayout(context);
         relative.addView(pAllJacks);
         relative.addView(jrbAllTrump);
-        
+
         trlp = new TableRow.LayoutParams();
         trlp.weight = 0.5f;
         relative.setLayoutParams(trlp);
         row.addView(relative);
-        
+
         tl.addView(row);
-        
-        //Fourth Row
+
+        // Fourth Row
         row = new TableRow(context);
-        //Left
+        // Left
         jrbHearts = new AnnounceButtonField(context, context.getString(R.string.HeartsAnnounce));
         jrbHearts.setOnClickListener(mfl);
-        
+
         pHeart = new ImageView(context);
-        pHeart.setImageResource(R.drawable.heart) ;
+        pHeart.setImageResource(R.drawable.heart);
         lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         lp.rightMargin = dip5;
         lp.gravity = Gravity.CENTER;
         pHeart.setLayoutParams(lp);
-        
+
         relative = new LinearLayout(context);
         relative.addView(pHeart);
         relative.addView(jrbHearts);
-                        
+
         trlp = new TableRow.LayoutParams();
         trlp.weight = 0.5f;
         relative.setLayoutParams(trlp);
         row.addView(relative);
-        
-        //Right
+
+        // Right
         jrbDouble = new AnnounceButtonField(context, context.getString(R.string.DoubleAnnounce));
         jrbDouble.setOnClickListener(mfl);
-                
+
         pDouble = new ImageView(context);
         pDouble.setImageResource(R.drawable.double_c);
         lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         lp.gravity = Gravity.CENTER;
         lp.leftMargin = dip15;
         pDouble.setLayoutParams(lp);
-        
+
         relative = new LinearLayout(context);
         relative.addView(pDouble);
         relative.addView(jrbDouble);
-        
+
         trlp = new TableRow.LayoutParams();
         trlp.weight = 0.5f;
         relative.setLayoutParams(trlp);
         row.addView(relative);
-        
+
         tl.addView(row);
-        
-        //Sixth Row
+
+        // Sixth Row
         row = new TableRow(context);
         jrbSpades = new AnnounceButtonField(context, context.getString(R.string.SpadesAnnounce));
         jrbSpades.setOnClickListener(mfl);
-        
+
         pSpade = new ImageView(context);
         pSpade.setImageResource(R.drawable.spade);
         lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         lp.gravity = Gravity.CENTER;
         lp.rightMargin = dip5;
         pSpade.setLayoutParams(lp);
-        
+
         relative = new LinearLayout(context);
         relative.addView(pSpade);
         relative.addView(jrbSpades);
-        
+
         trlp = new TableRow.LayoutParams();
         trlp.weight = 0.5f;
         relative.setLayoutParams(trlp);
         row.addView(relative);
-        
-        //Right
+
+        // Right
         jrbRedouble = new AnnounceButtonField(context, context.getString(R.string.RedoubleAnnounce));
         jrbRedouble.setOnClickListener(mfl);
-        
+
         pRedouble = new ImageView(context);
         pRedouble.setImageResource(R.drawable.redouble);
         lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         lp.gravity = Gravity.CENTER;
         lp.leftMargin = dip15;
         pRedouble.setLayoutParams(lp);
-        
+
         relative = new LinearLayout(context);
         relative.addView(pRedouble);
         relative.addView(jrbRedouble);
-        
+
         trlp = new TableRow.LayoutParams();
         trlp.weight = 0.5f;
         relative.setLayoutParams(trlp);
         row.addView(relative);
-        
+
         tl.addView(row);
-        
+
         row = new TableRow(context);
         jrbPass = new AnnounceButtonField(context, context.getString(R.string.PassAnnounce));
         jrbPass.setOnClickListener(mfl);
         trlp = new TableRow.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         trlp.span = 2;
         trlp.gravity = Gravity.CENTER_HORIZONTAL;
-        
+
         relative = new LinearLayout(context);
         relative.addView(jrbPass);
-        
+
         relative.setLayoutParams(trlp);
         row.addView(relative);
-    
+
         tl.addView(row);
-       
+
         vertical.addView(tl);
-            
+
         setContentView(vertical);
     }
-    
-    public void onBackPressed () {
-    	//DN
+
+    public void onBackPressed() {
+        // DN
     }
 
-
     /**
-     * ButtonKeyPressedAdapter class.
-     * Implements KeyEventListener.
+     * ButtonKeyPressedAdapter class. Implements KeyEventListener.
      */
     private class MyFieldChangeListener implements View.OnClickListener {
-    	
-		@Override
-		public void onClick(View view) {
-			game.getGame().getAnnounceList().add(generatePlayerAnnounce(view));
+
+        @Override
+        public void onClick(View view) {
+            game.getGame().getAnnounceList().add(generatePlayerAnnounce(view));
             AnnounceDialog.this.dismiss();
-		}
+        }
     }
 
     /**
@@ -396,18 +393,18 @@ public class AnnounceDialog extends Dialog {
     public void init() {
         initButtonsByAnnounces();
     }
-    
+
     public boolean getValue() {
-    	return wait.getValue();
+        return wait.getValue();
     }
-    
+
     public void setTrue() {
-    	wait.setTrue();
+        wait.setTrue();
     }
-    
-    protected void onStop () {
-    	wait.setFalse();
-	}
+
+    protected void onStop() {
+        wait.setFalse();
+    }
 
     /**
      * Buttons initialisation depending current announce status.
@@ -419,7 +416,6 @@ public class AnnounceDialog extends Dialog {
         pRedouble.setEnabled(false);
         jrbDouble.setEnabled(false);
         jrbRedouble.setEnabled(false);
-
 
         jrbClubs.setEnabled(true);
         pClub.setEnabled(true);
@@ -484,14 +480,14 @@ public class AnnounceDialog extends Dialog {
         }
 
         if (last == null) {
-        	if (announceLabel.getVisibility() != View.GONE) {
-        		announceLabel.setVisibility(View.GONE);
-        	}
+            if (announceLabel.getVisibility() != View.GONE) {
+                announceLabel.setVisibility(View.GONE);
+            }
         } else {
             announceLabel.setText(decorator.getAnnounceTextEx(game.getGame().getAnnounceList()));
-        	if (announceLabel.getVisibility() != View.VISIBLE) {
-        		announceLabel.setVisibility(View.VISIBLE);
-        	}            
+            if (announceLabel.getVisibility() != View.VISIBLE) {
+                announceLabel.setVisibility(View.VISIBLE);
+            }
         }
     }
 

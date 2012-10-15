@@ -16,9 +16,8 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * ColorNoTrumpAttackSuitHookCard class.
- * PlayCardMethod which implements the logic of playing a hook card or to take the card (3th defefence position)
- * in defence of color game.
+ * ColorNoTrumpAttackSuitHookCard class. PlayCardMethod which implements the logic of playing a hook card or to take the card (3th defefence position) in
+ * defence of color game.
  * @author Dimitar Karamanov
  */
 public final class ColorNoTrumpAttackSuitHookCard extends BaseTrumpMethod {
@@ -37,41 +36,36 @@ public final class ColorNoTrumpAttackSuitHookCard extends BaseTrumpMethod {
      * @param trump suit.
      * @return Card object instance or null.
      */
-	public Card getPlayMethodCard(final Player player, final Suit trump) {
-		if (trump != null) {
-			final boolean teamSuit = isTeamSuit(trump, player.getTeam());
-			final boolean noTrumps = isPlayerSuit(player, trump);
-			final Card attackCard = game.getTrickCards().getAttackCard();
+    public Card getPlayMethodCard(final Player player, final Suit trump) {
+        if (trump != null) {
+            final boolean teamSuit = isTeamSuit(trump, player.getTeam());
+            final boolean noTrumps = isPlayerSuit(player, trump);
+            final Card attackCard = game.getTrickCards().getAttackCard();
 
-			if (attackCard != null) {
-				if (isThirdDefencePosition()) {
-					final Card max = player.getCards().findMaxSuitCard(
-							attackCard.getSuit());
-					final Card handCard = game.getTrickCards()
-							.getHandAttackSuitCard();
+            if (attackCard != null) {
+                if (isThirdDefencePosition()) {
+                    final Card max = player.getCards().findMaxSuitCard(attackCard.getSuit());
+                    final Card handCard = game.getTrickCards().getHandAttackSuitCard();
 
-					if (max != null && handCard != null) {
-						if ((noTrumps || teamSuit)) {
-							if (max != null && isMaxSuitCardLeft(max, false)) {
-								final Card minAboveCard = player.getCards()
-										.findMinAboveCard(handCard);
-								if (minAboveCard == null) {
-									return max;
-								} else {
-									return player.getCards()
-											.getMaxSequenceCardAfter(
-													minAboveCard);
-								}
-							}
-						}
+                    if (max != null && handCard != null) {
+                        if ((noTrumps || teamSuit)) {
+                            if (max != null && isMaxSuitCardLeft(max, false)) {
+                                final Card minAboveCard = player.getCards().findMinAboveCard(handCard);
+                                if (minAboveCard == null) {
+                                    return max;
+                                } else {
+                                    return player.getCards().getMaxSequenceCardAfter(minAboveCard);
+                                }
+                            }
+                        }
 
-						if (max.compareTo(handCard) > 0) {
-							return max;
-						}
-					}
-				}
-			}
-		}
-		return null;
-	}
+                        if (max.compareTo(handCard) > 0) {
+                            return max;
+                        }
+                    }
+                }
+            }
+        }
+        return null;
+    }
 }

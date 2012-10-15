@@ -20,8 +20,7 @@ import belote.logic.announce.factory.automat.methods.conditions.TeamCanAnnounce;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
 
 /**
- * EndGameOpenEnemyTeamEndGameZoneAnnounce class.
- * Announce factory method which creates end game open announce.
+ * EndGameOpenEnemyTeamEndGameZoneAnnounce class. Announce factory method which creates end game open announce.
  * @author Dimitar Karamanov
  */
 public final class EndGameOpenEnemyTeamEndGameZoneAnnounce extends ConditionListMethod {

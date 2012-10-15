@@ -19,8 +19,7 @@ import belote.logic.announce.factory.automat.methods.conditions.HasSuit;
 import belote.logic.announce.factory.automat.methods.suitDeterminators.SequenceSuit;
 
 /**
- * RegGameNormalFiftyOrHundredAnnounce class.
- * Announce factory method which creates suit announce on 50 or 100 sequence suit.
+ * RegGameNormalFiftyOrHundredAnnounce class. Announce factory method which creates suit announce on 50 or 100 sequence suit.
  * @author Dimitar Karamanov
  */
 public final class RegGameNormalFiftyOrHundredAnnounce extends ConditionListMethod {
@@ -44,4 +43,4 @@ public final class RegGameNormalFiftyOrHundredAnnounce extends ConditionListMeth
         final Suit suit = SequenceSuit.getSequenceSuit(player);
         return Announce.createSuitNormalAnnounce(player, suit);
     }
-} 
+}

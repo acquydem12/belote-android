@@ -9,9 +9,9 @@
  */
 package belote.logic.announce.factory.automat.methods.suitDeterminators;
 
-import belote.logic.announce.factory.automat.methods.suitDeterminators.base.SuitDeterminator;
 import belote.bean.Player;
 import belote.bean.pack.card.suit.Suit;
+import belote.logic.announce.factory.automat.methods.suitDeterminators.base.SuitDeterminator;
 
 /**
  * Returns the dominant suit or null.
@@ -19,7 +19,7 @@ import belote.bean.pack.card.suit.Suit;
  */
 public final class DominantSuit implements SuitDeterminator {
 
-     /**
+    /**
      * Returns the determined suit.
      * @param player which has to declare the next announce.
      * @return Suit instance or null.

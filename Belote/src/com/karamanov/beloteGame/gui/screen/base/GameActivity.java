@@ -47,13 +47,13 @@ public class GameActivity extends Activity implements Runnable {
         super();
         thread = new Thread(this);
     }
-    
+
     @Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		thread.start();
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        thread.start();
     }
-    
+
     /**
      * Initializes user message type.
      * @param messageTypeID id of the message type.
@@ -77,16 +77,14 @@ public class GameActivity extends Activity implements Runnable {
     }
 
     /**
-     * The canvas is being displayed.
-     * Stop the event handling and animation thread.
+     * The canvas is being displayed. Stop the event handling and animation thread.
      */
     protected void onResume() {
-    	super.onResume();
+        super.onResume();
     }
 
     /**
-     * The canvas is being removed from the screen.
-     * Stop the event handling and animation thread.
+     * The canvas is being removed from the screen. Stop the event handling and animation thread.
      */
     protected void onPause() {
         super.onPause();
@@ -100,7 +98,7 @@ public class GameActivity extends Activity implements Runnable {
             final Thread mythread = Thread.currentThread();
 
             while (!interrupted && mythread == thread) {
-            	messageQueue.processMessage();
+                messageQueue.processMessage();
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -116,7 +114,7 @@ public class GameActivity extends Activity implements Runnable {
             try {
                 Thread.sleep(ms);
             } catch (InterruptedException ex) {
-                //ex.printStackTrace();
+                // ex.printStackTrace();
             }
         }
     }

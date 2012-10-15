@@ -20,8 +20,7 @@ import belote.logic.announce.factory.transformers.AnnounceTransformer;
 import belote.logic.announce.factory.transformers.DoubleAnnounce;
 
 /**
- * EndGameNormalEnemyTeamEndGameZoneAnnounce class.
- * Announce factory method which creates an announce when the enemy teams has reached the end game zone.
+ * EndGameNormalEnemyTeamEndGameZoneAnnounce class. Announce factory method which creates an announce when the enemy teams has reached the end game zone.
  * @author Dimitar Karamanov
  */
 public final class EndGameNormalEnemyTeamEndGameZoneAnnounce extends ConditionListMethod {

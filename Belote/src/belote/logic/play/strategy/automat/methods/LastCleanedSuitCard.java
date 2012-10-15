@@ -17,9 +17,8 @@ import belote.bean.pack.card.suit.SuitIterator;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * LastCleanedSuitCard class.
- * PlayCardMethod which implements the logic of playing a card from the last cleaned suit. 
- * (Called usually after trying to play from not cleared suit).
+ * LastCleanedSuitCard class. PlayCardMethod which implements the logic of playing a card from the last cleaned suit. (Called usually after trying to play from
+ * not cleared suit).
  * @author Dimitar Karamanov
  */
 public final class LastCleanedSuitCard extends BaseTrumpMethod {

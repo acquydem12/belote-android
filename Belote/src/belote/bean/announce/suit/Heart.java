@@ -18,9 +18,9 @@ public final class Heart extends ColorSuit {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -3967030891541808923L;
-	
-	/**
+    private static final long serialVersionUID = -3967030891541808923L;
+
+    /**
      * Announce suit type unique constant.
      */
     private static final int ID = 3;

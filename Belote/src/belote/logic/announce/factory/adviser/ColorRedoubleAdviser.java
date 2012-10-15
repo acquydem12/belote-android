@@ -12,10 +12,10 @@ package belote.logic.announce.factory.adviser;
 import belote.bean.Game;
 import belote.bean.pack.card.rank.Rank;
 import belote.bean.pack.sequence.SequenceType;
-import belote.logic.announce.factory.automat.methods.conditions.PartnerRegularAnnounce;
-import belote.logic.announce.factory.automat.methods.conditions.PlayerRegularAnnounce;
 import belote.logic.announce.factory.automat.methods.conditions.HasSquare;
 import belote.logic.announce.factory.automat.methods.conditions.HasSuit;
+import belote.logic.announce.factory.automat.methods.conditions.PartnerRegularAnnounce;
+import belote.logic.announce.factory.automat.methods.conditions.PlayerRegularAnnounce;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
 import belote.logic.announce.factory.automat.methods.suitDeterminators.SequenceSuit;
 
@@ -31,9 +31,9 @@ public final class ColorRedoubleAdviser extends BaseRedoubleAdviser {
      */
     public ColorRedoubleAdviser(final Game game) {
         super(game);
-        //Player made last announce
+        // Player made last announce
         addAnnounceCondition(new MultipleAndCondition(new PlayerRegularAnnounce(game), new HasSuit(new SequenceSuit(SequenceType.Quint, Rank.Ace))));
-        //Partner made last announce
+        // Partner made last announce
         addAnnounceCondition(new MultipleAndCondition(new PartnerRegularAnnounce(game), new HasSuit(new SequenceSuit(SequenceType.Quint, Rank.Ace))));
         addAnnounceCondition(new MultipleAndCondition(new PartnerRegularAnnounce(game), new HasSquare()));
     }

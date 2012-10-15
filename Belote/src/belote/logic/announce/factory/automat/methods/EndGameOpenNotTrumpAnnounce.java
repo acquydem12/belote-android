@@ -20,8 +20,7 @@ import belote.logic.announce.factory.automat.methods.conditions.TeamDefence;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
 
 /**
- * EndGameOpenNotTrumpAnnounce class.
- * Announce factory method which creates normal not trump announce.
+ * EndGameOpenNotTrumpAnnounce class. Announce factory method which creates normal not trump announce.
  * @author Dimitar Karamanov
  */
 public final class EndGameOpenNotTrumpAnnounce extends ConditionListMethod {

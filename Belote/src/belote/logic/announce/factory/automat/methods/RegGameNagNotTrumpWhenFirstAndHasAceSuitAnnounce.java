@@ -22,8 +22,7 @@ import belote.logic.announce.factory.automat.methods.suitDeterminators.DominantS
 import belote.logic.announce.factory.automat.methods.suitDeterminators.base.SuitDeterminator;
 
 /**
- * RegGameNagNotTrumpWhenFirstAndHasAceSuitAnnounce class.
- * Announce factory method which creates nag NT announce on ace suit and player is attack one.
+ * RegGameNagNotTrumpWhenFirstAndHasAceSuitAnnounce class. Announce factory method which creates nag NT announce on ace suit and player is attack one.
  * @author Dimitar Karamanov
  */
 public final class RegGameNagNotTrumpWhenFirstAndHasAceSuitAnnounce extends ConditionListMethod {

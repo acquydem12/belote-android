@@ -13,8 +13,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * AnnounceConditionList class.
- * Wrapper class of system collection used to hold and access AnnounceConditions instances.
+ * AnnounceConditionList class. Wrapper class of system collection used to hold and access AnnounceConditions instances.
  * @author Dimitar Karamanov
  */
 public final class AnnounceConditionList {
@@ -63,8 +62,7 @@ public final class AnnounceConditionList {
     }
 
     /**
-     * PlayableIteratorImpl class.
-     * Implements PlayCardMethodIterator interface.
+     * PlayableIteratorImpl class. Implements PlayCardMethodIterator interface.
      */
     private class AnnounceConditionIteratorImpl implements AnnounceConditionIterator {
 

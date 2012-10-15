@@ -18,9 +18,9 @@ public final class AllTrump extends ColorlessSuit {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -6496179630300169647L;
-	
-	/**
+    private static final long serialVersionUID = -6496179630300169647L;
+
+    /**
      * Announce suit type unique constant.
      */
     private static final int ID = 6;

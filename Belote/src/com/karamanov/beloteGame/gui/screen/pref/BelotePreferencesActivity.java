@@ -14,14 +14,13 @@ import com.karamanov.beloteGame.R;
 
 public final class BelotePreferencesActivity extends PreferenceActivity {
 
-	public BelotePreferencesActivity() {
+    public BelotePreferencesActivity() {
         super();
     }
 
     /**
      * Called when the activity is first created.
-     * @param saveInstanceState - Bundle contains the data it most recently supplied in
-     *            onSaveInstanceState(Bundle).
+     * @param saveInstanceState - Bundle contains the data it most recently supplied in onSaveInstanceState(Bundle).
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {

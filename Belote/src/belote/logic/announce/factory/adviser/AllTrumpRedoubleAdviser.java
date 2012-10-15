@@ -12,9 +12,9 @@ package belote.logic.announce.factory.adviser;
 import belote.bean.Game;
 import belote.bean.pack.card.rank.Rank;
 import belote.bean.pack.sequence.SequenceType;
+import belote.logic.announce.factory.automat.methods.conditions.HasSuit;
 import belote.logic.announce.factory.automat.methods.conditions.PartnerRegularAnnounce;
 import belote.logic.announce.factory.automat.methods.conditions.PlayerRegularAnnounce;
-import belote.logic.announce.factory.automat.methods.conditions.HasSuit;
 import belote.logic.announce.factory.automat.methods.conditions.RankCount;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
 import belote.logic.announce.factory.automat.methods.suitDeterminators.SequenceSuit;
@@ -31,12 +31,12 @@ public final class AllTrumpRedoubleAdviser extends BaseRedoubleAdviser {
      */
     public AllTrumpRedoubleAdviser(final Game game) {
         super(game);
-        //Player made last announce
+        // Player made last announce
         addAnnounceCondition(new MultipleAndCondition(new PlayerRegularAnnounce(game), new RankCount(Rank.Jack, 4)));
         addAnnounceCondition(new MultipleAndCondition(new PlayerRegularAnnounce(game), new RankCount(Rank.Jack, 1), new RankCount(Rank.Nine, 4)));
         addAnnounceCondition(new MultipleAndCondition(new PlayerRegularAnnounce(game), new RankCount(Rank.Jack, 3), new RankCount(Rank.Nine, 1)));
         addAnnounceCondition(new MultipleAndCondition(new PlayerRegularAnnounce(game), new HasSuit(new SequenceSuit(SequenceType.Quint, Rank.Ace))));
-        //Partner made last announce
+        // Partner made last announce
         addAnnounceCondition(new MultipleAndCondition(new PartnerRegularAnnounce(game), new RankCount(Rank.Jack, 2)));
         addAnnounceCondition(new MultipleAndCondition(new PartnerRegularAnnounce(game), new RankCount(Rank.Jack, 1), new RankCount(Rank.Nine, 1)));
         addAnnounceCondition(new MultipleAndCondition(new PartnerRegularAnnounce(game), new RankCount(Rank.Nine, 3)));

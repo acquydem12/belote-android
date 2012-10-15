@@ -20,8 +20,7 @@ import belote.logic.play.strategy.automat.methods.PartnerSuitAnnounceCard;
 import belote.logic.play.strategy.automat.methods.TeamSuitPartnerCard;
 
 /**
- * Standard AllTrumpAttackCard executor.
- * Used in AllTrumpAttackCard getAttackCard().
+ * Standard AllTrumpAttackCard executor. Used in AllTrumpAttackCard getAttackCard().
  * @author Dimitar Karamanov
  */
 class StandardAllTrumpAttackCard extends PlayCardExecutor {
@@ -32,7 +31,7 @@ class StandardAllTrumpAttackCard extends PlayCardExecutor {
      */
     public StandardAllTrumpAttackCard(final Game game) {
         super(game);
-        //Register play card methods.
+        // Register play card methods.
         register(new MeterSuitCard(game));
         register(new TeamSuitPartnerCard(game));
         register(new DominantSuitCard(game));

@@ -14,8 +14,7 @@ import belote.bean.Player;
 import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCondition;
 
 /**
- * PlayerAttack class.
- * Returns true if the announce player is the card attack player, false otherwise.
+ * PlayerAttack class. Returns true if the announce player is the card attack player, false otherwise.
  * @author Dimitar Karamanov
  */
 public final class DealAttackPlayer implements AnnounceCondition {

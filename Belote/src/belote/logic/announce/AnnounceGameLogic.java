@@ -16,8 +16,7 @@ import belote.logic.announce.factory.automat.executors.BeloteGameAnnounceFactory
 import belote.logic.announce.factory.automat.executors.base.AnnounceExecutor;
 
 /**
- * AnnounceFactoryFacade class.
- * Facade for methods related with game announce.
+ * AnnounceFactoryFacade class. Facade for methods related with game announce.
  * @author Dimitar Karamanov
  */
 public final class AnnounceGameLogic {

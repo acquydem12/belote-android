@@ -9,7 +9,6 @@
  */
 package com.karamanov.beloteGame.gui.screen.main.message;
 
-
 import java.util.ArrayList;
 
 import android.content.Context;
@@ -39,14 +38,14 @@ public class MessagePanel extends TableLayout {
      */
     public MessagePanel(Context context, Player player, ArrayList<MessageData> messages) {
         super(context);
-        
+
         TableRow row = new TableRow(context);
         TableRow.LayoutParams trp = new TableRow.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         trp.span = 2;
         TextView tv = new TextView(context);
-        
+
         PlayerNameDecorator playerDecorator = new PlayerNameDecorator(player);
-		
+
         tv.setText(playerDecorator.decorate(context));
         tv.setTextColor(Color.WHITE);
         tv.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -55,12 +54,12 @@ public class MessagePanel extends TableLayout {
         row.setBackgroundResource(R.drawable.message_title);
         tv.setLayoutParams(trp);
         addView(row);
-        
+
         for (MessageData data : messages) {
-        	addMessage(data.getImage(), data.getMessage());
+            addMessage(data.getImage(), data.getMessage());
         }
     }
-    
+
     /**
      * Clears messages.
      */
@@ -74,28 +73,28 @@ public class MessagePanel extends TableLayout {
      * @param text of message.
      */
     private void addMessage(final Bitmap image, final String text) {
-    	int dip3 = Belote.fromPixelToDip(getContext(), 3);
-    	int dip5 = Belote.fromPixelToDip(getContext(), 5);
-    	TableRow row = new TableRow(getContext());
-    	
-    	if (image == null) {
-    		row.addView(new TextView(getContext()));
-    	} else {
-    		ImageView imageView = new ImageView(getContext());
-    		imageView.setImageBitmap(image);
-    		TableRow.LayoutParams trp = new TableRow.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-    		trp.rightMargin = dip5;
-    		imageView.setLayoutParams(trp);
-    		row.addView(imageView);
-    	}
-    	
-    	TextView message = new TextView(getContext());
-    	message.setText(text);
-    	message.setTextColor(Color.DKGRAY);
-    	message.setTypeface(Typeface.DEFAULT_BOLD);
-    	row.addView(message);
+        int dip3 = Belote.fromPixelToDip(getContext(), 3);
+        int dip5 = Belote.fromPixelToDip(getContext(), 5);
+        TableRow row = new TableRow(getContext());
 
-    	row.setPadding(dip3, dip3, dip3, dip3);
-    	addView(row);
+        if (image == null) {
+            row.addView(new TextView(getContext()));
+        } else {
+            ImageView imageView = new ImageView(getContext());
+            imageView.setImageBitmap(image);
+            TableRow.LayoutParams trp = new TableRow.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+            trp.rightMargin = dip5;
+            imageView.setLayoutParams(trp);
+            row.addView(imageView);
+        }
+
+        TextView message = new TextView(getContext());
+        message.setText(text);
+        message.setTextColor(Color.DKGRAY);
+        message.setTypeface(Typeface.DEFAULT_BOLD);
+        row.addView(message);
+
+        row.setPadding(dip3, dip3, dip3, dip3);
+        addView(row);
     }
 }

@@ -14,8 +14,7 @@ import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCon
 import belote.logic.announce.factory.automat.methods.suitDeterminators.base.SuitDeterminator;
 
 /**
- * PlayerSuit class.
- * Returns true if the announce player has card from provided suit.
+ * PlayerSuit class. Returns true if the announce player has card from provided suit.
  * @author Dimitar Karamanov
  */
 public final class HasSuit implements AnnounceCondition {

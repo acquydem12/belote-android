@@ -18,9 +18,9 @@ public final class Queen extends Rank {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 8728400625420646362L;
+    private static final long serialVersionUID = 8728400625420646362L;
 
-	/**
+    /**
      * Constructor.
      */
     protected Queen() {

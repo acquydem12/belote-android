@@ -23,9 +23,8 @@ import belote.logic.play.strategy.automat.methods.SingleNoMajorCard;
 import belote.logic.play.strategy.automat.methods.SingleNoMaxCard;
 
 /**
- * ColorlessNeedlessCard class.
- * Implements the logic to play no needed card and is called after obligatory rules.
- * Used in AllTrumptXXX and NotTrumpXXX executors.
+ * ColorlessNeedlessCard class. Implements the logic to play no needed card and is called after obligatory rules. Used in AllTrumptXXX and NotTrumpXXX
+ * executors.
  * @author Dimitar Karamanov
  */
 public final class ColorlessNeedlessCard extends PlayCardExecutor {
@@ -36,7 +35,7 @@ public final class ColorlessNeedlessCard extends PlayCardExecutor {
      */
     public ColorlessNeedlessCard(final Game game) {
         super(game);
-        //Register play card methods.
+        // Register play card methods.
         register(new MaxSingleNoHandCardToPartner(game));
         register(new ColorlessMinAllMasterCards(game));
         register(new SingleNoMajorCard(game));

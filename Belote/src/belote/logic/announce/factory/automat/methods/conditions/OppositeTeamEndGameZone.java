@@ -18,8 +18,8 @@ import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCon
  * @author Dimitar Karamanov
  */
 public final class OppositeTeamEndGameZone implements AnnounceCondition {
-	
-	private static final int MINIMUM_OFFSET = 13;
+
+    private static final int MINIMUM_OFFSET = 13;
 
     /**
      * BelotGame instance.

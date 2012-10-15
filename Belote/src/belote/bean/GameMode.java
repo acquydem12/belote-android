@@ -16,13 +16,13 @@ import java.io.Serializable;
  * @author Dimitar Karamanov
  */
 public final class GameMode implements Serializable {
-	
+
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -5609712288998797955L;
+    private static final long serialVersionUID = -5609712288998797955L;
 
-	/**
+    /**
      * Game mode announce constant.
      */
     private static final int GM_ANNOUNCE = 0;

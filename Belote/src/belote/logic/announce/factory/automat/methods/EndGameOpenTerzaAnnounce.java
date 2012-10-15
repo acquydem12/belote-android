@@ -20,8 +20,7 @@ import belote.logic.announce.factory.automat.methods.conditions.HasSuit;
 import belote.logic.announce.factory.automat.methods.suitDeterminators.SequenceSuit;
 
 /**
- * EndGameOpenTerzaAnnounce class.
- * Announce factory method which creates normal suit announce when the sequence involves jack card.
+ * EndGameOpenTerzaAnnounce class. Announce factory method which creates normal suit announce when the sequence involves jack card.
  * @author Dimitar Karamanov
  */
 public final class EndGameOpenTerzaAnnounce extends ConditionListMethod {

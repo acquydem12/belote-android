@@ -18,8 +18,7 @@ import belote.bean.pack.card.suit.SuitIterator;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * ColorNeedlessClearCard class.
- * PlayCardMethod which implements the logic of playing a "clear" card in color game.
+ * ColorNeedlessClearCard class. PlayCardMethod which implements the logic of playing a "clear" card in color game.
  * @author Dimitar Karamanov.
  */
 public final class ColorNeedlessClearCard extends BaseTrumpMethod {

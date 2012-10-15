@@ -18,8 +18,8 @@ public final class Spade extends Suit {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 3200954318160833662L;
-	/**
+    private static final long serialVersionUID = 3200954318160833662L;
+    /**
      * Spade ID constant.
      */
     private static final int ID = 3;

@@ -1,5 +1,9 @@
 package com.karamanov.beloteGame.gui.screen.tricks;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import belote.bean.Game;
 import belote.bean.Player;
 import belote.bean.pack.PackIterator;
@@ -12,39 +16,34 @@ import com.karamanov.beloteGame.gui.graphics.ImageUtil;
 import com.karamanov.beloteGame.gui.graphics.PictureDecorator;
 import com.karamanov.beloteGame.gui.graphics.Rectangle;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-
 public final class TrickView extends LinearLayout {
-	
-	public TrickView(Context context, Trick trick, Game game) {
-		super(context);
 
-		int dip2 = Belote.fromPixelToDip(context, 2);
-		setOrientation(LinearLayout.HORIZONTAL);
+    public TrickView(Context context, Trick trick, Game game) {
+        super(context);
 
-		PictureDecorator decorator = new PictureDecorator(context);
+        int dip2 = Belote.fromPixelToDip(context, 2);
+        setOrientation(LinearLayout.HORIZONTAL);
 
-		Player player = trick.getAttackPlayer();
-		for (PackIterator packIterator = trick.iterator(); packIterator.hasNext(); player = game.getPlayerAfter(player)) {
-			ImageView imageView = new ImageView(context);
-			Card card = packIterator.next();
+        PictureDecorator decorator = new PictureDecorator(context);
 
-			if (player.equals(trick.getWinnerPlayer())) {
-				Bitmap picture = decorator.getCardImage(card);
-				final Rectangle rec = new Rectangle(0, 0, picture.getWidth(), picture.getHeight());
-				Bitmap bitmap = ImageUtil.transformToMixedColorImage(picture, Color.clPureYellow, rec);
-				imageView.setImageBitmap(bitmap);
-			} else {
-				imageView.setImageBitmap(decorator.getCardImage(card));
-			}
+        Player player = trick.getAttackPlayer();
+        for (PackIterator packIterator = trick.iterator(); packIterator.hasNext(); player = game.getPlayerAfter(player)) {
+            ImageView imageView = new ImageView(context);
+            Card card = packIterator.next();
 
-			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-			params.setMargins(dip2, dip2, dip2, dip2);
-			imageView.setLayoutParams(params);
-			addView(imageView);
-		}
-	}
+            if (player.equals(trick.getWinnerPlayer())) {
+                Bitmap picture = decorator.getCardImage(card);
+                final Rectangle rec = new Rectangle(0, 0, picture.getWidth(), picture.getHeight());
+                Bitmap bitmap = ImageUtil.transformToMixedColorImage(picture, Color.clPureYellow, rec);
+                imageView.setImageBitmap(bitmap);
+            } else {
+                imageView.setImageBitmap(decorator.getCardImage(card));
+            }
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+            params.setMargins(dip2, dip2, dip2, dip2);
+            imageView.setLayoutParams(params);
+            addView(imageView);
+        }
+    }
 }

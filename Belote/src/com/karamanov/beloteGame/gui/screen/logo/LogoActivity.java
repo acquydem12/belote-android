@@ -24,45 +24,45 @@ import com.karamanov.beloteGame.gui.screen.main.BeloteActivity;
  */
 public final class LogoActivity extends Activity {
 
-	private boolean send = false;
+    private boolean send = false;
 
-	/**
-	 * Constructor.
-	 * 
-	 * @param canvas parent container game canvas
-	 * @param rootComponent original root component
-	 */
-	public LogoActivity() {
-		super();
-	}
+    /**
+     * Constructor.
+     * 
+     * @param canvas parent container game canvas
+     * @param rootComponent original root component
+     */
+    public LogoActivity() {
+        super();
+    }
 
-	/** Called when the activity is first created. */
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-		LogoView view = new LogoView(this);
-		setContentView(view);
-	}
+        LogoView view = new LogoView(this);
+        setContentView(view);
+    }
 
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		startBeloteActivity();
-		return true;
-	}
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        startBeloteActivity();
+        return true;
+    }
 
-	@Override
-	public boolean onTouchEvent(MotionEvent event) {
-		startBeloteActivity();
-		return true;
-	}
-	
-	private void startBeloteActivity() {
-		if (!send) {
-			send = true;
-			Intent intent = new Intent(this, BeloteActivity.class);
-			startActivity(intent);
-		}
-		finish();
-	}
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        startBeloteActivity();
+        return true;
+    }
+
+    private void startBeloteActivity() {
+        if (!send) {
+            send = true;
+            Intent intent = new Intent(this, BeloteActivity.class);
+            startActivity(intent);
+        }
+        finish();
+    }
 }

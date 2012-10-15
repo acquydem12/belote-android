@@ -14,8 +14,7 @@ import belote.bean.announce.Announce;
 import belote.bean.announce.type.AnnounceType;
 
 /**
- * PointsDistributor base distributor class.
- * Points calculator class for All Trump game.
+ * PointsDistributor base distributor class. Points calculator class for All Trump game.
  * @author Dimitar Karamanov
  */
 public abstract class PointsDistributor {

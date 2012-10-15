@@ -14,8 +14,7 @@ import belote.bean.Team;
 import belote.bean.points.PointsInfo;
 
 /**
- * PointsCalculator class.
- * Base class of all game calculators.
+ * PointsCalculator class. Base class of all game calculators.
  * @author Dimitar Karamanov
  */
 public abstract class PointsCalculator {
@@ -42,12 +41,13 @@ public abstract class PointsCalculator {
      * Calculates teams points.
      */
     public final void calculateTeamsPoints() {
-        //Calculate each team points
+        // Calculate each team points
         for (int i = 0; i < game.getTeamsCount(); i++) {
             calculateTeamPoints(game.getTeam(i));
         }
 
-        //Round each team points (For AT and CL needs to be separated for NT doesn't matter)
+        // Round each team points (For AT and CL needs to be separated for NT
+        // doesn't matter)
         for (int i = 0; i < game.getTeamsCount(); i++) {
             trickTeamPoints(game.getTeam(i));
         }
@@ -115,17 +115,17 @@ public abstract class PointsCalculator {
     protected final void calculateTrumpTeamPoints(Team team) {
         final PointsInfo gamePointsInfo = team.getPointsInfo();
         gamePointsInfo.resetAllPoints();
-        //Calculate cards points
+        // Calculate cards points
         gamePointsInfo.setCardPoints(team.getHandsPoints());
-        //Calculate couples points
+        // Calculate couples points
         gamePointsInfo.setCouplesPoints(team.getCouples().getCouplePoints());
-        //Calculate announce points
+        // Calculate announce points
         calculateAnnouncePoints(team);
-        //Calculate capot' points
+        // Calculate capot' points
         gamePointsInfo.setCapotPoints(team.getCapotPoints());
-        //Calculate last hand
+        // Calculate last hand
         calculateLastHand(team);
-        //Calculate total points
+        // Calculate total points
         int total = 0;
         total += gamePointsInfo.getCardPoints();
         total += gamePointsInfo.getLastHand();

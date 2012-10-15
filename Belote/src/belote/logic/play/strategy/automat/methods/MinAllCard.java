@@ -15,8 +15,7 @@ import belote.bean.pack.card.Card;
 import belote.logic.play.strategy.automat.methods.base.BaseMethod;
 
 /**
- * MinAllCard class.
- * PlayCardMethod which implements the logic of playing the minimum by rank of all cards.
+ * MinAllCard class. PlayCardMethod which implements the logic of playing the minimum by rank of all cards.
  * @author Dimitar Karamanov
  */
 public final class MinAllCard extends BaseMethod {

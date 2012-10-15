@@ -22,8 +22,7 @@ import belote.logic.announce.factory.automat.methods.suitDeterminators.JackNineS
 import belote.logic.announce.factory.automat.methods.suitDeterminators.base.SuitDeterminator;
 
 /**
- * RegGameNormalJackNineSuitAnnounce class.
- * Announce factory method which creates suit announce based on jack nine suit.
+ * RegGameNormalJackNineSuitAnnounce class. Announce factory method which creates suit announce based on jack nine suit.
  * @author Dimitar Karamanov
  */
 public final class RegGameNormalJackNineSuitAnnounce extends ConditionListMethod {

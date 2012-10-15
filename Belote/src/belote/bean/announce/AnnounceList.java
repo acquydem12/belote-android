@@ -18,8 +18,7 @@ import belote.bean.announce.suit.AnnounceSuit;
 import belote.bean.announce.type.AnnounceType;
 
 /**
- * AnnounceList class.
- * Wrapper class of system collection used to hold and access Announce instances.
+ * AnnounceList class. Wrapper class of system collection used to hold and access Announce instances.
  * @author Dimitar Karamanov
  */
 public final class AnnounceList implements Serializable {
@@ -27,9 +26,9 @@ public final class AnnounceList implements Serializable {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 763763319248786518L;
+    private static final long serialVersionUID = 763763319248786518L;
 
-	/**
+    /**
      * Constant used to determinate end announce tour.
      */
     private final int PASS_COUNT = 3;
@@ -70,9 +69,8 @@ public final class AnnounceList implements Serializable {
     }
 
     /**
-     * Returns the announce from the list with provided index. If there is no element with that index
-     * an Exception will be thrown.
-     * @param  index of the announce.
+     * Returns the announce from the list with provided index. If there is no element with that index an Exception will be thrown.
+     * @param index of the announce.
      * @return Announce instance with provided index or Exception is thrown.
      */
     public Announce getAnnounce(final int index) {
@@ -94,7 +92,7 @@ public final class AnnounceList implements Serializable {
     public Announce getOpenContractAnnounce() {
         return getContractAnnounce(AnnounceType.Normal, null);
     }
-    
+
     /**
      * Returns the last normal (no double or redouble) announce.
      * @return Announce last normal (open contract) announce.
@@ -102,7 +100,7 @@ public final class AnnounceList implements Serializable {
     public Announce getDoubleAnnounce() {
         return getContractAnnounce(AnnounceType.Double, null);
     }
-    
+
     /**
      * Returns the last normal (no double or redouble) announce.
      * @return Announce last normal (open contract) announce.
@@ -204,17 +202,16 @@ public final class AnnounceList implements Serializable {
     }
 
     /**
-     * Returns true if another announce is possible to be made, false otherwise.
-     * If the last made announce are pass ones and their count is more than 2 is
+     * Returns true if another announce is possible to be made, false otherwise. If the last made announce are pass ones and their count is more than 2 is
      * impossible to be made a new announce.
      * @return boolean true if a new announce can be declared, false otherwise.
      */
     public boolean canDeal() {
-        //if there is no announce we need 4 passes to end deal
+        // if there is no announce we need 4 passes to end deal
         if (announces.size() <= PASS_COUNT) {
             return true;
         }
-        //if there is announce we need 3 passes to end deal
+        // if there is announce we need 3 passes to end deal
         final int passesCount = getCurrentPassAnnouncesCount();
         return passesCount < PASS_COUNT;
     }
@@ -228,8 +225,7 @@ public final class AnnounceList implements Serializable {
     }
 
     /**
-     * AnnounceIteratorImpl class.
-     * Implements AnnounceIterator interface.
+     * AnnounceIteratorImpl class. Implements AnnounceIterator interface.
      */
     private static class AnnounceIteratorImpl implements AnnounceIterator {
 

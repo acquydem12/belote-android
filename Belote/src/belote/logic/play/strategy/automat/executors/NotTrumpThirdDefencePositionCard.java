@@ -15,8 +15,7 @@ import belote.logic.play.strategy.automat.methods.MinSuitCard;
 import belote.logic.play.strategy.automat.methods.NotTrumpSuitHookCard;
 
 /**
- * NotTrumpThirdDefencePositionCard executor.
- * Used in NotTrumpPlayStategy getThirdDefencePositionCard().
+ * NotTrumpThirdDefencePositionCard executor. Used in NotTrumpPlayStategy getThirdDefencePositionCard().
  * @author Dimitar Karamanov
  */
 public final class NotTrumpThirdDefencePositionCard extends PlayCardExecutor {
@@ -27,7 +26,7 @@ public final class NotTrumpThirdDefencePositionCard extends PlayCardExecutor {
      */
     public NotTrumpThirdDefencePositionCard(final Game game) {
         super(game);
-        //Register play card methods.
+        // Register play card methods.
         register(new NotTrumpSuitHookCard(game));
         register(new MinSuitCard(game));
         register(new ColorlessNeedlessCard(game));

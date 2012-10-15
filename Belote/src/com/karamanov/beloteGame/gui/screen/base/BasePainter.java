@@ -9,6 +9,11 @@
  */
 package com.karamanov.beloteGame.gui.screen.base;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
 import belote.bean.pack.card.Card;
 import belote.bean.pack.card.rank.Rank;
 import belote.bean.pack.card.suit.Suit;
@@ -21,12 +26,6 @@ import com.karamanov.beloteGame.gui.graphics.ImageUtil;
 import com.karamanov.beloteGame.gui.graphics.PictureDecorator;
 import com.karamanov.beloteGame.gui.graphics.Rectangle;
 import com.karamanov.beloteGame.text.TextDecorator;
-
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.drawable.BitmapDrawable;
 
 /**
  * BasePainter class.
@@ -54,7 +53,6 @@ public abstract class BasePainter {
      */
     protected final int cardBackHeight;
 
-    
     /**
      * Text decorator of game beans object (Suit, Rank, Announce ...)
      */
@@ -64,9 +62,9 @@ public abstract class BasePainter {
      * Text decorator of game beans object (Suit, Rank, Announce ...)
      */
     protected final PictureDecorator pictureDecorator;
-    
+
     protected final Context context;
-    
+
     /**
      * mSmooth
      */
@@ -78,38 +76,38 @@ public abstract class BasePainter {
      * @param height canvas height.
      */
     protected BasePainter(Context context) {
-    	this.context = context;
-    	
+        this.context = context;
+
         pictureDecorator = new PictureDecorator(context);
         cardWidth = pictureDecorator.getCardImage(Rank.Ace, Suit.Spade).getWidth();
         cardHeight = pictureDecorator.getCardImage(Rank.Ace, Suit.Spade).getHeight();
         cardBackWidth = pictureDecorator.getCardBackImageSmall().getWidth();
         cardBackHeight = pictureDecorator.getCardBackImageSmall().getHeight();
         textDecorator = new TextDecorator(context);
-        
+
         mSmooth = new Paint(Paint.FILTER_BITMAP_FLAG);
-		mSmooth.setAntiAlias(true);
-    	mSmooth.setDither(true);
+        mSmooth.setAntiAlias(true);
+        mSmooth.setDither(true);
     }
-    
+
     public final int getCardWidth() {
-    	return cardWidth;
+        return cardWidth;
     }
-    
+
     public final int getCardHeight() {
-    	return cardHeight;
+        return cardHeight;
     }
-    
+
     public final int getDeskWidth() {
-    	return cardBackWidth;
+        return cardBackWidth;
     }
-    
+
     public final int getDeskHeight() {
-    	return cardBackHeight;
+        return cardBackHeight;
     }
-    
+
     public final Context getContext() {
-    	return context;
+        return context;
     }
 
     /**
@@ -119,21 +117,21 @@ public abstract class BasePainter {
      * @param y position.
      */
     protected void drawCardBackImage(final Canvas canvas, final int x, final int y) {
-    	Bitmap b = pictureDecorator.getCardBackImageSmall();
-    	canvas.drawBitmap(b, x, y, mSmooth);
+        Bitmap b = pictureDecorator.getCardBackImageSmall();
+        canvas.drawBitmap(b, x, y, mSmooth);
     }
-    
+
     protected void drawRotatedCardBackImage(final Canvas canvas, final int x, final int y) {
-    	Bitmap b = pictureDecorator.getCardBackImageSmall();
-    	canvas.save();
-    	try {
-    		canvas.rotate(90);
-    		canvas.drawBitmap(b, y, -x, mSmooth);
-    	} finally {
-    		canvas.restore();
-    	}
+        Bitmap b = pictureDecorator.getCardBackImageSmall();
+        canvas.save();
+        try {
+            canvas.rotate(90);
+            canvas.drawBitmap(b, y, -x, mSmooth);
+        } finally {
+            canvas.restore();
+        }
     }
-    
+
     /**
      * Draw card to the canvas.
      * @param card which image is retrieve.
@@ -145,7 +143,7 @@ public abstract class BasePainter {
         Bitmap bitmap = pictureDecorator.getCardImage(card);
         canvas.drawBitmap(bitmap, x, y, mSmooth);
     }
-    
+
     /**
      * Draw card darkened to the canvas.
      * @param card which image is retrieve.
@@ -164,18 +162,17 @@ public abstract class BasePainter {
      * Draw card mixed with color to the canvas.
      * @param card which image is retrieve.
      * @param x - x coordinate.
-     * @param y - y coordinate.
-     * param mixedColor used to transform the image.
+     * @param y - y coordinate. param mixedColor used to transform the image.
      * @param g - graphics object.
      */
     public final void drawMixedColorCard(final Canvas canvas, final Card card, final int x, final int y, final Color mixedColor) {
-    	Bitmap picture = pictureDecorator.getCardImage(card);
+        Bitmap picture = pictureDecorator.getCardImage(card);
         final Rectangle rec = new Rectangle(0, 0, picture.getWidth(), picture.getHeight());
         Bitmap b = ImageUtil.transformToMixedColorImage(picture, mixedColor, rec);
         canvas.drawBitmap(b, x, y, mSmooth);
         b.recycle();
     }
-    
+
     /**
      * Returns equal cards image.
      * @param equalCards which picture is retrieved.

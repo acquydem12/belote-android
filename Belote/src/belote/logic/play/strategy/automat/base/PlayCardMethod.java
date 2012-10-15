@@ -9,8 +9,8 @@
  */
 package belote.logic.play.strategy.automat.base;
 
-import belote.bean.pack.card.Card;
 import belote.bean.Player;
+import belote.bean.pack.card.Card;
 
 /**
  * PlayCardMethod interface.

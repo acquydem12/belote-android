@@ -14,8 +14,7 @@ import belote.bean.Player;
 import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCondition;
 
 /**
- * OnlyPassAnnounces class.
- * Returns true if before the announce player all other players made pass announces.
+ * OnlyPassAnnounces class. Returns true if before the announce player all other players made pass announces.
  * @author Dimitar Karamanov
  */
 public final class ThreePassOpenAnnounce implements AnnounceCondition {

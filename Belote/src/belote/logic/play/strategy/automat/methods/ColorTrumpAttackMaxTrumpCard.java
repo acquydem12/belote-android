@@ -16,8 +16,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * ColorTrumpAttackMaxTrumpCard class.
- * PlayCardMethod which implements the logic of playing the maximum trump card on color game trump attack.
+ * ColorTrumpAttackMaxTrumpCard class. PlayCardMethod which implements the logic of playing the maximum trump card on color game trump attack.
  * @author Dimitar Karamanov
  */
 public final class ColorTrumpAttackMaxTrumpCard extends BaseTrumpMethod {

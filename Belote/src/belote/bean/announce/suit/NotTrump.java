@@ -18,9 +18,9 @@ public final class NotTrump extends ColorlessSuit {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -4894507932307781932L;
-	
-	/**
+    private static final long serialVersionUID = -4894507932307781932L;
+
+    /**
      * Announce suit type unique constant.
      */
     private static final int ID = 5;

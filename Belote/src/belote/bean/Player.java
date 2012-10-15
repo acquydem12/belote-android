@@ -11,8 +11,8 @@ package belote.bean;
 
 import java.io.Serializable;
 
-import belote.bean.pack.card.Card;
 import belote.bean.pack.Pack;
+import belote.bean.pack.card.Card;
 import belote.bean.pack.card.suit.SuitList;
 
 /**
@@ -24,9 +24,9 @@ public final class Player implements Serializable {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 7234505479951609925L;
+    private static final long serialVersionUID = 7234505479951609925L;
 
-	/**
+    /**
      * Player's name.
      */
     private final String name;
@@ -60,7 +60,7 @@ public final class Player implements Serializable {
      * Player's missed suits.
      */
     private final SuitList missedSuits = new SuitList();
-    
+
     /**
      * AT|NT marked by Ace or Jack suits.
      */
@@ -83,7 +83,7 @@ public final class Player implements Serializable {
      * @param ID of the player.
      */
     public Player(final Team team, final int ID) {
-    	this.name = "";
+        this.name = "";
         this.team = team;
         team.setPlayer(this, ID / 2);
         this.ID = ID;
@@ -175,9 +175,9 @@ public final class Player implements Serializable {
     public SuitList getPreferredSuits() {
         return preferredSuits;
     }
-    
+
     public SuitList getJackAceSuits() {
-    	return jackAceSuits;
+        return jackAceSuits;
     }
 
     /**

@@ -18,8 +18,8 @@ public final class Club extends Suit {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -2588635664982772738L;
-	/**
+    private static final long serialVersionUID = -2588635664982772738L;
+    /**
      * Club ID constant.
      */
     private static final int ID = 0;

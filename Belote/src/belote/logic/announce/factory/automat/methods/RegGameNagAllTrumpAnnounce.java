@@ -23,8 +23,7 @@ import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAnd
 import belote.logic.announce.factory.automat.methods.suitDeterminators.SequenceSuit;
 
 /**
- * RegGameNagAllTrumpAnnounce class.
- * Announce factory method which creates regular nag all trump announce.
+ * RegGameNagAllTrumpAnnounce class. Announce factory method which creates regular nag all trump announce.
  * @author Dimitar Karamanov
  */
 public final class RegGameNagAllTrumpAnnounce extends ConditionListMethod {

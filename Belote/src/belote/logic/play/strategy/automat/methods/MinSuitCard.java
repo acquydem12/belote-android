@@ -15,8 +15,7 @@ import belote.bean.pack.card.Card;
 import belote.logic.play.strategy.automat.methods.base.BaseMethod;
 
 /**
- * MinSuitCard class.
- * PlayCardMethod which implements the logic of playing the minimum by rank suit card.
+ * MinSuitCard class. PlayCardMethod which implements the logic of playing the minimum by rank suit card.
  * @author Dimitar Karamanov
  */
 public final class MinSuitCard extends BaseMethod {

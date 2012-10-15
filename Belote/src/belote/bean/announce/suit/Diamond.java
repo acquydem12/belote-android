@@ -18,9 +18,9 @@ public final class Diamond extends ColorSuit {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 8362090012798431480L;
-	
-	/**
+    private static final long serialVersionUID = 8362090012798431480L;
+
+    /**
      * Announce suit type unique constant.
      */
     private static final int ID = 2;

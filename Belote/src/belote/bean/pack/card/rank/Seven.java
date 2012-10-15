@@ -18,9 +18,9 @@ public final class Seven extends Rank {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 6484125097805224745L;
+    private static final long serialVersionUID = 6484125097805224745L;
 
-	/**
+    /**
      * Constructor.
      */
     protected Seven() {

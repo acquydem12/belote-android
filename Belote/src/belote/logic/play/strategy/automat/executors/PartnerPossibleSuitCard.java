@@ -19,8 +19,7 @@ import belote.logic.play.strategy.automat.methods.PartnerPreferredSuitCard;
 import belote.logic.play.strategy.automat.methods.TeamSuitCard;
 
 /**
- * PartnerPossibleSuitCard class.
- * Used in XXXAttackCard executors.
+ * PartnerPossibleSuitCard class. Used in XXXAttackCard executors.
  * @author Dimitar Karamanov
  */
 public final class PartnerPossibleSuitCard extends PlayCardExecutor {
@@ -31,7 +30,7 @@ public final class PartnerPossibleSuitCard extends PlayCardExecutor {
      */
     public PartnerPossibleSuitCard(final Game game) {
         super(game);
-        //Register play card methods.
+        // Register play card methods.
         register(new TeamSuitCard(game));
         register(new PartnerJackAceSuitCard(game));
         register(new PartnerPreferredSuitCard(game));

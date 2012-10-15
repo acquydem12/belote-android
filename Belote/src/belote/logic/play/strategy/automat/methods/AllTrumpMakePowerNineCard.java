@@ -18,9 +18,8 @@ import belote.bean.pack.card.suit.SuitIterator;
 import belote.logic.play.strategy.automat.methods.base.BaseMethod;
 
 /**
- * AllTrumpMakePowerNineCard class.
- * PlayCardMethod which implements the logic of playing a card from suit that the player has Rank.Nine card.
- * The aim is to make it power one by eliminating the Rank.Jack card.
+ * AllTrumpMakePowerNineCard class. PlayCardMethod which implements the logic of playing a card from suit that the player has Rank.Nine card. The aim is to make
+ * it power one by eliminating the Rank.Jack card.
  * @author Dimitar Karamanov
  */
 public final class AllTrumpMakePowerNineCard extends BaseMethod {

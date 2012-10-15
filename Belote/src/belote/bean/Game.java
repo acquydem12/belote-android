@@ -12,9 +12,9 @@ package belote.bean;
 import java.io.Serializable;
 
 import belote.bean.announce.AnnounceList;
+import belote.bean.pack.Pack;
 import belote.bean.pack.PackIterator;
 import belote.bean.pack.TrickPack;
-import belote.bean.pack.Pack;
 import belote.bean.pack.card.Card;
 import belote.bean.trick.TrickList;
 
@@ -25,11 +25,11 @@ import belote.bean.trick.TrickList;
 public final class Game implements Serializable {
 
     /**
-	 * serialVersionUID
-	 */
-	private static final long serialVersionUID = -6670321224692156622L;
+     * serialVersionUID
+     */
+    private static final long serialVersionUID = -6670321224692156622L;
 
-	/**
+    /**
      * Players count constant.
      */
     private final static int PLAYERS_COUNT = 4;
@@ -116,7 +116,7 @@ public final class Game implements Serializable {
         for (int i = 0; i < players.length; i++) {
             players[i] = new Player(teams[i % teams.length], i);
         }
-        
+
         setDealAttackPlayer(getPlayer(0));
         setTrickAttackPlayer(getPlayer(0));
     }
@@ -268,7 +268,7 @@ public final class Game implements Serializable {
     public Team getOppositeTeam(final Team team) {
         return team.equals(teams[0]) ? teams[1] : teams[0];
     }
-    
+
     /**
      * Returns opposite team by player.
      * @param player provided player.
@@ -335,11 +335,11 @@ public final class Game implements Serializable {
     public Team getTeam(final int index) {
         return teams[index];
     }
-    
+
     /**
      * Returns player who played provided card.
      * @param card provided card.
-     * @return Player  player who played provided card.
+     * @return Player player who played provided card.
      */
     public Player getPlayerByCard(final Card card) {
         Player result = getTrickAttackPlayer();
@@ -353,7 +353,7 @@ public final class Game implements Serializable {
         }
         return null;
     }
-    
+
     /**
      * Returns true if is announce game mode false otherwise.
      * @return boolean true if is announce game mode false otherwise.
@@ -361,7 +361,7 @@ public final class Game implements Serializable {
     public boolean isAnnounceGameMode() {
         return getGameMode().equals(GameMode.AnnounceGameMode);
     }
-    
+
     /**
      * Checks if there is a winner team.
      * @return Team winner team or null.
@@ -375,7 +375,8 @@ public final class Game implements Serializable {
                 capotGame = true;
             }
 
-            if (getTeam(i).getPoints().getAllPoints() >= END_GAME_POINTS && getTeam(i).getPoints().getAllPoints() > getOppositeTeam(getTeam(i)).getPoints().getAllPoints()) {
+            if (getTeam(i).getPoints().getAllPoints() >= END_GAME_POINTS
+                    && getTeam(i).getPoints().getAllPoints() > getOppositeTeam(getTeam(i)).getPoints().getAllPoints()) {
                 result = getTeam(i);
             }
         }

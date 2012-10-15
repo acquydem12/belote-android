@@ -19,9 +19,8 @@ import belote.bean.pack.card.suit.SuitIterator;
 import belote.logic.play.strategy.automat.methods.base.BaseMethod;
 
 /**
- * ColorlessChooseTwoSuitsCard class.
- * PlayCardMethod which implements the logic of playing a card in the situation when the player
- * has 4 cards and 2 of them are from one suits the other 2 from another.
+ * ColorlessChooseTwoSuitsCard class. PlayCardMethod which implements the logic of playing a card in the situation when the player has 4 cards and 2 of them are
+ * from one suits the other 2 from another.
  * @author Dimitar Karamanov
  */
 public final class ColorlessChooseTwoSuitsCard extends BaseMethod {

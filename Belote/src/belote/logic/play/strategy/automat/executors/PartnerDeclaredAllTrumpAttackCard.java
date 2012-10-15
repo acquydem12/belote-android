@@ -21,8 +21,7 @@ import belote.logic.play.strategy.automat.methods.PartnerSuitAnnounceCard;
 import belote.logic.play.strategy.automat.methods.TeamSuitPartnerCard;
 
 /**
- * Partner declared AllTrumpAttackCard executor.
- * Used in AllTrumpAttackCard getAttackCard().
+ * Partner declared AllTrumpAttackCard executor. Used in AllTrumpAttackCard getAttackCard().
  * @author Dimitar Karamanov
  */
 class PartnerDeclaredAllTrumpAttackCard extends PlayCardExecutor {
@@ -33,12 +32,12 @@ class PartnerDeclaredAllTrumpAttackCard extends PlayCardExecutor {
      */
     public PartnerDeclaredAllTrumpAttackCard(final Game game) {
         super(game);
-        //Register play card methods.
+        // Register play card methods.
         register(new MeterSuitCard(game));
         register(new TeamSuitPartnerCard(game));
         register(new ColorlessHandCard(game));
-        register(new DominantSuitCard(game));
         register(new PartnerSuitAnnounceCard(game));
+        register(new DominantSuitCard(game));
         register(new PartnerPossibleSuitCard(game));
         register(new AllTrumpMakePowerNineCard(game));
         register(new AllTrumpBelotCard(game));

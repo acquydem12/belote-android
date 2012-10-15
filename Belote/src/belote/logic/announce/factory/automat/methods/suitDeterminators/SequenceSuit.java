@@ -11,11 +11,11 @@ package belote.logic.announce.factory.automat.methods.suitDeterminators;
 
 import belote.bean.Player;
 import belote.bean.pack.card.rank.Rank;
+import belote.bean.pack.card.suit.Suit;
 import belote.bean.pack.sequence.Sequence;
-import belote.bean.pack.sequence.SequenceType;
 import belote.bean.pack.sequence.SequenceIterator;
 import belote.bean.pack.sequence.SequenceList;
-import belote.bean.pack.card.suit.Suit;
+import belote.bean.pack.sequence.SequenceType;
 import belote.logic.announce.factory.automat.methods.suitDeterminators.base.SuitDeterminator;
 
 /**
@@ -59,7 +59,7 @@ public final class SequenceSuit implements SuitDeterminator {
         this.rank = rank;
     }
 
-     /**
+    /**
      * Returns the determined suit.
      * @param player which has to declare the next announce.
      * @return Suit instance or null.

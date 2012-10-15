@@ -16,45 +16,43 @@ import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCon
 import belote.logic.announce.factory.automat.methods.suitDeterminators.base.SuitDeterminator;
 
 /**
- * PlayerCard class. Returns true if the announce player has card from provided
- * rank and suit.
+ * PlayerCard class. Returns true if the announce player has card from provided rank and suit.
  * @author Dimitar Karamanov
  */
 public final class HasCard implements AnnounceCondition {
 
-	/**
-	 * Cards rank.
-	 */
-	private final Rank rank;
+    /**
+     * Cards rank.
+     */
+    private final Rank rank;
 
-	/**
-	 * SuitDeterminator which dynamically by provided player determinate the
-	 * suit.
-	 */
-	private final SuitDeterminator suitDeterminator;
+    /**
+     * SuitDeterminator which dynamically by provided player determinate the suit.
+     */
+    private final SuitDeterminator suitDeterminator;
 
-	/**
-	 * Constructor.
-	 * @param rank of the card.
-	 * @param suitDeterminator used to determine the suit.
-	 */
-	public HasCard(final Rank rank, final SuitDeterminator suitDeterminator) {
-		this.rank = rank;
-		this.suitDeterminator = suitDeterminator;
-	}
+    /**
+     * Constructor.
+     * @param rank of the card.
+     * @param suitDeterminator used to determine the suit.
+     */
+    public HasCard(final Rank rank, final SuitDeterminator suitDeterminator) {
+        this.rank = rank;
+        this.suitDeterminator = suitDeterminator;
+    }
 
-	/**
-	 * The method which returns the result of condition.
-	 * @param player which has to declare next game announce.
-	 * @return boolean true if the condition fits, false otherwise.
-	 */
-	public boolean process(final Player player) {
-		final Suit suit = suitDeterminator.determinateSuit(player);
+    /**
+     * The method which returns the result of condition.
+     * @param player which has to declare next game announce.
+     * @return boolean true if the condition fits, false otherwise.
+     */
+    public boolean process(final Player player) {
+        final Suit suit = suitDeterminator.determinateSuit(player);
 
-		if (suit != null) {
-			return player.getCards().findCard(rank, suit) != null;
-		}
+        if (suit != null) {
+            return player.getCards().findCard(rank, suit) != null;
+        }
 
-		return false;
-	}
+        return false;
+    }
 }

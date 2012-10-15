@@ -17,9 +17,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * MeterSuitCard class.
- * PlayCardMethod which implements the logic of playing a meter suit card.
- * When is a color game mode the trump suit is skipped.
+ * MeterSuitCard class. PlayCardMethod which implements the logic of playing a meter suit card. When is a color game mode the trump suit is skipped.
  * @author Dimitar Karamanov
  */
 public final class MeterSuitCard extends BaseTrumpMethod {

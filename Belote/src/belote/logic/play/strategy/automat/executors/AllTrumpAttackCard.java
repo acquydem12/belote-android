@@ -13,8 +13,7 @@ import belote.bean.Game;
 import belote.logic.play.strategy.automat.executors.base.PlayCardExecutor;
 
 /**
- * AllTrumpAttackCard executor.
- * Used in AllTrumpPlayStategy getAttackCard().
+ * AllTrumpAttackCard executor. Used in AllTrumpPlayStategy getAttackCard().
  * @author Dimitar Karamanov
  */
 public final class AllTrumpAttackCard extends PlayCardExecutor {
@@ -25,7 +24,7 @@ public final class AllTrumpAttackCard extends PlayCardExecutor {
      */
     public AllTrumpAttackCard(final Game game) {
         super(game);
-        //Register play card methods.
+        // Register play card methods.
         register(new PartnerDeclaredAllTrumpAttackCard(game));
         register(new StandardAllTrumpAttackCard(game));
     }

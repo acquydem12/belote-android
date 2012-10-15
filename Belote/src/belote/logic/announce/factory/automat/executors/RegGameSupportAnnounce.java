@@ -27,9 +27,9 @@ public final class RegGameSupportAnnounce extends AnnounceExecutor {
      */
     public RegGameSupportAnnounce(final Game game) {
         super(game);
-        //Pre conditions
+        // Pre conditions
         addPreCondition(new PartnerColorAnnounce(game));
-        //Methods
+        // Methods
         register(new RegGameSupportColorAnnounce(game));
         register(new RegGameSupportAllTrumpAnnounce(game));
         register(new RegGameSupportNotTrumpAnnounce(game));

@@ -18,9 +18,9 @@ public final class Club extends ColorSuit {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -5225181680528614435L;
-	
-	/**
+    private static final long serialVersionUID = -5225181680528614435L;
+
+    /**
      * Announce suit type unique constant.
      */
     private static final int ID = 1;

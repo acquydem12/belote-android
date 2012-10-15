@@ -13,8 +13,7 @@ import belote.bean.Player;
 import belote.bean.announce.Announce;
 
 /**
- * AnnounceMethod base class.
- * Base class of all classes which return Announce instance.
+ * AnnounceMethod base class. Base class of all classes which return Announce instance.
  * @author Dimitar Karamanov
  */
 public interface AnnounceMethod {
@@ -26,4 +25,3 @@ public interface AnnounceMethod {
      */
     Announce getAnnounce(final Player player);
 }
-

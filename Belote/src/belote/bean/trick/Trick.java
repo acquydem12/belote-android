@@ -12,9 +12,9 @@ package belote.bean.trick;
 import java.io.Serializable;
 
 import belote.bean.Player;
-import belote.bean.pack.card.Card;
 import belote.bean.pack.Pack;
 import belote.bean.pack.PackIterator;
+import belote.bean.pack.card.Card;
 
 /**
  * Trick class.
@@ -25,9 +25,9 @@ public final class Trick implements Serializable {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 1185817214486088258L;
+    private static final long serialVersionUID = 1185817214486088258L;
 
-	/**
+    /**
      * Trick attack player.
      */
     private final Player attackPlayer;

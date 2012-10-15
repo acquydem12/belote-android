@@ -20,8 +20,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.methods.base.BaseMethod;
 
 /**
- * PartnerSuitAnnounceCard class.
- * PlayCardMethod which implements the logic of playing card from suit declared by partner during game annouce.
+ * PartnerSuitAnnounceCard class. PlayCardMethod which implements the logic of playing card from suit declared by partner during game annouce.
  * @author Dimitar Karamanov
  */
 public final class PartnerSuitAnnounceCard extends BaseMethod {

@@ -18,8 +18,8 @@ public final class Redouble extends AnnounceType {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 8761962864858525925L;
-	/**
+    private static final long serialVersionUID = 8761962864858525925L;
+    /**
      * Unique object id.
      */
     private static final int ID = 2;

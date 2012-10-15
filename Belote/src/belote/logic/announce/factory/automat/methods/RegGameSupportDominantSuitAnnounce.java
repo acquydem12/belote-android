@@ -22,8 +22,7 @@ import belote.logic.announce.factory.automat.methods.suitDeterminators.DominantS
 import belote.logic.announce.factory.automat.methods.suitDeterminators.base.SuitDeterminator;
 
 /**
- * RegGameSupportDominantSuitAnnounce class.
- * Announce factory method which creates support dominant suit announce.
+ * RegGameSupportDominantSuitAnnounce class. Announce factory method which creates support dominant suit announce.
  * @author Dimitar Karamanov
  */
 public final class RegGameSupportDominantSuitAnnounce extends ConditionListMethod {
@@ -37,8 +36,10 @@ public final class RegGameSupportDominantSuitAnnounce extends ConditionListMetho
     public RegGameSupportDominantSuitAnnounce(final Game game) {
         super(game);
         suitDeterminator = new DominantSuit();
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Jack, suitDeterminator), new HasCard(Rank.Nine, suitDeterminator)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Jack, suitDeterminator), new HasCard(Rank.Ace, suitDeterminator)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Jack, suitDeterminator), new HasCard(Rank.Nine,
+                suitDeterminator)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Jack, suitDeterminator), new HasCard(Rank.Ace,
+                suitDeterminator)));
         addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 4), new HasCard(Rank.Jack, suitDeterminator)));
     }
 
