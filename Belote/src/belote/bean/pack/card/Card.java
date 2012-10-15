@@ -10,8 +10,8 @@
 package belote.bean.pack.card;
 
 import belote.base.ComparableObject;
-import belote.bean.pack.card.rank.Rank;
 import belote.bean.pack.card.suit.Suit;
+import belote.bean.pack.card.rank.Rank;
 
 /**
  * Card class.

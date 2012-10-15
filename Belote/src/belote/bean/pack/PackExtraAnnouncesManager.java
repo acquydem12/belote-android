@@ -12,15 +12,15 @@ package belote.bean.pack;
 import java.io.Serializable;
 
 import belote.bean.pack.card.Card;
+import belote.bean.pack.square.SquareIterator;
+import belote.bean.pack.square.Square;
+import belote.bean.pack.sequence.Sequence;
+import belote.bean.pack.sequence.SequenceType;
+import belote.bean.pack.sequence.SequenceIterator;
+import belote.bean.pack.card.suit.SuitIterator;
+import belote.bean.pack.card.suit.Suit;
 import belote.bean.pack.card.rank.Rank;
 import belote.bean.pack.card.rank.RankIterator;
-import belote.bean.pack.card.suit.Suit;
-import belote.bean.pack.card.suit.SuitIterator;
-import belote.bean.pack.sequence.Sequence;
-import belote.bean.pack.sequence.SequenceIterator;
-import belote.bean.pack.sequence.SequenceType;
-import belote.bean.pack.square.Square;
-import belote.bean.pack.square.SquareIterator;
 
 /**
  * PackExtraAnnouncesManager class.

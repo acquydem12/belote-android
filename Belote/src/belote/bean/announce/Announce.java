@@ -11,9 +11,9 @@ package belote.bean.announce;
 
 import java.io.Serializable;
 
-import belote.bean.Player;
 import belote.bean.announce.suit.AnnounceSuit;
 import belote.bean.announce.type.AnnounceType;
+import belote.bean.Player;
 import belote.bean.pack.card.suit.Suit;
 
 /**

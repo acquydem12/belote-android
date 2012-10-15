@@ -37,8 +37,8 @@ class PartnerDeclaredAllTrumpAttackCard extends PlayCardExecutor {
         register(new MeterSuitCard(game));
         register(new TeamSuitPartnerCard(game));
         register(new ColorlessHandCard(game));
-        register(new PartnerSuitAnnounceCard(game));
         register(new DominantSuitCard(game));
+        register(new PartnerSuitAnnounceCard(game));
         register(new PartnerPossibleSuitCard(game));
         register(new AllTrumpMakePowerNineCard(game));
         register(new AllTrumpBelotCard(game));

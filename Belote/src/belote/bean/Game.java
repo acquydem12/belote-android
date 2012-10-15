@@ -12,9 +12,9 @@ package belote.bean;
 import java.io.Serializable;
 
 import belote.bean.announce.AnnounceList;
-import belote.bean.pack.Pack;
 import belote.bean.pack.PackIterator;
 import belote.bean.pack.TrickPack;
+import belote.bean.pack.Pack;
 import belote.bean.pack.card.Card;
 import belote.bean.trick.TrickList;
 

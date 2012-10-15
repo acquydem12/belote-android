@@ -12,9 +12,9 @@ package belote.bean.trick;
 import java.io.Serializable;
 
 import belote.bean.Player;
+import belote.bean.pack.card.Card;
 import belote.bean.pack.Pack;
 import belote.bean.pack.PackIterator;
-import belote.bean.pack.card.Card;
 
 /**
  * Trick class.

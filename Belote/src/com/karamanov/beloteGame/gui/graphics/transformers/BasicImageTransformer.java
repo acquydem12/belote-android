@@ -9,9 +9,9 @@
  */
 package com.karamanov.beloteGame.gui.graphics.transformers;
 
-import android.graphics.Bitmap;
-
 import com.karamanov.beloteGame.gui.graphics.Rectangle;
+
+import android.graphics.Bitmap;
 
 /**
  * BasicImageTransformer class.

@@ -6,11 +6,11 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Paint.Style;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.graphics.Paint.Style;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -94,7 +94,6 @@ public final class LogoView extends View {
 		paint.setAntiAlias(true);
 		paint.setTypeface(Typeface.SERIF);
 		Rect bounds = new Rect();
-		
 		String autor = getResources().getString(R.string.Autor);
 		paint.getTextBounds(autor, 0, autor.length(), bounds);
 

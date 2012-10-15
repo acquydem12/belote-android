@@ -9,11 +9,11 @@
  */
 package belote.bean.pack.card.suit;
 
+import belote.base.IntegerIterator;
+
 import java.io.Serializable;
 import java.util.Enumeration;
 import java.util.Hashtable;
-
-import belote.base.IntegerIterator;
 
 /**
  * SuitCountHashTable class.

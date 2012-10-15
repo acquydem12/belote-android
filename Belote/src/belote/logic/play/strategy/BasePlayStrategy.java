@@ -10,9 +10,9 @@
 package belote.logic.play.strategy;
 
 import belote.base.Assert;
+import belote.bean.pack.card.Card;
 import belote.bean.Game;
 import belote.bean.Player;
-import belote.bean.pack.card.Card;
 import belote.logic.play.strategy.automat.base.PlayCardMethod;
 import belote.logic.play.strategy.validators.Validatable;
 

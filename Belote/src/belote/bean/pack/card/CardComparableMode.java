@@ -11,6 +11,7 @@ package belote.bean.pack.card;
 
 import java.io.Serializable;
 
+import belote.bean.pack.card.Card;
 import belote.bean.pack.card.rank.Rank;
 
 /**
