@@ -12,19 +12,19 @@ package belote.bean;
 import java.io.Serializable;
 
 import belote.base.Assert;
+import belote.bean.points.PointsInfo;
+import belote.bean.points.PointsList;
 import belote.base.ComparableObject;
-import belote.bean.pack.Pack;
-import belote.bean.pack.PackIterator;
-import belote.bean.pack.card.rank.Rank;
-import belote.bean.pack.card.suit.Suit;
-import belote.bean.pack.sequence.Sequence;
-import belote.bean.pack.sequence.SequenceIterator;
-import belote.bean.pack.sequence.SequenceList;
 import belote.bean.pack.square.Square;
 import belote.bean.pack.square.SquareIterator;
 import belote.bean.pack.square.SquareList;
-import belote.bean.points.PointsInfo;
-import belote.bean.points.PointsList;
+import belote.bean.pack.Pack;
+import belote.bean.pack.PackIterator;
+import belote.bean.pack.card.rank.Rank;
+import belote.bean.pack.sequence.Sequence;
+import belote.bean.pack.sequence.SequenceIterator;
+import belote.bean.pack.sequence.SequenceList;
+import belote.bean.pack.card.suit.Suit;
 
 /**
  * Team class.

@@ -9,11 +9,11 @@
  */
 package belote.bean.pack.card.rank;
 
+import belote.bean.pack.card.rank.comparator.RankComparator;
+import belote.base.ComparableObject;
+
 import java.util.ArrayList;
 import java.util.Iterator;
-
-import belote.base.ComparableObject;
-import belote.bean.pack.card.rank.comparator.RankComparator;
 
 /**
  * Rank class Represents card's rank which has one of the following values 7, 8, 9, 10, J, Q, K, A.

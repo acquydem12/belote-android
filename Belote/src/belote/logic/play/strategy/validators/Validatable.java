@@ -9,8 +9,8 @@
  */
 package belote.logic.play.strategy.validators;
 
-import belote.bean.Player;
 import belote.bean.pack.card.Card;
+import belote.bean.Player;
 
 /**
  * Validatable interface used from all play strategies to validate the players move.

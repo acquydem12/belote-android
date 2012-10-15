@@ -3,16 +3,17 @@ package com.karamanov.beloteGame.gui.screen.main.message;
 
 import java.util.ArrayList;
 
+import belote.bean.Player;
+
+import com.karamanov.beloteGame.R;
+import com.karamanov.beloteGame.gui.screen.base.BooleanFlag;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
-import belote.bean.Player;
-
-import com.karamanov.beloteGame.R;
-import com.karamanov.beloteGame.gui.screen.base.BooleanFlag;
 
 public class MessageScreen extends Dialog {
 	

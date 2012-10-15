@@ -11,8 +11,8 @@ package belote.bean;
 
 import java.io.Serializable;
 
-import belote.bean.pack.Pack;
 import belote.bean.pack.card.Card;
+import belote.bean.pack.Pack;
 import belote.bean.pack.card.suit.SuitList;
 
 /**

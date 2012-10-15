@@ -9,9 +9,9 @@
  */
 package belote.logic.announce.factory.automat.methods.conditions;
 
+import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCondition;
 import belote.bean.Player;
 import belote.bean.pack.card.rank.Rank;
-import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCondition;
 
 /**
  * RankCount class.

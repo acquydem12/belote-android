@@ -1,9 +1,5 @@
 package com.karamanov.beloteGame.gui.screen.tricks;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import belote.bean.Game;
 import belote.bean.Player;
 import belote.bean.pack.PackIterator;
@@ -15,6 +11,11 @@ import com.karamanov.beloteGame.gui.graphics.Color;
 import com.karamanov.beloteGame.gui.graphics.ImageUtil;
 import com.karamanov.beloteGame.gui.graphics.PictureDecorator;
 import com.karamanov.beloteGame.gui.graphics.Rectangle;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 public final class TrickView extends LinearLayout {
 	
