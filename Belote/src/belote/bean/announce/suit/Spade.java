@@ -18,9 +18,9 @@ public final class Spade extends ColorSuit {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 8862973313519075903L;
-	
-	/**
+    private static final long serialVersionUID = 8862973313519075903L;
+
+    /**
      * Announce suit type unique constant.
      */
     private static final int ID = 4;

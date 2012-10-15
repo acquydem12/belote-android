@@ -28,12 +28,11 @@ public final class EndGameNormalAnnounce extends AnnounceExecutor {
      */
     public EndGameNormalAnnounce(final Game game) {
         super(game);
-        //Pre condition
+        // Pre condition
         addPreCondition(new HasContractAnnounce(game));
-        //Methods
+        // Methods
         register(new EndGameRedoublelEnemyTeamEndGameZoneAnnounce(game));
         register(new EndGameNormalEnemyTeamEndGameZoneAnnounce(game));
         register(new EndGameNormalPlayerTeamEndGameZoneAnnounce(game));
     }
 }
-   

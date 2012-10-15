@@ -23,9 +23,9 @@ public final class Couple implements Serializable {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -7275183680786350586L;
+    private static final long serialVersionUID = -7275183680786350586L;
 
-	/**
+    /**
      * Array couples count constant.
      */
     public static final int MAX_COUNT = Suit.getSuitCount();
@@ -36,8 +36,7 @@ public final class Couple implements Serializable {
     private static final int COUPLE_POINTS = 20;
 
     /**
-     * Internal container. The maximum couple counts equals to suits count.
-     * For a single game is possible only one couple per suit.
+     * Internal container. The maximum couple counts equals to suits count. For a single game is possible only one couple per suit.
      */
     private final boolean coupleSuit[] = new boolean[MAX_COUNT];
 

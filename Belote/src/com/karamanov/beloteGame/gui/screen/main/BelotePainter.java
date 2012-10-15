@@ -48,7 +48,7 @@ final class BelotePainter extends BasePainter {
      * Player with ID(0) cards overlapped
      */
     private final int Player0CardsOverlapped;
-    
+
     /**
      * Player with ID(2) cards overlapped constant.
      */
@@ -63,7 +63,7 @@ final class BelotePainter extends BasePainter {
      * Game font height.
      */
     private final int GAME_FONT_HEIGHT;
-    
+
     /**
      * Constructor.
      * @param width canvas width.
@@ -71,16 +71,16 @@ final class BelotePainter extends BasePainter {
      */
     public BelotePainter(Context context) {
         super(context);
-        
+
         Player0CardsOverlapped = Belote.fromPixelToDip(context, 18);
         Player2CardsOverlapped = Belote.fromPixelToDip(context, -7);
         Player1Player3CardsOverlapped = Belote.fromPixelToDip(context, 21);
-        
+
         GAME_FONT_HEIGHT = Belote.fromPixelToDip(context, 14);
     }
-    
+
     public int getFontHeight() {
-    	return GAME_FONT_HEIGHT;
+        return GAME_FONT_HEIGHT;
     }
 
     /**
@@ -94,7 +94,7 @@ final class BelotePainter extends BasePainter {
         int y;
 
         Rectangle rec = getPlayerCardRectangle(canvas, game, 0, player);
-        
+
         Paint paint = new Paint();
         float dip12 = Belote.fromPixelToDipF(context, 12);
         int dip2 = Belote.fromPixelToDip(context, 2);
@@ -104,32 +104,32 @@ final class BelotePainter extends BasePainter {
         boolean active = player.equals(game.getGame().getTrickAttackPlayer());
 
         switch (player.getID()) {
-            case 0:
-            	Rect bounds = new Rect();
-            	PlayerNameDecorator playerDecorator = new PlayerNameDecorator(player);
-        		String name = playerDecorator.decorate(context).toUpperCase();
-            	paint.getTextBounds(name, 0, name.length(), bounds);
-                y = rec.y - dip2;
-                drawHorizontalPlayerName(canvas, paint, player, y, active);
-                return;
-            case 1:
-                x = 1;
-                drawVerticalPlayerName(canvas, paint, player, x, active);
-                return;
-            case 2:
-            	bounds = new Rect();
-            	playerDecorator = new PlayerNameDecorator(player);
-        		name = playerDecorator.decorate(context).toUpperCase();
-            	paint.getTextBounds(name, 0, name.length(), bounds);
-            	
-                y = rec.height + rec.y + bounds.height() + dip2;
-                drawHorizontalPlayerName(canvas, paint, player, y, active);
+        case 0:
+            Rect bounds = new Rect();
+            PlayerNameDecorator playerDecorator = new PlayerNameDecorator(player);
+            String name = playerDecorator.decorate(context).toUpperCase();
+            paint.getTextBounds(name, 0, name.length(), bounds);
+            y = rec.y - dip2;
+            drawHorizontalPlayerName(canvas, paint, player, y, active);
+            return;
+        case 1:
+            x = 1;
+            drawVerticalPlayerName(canvas, paint, player, x, active);
+            return;
+        case 2:
+            bounds = new Rect();
+            playerDecorator = new PlayerNameDecorator(player);
+            name = playerDecorator.decorate(context).toUpperCase();
+            paint.getTextBounds(name, 0, name.length(), bounds);
 
-                return;
-            case 3:
-                x = rec.x + rec.width;
-                drawVerticalPlayerName(canvas, paint, player, x, active);
-                return;
+            y = rec.height + rec.y + bounds.height() + dip2;
+            drawHorizontalPlayerName(canvas, paint, player, y, active);
+
+            return;
+        case 3:
+            x = rec.x + rec.width;
+            drawVerticalPlayerName(canvas, paint, player, x, active);
+            return;
         }
     }
 
@@ -141,10 +141,10 @@ final class BelotePainter extends BasePainter {
      * @param active status.
      */
     private void drawHorizontalPlayerName(Canvas canvas, Paint paint, Player player, int y, boolean active) {
-    	Rect bounds = new Rect();
-    	PlayerNameDecorator playerDecorator = new PlayerNameDecorator(player);
-		String name = playerDecorator.decorate(context).toUpperCase();
-    	paint.getTextBounds(name, 0, name.length(), bounds);
+        Rect bounds = new Rect();
+        PlayerNameDecorator playerDecorator = new PlayerNameDecorator(player);
+        String name = playerDecorator.decorate(context).toUpperCase();
+        paint.getTextBounds(name, 0, name.length(), bounds);
         final int x = (canvas.getWidth() - bounds.width()) / 2;
         paint.setColor(active ? Color.clDKGold.getRGB() : Color.clLightYellow.getRGB());
         paint.setFakeBoldText(true);
@@ -153,7 +153,7 @@ final class BelotePainter extends BasePainter {
         paint.setLinearText(true);
         canvas.drawText(name, x, y, paint);
     }
-   
+
     /**
      * Draws vertical player name.
      * @param g Graphics instance.
@@ -161,43 +161,43 @@ final class BelotePainter extends BasePainter {
      * @param x position.
      * @param active status.
      */
-    private void drawVerticalPlayerName(Canvas canvas, Paint paint, Player player, int x,	boolean active) {
-		int theta = 0;
+    private void drawVerticalPlayerName(Canvas canvas, Paint paint, Player player, int x, boolean active) {
+        int theta = 0;
 
-		if (player.getID() == 1) {
-			theta = 90;
-		}
+        if (player.getID() == 1) {
+            theta = 90;
+        }
 
-		if (player.getID() == 3) {
-			theta = -90;
-		}
+        if (player.getID() == 3) {
+            theta = -90;
+        }
 
-		Rect bounds = new Rect();
-		
-		PlayerNameDecorator playerDecorator = new PlayerNameDecorator(player);
-		String name = playerDecorator.decorate(context).toUpperCase();
-		
-    	paint.getTextBounds(name, 0, name.length(), bounds);
-		int y = (canvas.getHeight() - bounds.width()) / 2;
-		paint.setColor(active ? Color.clDKGold.getRGB() : Color.clLightYellow.getRGB());
+        Rect bounds = new Rect();
 
-		paint.setFakeBoldText(true);
-	    paint.setAntiAlias(true);
-	    paint.setDither(true);
-	    paint.setLinearText(true);
-	        
-		canvas.save();
-		try {
-			canvas.rotate(theta);
-			if (player.getID() == 1) {
-				canvas.drawText(name.toUpperCase(), y, -x, paint);
-			} else {
-				canvas.drawText(name.toUpperCase(), -y - bounds.width(), canvas.getWidth() - 1, paint);
-			}
-		} finally {
-			canvas.restore();
-		}
-	}
+        PlayerNameDecorator playerDecorator = new PlayerNameDecorator(player);
+        String name = playerDecorator.decorate(context).toUpperCase();
+
+        paint.getTextBounds(name, 0, name.length(), bounds);
+        int y = (canvas.getHeight() - bounds.width()) / 2;
+        paint.setColor(active ? Color.clDKGold.getRGB() : Color.clLightYellow.getRGB());
+
+        paint.setFakeBoldText(true);
+        paint.setAntiAlias(true);
+        paint.setDither(true);
+        paint.setLinearText(true);
+
+        canvas.save();
+        try {
+            canvas.rotate(theta);
+            if (player.getID() == 1) {
+                canvas.drawText(name.toUpperCase(), y, -x, paint);
+            } else {
+                canvas.drawText(name.toUpperCase(), -y - bounds.width(), canvas.getWidth() - 1, paint);
+            }
+        } finally {
+            canvas.restore();
+        }
+    }
 
     /**
      * Returns players card rectangle.
@@ -209,47 +209,47 @@ final class BelotePainter extends BasePainter {
     public final Rectangle getPlayerCardRectangle(Canvas canvas, HumanBeloteGame game, final int index, Player player) {
         int x = 0;
         int y = 0;
-        
+
         switch (player.getID()) {
-            case 0:
-                x = getPlayer0FirstCardX(canvas, game) + index * (cardBackWidth - Player0CardsOverlapped);
-                y = GAME_FONT_HEIGHT;
-                break;
+        case 0:
+            x = getPlayer0FirstCardX(canvas, game) + index * (cardBackWidth - Player0CardsOverlapped);
+            y = GAME_FONT_HEIGHT;
+            break;
 
-            case 1:
-                x = GAME_FONT_HEIGHT;
-                y = getFirstCardPosY(canvas, game) + index * (cardBackWidth - Player1Player3CardsOverlapped);
-                break;
+        case 1:
+            x = GAME_FONT_HEIGHT;
+            y = getFirstCardPosY(canvas, game) + index * (cardBackWidth - Player1Player3CardsOverlapped);
+            break;
 
-            case 2:
-                x = getPlayer2FirstCardX(canvas, game) + index * (cardWidth - Player2CardsOverlapped);
-                y = canvas.getHeight() - GAME_FONT_HEIGHT - cardHeight;
-                if (index == player.getCards().getSize() - 1) {
-                	return new Rectangle(x, y, cardWidth, cardHeight);
-                } else {
-                	return new Rectangle(x, y, cardWidth - Player2CardsOverlapped, cardHeight);
-                }
+        case 2:
+            x = getPlayer2FirstCardX(canvas, game) + index * (cardWidth - Player2CardsOverlapped);
+            y = canvas.getHeight() - GAME_FONT_HEIGHT - cardHeight;
+            if (index == player.getCards().getSize() - 1) {
+                return new Rectangle(x, y, cardWidth, cardHeight);
+            } else {
+                return new Rectangle(x, y, cardWidth - Player2CardsOverlapped, cardHeight);
+            }
 
-            case 3:
-                x = canvas.getWidth() - GAME_FONT_HEIGHT - cardBackHeight;
-                y = getFirstCardPosY(canvas, game) + index * (cardBackWidth - Player1Player3CardsOverlapped);
-                break;
+        case 3:
+            x = canvas.getWidth() - GAME_FONT_HEIGHT - cardBackHeight;
+            y = getFirstCardPosY(canvas, game) + index * (cardBackWidth - Player1Player3CardsOverlapped);
+            break;
         }
 
-		if (player.isSameTeam(game.getHumanPlayer())) {
-			if (player.getID() == 2) {
-				return new Rectangle(x, y, cardWidth, cardHeight);
-			} else {
-				return new Rectangle(x, y, cardBackWidth, cardBackHeight);
-			}
-		} else {
-			return new Rectangle(x, y, cardBackHeight, cardBackWidth);
-		}
+        if (player.isSameTeam(game.getHumanPlayer())) {
+            if (player.getID() == 2) {
+                return new Rectangle(x, y, cardWidth, cardHeight);
+            } else {
+                return new Rectangle(x, y, cardBackWidth, cardBackHeight);
+            }
+        } else {
+            return new Rectangle(x, y, cardBackHeight, cardBackWidth);
+        }
     }
-    
+
     private int getCardsCount(BeloteGame game) {
-    	final int nCards = (game.isAnnounceGameMode()) ? 5 : 8;
-    	return nCards;
+        final int nCards = (game.isAnnounceGameMode()) ? 5 : 8;
+        return nCards;
     }
 
     /**
@@ -260,19 +260,21 @@ final class BelotePainter extends BasePainter {
     private int getPlayer2FirstCardX(Canvas canvas, BeloteGame game) {
         final int nCards = getCardsCount(game);
         int dip2 = Belote.fromPixelToDip(context, 2);
-        
+
         int avaiableWidth = canvas.getWidth() - dip2 - 2 * GAME_FONT_HEIGHT;
-        if (canvas.getWidth() >canvas.getHeight()) {
-        	avaiableWidth = avaiableWidth - dip2 - 2 * cardBackHeight; //Think more !
+        if (canvas.getWidth() > canvas.getHeight()) {
+            avaiableWidth = avaiableWidth - dip2 - 2 * cardBackHeight; // Think
+                                                                       // more
+                                                                       // !
         }
-        
+
         if (nCards * cardWidth > (avaiableWidth)) {
-        	double d = (double)(nCards * cardWidth - avaiableWidth) / (nCards - 1);
-        	Player2CardsOverlapped = (int)Math.ceil(d);
+            double d = (double) (nCards * cardWidth - avaiableWidth) / (nCards - 1);
+            Player2CardsOverlapped = (int) Math.ceil(d);
         } else {
-        	Player2CardsOverlapped = 0;
+            Player2CardsOverlapped = 0;
         }
-         
+
         return (canvas.getWidth() - nCards * cardWidth + (nCards - 1) * Player2CardsOverlapped) / 2 + 1;
     }
 
@@ -282,7 +284,7 @@ final class BelotePainter extends BasePainter {
      * @return position.
      */
     private int getPlayer0FirstCardX(Canvas canvas, BeloteGame game) {
-    	final int nCards = getCardsCount(game);
+        final int nCards = getCardsCount(game);
         return (canvas.getWidth() - nCards * cardBackWidth + (nCards - 1) * Player0CardsOverlapped) / 2;
     }
 
@@ -292,7 +294,7 @@ final class BelotePainter extends BasePainter {
      * @return position.
      */
     private int getFirstCardPosY(Canvas canvas, BeloteGame game) {
-    	final int nCards = getCardsCount(game);
+        final int nCards = getCardsCount(game);
         return (canvas.getHeight() - nCards * cardBackWidth + (nCards - 1) * Player1Player3CardsOverlapped) / 2;
     }
 
@@ -333,11 +335,11 @@ final class BelotePainter extends BasePainter {
      * @return Rectangle of the announce.
      */
     private Rectangle getAnnounceRectangle(Canvas canvas, HumanBeloteGame game, Announce announce, Paint paint) {
-    	int dip2 = Belote.fromPixelToDip(context, 2);
-    	int dip4 = Belote.fromPixelToDip(context, 4);
-    	int dip6 = Belote.fromPixelToDip(context, 6);
-    	int dip10 = Belote.fromPixelToDip(context, 10);
-    	
+        int dip2 = Belote.fromPixelToDip(context, 2);
+        int dip4 = Belote.fromPixelToDip(context, 4);
+        int dip6 = Belote.fromPixelToDip(context, 6);
+        int dip10 = Belote.fromPixelToDip(context, 10);
+
         Rectangle rect = getPlayerCardRectangle(canvas, game, 0, announce.getPlayer());
         int x = 0;
         int y = 0;
@@ -345,9 +347,9 @@ final class BelotePainter extends BasePainter {
         int w;
         int h;
         String str = getAnnounceText(announce);
-        
+
         Rect bounds = new Rect();
-    	paint.getTextBounds(str, 0, str.length(), bounds);
+        paint.getTextBounds(str, 0, str.length(), bounds);
 
         if (announce.isColorAnnounce()) {
             Suit suit = AnnounceUnit.transformFromAnnounceSuitToSuit(announce.getAnnounceSuit());
@@ -360,46 +362,46 @@ final class BelotePainter extends BasePainter {
         }
 
         switch (announce.getPlayer().getID()) {
-            case 0:
-                x = (canvas.getWidth() - w) / 2;
-                y = rect.y + rect.height + dip10;
-                break;
+        case 0:
+            x = (canvas.getWidth() - w) / 2;
+            y = rect.y + rect.height + dip10;
+            break;
 
-            case 1:
-                x = rect.x + rect.width + dip10;
-                y = (canvas.getHeight() - h) / 2;
-                break;
+        case 1:
+            x = rect.x + rect.width + dip10;
+            y = (canvas.getHeight() - h) / 2;
+            break;
 
-            case 2:
-                x = (canvas.getWidth() - w) / 2;
-                y = rect.y - dip10 - h;
-                break;
+        case 2:
+            x = (canvas.getWidth() - w) / 2;
+            y = rect.y - dip10 - h;
+            break;
 
-            case 3:
-                y = (canvas.getHeight() - h) / 2;
-                x = rect.x - dip10 - w;
-                break;
+        case 3:
+            y = (canvas.getHeight() - h) / 2;
+            x = rect.x - dip10 - w;
+            break;
         }
 
         return new Rectangle(x - dip2, y, w + dip4, h);
     }
 
-	/**
-	 * Draws last announce.
-	 * @param game BelotGame instance.
-	 * @param g Graphics instance.
-	 */
+    /**
+     * Draws last announce.
+     * @param game BelotGame instance.
+     * @param g Graphics instance.
+     */
     private Rect drawLastAnnounce(Canvas canvas, HumanBeloteGame game) {
-		if (game.isAnnounceGameMode()) {
-			final int count = game.getGame().getAnnounceList().getCount();
-			if (count > 0) {
-				if (!game.isPlayerIsAnnoincing()) {
-					return drawAnnounce(canvas, game, game.getGame().getAnnounceList().getAnnounce(count - 1));
-				}
-			}
-		}
-		return null;
-	}
+        if (game.isAnnounceGameMode()) {
+            final int count = game.getGame().getAnnounceList().getCount();
+            if (count > 0) {
+                if (!game.isPlayerIsAnnoincing()) {
+                    return drawAnnounce(canvas, game, game.getGame().getAnnounceList().getAnnounce(count - 1));
+                }
+            }
+        }
+        return null;
+    }
 
     /**
      * Draws announce.
@@ -414,13 +416,14 @@ final class BelotePainter extends BasePainter {
         paint.setAntiAlias(true);
         paint.setDither(true);
         paint.setLinearText(true);
-        
+
         float dip14 = Belote.fromPixelToDipF(context, 14);
         paint.setTextSize(dip14);
         int dip2 = Belote.fromPixelToDip(context, 2);
         int dip10 = Belote.fromPixelToDip(context, 10);
-        
-        NinePatchDrawable bubble = announce.getPlayer().getTeam().equals(game.getGame().getTeam(0)) ? pictureDecorator.getBubbleLeft() : pictureDecorator.getBubbleRight();
+
+        NinePatchDrawable bubble = announce.getPlayer().getTeam().equals(game.getGame().getTeam(0)) ? pictureDecorator.getBubbleLeft() : pictureDecorator
+                .getBubbleRight();
 
         String str = getAnnounceText(announce);
         Rect bounds = new Rect();
@@ -429,7 +432,7 @@ final class BelotePainter extends BasePainter {
         Rect dest = getBubbleAnnounceRectangle(canvas, game, announce);
         bubble.setBounds(dest);
         bubble.draw(canvas);
-        
+
         if (announce.isColorAnnounce()) {
             Suit suit = AnnounceUnit.transformFromAnnounceSuitToSuit(announce.getAnnounceSuit());
             Bitmap image = getSuitImage(suit);
@@ -438,50 +441,49 @@ final class BelotePainter extends BasePainter {
         } else {
             canvas.drawText(str, dest.left + dip10, 2 * dip10 + dest.top, paint);
         }
-        
+
         return dest;
     }
-    
+
     private Rect getBubbleAnnounceRectangle(Canvas canvas, HumanBeloteGame game, Announce announce) {
-    	Paint paint = new Paint();
-    	paint.setFakeBoldText(true);
+        Paint paint = new Paint();
+        paint.setFakeBoldText(true);
         paint.setAntiAlias(true);
         paint.setDither(true);
         paint.setLinearText(true);
-        
-    	float dip14 = Belote.fromPixelToDipF(context, 14);
+
+        float dip14 = Belote.fromPixelToDipF(context, 14);
         paint.setTextSize(dip14);
-    	
+
         paint.setColor(Color.clDarkGreen.getRGB());
         paint.setStyle(Style.FILL);
 
-    	
-    	String str = getAnnounceText(announce);
+        String str = getAnnounceText(announce);
         Rect bounds = new Rect();
         paint.getTextBounds(str, 0, str.length(), bounds);
-        
+
         Rect dest = new Rect();
         Rectangle rect = getAnnounceRectangle(canvas, game, announce, paint);
-        
-    	int dip1 = Belote.fromPixelToDip(context, 1);
-    	int dip2 = Belote.fromPixelToDip(context, 2);
-    	int dip3 = Belote.fromPixelToDip(context, 3);
-    	int dip10 = Belote.fromPixelToDip(context, 10);
-        
+
+        int dip1 = Belote.fromPixelToDip(context, 1);
+        int dip2 = Belote.fromPixelToDip(context, 2);
+        int dip3 = Belote.fromPixelToDip(context, 3);
+        int dip10 = Belote.fromPixelToDip(context, 10);
+
         if (announce.isColorAnnounce()) {
             int x = rect.x + dip3;
             Suit suit = AnnounceUnit.transformFromAnnounceSuitToSuit(announce.getAnnounceSuit());
             Bitmap image = getSuitImage(suit);
             int y = rect.y;
-            
+
             if (announce.getPlayer().getID() == 0) {
-            	y += dip1;
+                y += dip1;
             }
-            
+
             if (announce.getPlayer().getID() == 2) {
-            	y -= dip1;
+                y -= dip1;
             }
-            
+
             dest.left = x - dip10;
             dest.top = y - dip10;
             dest.bottom = dest.top + Math.max(image.getHeight(), bounds.height()) + dip10 * 2;
@@ -489,50 +491,50 @@ final class BelotePainter extends BasePainter {
         } else {
             int x = rect.x + dip3;
             int y = rect.y;
-            
+
             if (announce.getPlayer().getID() == 0) {
-            	y += dip1;
+                y += dip1;
             }
-            
+
             if (announce.getPlayer().getID() == 2) {
-            	y -= dip1;
+                y -= dip1;
             }
-            
+
             dest.left = x - dip10;
             dest.top = y - dip10;
             dest.bottom = dest.top + bounds.height() + 2 * dip10;
             dest.right = dest.left + bounds.width() + 2 * dip10;
         }
-        
+
         return dest;
     }
-    
+
     /**
      * Draws score.
      * @param game BelotGame instance.
      * @param g Graphics instance.
      */
     private void drawAnnounce(Canvas canvas, BeloteGame game) {
-    	if (game.isPlayingGameMode()) {
-    		Paint paint = new Paint();
-        	float dip12 = Belote.fromPixelToDipF(context, 12);
+        if (game.isPlayingGameMode()) {
+            Paint paint = new Paint();
+            float dip12 = Belote.fromPixelToDipF(context, 12);
             paint.setTextSize(dip12);
-            
-    		paint.setFakeBoldText(true);
+
+            paint.setFakeBoldText(true);
             paint.setAntiAlias(true);
-    		
+
             Rect bounds = new Rect();
             paint.getTextBounds("|", 0, 1, bounds);
             final int maxY = bounds.height();
             int y = maxY;
             int dip5 = Belote.fromPixelToDip(context, 5);
             int dip1 = Belote.fromPixelToDip(context, 1);
-        	
-        	Announce announce = game.getGame().getAnnounceList().getOpenContractAnnounce();
-        	
-        	ShortPlayerNameDecorator decorator = new ShortPlayerNameDecorator(announce.getPlayer());
-        	String playerShort = decorator.decorate(context);
-            
+
+            Announce announce = game.getGame().getAnnounceList().getOpenContractAnnounce();
+
+            ShortPlayerNameDecorator decorator = new ShortPlayerNameDecorator(announce.getPlayer());
+            String playerShort = decorator.decorate(context);
+
             bounds = new Rect();
             paint.getTextBounds(playerShort, 0, playerShort.length(), bounds);
             int x = canvas.getWidth() - bounds.width() - dip1;
@@ -540,8 +542,9 @@ final class BelotePainter extends BasePainter {
             canvas.drawText(playerShort, x, y, paint);
 
             if (announce.getAnnounceSuit().equals(AnnounceSuit.AllTrump) || announce.getAnnounceSuit().equals(AnnounceSuit.NotTrump)) {
-                String announceShort = announce.getAnnounceSuit().equals(AnnounceSuit.AllTrump) ? context.getString(R.string.AllTrumpsAnnounceShort) : context.getString(R.string.NotTrumpsAnnounceShort);
-                
+                String announceShort = announce.getAnnounceSuit().equals(AnnounceSuit.AllTrump) ? context.getString(R.string.AllTrumpsAnnounceShort) : context
+                        .getString(R.string.NotTrumpsAnnounceShort);
+
                 bounds = new Rect();
                 paint.getTextBounds(announceShort, 0, announceShort.length(), bounds);
                 x -= bounds.width() + dip5;
@@ -557,76 +560,76 @@ final class BelotePainter extends BasePainter {
                         y = (bounds.height() - image.getHeight()) / 2;
                     }
                     canvas.drawBitmap(image, x, y, paint);
-                    
+
                     y = maxY;
                 }
             }
-            
+
             AnnounceList announces = game.getGame().getAnnounceList().getSuitAnnounces(announce.getAnnounceSuit());
             Announce dbl = announces.getDoubleAnnounce();
             Announce redbl = announces.getRedoubleAnnounce();
-            
+
             int maxNameWidth = 0;
             int maxAnnounceWidth = 0;
-            
+
             if (dbl != null) {
-            	decorator = new ShortPlayerNameDecorator(dbl.getPlayer());
-            	playerShort = decorator.decorate(context);
-            	
-            	bounds = new Rect();
+                decorator = new ShortPlayerNameDecorator(dbl.getPlayer());
+                playerShort = decorator.decorate(context);
+
+                bounds = new Rect();
                 paint.getTextBounds(playerShort, 0, playerShort.length(), bounds);
-                
+
                 maxNameWidth = Math.max(maxNameWidth, bounds.width());
-                
+
                 String announceShort = context.getString(R.string.DoubleAnnounce);
                 bounds = new Rect();
                 paint.getTextBounds(announceShort, 0, 1, bounds);
-                
+
                 maxAnnounceWidth = Math.max(maxAnnounceWidth, bounds.width());
             }
-            
+
             if (redbl != null) {
-            	decorator = new ShortPlayerNameDecorator(redbl.getPlayer());
-            	playerShort = decorator.decorate(context);
-            	
-            	bounds = new Rect();
+                decorator = new ShortPlayerNameDecorator(redbl.getPlayer());
+                playerShort = decorator.decorate(context);
+
+                bounds = new Rect();
                 paint.getTextBounds(playerShort, 0, playerShort.length(), bounds);
-                
+
                 maxNameWidth = Math.max(maxNameWidth, bounds.width());
-                
+
                 String announceShort = context.getString(R.string.RedoubleAnnounce);
                 bounds = new Rect();
                 paint.getTextBounds(announceShort, 0, 1, bounds);
-                
+
                 maxAnnounceWidth = Math.max(maxAnnounceWidth, bounds.width());
             }
-            
+
             if (dbl != null) {
-            	y += maxY;
-            	
-            	decorator = new ShortPlayerNameDecorator(dbl.getPlayer());
-            	playerShort = decorator.decorate(context);
-            	
+                y += maxY;
+
+                decorator = new ShortPlayerNameDecorator(dbl.getPlayer());
+                playerShort = decorator.decorate(context);
+
                 x = canvas.getWidth() - maxNameWidth - dip1;
                 paint.setColor(Color.clCream.getRGB());
                 canvas.drawText(playerShort, x, y, paint);
-                
+
                 String announceShort = context.getString(R.string.DoubleAnnounce);
                 x -= maxAnnounceWidth + dip5;
                 paint.setColor(Color.clRed.getRGB());
                 canvas.drawText(String.valueOf(announceShort.charAt(0)), x, y, paint);
             }
-            
+
             if (redbl != null) {
-            	y += maxY;
-           	
-            	decorator = new ShortPlayerNameDecorator(redbl.getPlayer());
-            	playerShort = decorator.decorate(context);
-            	
+                y += maxY;
+
+                decorator = new ShortPlayerNameDecorator(redbl.getPlayer());
+                playerShort = decorator.decorate(context);
+
                 x = canvas.getWidth() - maxNameWidth - dip1;
                 paint.setColor(Color.clCream.getRGB());
                 canvas.drawText(playerShort, x, y, paint);
-                
+
                 String announceShort = context.getString(R.string.RedoubleAnnounce);
                 x -= maxAnnounceWidth + dip5;
                 paint.setColor(Color.clDKGold.getRGB());
@@ -641,40 +644,40 @@ final class BelotePainter extends BasePainter {
      * @param g Graphics instance.
      */
     private void drawScore(Canvas canvas, BeloteGame game) {
-    	float dip12 = Belote.fromPixelToDipF(context, 12);
+        float dip12 = Belote.fromPixelToDipF(context, 12);
         Paint paint = new Paint();
         paint.setTextSize(dip12);
         paint.setColor(Color.clLightGreen.getRGB());
         paint.setFakeBoldText(true);
         paint.setAntiAlias(true);
         paint.setDither(true);
-        
+
         int maxWidth = 0;
         int height[] = new int[game.getGame().getTeamsCount()];
         for (int i = 0; i < game.getGame().getTeamsCount(); i++) {
-        	StringBuffer team = new StringBuffer();
-        	for (int j = 0; j < game.getGame().getTeam(i).getPlayersCount(); j++) {
-        		if (team.length() > 0) {
-        			team.append("-");
-        		}
-        		
-        		team.append(new ShortPlayerNameDecorator(game.getGame().getTeam(i).getPlayer(j)).decorate(context));
-        	}
-        	
+            StringBuffer team = new StringBuffer();
+            for (int j = 0; j < game.getGame().getTeam(i).getPlayersCount(); j++) {
+                if (team.length() > 0) {
+                    team.append("-");
+                }
+
+                team.append(new ShortPlayerNameDecorator(game.getGame().getTeam(i).getPlayer(j)).decorate(context));
+            }
+
             String score = team.toString();
             Rect bounds = new Rect();
             paint.getTextBounds(score + "|", 0, score.length() + 1, bounds);
             canvas.drawText(score, 0, bounds.height() * (i + 1), paint);
-            
+
             height[i] = bounds.height();
             maxWidth = Math.max(maxWidth, bounds.width());
         }
-        
+
         int h = 0;
         paint.setColor(Color.clCream.getRGB());
         for (int i = 0; i < game.getGame().getTeamsCount(); i++) {
-        	String score =  " " + game.getGame().getTeam(i).getPoints().getAllPoints();
-        	h += height[i];
+            String score = " " + game.getGame().getTeam(i).getPoints().getAllPoints();
+            h += height[i];
             canvas.drawText(score, maxWidth, h, paint);
         }
     }
@@ -705,7 +708,7 @@ final class BelotePainter extends BasePainter {
 
         final Player winner = game.getNextTrickAttackPlayer();
         if (player.equals(winner)) {
-        	drawMixedColorCard(canvas, card, rec.x, rec.y, Color.clPureYellow);
+            drawMixedColorCard(canvas, card, rec.x, rec.y, Color.clPureYellow);
         } else {
             drawCard(canvas, card, rec.x, rec.y);
         }
@@ -724,59 +727,56 @@ final class BelotePainter extends BasePainter {
         int dip4 = Belote.fromPixelToDip(context, 4);
 
         switch (player.getID()) {
-            case 0:
-                x = (canvas.getWidth() - cardWidth) / 2;
-                y = rect.y + rect.height + dip4;
-                break;
+        case 0:
+            x = (canvas.getWidth() - cardWidth) / 2;
+            y = rect.y + rect.height + dip4;
+            break;
 
-            case 1:
-                x = rect.x + dip4 + rect.width;
-                y = (canvas.getHeight() - cardHeight) / 2;
-                break;
+        case 1:
+            x = rect.x + dip4 + rect.width;
+            y = (canvas.getHeight() - cardHeight) / 2;
+            break;
 
-            case 2:
-                x = (canvas.getWidth() - cardWidth) / 2;
-                y = rect.y - dip4 - cardHeight;
-                break;
+        case 2:
+            x = (canvas.getWidth() - cardWidth) / 2;
+            y = rect.y - dip4 - cardHeight;
+            break;
 
-            case 3:
-                y = (canvas.getHeight() - cardHeight) / 2;
-                x = rect.x - dip4 - cardWidth;
-                break;
+        case 3:
+            y = (canvas.getHeight() - cardHeight) / 2;
+            x = rect.x - dip4 - cardWidth;
+            break;
         }
 
-      	return new Rectangle(x, y, cardWidth, cardHeight);
+        return new Rectangle(x, y, cardWidth, cardHeight);
     }
 
     /**
-     * Draws players cards. Moved here the method because uses Canvas methods - flushGraphics() which is preffered to
-     * be used only from this class.
+     * Draws players cards. Moved here the method because uses Canvas methods - flushGraphics() which is preffered to be used only from this class.
      * @param g Graphics object.
      * @param delay between drawing cards.
      */
     private void drawPlayersNames(Canvas canvas, BeloteView view, HumanBeloteGame game) {
-		for (int i = 0; i < game.getGame().getPlayersCount(); i++) {
-			drawPlayerName(canvas, game, game.getGame().getPlayer(i));
-		}
-	}
-    
+        for (int i = 0; i < game.getGame().getPlayersCount(); i++) {
+            drawPlayerName(canvas, game, game.getGame().getPlayer(i));
+        }
+    }
+
     /**
-     * Draws players cards. Moved here the method because uses Canvas methods - flushGraphics() which is preffered to
-     * be used only from this class.
+     * Draws players cards. Moved here the method because uses Canvas methods - flushGraphics() which is preffered to be used only from this class.
      * @param g Graphics object.
      * @param delay between drawing cards.
      */
-	private void drawPlayersCards(Canvas canvas, BeloteView view, HumanBeloteGame game, long delay) {
-		Player player = game.getGame().getDealAttackPlayer();
-		for (int i = 0; i < game.getGame().getPlayersCount(); i++) {
-			drawPlayerCards(canvas, view, game, player, delay);
-			player = game.getPlayerAfter(player);
-		}
-	}
-	
-	/**
-     * Draws player cards. Moved here the method because uses Canvas methods - flushGraphics() which is preffered to
-     * be used only from this class.
+    private void drawPlayersCards(Canvas canvas, BeloteView view, HumanBeloteGame game, long delay) {
+        Player player = game.getGame().getDealAttackPlayer();
+        for (int i = 0; i < game.getGame().getPlayersCount(); i++) {
+            drawPlayerCards(canvas, view, game, player, delay);
+            player = game.getPlayerAfter(player);
+        }
+    }
+
+    /**
+     * Draws player cards. Moved here the method because uses Canvas methods - flushGraphics() which is preffered to be used only from this class.
      * @param canvas Graphics object.
      * @param player player which cards are drawn.
      * @param delay between drawing cards.
@@ -796,44 +796,44 @@ final class BelotePainter extends BasePainter {
                         drawCard(canvas, card, rec.x, rec.y);
                     }
                 } else {
-                	if (player.isSameTeam(game.getHumanPlayer())) {
-                		drawCardBackImage(canvas, rec.x, rec.y);
-                	} else {
-                		drawRotatedCardBackImage(canvas, rec.x + rec.width, rec.y);
-                	}
+                    if (player.isSameTeam(game.getHumanPlayer())) {
+                        drawCardBackImage(canvas, rec.x, rec.y);
+                    } else {
+                        drawRotatedCardBackImage(canvas, rec.x + rec.width, rec.y);
+                    }
                 }
 
                 if (delay > 0) {
-                	view.refresh();
-                	sleep(delay);
+                    view.refresh();
+                    sleep(delay);
                 }
             }
         }
     }
-	
+
     /**
-	 * Sleeps for provided millisecond.
-	 * @param ms provided millisecond.
-	 */
-	private void sleep(final long ms) {
-		if (ms > 0) {
-			try {
-				Thread.sleep(ms);
-			} catch (InterruptedException ex) {
-				// D.N.
-			}
-		}
-	}
-    
-	private void clearBackground(Canvas graphics) {
-    	GradientDrawable bkg = pictureDecorator.getMainBKG();
-    	bkg.setDither(true);
-    	bkg.setBounds(new Rect(0, 0, graphics.getWidth(), graphics.getHeight()));
-    	bkg.draw(graphics);
+     * Sleeps for provided millisecond.
+     * @param ms provided millisecond.
+     */
+    private void sleep(final long ms) {
+        if (ms > 0) {
+            try {
+                Thread.sleep(ms);
+            } catch (InterruptedException ex) {
+                // D.N.
+            }
+        }
+    }
+
+    private void clearBackground(Canvas graphics) {
+        GradientDrawable bkg = pictureDecorator.getMainBKG();
+        bkg.setDither(true);
+        bkg.setBounds(new Rect(0, 0, graphics.getWidth(), graphics.getHeight()));
+        bkg.draw(graphics);
     }
 
     public final void drawGame(Canvas graphics, HumanBeloteGame game, BeloteView view, long delay) {
-    	clearBackground(graphics);
+        clearBackground(graphics);
         drawScore(graphics, game);
         drawAnnounce(graphics, game);
         drawPlayersNames(graphics, view, game);

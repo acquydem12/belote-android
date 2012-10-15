@@ -13,8 +13,7 @@ import belote.base.ComparableObject;
 import belote.bean.pack.card.rank.Rank;
 
 /**
- * Square class.
- * Represents 4 equal cards in the pack.
+ * Square class. Represents 4 equal cards in the pack.
  * @author Dimitar Karamanov
  */
 public final class Square extends ComparableObject {
@@ -22,8 +21,8 @@ public final class Square extends ComparableObject {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -3899337028903726108L;
-	/**
+    private static final long serialVersionUID = -3899337028903726108L;
+    /**
      * Square's rank.
      */
     private final Rank rank;
@@ -55,10 +54,8 @@ public final class Square extends ComparableObject {
     /**
      * Compares this Square with the specified object(Square) for order.
      * @param obj - specified object (Square).
-     * @return int value which may be:
-     *         = 0 if this Square and the specified object(Square) are equal
-     *         > 0 if this Square is bigger than the specified object(Square)
-     *         < 0 if this EqSquareualCards is less than the specified object(Square)
+     * @return int value which may be: = 0 if this Square and the specified object(Square) are equal > 0 if this Square is bigger than the specified
+     *         object(Square) < 0 if this EqSquareualCards is less than the specified object(Square)
      */
     public int compareTo(final Object obj) {
         final Square square = (Square) obj;
@@ -87,10 +84,9 @@ public final class Square extends ComparableObject {
     }
 
     /**
-     * Returns a string representation of the object. The return name is based on class short name.
-     * This method has to be used only for debug purpose when the project is not compiled with obfuscating.
-     * Don't use this method to represent the object. When the project is compiled with obfuscating the
-     * class name is not the same.
+     * Returns a string representation of the object. The return name is based on class short name. This method has to be used only for debug purpose when the
+     * project is not compiled with obfuscating. Don't use this method to represent the object. When the project is compiled with obfuscating the class name is
+     * not the same.
      * @return String a string representation of the object.
      */
     public String toString() {

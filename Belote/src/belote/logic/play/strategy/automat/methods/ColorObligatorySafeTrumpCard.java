@@ -17,8 +17,7 @@ import belote.logic.play.strategy.automat.base.PlayCardMethod;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * ColorObligatorySafeTrumpCard class.
- * PlayCardMethod which implements the logic of playing a safe trump card if is player team announce.
+ * ColorObligatorySafeTrumpCard class. PlayCardMethod which implements the logic of playing a safe trump card if is player team announce.
  * @author Dimitar Karamanov
  */
 public final class ColorObligatorySafeTrumpCard extends BaseTrumpMethod {

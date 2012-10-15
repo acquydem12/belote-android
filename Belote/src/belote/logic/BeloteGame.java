@@ -27,8 +27,7 @@ import belote.logic.announce.AnnounceGameLogic;
 import belote.logic.play.PlayGameLogic;
 
 /**
- * BeloteGame class.
- * Facade and proxy class which is the base point for the logic game.
+ * BeloteGame class. Facade and proxy class which is the base point for the logic game.
  * @author Dimitar Karamanov
  */
 public class BeloteGame {
@@ -60,23 +59,23 @@ public class BeloteGame {
     public BeloteGame() {
         this(new Game());
     }
-    
+
     /**
      * Constructor the only one.
      * @param names of the players.
      */
     public BeloteGame(Game game) {
-    	setGame(game);
+        setGame(game);
     }
-    
+
     public final void setGame(Game game) {
-    	this.game = game;
+        this.game = game;
         belotGameLogic = new PlayGameLogic(game);
         announceFactory = new AnnounceGameLogic(game);
     }
-    
+
     public final Game getGame() {
-    	return game;
+        return game;
     }
 
     /**
@@ -385,14 +384,14 @@ public class BeloteGame {
             player.getUnwantedSuits().add(card.getSuit());
             player.getMissedSuits().add(attackCard.getSuit());
         }
-        
+
         Announce announce = game.getAnnounceList().getContractAnnounce();
         if (announce != null && announce.getAnnounceSuit().equals(AnnounceSuit.AllTrump) && Rank.Jack.equals(card.getRank())) {
-        	player.getJackAceSuits().add(card.getSuit());
+            player.getJackAceSuits().add(card.getSuit());
         }
-        
+
         if (announce != null && announce.getAnnounceSuit().equals(AnnounceSuit.NotTrump) && Rank.Ace.equals(card.getRank())) {
-        	player.getJackAceSuits().add(card.getSuit());
+            player.getJackAceSuits().add(card.getSuit());
         }
     }
 

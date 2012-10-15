@@ -17,10 +17,10 @@ import belote.logic.announce.factory.automat.methods.suitDeterminators.base.Rank
  * @author Dimitar Karamanov
  */
 public final class JackNineAceSuit extends RankSuitDeterminator {
-	
-	public JackNineAceSuit() {
-		addRank(Rank.Jack);
-		addRank(Rank.Nine);
-		addRank(Rank.Ace);
-	}
+
+    public JackNineAceSuit() {
+        addRank(Rank.Jack);
+        addRank(Rank.Nine);
+        addRank(Rank.Ace);
+    }
 }

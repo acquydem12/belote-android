@@ -16,9 +16,8 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * ColorNoObligatoryEnemyGameSingleTrumpCard class.
- * PlayCardMethod which implements the logic of playing a card when the game is declared by enemy team and
- * the player has only single trump card - play it.
+ * ColorNoObligatoryEnemyGameSingleTrumpCard class. PlayCardMethod which implements the logic of playing a card when the game is declared by enemy team and the
+ * player has only single trump card - play it.
  * @author Dimitar Karamanov
  */
 public final class ColorNoObligatoryEnemyGameSingleTrumpCard extends BaseTrumpMethod {
@@ -40,7 +39,7 @@ public final class ColorNoObligatoryEnemyGameSingleTrumpCard extends BaseTrumpMe
     protected Card getPlayMethodCard(final Player player, final Suit trump) {
         final Card maxTrumpCard = player.getCards().findMaxSuitCard(trump);
         final int count = player.getCards().getSuitCount(trump);
-        //if have one no master card better play it (the enemy can get it)
+        // if have one no master card better play it (the enemy can get it)
         if (maxTrumpCard != null && count == SINGLE_CARD_COUNT && !isPlayerTeamAnnounce(player) && !isMaxSuitCardLeft(maxTrumpCard, true)) {
             return maxTrumpCard;
         }

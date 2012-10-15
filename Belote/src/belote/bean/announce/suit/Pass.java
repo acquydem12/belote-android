@@ -18,9 +18,9 @@ public final class Pass extends AnnounceSuit {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -4241790610370358080L;
+    private static final long serialVersionUID = -4241790610370358080L;
 
-	/**
+    /**
      * Constructor.
      */
     protected Pass() {
@@ -28,15 +28,14 @@ public final class Pass extends AnnounceSuit {
     }
 
     /**
-     * Color suit classes are Club, Diamond, Heart and Spade. If the objects is instance of some of them the
-     * result is true otherwise is false.
+     * Color suit classes are Club, Diamond, Heart and Spade. If the objects is instance of some of them the result is true otherwise is false.
      * @return boolean true if is color suit false otherwise.
      */
     public boolean isColorSuit() {
         return false;
     }
 
-        /**
+    /**
      * Returns base points.
      * @return int base points.
      */

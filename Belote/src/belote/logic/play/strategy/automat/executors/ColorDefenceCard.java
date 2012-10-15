@@ -13,8 +13,7 @@ import belote.bean.Game;
 import belote.logic.play.strategy.automat.executors.base.PlayCardExecutor;
 
 /**
- * ColorDefenceCard executor.
- * Used in ColorPlayStategy getXXXDefencePositionCard().
+ * ColorDefenceCard executor. Used in ColorPlayStategy getXXXDefencePositionCard().
  * @author Dimitar Karamanov
  */
 public final class ColorDefenceCard extends PlayCardExecutor {
@@ -25,12 +24,12 @@ public final class ColorDefenceCard extends PlayCardExecutor {
      */
     public ColorDefenceCard(final Game game) {
         super(game);
-        //Register play card methods.
-        //When attack card is trump
+        // Register play card methods.
+        // When attack card is trump
         register(new ColorDefenceTrumpAttackCard(game));
-        //When the player has from attack suit card or have to/can play trump
+        // When the player has from attack suit card or have to/can play trump
         register(new ColorDefenceNoTrumpAttackCard(game));
-        //When player play no needed card
+        // When player play no needed card
         register(new ColorNeedlessCard(game));
     }
 }

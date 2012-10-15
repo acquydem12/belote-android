@@ -22,8 +22,7 @@ import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAnd
 import belote.logic.announce.factory.automat.methods.suitDeterminators.AceTenKingSuit;
 
 /**
- * RegGameSupportNotTrumpAnnounce class.
- * Announce factory method which creates support not trump announce.
+ * RegGameSupportNotTrumpAnnounce class. Announce factory method which creates support not trump announce.
  * @author Dimitar Karamanov
  */
 public final class RegGameSupportNotTrumpAnnounce extends ConditionListMethod {

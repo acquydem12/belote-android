@@ -21,9 +21,9 @@ public final class TrickPack extends Pack {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 7015330407925820737L;
+    private static final long serialVersionUID = 7015330407925820737L;
 
-	/**
+    /**
      * Constructor.
      */
     public TrickPack() {

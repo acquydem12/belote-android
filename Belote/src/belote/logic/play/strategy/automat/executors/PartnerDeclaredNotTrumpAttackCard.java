@@ -20,8 +20,7 @@ import belote.logic.play.strategy.automat.methods.PartnerSuitAnnounceCard;
 import belote.logic.play.strategy.automat.methods.TeamSuitPartnerCard;
 
 /**
- * Partner declared NotTrumpAttackCard executor.
- * Used in NotTrumpPlayStategy getAttackCard().
+ * Partner declared NotTrumpAttackCard executor. Used in NotTrumpPlayStategy getAttackCard().
  * @author Dimitar Karamanov
  */
 class PartnerDeclaredNotTrumpAttackCard extends PlayCardExecutor {
@@ -32,7 +31,7 @@ class PartnerDeclaredNotTrumpAttackCard extends PlayCardExecutor {
      */
     public PartnerDeclaredNotTrumpAttackCard(final Game game) {
         super(game);
-        //Register play card methods.
+        // Register play card methods.
         register(new MeterSuitCard(game));
         register(new TeamSuitPartnerCard(game));
         register(new ColorlessHandCard(game));

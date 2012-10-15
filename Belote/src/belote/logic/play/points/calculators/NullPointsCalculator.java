@@ -13,8 +13,7 @@ import belote.bean.Game;
 import belote.bean.Team;
 
 /**
- * NullPointsCalculator class.
- * Null object implementation of PointsCalculator.
+ * NullPointsCalculator class. Null object implementation of PointsCalculator.
  * @author Dimitar Karamanov
  */
 public final class NullPointsCalculator extends PointsCalculator {
@@ -32,7 +31,7 @@ public final class NullPointsCalculator extends PointsCalculator {
      * @param team for which the points will be calculated.
      */
     public void calculateTeamPoints(Team team) {
-        //Null object
+        // Null object
     }
 
     /**
@@ -40,6 +39,6 @@ public final class NullPointsCalculator extends PointsCalculator {
      * @param team for which the points will be rounded.
      */
     public void trickTeamPoints(Team team) {
-        //Null object
+        // Null object
     }
 }

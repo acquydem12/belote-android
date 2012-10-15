@@ -16,9 +16,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * ColorMinAllCard class.
- * PlayCardMethod which implements the logic of playing the minimum by rank suit card in color game
- * (excludes the trump's cards).
+ * ColorMinAllCard class. PlayCardMethod which implements the logic of playing the minimum by rank suit card in color game (excludes the trump's cards).
  * @author Dimitar Karamanov
  */
 public final class ColorMinAllCard extends BaseTrumpMethod {

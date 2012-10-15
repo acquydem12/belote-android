@@ -18,9 +18,9 @@ public final class King extends Rank {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -9147918929384117515L;
+    private static final long serialVersionUID = -9147918929384117515L;
 
-	/**
+    /**
      * Constructor.
      */
     protected King() {

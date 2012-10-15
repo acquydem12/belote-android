@@ -30,10 +30,10 @@ public final class EndGameSupportAnnounce extends AnnounceExecutor {
      */
     public EndGameSupportAnnounce(final Game game) {
         super(game);
-        //Pre conditions
+        // Pre conditions
         addPreCondition(new MultipleOrCondition(new OppositeTeamEndGameZone(game), new PlayerTeamEndGameZone()));
         addPreCondition(new PartnerNormalColorAnnounce(game));
-        //Methods
+        // Methods
         register(new EndGameSupportColorAnnounce(game));
         register(new EndGameSupportAllTrumpAnnounce(game));
         register(new EndGameSupportNotTrumpAnnounce(game));

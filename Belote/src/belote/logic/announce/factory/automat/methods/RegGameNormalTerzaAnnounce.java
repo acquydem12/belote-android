@@ -20,8 +20,7 @@ import belote.logic.announce.factory.automat.methods.conditions.HasSuit;
 import belote.logic.announce.factory.automat.methods.suitDeterminators.SequenceSuit;
 
 /**
- * RegGameNormalTerzaAnnounce class.
- * Announce factory method which creates suit announce based on terza.
+ * RegGameNormalTerzaAnnounce class. Announce factory method which creates suit announce based on terza.
  * @author Dimitar Karamanov
  */
 public final class RegGameNormalTerzaAnnounce extends ConditionListMethod {

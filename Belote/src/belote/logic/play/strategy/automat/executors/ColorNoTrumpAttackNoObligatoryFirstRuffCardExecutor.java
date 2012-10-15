@@ -21,8 +21,7 @@ import belote.logic.play.strategy.automat.methods.ColorNoObligatoryEnemyGameSing
 import belote.logic.play.strategy.automat.methods.ColorNoObligatorySecondDeffenceTrumpCard;
 
 /**
- * ColorNoTrumpAttackNoObligatoryFirstRuffCard class.
- * PlayCardMethod is used to play card when the current trick player is player' partner and has no card from
+ * ColorNoTrumpAttackNoObligatoryFirstRuffCard class. PlayCardMethod is used to play card when the current trick player is player' partner and has no card from
  * attack suit and trump card is NOT PLAYED YET.
  * @author Dimitar Karamanov
  */
@@ -34,7 +33,7 @@ public final class ColorNoTrumpAttackNoObligatoryFirstRuffCardExecutor extends P
      */
     public ColorNoTrumpAttackNoObligatoryFirstRuffCardExecutor(final Game game) {
         super(game);
-        //Register play card methods.
+        // Register play card methods.
         register(new ColorNoObligatoryAllMastersTrumpCard(game));
         register(new ColorNoObligatoryEnemyGameSingleTrumpCard(game));
         register(new ColorNoObligatorySecondDeffenceTrumpCard(game));
@@ -61,9 +60,3 @@ public final class ColorNoTrumpAttackNoObligatoryFirstRuffCardExecutor extends P
         return result;
     }
 }
-
-
-
-
-
-

@@ -16,7 +16,7 @@ import belote.bean.announce.suit.AnnounceSuit;
  * TeamCanNormalAnnounce class.
  * @author Dimitar Karamanov
  */
-public final class TeamCanNormalAnnounce  extends BaseTeamCanAnnounce {
+public final class TeamCanNormalAnnounce extends BaseTeamCanAnnounce {
 
     /**
      * Minimum points to make normal announce (can hold double announce).

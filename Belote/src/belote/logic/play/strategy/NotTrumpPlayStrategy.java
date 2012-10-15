@@ -19,8 +19,7 @@ import belote.logic.play.strategy.automat.executors.NotTrumpThirdDefencePosition
 import belote.logic.play.strategy.validators.NotTrumpCardValidator;
 
 /**
- * NTPlayCardStrategy class.
- * Not trump strategy playing class.
+ * NTPlayCardStrategy class. Not trump strategy playing class.
  * @author Dimitar Karamanov
  */
 public final class NotTrumpPlayStrategy extends BasePlayStrategy {
@@ -30,12 +29,8 @@ public final class NotTrumpPlayStrategy extends BasePlayStrategy {
      * @param game BelotGame instance.
      */
     public NotTrumpPlayStrategy(final Game game) {
-        super(game, 
-              new NotTrumpCardValidator(game),
-              new NotTrumpAttackCard(game),
-              new NotTrumpFirstDefencePositionCard(game),
-              new NotTrumpSecondDefencePositionCard(game),
-              new NotTrumpThirdDefencePositionCard(game));
+        super(game, new NotTrumpCardValidator(game), new NotTrumpAttackCard(game), new NotTrumpFirstDefencePositionCard(game),
+                new NotTrumpSecondDefencePositionCard(game), new NotTrumpThirdDefencePositionCard(game));
     }
 
     /**

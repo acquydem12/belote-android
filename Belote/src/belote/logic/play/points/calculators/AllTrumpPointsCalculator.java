@@ -13,8 +13,7 @@ import belote.bean.Game;
 import belote.bean.Team;
 
 /**
- * ATPointsCalculator class.
- * Points calculator class for All Trump game.
+ * ATPointsCalculator class. Points calculator class for All Trump game.
  * @author Dimitar Karamanov
  */
 public final class AllTrumpPointsCalculator extends PointsCalculator {

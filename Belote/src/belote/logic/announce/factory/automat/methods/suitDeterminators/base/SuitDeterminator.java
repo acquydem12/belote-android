@@ -18,11 +18,11 @@ import belote.bean.pack.card.suit.Suit;
  */
 public interface SuitDeterminator {
 
-	/**
-	 * Returns the determined suit.
-	 * @param player which has to declare the next announce.
-	 * @return Suit instance or null.
-	 */
-	Suit determinateSuit(Player player);
+    /**
+     * Returns the determined suit.
+     * @param player which has to declare the next announce.
+     * @return Suit instance or null.
+     */
+    Suit determinateSuit(Player player);
 
 }

@@ -28,8 +28,7 @@ import belote.bean.trick.TrickListIterator;
 import belote.logic.play.strategy.automat.base.PlayCardMethod;
 
 /**
- * BaseMethod class.
- * Based class of all AI methods. Contains several helper methods used in the concrete methods.
+ * BaseMethod class. Based class of all AI methods. Contains several helper methods used in the concrete methods.
  * @author Dimitar Karamanov
  */
 public abstract class BaseMethod implements PlayCardMethod {
@@ -88,8 +87,8 @@ public abstract class BaseMethod implements PlayCardMethod {
      * @return Card object instance or null.
      */
     public final Card getPlayerCard(final Player player) {
-    	//BelotLogicTest.addLog("Method --> " + getClass().getName());
-    	
+        // BelotLogicTest.addLog("Method --> " + getClass().getName());
+
         final Card result = getPlayMethodCard(player);
         if (result != null) {
             result.setCardAcquireMethod(getClass().getSimpleName());
@@ -106,7 +105,7 @@ public abstract class BaseMethod implements PlayCardMethod {
 
     /**
      * Returns true if only the team's players has cards from the provided suit, false otherwise.
-     *
+     * 
      * @param suit provided suit.
      * @param team provided team.
      * @return boolean true if only the team's players has cards with the provided suit, false otherwise.
@@ -299,8 +298,7 @@ public abstract class BaseMethod implements PlayCardMethod {
     }
 
     /**
-     * Returns a pack holding the other 3 players(excluding the provided player) cards from a given suit.
-     * (excluding the passed and player' ones).
+     * Returns a pack holding the other 3 players(excluding the provided player) cards from a given suit. (excluding the passed and player' ones).
      * @param player provided player.
      * @param suit provided suit.
      * @return Pack with rest suit cards or empty.

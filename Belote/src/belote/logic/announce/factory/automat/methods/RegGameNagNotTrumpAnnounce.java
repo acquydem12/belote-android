@@ -19,8 +19,7 @@ import belote.logic.announce.factory.automat.methods.conditions.RankCount;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
 
 /**
- * RegGameNagNotTrumpAnnounce class.
- * Announce factory method which creates nag not trump announce.
+ * RegGameNagNotTrumpAnnounce class. Announce factory method which creates nag not trump announce.
  * @author Dimitar Karamanov
  */
 public final class RegGameNagNotTrumpAnnounce extends ConditionListMethod {

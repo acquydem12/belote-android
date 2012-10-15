@@ -26,8 +26,7 @@ import belote.bean.pack.sequence.SequenceList;
 import belote.bean.pack.square.SquareList;
 
 /**
- * Pack class.
- * Represents a collection of cards objects.
+ * Pack class. Represents a collection of cards objects.
  * @author Dimitar Karamanov
  */
 public class Pack implements Serializable {
@@ -35,9 +34,9 @@ public class Pack implements Serializable {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -5907720214058311509L;
+    private static final long serialVersionUID = -5907720214058311509L;
 
-	/**
+    /**
      * Shuffle count.
      */
     private static final int SHUFFLE_COUNT = 1000;
@@ -234,7 +233,7 @@ public class Pack implements Serializable {
         final Random random = new Random(milliseconds);
 
         for (int i = 0; i < SHUFFLE_COUNT; i++) {
-        	int randomInt = random.nextInt();
+            int randomInt = random.nextInt();
             final int index = Math.abs(randomInt % collection.size());
             if (index != collection.size() - 1) {
                 final Card indexCard = collection.remove(index);
@@ -244,10 +243,9 @@ public class Pack implements Serializable {
     }
 
     /**
-     * Returns a string representation of the object. The return name is based on class short name.
-     * This method has to be used only for debug purpose when the project is not compiled with obfuscating.
-     * Don't use this method to represent the object. When the project is compiled with obfuscating the
-     * class name is not the same.
+     * Returns a string representation of the object. The return name is based on class short name. This method has to be used only for debug purpose when the
+     * project is not compiled with obfuscating. Don't use this method to represent the object. When the project is compiled with obfuscating the class name is
+     * not the same.
      * @return String a string representation of the object.
      */
     public final String toString() {
@@ -359,7 +357,7 @@ public class Pack implements Serializable {
      * Arranges the pack cards.
      */
     public final void arrange() {
-    	boolean swap = true;
+        boolean swap = true;
         for (int i = 0, n = collection.size(); i < n - 1 && swap; i++) {
             swap = false;
 
@@ -708,8 +706,7 @@ public class Pack implements Serializable {
     }
 
     /**
-     * PackIteratorImpl class.
-     * Implements PackIterator interface.
+     * PackIteratorImpl class. Implements PackIterator interface.
      */
     private static class PackIteratorImpl implements PackIterator {
 

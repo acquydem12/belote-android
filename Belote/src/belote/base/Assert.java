@@ -10,8 +10,7 @@
 package belote.base;
 
 /**
- * Assert library.
- * The library provides standard asserts methods.
+ * Assert library. The library provides standard asserts methods.
  * @author Dimitar Karamanov
  */
 public final class Assert {
@@ -26,7 +25,7 @@ public final class Assert {
     /**
      * Asserts the provided object is not null.
      * @param object checked for null value. If the object is null a RuntimeException is thrown.
-     * @param name   object class type used in the error message.
+     * @param name object class type used in the error message.
      */
     public static void assertNotNull(final Object object, final Class<?> name) {
         if (object == null) {
@@ -37,7 +36,7 @@ public final class Assert {
     /**
      * Asserts the provided condition is true.
      * @param condition checked for validity. If the condition is false a RuntimeException is thrown.
-     * @param message   displayed on failure.
+     * @param message displayed on failure.
      */
     public static void assertTrue(final boolean condition, final String message) {
         if (!condition) {
@@ -47,7 +46,7 @@ public final class Assert {
 
     /**
      * Asserts the provided array is not null and has a minimum length.
-     * @param array  which minimum length is checked.
+     * @param array which minimum length is checked.
      * @param length the minimum demand length size.
      */
     public static void assertArrayLenght(final Object[] array, final int length) {

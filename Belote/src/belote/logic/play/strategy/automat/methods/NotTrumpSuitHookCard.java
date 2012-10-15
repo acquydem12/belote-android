@@ -17,8 +17,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.methods.base.BaseMethod;
 
 /**
- * NotTrumpSuitHookCard class.
- * PlayCardMethod which implements the logic of playing a hook card (third defence position) in not trump game.
+ * NotTrumpSuitHookCard class. PlayCardMethod which implements the logic of playing a hook card (third defence position) in not trump game.
  * @author Dimitar Karamanov
  */
 public final class NotTrumpSuitHookCard extends BaseMethod {
@@ -30,22 +29,22 @@ public final class NotTrumpSuitHookCard extends BaseMethod {
     public NotTrumpSuitHookCard(final Game game) {
         super(game);
     }
-    
+
     private boolean canHook(final Player player, final Suit suit) {
-    	if (isFirstDefencePosition()) {
-    		Player next = game.getPlayerAfter(player);
-    		Player afterNext = game.getPlayerAfter(next);
-    		
-    		return next.getMissedSuits().contains(suit) && afterNext.getMissedSuits().contains(suit);
-    	} else if (isSecondDefencePosition()) {
-    		Player next = game.getPlayerAfter(player);
-    		
-    		return next.getMissedSuits().contains(suit);
-    	} else if (isThirdDefencePosition()) {
-    		return true;
-    	}
-    	
-    	return false;
+        if (isFirstDefencePosition()) {
+            Player next = game.getPlayerAfter(player);
+            Player afterNext = game.getPlayerAfter(next);
+
+            return next.getMissedSuits().contains(suit) && afterNext.getMissedSuits().contains(suit);
+        } else if (isSecondDefencePosition()) {
+            Player next = game.getPlayerAfter(player);
+
+            return next.getMissedSuits().contains(suit);
+        } else if (isThirdDefencePosition()) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -61,7 +60,7 @@ public final class NotTrumpSuitHookCard extends BaseMethod {
         if (attackCard != null && handCard != null && handPlayer != null && canHook(player, attackCard.getSuit())) {
             final Card maxSuitCard = player.getCards().findMaxSuitCard(attackCard.getSuit());
             if (maxSuitCard != null) {
-                //is meter suit and can get the card
+                // is meter suit and can get the card
                 if (isMeterSuitCard(player, maxSuitCard) && maxSuitCard.compareTo(handCard) > 0) {
                     return maxSuitCard;
                 }

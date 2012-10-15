@@ -17,8 +17,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * MinMeterSuitCard class.
- * PlayCardMethod which implements the logic of playing the minimum by rank meter card.
+ * MinMeterSuitCard class. PlayCardMethod which implements the logic of playing the minimum by rank meter card.
  * @author Dimitar Karamanov
  */
 public final class MinMeterSuitCard extends BaseTrumpMethod {

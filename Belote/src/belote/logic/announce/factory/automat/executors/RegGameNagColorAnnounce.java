@@ -32,4 +32,3 @@ public final class RegGameNagColorAnnounce extends AnnounceExecutor {
         register(new RegGameNagSimpleAnnounce(game));
     }
 }
- 

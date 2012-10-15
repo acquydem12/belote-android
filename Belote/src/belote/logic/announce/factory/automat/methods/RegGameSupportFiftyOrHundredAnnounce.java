@@ -19,8 +19,7 @@ import belote.logic.announce.factory.automat.methods.conditions.HasSuit;
 import belote.logic.announce.factory.automat.methods.suitDeterminators.SequenceSuit;
 
 /**
- * RegGameSupportFiftyOrHundredAnnounce class.
- * Announce factory method which creates support suit announce based on 50 or 100 sequence.
+ * RegGameSupportFiftyOrHundredAnnounce class. Announce factory method which creates support suit announce based on 50 or 100 sequence.
  * @author Dimitar Karamanov
  */
 public final class RegGameSupportFiftyOrHundredAnnounce extends ConditionListMethod {

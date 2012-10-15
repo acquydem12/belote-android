@@ -19,8 +19,7 @@ import belote.logic.play.strategy.automat.methods.ColorTeamSuitPartnerCard;
 import belote.logic.play.strategy.automat.methods.MeterSuitCard;
 
 /**
- * ColorAttackCard executor.
- * Used in ColorPlayStategy getAttackCard().
+ * ColorAttackCard executor. Used in ColorPlayStategy getAttackCard().
  * @author Dimitar Karamanov
  */
 public final class ColorAttackCard extends PlayCardExecutor {
@@ -31,7 +30,7 @@ public final class ColorAttackCard extends PlayCardExecutor {
      */
     public ColorAttackCard(final Game game) {
         super(game);
-        //Register play card methods.
+        // Register play card methods.
         register(new ColorTeamSuitPartnerCard(game));
         register(new ColorDominantTrumpCard(game));
         register(new ColorPartnerTrumpCard(game));
@@ -42,4 +41,3 @@ public final class ColorAttackCard extends PlayCardExecutor {
         register(new ColorNeedlessCard(game));
     }
 }
-

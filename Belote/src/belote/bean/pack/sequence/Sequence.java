@@ -13,8 +13,7 @@ import belote.base.ComparableObject;
 import belote.bean.pack.card.Card;
 
 /**
- * Sequence class.
- * Represents card's sequence which is 3, 4 or 5 cards from same suit and consecutive ranks.
+ * Sequence class. Represents card's sequence which is 3, 4 or 5 cards from same suit and consecutive ranks.
  * @author Dimitar Karamanov
  */
 public final class Sequence extends ComparableObject {
@@ -22,9 +21,9 @@ public final class Sequence extends ComparableObject {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -2337961220980036566L;
+    private static final long serialVersionUID = -2337961220980036566L;
 
-	/**
+    /**
      * The max sequence's card (It marks the rank and the suit).
      */
     private final Card maxCard;
@@ -69,10 +68,9 @@ public final class Sequence extends ComparableObject {
     }
 
     /**
-     * Returns a string representation of the object. The return name is based on class short name.
-     * This method has to be used only for debug purpose when the project is not compiled with ofbuscating.
-     * Don't use this method to represent the object. When the project is compiled with ofbuscating the
-     * class name is not the same.
+     * Returns a string representation of the object. The return name is based on class short name. This method has to be used only for debug purpose when the
+     * project is not compiled with ofbuscating. Don't use this method to represent the object. When the project is compiled with ofbuscating the class name is
+     * not the same.
      * @return String a string representation of the object.
      */
     public String toString() {
@@ -90,10 +88,8 @@ public final class Sequence extends ComparableObject {
     /**
      * Compares this sequence with specified sequence.
      * @param obj specified object.
-     * @return int value which may be
-     *         = 0 if this sequence and the specified sequence are equal
-     *         > 0 if this sequence is bigger than the specified sequence
-     *         < 0 if this sequence is less than the specified sequence
+     * @return int value which may be = 0 if this sequence and the specified sequence are equal > 0 if this sequence is bigger than the specified sequence < 0
+     *         if this sequence is less than the specified sequence
      */
     public int compareTo(final Object obj) {
         final Sequence sequence = (Sequence) obj;

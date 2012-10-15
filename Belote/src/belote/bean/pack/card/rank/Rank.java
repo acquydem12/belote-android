@@ -9,11 +9,11 @@
  */
 package belote.bean.pack.card.rank;
 
-import belote.bean.pack.card.rank.comparator.RankComparator;
-import belote.base.ComparableObject;
-
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import belote.base.ComparableObject;
+import belote.bean.pack.card.rank.comparator.RankComparator;
 
 /**
  * Rank class Represents card's rank which has one of the following values 7, 8, 9, 10, J, Q, K, A.
@@ -24,9 +24,9 @@ public abstract class Rank extends ComparableObject {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 8435657626968675818L;
+    private static final long serialVersionUID = 8435657626968675818L;
 
-	/**
+    /**
      * Seven ranks objects.
      */
     public static final Rank Seven = new Seven();
@@ -106,7 +106,7 @@ public abstract class Rank extends ComparableObject {
      */
     static {
         rankList = new ArrayList<Rank>();
-                
+
         rankList.add(Seven);
         rankList.add(Eight);
         rankList.add(Nine);
@@ -127,8 +127,7 @@ public abstract class Rank extends ComparableObject {
      * @param ntPoints NT rank's points.
      * @param eqPoints equal cards rank points.
      */
-    protected Rank(final int stRank, final int atRank, final int ntRank,
-            final int atPoints, final int ntPoints, final int eqPoints) {
+    protected Rank(final int stRank, final int atRank, final int ntRank, final int atPoints, final int ntPoints, final int eqPoints) {
         this.stRank = stRank;
         this.atRank = atRank;
         this.ntRank = ntRank;
@@ -138,10 +137,9 @@ public abstract class Rank extends ComparableObject {
     }
 
     /**
-     * Returns a string representation of the object. The return name is based on class short name.
-     * This method has to be used only for debug purpose when the project is not compiled with ofbuscating.
-     * Don't use this method to represent the object. When the project is compiled with ofbuscating the
-     * class name is not the same.
+     * Returns a string representation of the object. The return name is based on class short name. This method has to be used only for debug purpose when the
+     * project is not compiled with ofbuscating. Don't use this method to represent the object. When the project is compiled with ofbuscating the class name is
+     * not the same.
      * @return String a string representation of the object.
      */
     public String toString() {
@@ -183,10 +181,8 @@ public abstract class Rank extends ComparableObject {
     /**
      * Compares this rank with the specified rank for order using standard rank's value.
      * @param obj specified object.
-     * @return int value which may be:
-     *      = 0 if this rank and the specified rank are equal
-     *      > 0 if this rank is bigger than the specified rank
-     *      < 0 if this rank is less than the specified rank
+     * @return int value which may be: = 0 if this rank and the specified rank are equal > 0 if this rank is bigger than the specified rank < 0 if this rank is
+     *         less than the specified rank
      */
     public int compareTo(final Object obj) {
         final Rank compRank = (Rank) obj;
@@ -196,10 +192,8 @@ public abstract class Rank extends ComparableObject {
     /**
      * Compares this rank with the specified rank for order using AT rank's value.
      * @param obj specified object.
-     * @return int value which may be:
-     *      = 0 if this rank and the specified rank are equal
-     *      > 0 if this rank is bigger than the specified rank
-     *      < 0 if this rank is less than the specified rank
+     * @return int value which may be: = 0 if this rank and the specified rank are equal > 0 if this rank is bigger than the specified rank < 0 if this rank is
+     *         less than the specified rank
      */
     public int compareToAT(final Object obj) {
         final Rank compRank = (Rank) obj;
@@ -209,10 +203,8 @@ public abstract class Rank extends ComparableObject {
     /**
      * Compares this rank with the specified rank for order using NT rank's value.
      * @param obj specified object.
-     * @return int value which may be:
-     *      = 0 if this rank and the specified rank are equal
-     *      > 0 if this rank is bigger than the specified rank
-     *      < 0 if this rank is less than the specified rank
+     * @return int value which may be: = 0 if this rank and the specified rank are equal > 0 if this rank is bigger than the specified rank < 0 if this rank is
+     *         less than the specified rank
      */
     public int compareToNT(final Object obj) {
         final Rank compRank = (Rank) obj;

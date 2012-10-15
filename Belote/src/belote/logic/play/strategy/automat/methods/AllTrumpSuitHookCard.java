@@ -16,9 +16,8 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.methods.base.BaseMethod;
 
 /**
- * AllTrumpSuitHookCard class.
- * PlayCardMethod which implements the logic of playing a card in all trump game in third defense position, which try
- * to "hook" the hand.
+ * AllTrumpSuitHookCard class. PlayCardMethod which implements the logic of playing a card in all trump game in third defense position, which try to "hook" the
+ * hand.
  * @author Dimitar Karamanov
  */
 public final class AllTrumpSuitHookCard extends BaseMethod {
@@ -30,22 +29,22 @@ public final class AllTrumpSuitHookCard extends BaseMethod {
     public AllTrumpSuitHookCard(final Game game) {
         super(game);
     }
-    
+
     private boolean canHook(final Player player, final Suit suit) {
-    	if (isFirstDefencePosition()) {
-    		Player next = game.getPlayerAfter(player);
-    		Player afterNext = game.getPlayerAfter(next);
-    		
-    		return next.getMissedSuits().contains(suit) && afterNext.getMissedSuits().contains(suit);
-    	} else if (isSecondDefencePosition()) {
-    		Player next = game.getPlayerAfter(player);
-    		
-    		return next.getMissedSuits().contains(suit);
-    	} else if (isThirdDefencePosition()) {
-    		return true;
-    	}
-    	
-    	return false;
+        if (isFirstDefencePosition()) {
+            Player next = game.getPlayerAfter(player);
+            Player afterNext = game.getPlayerAfter(next);
+
+            return next.getMissedSuits().contains(suit) && afterNext.getMissedSuits().contains(suit);
+        } else if (isSecondDefencePosition()) {
+            Player next = game.getPlayerAfter(player);
+
+            return next.getMissedSuits().contains(suit);
+        } else if (isThirdDefencePosition()) {
+            return true;
+        }
+
+        return false;
     }
 
     /**

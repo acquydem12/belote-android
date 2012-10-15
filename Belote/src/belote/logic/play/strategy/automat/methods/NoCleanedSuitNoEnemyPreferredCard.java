@@ -17,8 +17,7 @@ import belote.bean.pack.card.suit.SuitIterator;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * NoCleanedSuitNoEnemyPreferredCard class.
- * PlayCardMethod which implements the logic of playing not cleaned and not enemy preffered suit card.
+ * NoCleanedSuitNoEnemyPreferredCard class. PlayCardMethod which implements the logic of playing not cleaned and not enemy preffered suit card.
  * @author Dimitar Karamanov
  */
 public final class NoCleanedSuitNoEnemyPreferredCard extends BaseTrumpMethod {
@@ -38,7 +37,7 @@ public final class NoCleanedSuitNoEnemyPreferredCard extends BaseTrumpMethod {
      */
     protected Card getPlayMethodCard(final Player player, final Suit trump) {
         final Player partner = player.getPartner();
-        //Unwanted suits
+        // Unwanted suits
         for (final SuitIterator iterator = Suit.iterator(); iterator.hasNext();) {
             final Suit suit = iterator.next();
 

@@ -16,8 +16,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * ColorNoObligatorySecondDeffenceTrumpCard class.
- * PlayCardMethod which implements the logic of playing a card when the player is on second defence position.
+ * ColorNoObligatorySecondDeffenceTrumpCard class. PlayCardMethod which implements the logic of playing a card when the player is on second defence position.
  * (Analyze if to play trump or not).
  * @author Dimitar Karamanov
  */
@@ -45,14 +44,17 @@ public final class ColorNoObligatorySecondDeffenceTrumpCard extends BaseTrumpMet
             final Player lastPlayer = game.getPlayerAfter(player);
             final boolean isAnnouncePlayer = lastPlayer.equals(game.getAnnounceList().getOpenContractAnnouncePlayer());
 
-            //If the last(the 4th round position) player is the color game announcer and the attack cards is in his|her missed suit and
-            //has trump cards better to skip to play trump.
+            // If the last(the 4th round position) player is the color game
+            // announcer and the attack cards is in his|her missed suit and
+            // has trump cards better to skip to play trump.
             final Card attackCard = game.getTrickCards().getAttackCard();
-            if (attackCard != null && isAnnouncePlayer && !lastPlayer.getMissedSuits().contains(trump) && lastPlayer.getMissedSuits().contains(attackCard.getSuit())) {
+            if (attackCard != null && isAnnouncePlayer && !lastPlayer.getMissedSuits().contains(trump)
+                    && lastPlayer.getMissedSuits().contains(attackCard.getSuit())) {
                 return null;
             }
 
-            // if the max attack card is not the max left card better to play trump
+            // if the max attack card is not the max left card better to play
+            // trump
             if (maxAttackSuitCard != null && !isMaxSuitCardLeft(maxAttackSuitCard, false) && maxTrumpCard != null) {
                 if (isPlayerTeamAnnounce(player)) {
                     return player.getCards().findMinSuitCard(trump);

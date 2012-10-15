@@ -109,17 +109,17 @@ public final class PlayGameLogic {
      */
     public PlayGameLogic(final Game game) {
         this.game = game;
-        //Play card strategies helpers
+        // Play card strategies helpers
         clPlayCardStrategy = new ColorPlayStrategy(game);
         atPlayCardStrategy = new AllTrumpPlayStrategy(game);
         ntPlayCardStrategy = new NotTrumpPlayStrategy(game);
         nullPlayCardStrategy = new NullPlayCardStrategy(game);
-        //Game points calculators
+        // Game points calculators
         clPointsCalculator = new ColorPointsCalculator(game);
         atPointsCalculator = new AllTrumpPointsCalculator(game);
         ntPointsCalculator = new NotTrumpPointsCalculator(game);
         nullPointsCalculator = new NullPointsCalculator(game);
-        //Game points distributors
+        // Game points distributors
         winGamePointsDistributor = new WinGamePointsDistributor(game);
         lostGamePointsDistributor = new LostGamePointsDistributor(game);
         equalGamePointsDistributor = new EqualGamePointsDistributor(game);
@@ -188,18 +188,18 @@ public final class PlayGameLogic {
 
     /**
      * Returns playing card for the provided player (AI).
-     *
+     * 
      * @param player provided player.
      * @return Card playing card for the provided player (AI).
      */
     public Card getPlayerCard(final Player player) throws BelotException {
         final Announce announce = game.getAnnounceList().getContractAnnounce();
         final Card card = getHelperByAnnounce(announce).getPlayerCard(player);
-        
+
         if (!getHelperByAnnounce(announce).validatePlayerCard(player, card)) {
-        	throw new BelotException("The play of card " + card.toString() + " is not valid");
+            throw new BelotException("The play of card " + card.toString() + " is not valid");
         }
-       
+
         return card;
     }
 

@@ -17,8 +17,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * MaxSingleNoHandCard class.
- * PlayCardMethod which implements the logic of playing the maximum rank single no hand card (to give it to the partner hand).
+ * MaxSingleNoHandCard class. PlayCardMethod which implements the logic of playing the maximum rank single no hand card (to give it to the partner hand).
  * @author Dimitar Karamanov
  */
 public final class MaxSingleNoHandCard extends BaseTrumpMethod {

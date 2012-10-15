@@ -14,8 +14,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * SequencesList Class.
- * Wrapper class of system collection used to hold and access Sequence instances.
+ * SequencesList Class. Wrapper class of system collection used to hold and access Sequence instances.
  * @author Dimitar Karamanov
  */
 public final class SequenceList implements Serializable {
@@ -23,8 +22,8 @@ public final class SequenceList implements Serializable {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 6748182747989159923L;
-	/**
+    private static final long serialVersionUID = 6748182747989159923L;
+    /**
      * Internal container.
      */
     private ArrayList<Sequence> data = new ArrayList<Sequence>();
@@ -61,10 +60,9 @@ public final class SequenceList implements Serializable {
     }
 
     /**
-     * Returns a string representation of the object. The return name is based on class short name.
-     * This method has to be used only for debug purpose when the project is not compiled with ofbuscating.
-     * Don't use this method to represent the object. When the project is compiled with ofbuscating the
-     * class name is not the same.
+     * Returns a string representation of the object. The return name is based on class short name. This method has to be used only for debug purpose when the
+     * project is not compiled with ofbuscating. Don't use this method to represent the object. When the project is compiled with ofbuscating the class name is
+     * not the same.
      * @return String a string representation of the object.
      */
     public String toString() {
@@ -80,8 +78,7 @@ public final class SequenceList implements Serializable {
     }
 
     /**
-     * SequencesIteratorImpl class.
-     * Implements SequencesIterator interface.
+     * SequencesIteratorImpl class. Implements SequencesIterator interface.
      */
     private class SequencesIteratorImpl implements SequenceIterator {
 

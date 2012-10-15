@@ -32,4 +32,3 @@ public final class EndGameOpenNormalAnnounce extends AnnounceExecutor {
         register(new EndGameOpenColorAnnounce(game));
     }
 }
-

@@ -17,8 +17,7 @@ import belote.bean.pack.card.suit.SuitIterator;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * PartnerPreferredSuitCard class.
- * PlayCardMethod which implements the logic of playing card from partner preferred and not missed suit.
+ * PartnerPreferredSuitCard class. PlayCardMethod which implements the logic of playing card from partner preferred and not missed suit.
  * @author Dimitar Karamanov.
  */
 public final class PartnerPreferredSuitCard extends BaseTrumpMethod {
@@ -38,7 +37,7 @@ public final class PartnerPreferredSuitCard extends BaseTrumpMethod {
      */
     protected Card getPlayMethodCard(final Player player, final Suit trump) {
         final Player partner = player.getPartner();
-        //Prefer suits
+        // Prefer suits
         for (final SuitIterator iterator = partner.getPreferredSuits().iterator(); iterator.hasNext();) {
             final Suit suit = iterator.next();
             if ((trump == null || !trump.equals(suit)) && !partner.getMissedSuits().contains(suit)) {

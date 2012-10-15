@@ -17,8 +17,7 @@ import belote.bean.pack.card.suit.SuitIterator;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * TeamSuitCard class.
- * PlayCardMethod which implements the logic of playing the minimum card from the first found team suit.
+ * TeamSuitCard class. PlayCardMethod which implements the logic of playing the minimum card from the first found team suit.
  * @author Dimitar Karamanov
  */
 public final class TeamSuitCard extends BaseTrumpMethod {

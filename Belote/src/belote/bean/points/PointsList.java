@@ -14,8 +14,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * PointList class.
- * Wrapper class of system collection used to hold and access points instances.
+ * PointList class. Wrapper class of system collection used to hold and access points instances.
  * @author Dimitar Karamanov
  */
 public final class PointsList implements Serializable {
@@ -23,8 +22,8 @@ public final class PointsList implements Serializable {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 8379973340881747881L;
-	/**
+    private static final long serialVersionUID = 8379973340881747881L;
+    /**
      * Internal container object.
      */
     private final ArrayList<Integer> pointsList = new ArrayList<Integer>();
@@ -41,11 +40,11 @@ public final class PointsList implements Serializable {
      * @param points new points.
      */
     public void add(final int points) {
-    	pointsList.add(points);
+        pointsList.add(points);
     }
-    
+
     public int getPointsAt(int index) {
-    	return pointsList.get(index).intValue();
+        return pointsList.get(index).intValue();
     }
 
     /**
@@ -84,8 +83,7 @@ public final class PointsList implements Serializable {
     }
 
     /**
-     * PointsIteratorImpl class.
-     * Implements PointsIterator interface.
+     * PointsIteratorImpl class. Implements PointsIterator interface.
      */
     private class PointsIteratorImpl implements PointsIterator {
 

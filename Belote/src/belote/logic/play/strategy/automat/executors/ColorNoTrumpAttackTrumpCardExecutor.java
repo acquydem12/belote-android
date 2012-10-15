@@ -15,9 +15,8 @@ import belote.logic.play.strategy.automat.methods.ColorNoTrumpAttackNoObligatory
 import belote.logic.play.strategy.automat.methods.ColorNoTrumpAttackObligatoryNoFirstRuffCard;
 
 /**
- * ColorNoTrumpAttackTrumpCardExecutor class.
- * PlayCardExecutor is used to play a trump card in a color game when the attack card is not trump
- * and the player has no card from attack card suit.
+ * ColorNoTrumpAttackTrumpCardExecutor class. PlayCardExecutor is used to play a trump card in a color game when the attack card is not trump and the player has
+ * no card from attack card suit.
  * @author Dimitar Karamanov
  */
 public final class ColorNoTrumpAttackTrumpCardExecutor extends PlayCardExecutor {
@@ -28,7 +27,7 @@ public final class ColorNoTrumpAttackTrumpCardExecutor extends PlayCardExecutor 
      */
     public ColorNoTrumpAttackTrumpCardExecutor(final Game game) {
         super(game);
-        //Register play card methods.
+        // Register play card methods.
         register(new ColorNoTrumpAttackObligatoryFirstRuffCardExecutor(game));
         register(new ColorNoTrumpAttackObligatoryNoFirstRuffCard(game));
         register(new ColorNoTrumpAttackNoObligatoryFirstRuffCardExecutor(game));

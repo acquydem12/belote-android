@@ -16,8 +16,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * ColorNoTrumpAttackEnemyTrumpCard class.
- * PlayCardMethod which implements the logic of playing a hook card (3th defefence position) in defence of color game.
+ * ColorNoTrumpAttackEnemyTrumpCard class. PlayCardMethod which implements the logic of playing a hook card (3th defefence position) in defence of color game.
  * @author Dimitar Karamanov
  */
 public final class ColorNoTrumpAttackEnemyTrumpCard extends BaseTrumpMethod {

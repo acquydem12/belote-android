@@ -18,8 +18,8 @@ public final class Double extends AnnounceType {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -8731377557781368653L;
-	/**
+    private static final long serialVersionUID = -8731377557781368653L;
+    /**
      * Unique object id.
      */
     private static final int ID = 1;

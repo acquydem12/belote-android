@@ -16,8 +16,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * ColorObligatoryTrumpRoundLastCard class.
- * PlayCardMethod which implements the logic of playing a card when the player is in third defence position.
+ * ColorObligatoryTrumpRoundLastCard class. PlayCardMethod which implements the logic of playing a card when the player is in third defence position.
  * @author Dimitar Karamanov
  */
 public final class ColorObligatoryTrumpRoundLastCard extends BaseTrumpMethod {

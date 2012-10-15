@@ -14,8 +14,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * SquareList class.
- * Wrapper class of system collection used to hold and access Square instances.
+ * SquareList class. Wrapper class of system collection used to hold and access Square instances.
  * @author Dimitar Karamanov
  */
 public final class SquareList implements Serializable {
@@ -23,8 +22,8 @@ public final class SquareList implements Serializable {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 2716681164194070603L;
-	/**
+    private static final long serialVersionUID = 2716681164194070603L;
+    /**
      * Internal container collection.
      */
     private ArrayList<Square> collection = new ArrayList<Square>();
@@ -61,10 +60,9 @@ public final class SquareList implements Serializable {
     }
 
     /**
-     * Returns a string representation of the object. The return name is based on class short name.
-     * This method has to be used only for debug purpose when the project is not compiled with obfuscating.
-     * Don't use this method to represent the object. When the project is compiled with obfuscating the
-     * class name is not the same.
+     * Returns a string representation of the object. The return name is based on class short name. This method has to be used only for debug purpose when the
+     * project is not compiled with obfuscating. Don't use this method to represent the object. When the project is compiled with obfuscating the class name is
+     * not the same.
      * @return String a string representation of the object.
      */
     public String toString() {
@@ -80,8 +78,7 @@ public final class SquareList implements Serializable {
     }
 
     /**
-     * SquareIteratorImpl class.
-     * Implements SquareIterator interface.
+     * SquareIteratorImpl class. Implements SquareIterator interface.
      */
     private class SquareIteratorImpl implements SquareIterator {
 

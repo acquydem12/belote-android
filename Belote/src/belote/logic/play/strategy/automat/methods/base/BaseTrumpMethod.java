@@ -17,8 +17,7 @@ import belote.bean.pack.card.Card;
 import belote.bean.pack.card.suit.Suit;
 
 /**
- * BaseTrumpMethod class.
- * Based class of all AI methods used in color game. Returns null card if are called during no color game.
+ * BaseTrumpMethod class. Based class of all AI methods used in color game. Returns null card if are called during no color game.
  * @author Dimitar Karamanov
  */
 public abstract class BaseTrumpMethod extends BaseMethod {
@@ -51,7 +50,7 @@ public abstract class BaseTrumpMethod extends BaseMethod {
      * Returns player's card for trump game.
      * @param player who is on turn.
      * @param trump suit.
-     * @return player's card for trump game. 
+     * @return player's card for trump game.
      */
     protected abstract Card getPlayMethodCard(final Player player, final Suit trump);
 }

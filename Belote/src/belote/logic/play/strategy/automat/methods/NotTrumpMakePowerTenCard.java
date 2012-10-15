@@ -18,8 +18,7 @@ import belote.bean.pack.card.suit.SuitIterator;
 import belote.logic.play.strategy.automat.methods.base.BaseMethod;
 
 /**
- * NotTrumpMakePowerTenCard class.
- * PlayCardMethod which implements the logic of playing card to free Rank.Ten card as maximum suit left card.
+ * NotTrumpMakePowerTenCard class. PlayCardMethod which implements the logic of playing card to free Rank.Ten card as maximum suit left card.
  * @author Dimitar Karamanov
  */
 public final class NotTrumpMakePowerTenCard extends BaseMethod {

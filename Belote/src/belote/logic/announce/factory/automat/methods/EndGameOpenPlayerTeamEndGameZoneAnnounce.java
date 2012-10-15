@@ -21,8 +21,7 @@ import belote.logic.announce.factory.automat.methods.conditions.TeamCanNormalAnn
 import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCondition;
 
 /**
- * EndGameOpenPlayerTeamEndGameZoneAnnounce class.
- * Announce factory method which creates announce when player team has reached end game zone.
+ * EndGameOpenPlayerTeamEndGameZoneAnnounce class. Announce factory method which creates announce when player team has reached end game zone.
  * @author Dimitar Karamanov
  */
 public final class EndGameOpenPlayerTeamEndGameZoneAnnounce extends ConditionListMethod {
@@ -68,4 +67,3 @@ public final class EndGameOpenPlayerTeamEndGameZoneAnnounce extends ConditionLis
         }
     }
 }
- 

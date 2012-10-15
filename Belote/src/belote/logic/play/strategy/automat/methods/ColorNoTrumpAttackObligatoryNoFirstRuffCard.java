@@ -16,8 +16,8 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * ColorNoTrumpAttackObligatoryNoFirstRuffCard class.
- * PlayCardMethod which implements the logic of playing a obligatory bigger trump card in not trump attack color game.
+ * ColorNoTrumpAttackObligatoryNoFirstRuffCard class. PlayCardMethod which implements the logic of playing a obligatory bigger trump card in not trump attack
+ * color game.
  * @author Dimitar Karamanov
  */
 public final class ColorNoTrumpAttackObligatoryNoFirstRuffCard extends BaseTrumpMethod {

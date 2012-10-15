@@ -22,9 +22,8 @@ import belote.logic.announce.factory.automat.methods.suitDeterminators.JackNineS
 import belote.logic.announce.factory.automat.methods.suitDeterminators.base.SuitDeterminator;
 
 /**
- * EndGameNormalJackNineSuitAnnounce class.
- * Announce factory method which creates normal suit announce on jack nine suit and more than 1 aces.
- * TODO: maybe overlapped with dominant suit or not if only jack and nine.
+ * EndGameNormalJackNineSuitAnnounce class. Announce factory method which creates normal suit announce on jack nine suit and more than 1 aces. TODO: maybe
+ * overlapped with dominant suit or not if only jack and nine.
  * @author Dimitar Karamanov
  */
 public final class EndGameNormalJackNineSuitAnnounce extends ConditionListMethod {

@@ -20,8 +20,7 @@ import belote.logic.play.strategy.automat.executors.ColorDefenceCard;
 import belote.logic.play.strategy.validators.ColorGameCardValidator;
 
 /**
- * CLPlayCardStrategy class.
- * Color suit strategy playing class.
+ * CLPlayCardStrategy class. Color suit strategy playing class.
  * @author Dimitar Karamanov
  */
 public final class ColorPlayStrategy extends BasePlayStrategy {

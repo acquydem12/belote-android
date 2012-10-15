@@ -20,9 +20,9 @@ public abstract class Suit extends ComparableObject {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -7817406518667306126L;
+    private static final long serialVersionUID = -7817406518667306126L;
 
-	/**
+    /**
      * Internal suit constant.
      */
     private final int suit;
@@ -92,10 +92,9 @@ public abstract class Suit extends ComparableObject {
     public abstract String getSuitColor();
 
     /**
-     * Returns a string representation of the object. The return name is based on class short name.
-     * This method has to be used only for debug purpose when the project is not compiled with obfuscating.
-     * Don't use this method to represent the object. When the project is compiled with obfuscating the
-     * class name is not the same.
+     * Returns a string representation of the object. The return name is based on class short name. This method has to be used only for debug purpose when the
+     * project is not compiled with obfuscating. Don't use this method to represent the object. When the project is compiled with obfuscating the class name is
+     * not the same.
      * @return String a string representation of the object.
      */
     public String toString() {
@@ -151,10 +150,8 @@ public abstract class Suit extends ComparableObject {
     /**
      * Compares this object with the specified object for order.
      * @param obj specified object.
-     * @return int value which may be:
-     *         = 0 if this object and the specified object are equal
-     *         > 0 if this object is bigger than the specified object
-     *         < 0 if this object is less than the specified object
+     * @return int value which may be: = 0 if this object and the specified object are equal > 0 if this object is bigger than the specified object < 0 if this
+     *         object is less than the specified object
      */
     public int compareTo(final Object obj) {
         final Suit compSuit = (Suit) obj;

@@ -17,8 +17,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.methods.base.BaseMethod;
 
 /**
- * DominantSuitCard class.
- * PlayCardMethod which implements the logic of playing a card from the dominant suit.
+ * DominantSuitCard class. PlayCardMethod which implements the logic of playing a card from the dominant suit.
  * @author Dimitar Karamanov
  */
 public final class DominantSuitCard extends BaseMethod {
@@ -51,7 +50,8 @@ public final class DominantSuitCard extends BaseMethod {
                         }
                     } else {
                         final Player partner = player.getPartner();
-                        if (isEnemyTeamAnnounce(player) || (!partner.getUnwantedSuits().contains(dominatSuit) && !partner.getMissedSuits().contains(dominatSuit))) {
+                        if (isEnemyTeamAnnounce(player)
+                                || (!partner.getUnwantedSuits().contains(dominatSuit) && !partner.getMissedSuits().contains(dominatSuit))) {
                             if (player.getCards().hasCouple(dominatSuit)) {
                                 result = player.getCards().findCard(Rank.Queen, dominatSuit);
                             } else {
@@ -64,7 +64,10 @@ public final class DominantSuitCard extends BaseMethod {
         }
 
         if (result != null) {
-            player.getPreferredSuits().add(result.getSuit());
+            if (!isTeamSuitAnnounce(game.getOppositeTeam(player), result.getSuit())) {
+                // player.getPreferredSuits().add(result.getSuit());
+                result = null;
+            }
         }
 
         return result;

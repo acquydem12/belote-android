@@ -18,8 +18,7 @@ import belote.bean.trick.TrickListIterator;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * ColorPartnerTrumpCard class.
- * PlayCardMethod which implements the logic of playing a trump card if the partner declared the color game.
+ * ColorPartnerTrumpCard class. PlayCardMethod which implements the logic of playing a trump card if the partner declared the color game.
  * @author Dimitar Karamanov
  */
 public final class ColorPartnerTrumpCard extends BaseTrumpMethod {
@@ -40,7 +39,8 @@ public final class ColorPartnerTrumpCard extends BaseTrumpMethod {
      */
     public Card getPlayMethodCard(final Player player, final Suit trump) {
         final Player partner = player.getPartner();
-        if (trump != null && partner.equals(game.getAnnounceList().getOpenContractAnnouncePlayer()) && !isTeamSuit(trump, player.getTeam()) && !hasPlayerSuitAttack(player, trump)) {
+        if (trump != null && partner.equals(game.getAnnounceList().getOpenContractAnnouncePlayer()) && !isTeamSuit(trump, player.getTeam())
+                && !hasPlayerSuitAttack(player, trump)) {
             final Card card = player.getCards().findMaxSuitCard(trump);
             if (card != null && isMaxSuitCardLeft(card, false)) {
                 return card;

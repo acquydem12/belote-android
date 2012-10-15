@@ -19,10 +19,8 @@ import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCon
 import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceConditionList;
 
 /**
- * AnnounceExecutor abstract class.
- * Provides the mechanism to be executed one by one PlayCardMethod methods stored in an collection and to
- * return the first not null result value returned from the iteration.
- * Also provides the facility the user to write own code which is executed before the result to be returned.
+ * AnnounceExecutor abstract class. Provides the mechanism to be executed one by one PlayCardMethod methods stored in an collection and to return the first not
+ * null result value returned from the iteration. Also provides the facility the user to write own code which is executed before the result to be returned.
  * @author Dimitar Karamanov
  */
 public abstract class AnnounceExecutor implements AnnounceMethod {
@@ -87,8 +85,10 @@ public abstract class AnnounceExecutor implements AnnounceMethod {
 
             if (contractAnnounce.getAnnounceSuit().equals(announce.getAnnounceSuit())) {
                 if (!contractAnnounce.getPlayer().getTeam().equals(announce.getPlayer().getTeam())) {
-                    final boolean saidDoubleAfterNormal = contractAnnounce.getType().equals(AnnounceType.Normal) && announce.getType().equals(AnnounceType.Double);
-                    final boolean saidRedoubleAfterDouble = contractAnnounce.getType().equals(AnnounceType.Double) && announce.getType().equals(AnnounceType.Redouble);
+                    final boolean saidDoubleAfterNormal = contractAnnounce.getType().equals(AnnounceType.Normal)
+                            && announce.getType().equals(AnnounceType.Double);
+                    final boolean saidRedoubleAfterDouble = contractAnnounce.getType().equals(AnnounceType.Double)
+                            && announce.getType().equals(AnnounceType.Redouble);
                     return saidDoubleAfterNormal || saidRedoubleAfterDouble;
                 }
             }
@@ -145,7 +145,7 @@ public abstract class AnnounceExecutor implements AnnounceMethod {
     public final Announce getAnnounce(Player player) {
         final Announce result = getAnnounceMethod(player);
         if (result != null) {
-            //handle result in future
+            // handle result in future
         }
         return result;
     }

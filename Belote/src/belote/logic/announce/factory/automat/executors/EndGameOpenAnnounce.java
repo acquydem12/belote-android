@@ -28,9 +28,9 @@ public final class EndGameOpenAnnounce extends AnnounceExecutor {
      */
     public EndGameOpenAnnounce(final Game game) {
         super(game);
-        //Pre condition
+        // Pre condition
         addPreCondition(new NotCondition(new HasContractAnnounce(game)));
-        //Methods
+        // Methods
         register(new EndGameOpenEnemyTeamEndGameZoneAnnounce(game));
         register(new EndGameOpenPlayerTeamEndGameZoneAnnounce(game));
     }

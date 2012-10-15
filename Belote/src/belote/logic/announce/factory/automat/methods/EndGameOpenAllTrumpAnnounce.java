@@ -21,8 +21,7 @@ import belote.logic.announce.factory.automat.methods.conditions.TeamDefence;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
 
 /**
- * EndGameOpenAllTrumpAnnounce class.
- * Announce factory method which creates normal all trump announce when some of the teams reached end game.
+ * EndGameOpenAllTrumpAnnounce class. Announce factory method which creates normal all trump announce when some of the teams reached end game.
  * @author Dimitar Karamanov
  */
 public final class EndGameOpenAllTrumpAnnounce extends ConditionListMethod {

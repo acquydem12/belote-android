@@ -23,8 +23,7 @@ import belote.logic.announce.factory.automat.methods.suitDeterminators.DominantS
 import belote.logic.announce.factory.automat.methods.suitDeterminators.base.SuitDeterminator;
 
 /**
- * EndGameOpenDominantSuitAnnounce class.
- * Announce factory method which creates dominant suit normal announce.
+ * EndGameOpenDominantSuitAnnounce class. Announce factory method which creates dominant suit normal announce.
  * @author Dimitar Karamanov
  */
 public final class EndGameOpenDominantSuitAnnounce extends ConditionListMethod {
@@ -38,9 +37,12 @@ public final class EndGameOpenDominantSuitAnnounce extends ConditionListMethod {
     public EndGameOpenDominantSuitAnnounce(final Game game) {
         super(game);
         suitDeterminator = new DominantSuit();
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Jack, suitDeterminator), new HasCard(Rank.Nine, suitDeterminator), new RankCount(Rank.Ace, 3)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 4), new HasCard(Rank.Jack, suitDeterminator), new HasCard(Rank.Nine, suitDeterminator), new RankCount(Rank.Ace, 1)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 4), new HasCard(Rank.Jack, suitDeterminator), new HasCard(Rank.Ace, suitDeterminator), new RankCount(Rank.Ace, 2)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Jack, suitDeterminator), new HasCard(Rank.Nine,
+                suitDeterminator), new RankCount(Rank.Ace, 3)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 4), new HasCard(Rank.Jack, suitDeterminator), new HasCard(Rank.Nine,
+                suitDeterminator), new RankCount(Rank.Ace, 1)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 4), new HasCard(Rank.Jack, suitDeterminator), new HasCard(Rank.Ace,
+                suitDeterminator), new RankCount(Rank.Ace, 2)));
         addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 5), new HasCard(Rank.Jack, suitDeterminator)));
     }
 

@@ -18,8 +18,8 @@ public final class Normal extends AnnounceType {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -4789292276565681053L;
-	/**
+    private static final long serialVersionUID = -4789292276565681053L;
+    /**
      * Unique object id.
      */
     private static final int ID = 0;

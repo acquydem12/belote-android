@@ -23,8 +23,7 @@ import belote.logic.announce.factory.automat.methods.suitDeterminators.DominantS
 import belote.logic.announce.factory.automat.methods.suitDeterminators.base.SuitDeterminator;
 
 /**
- * RegGameNagAllTrumpWhenFirstAndHasJackSuitAnnounce class.
- * Announce factory method which creates nag all trump jack suit announce.
+ * RegGameNagAllTrumpWhenFirstAndHasJackSuitAnnounce class. Announce factory method which creates nag all trump jack suit announce.
  * @author Dimitar Karamanov
  */
 public final class RegGameNagAllTrumpDealAttackHasJackSuitAnnounce extends ConditionListMethod {
@@ -39,7 +38,8 @@ public final class RegGameNagAllTrumpDealAttackHasJackSuitAnnounce extends Condi
         super(game);
         suitDeterminator = new DominantSuit();
         addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 5), new HasCard(Rank.Jack, suitDeterminator), new DealAttackPlayer(game)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 4), new HasCard(Rank.Jack, suitDeterminator), new DealAttackPlayer(game), new RankCount(Rank.Jack, 2)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 4), new HasCard(Rank.Jack, suitDeterminator), new DealAttackPlayer(game),
+                new RankCount(Rank.Jack, 2)));
     }
 
     /**

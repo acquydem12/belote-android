@@ -16,8 +16,7 @@ import java.util.Iterator;
 import belote.bean.Team;
 
 /**
- * TrickList class.
- * Wrapper class of system collection used to hold and access Trick instances.
+ * TrickList class. Wrapper class of system collection used to hold and access Trick instances.
  * @author Dimitar Karamanov
  */
 public final class TrickList implements Serializable {
@@ -25,8 +24,8 @@ public final class TrickList implements Serializable {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -8020613612899133438L;
-	/**
+    private static final long serialVersionUID = -8020613612899133438L;
+    /**
      * Internal container object.
      */
     private ArrayList<Trick> list = new ArrayList<Trick>();
@@ -91,8 +90,7 @@ public final class TrickList implements Serializable {
     }
 
     /**
-     * TrickListIteratorImpl class.
-     * Implements TrickListIterator interface.
+     * TrickListIteratorImpl class. Implements TrickListIterator interface.
      */
     private static class TrickListIteratorImpl implements TrickListIterator {
 

@@ -13,8 +13,7 @@ import belote.bean.Game;
 import belote.bean.Team;
 
 /**
- * CLPointsCalculator class.
- * Points calculator class for Color game.
+ * CLPointsCalculator class. Points calculator class for Color game.
  * @author Dimitar Karamanov
  */
 public final class ColorPointsCalculator extends PointsCalculator {

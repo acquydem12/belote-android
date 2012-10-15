@@ -17,8 +17,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * ColorClearCard class.
- * PlayCardMethod which implements the logic of playing a safe trump card in color game.
+ * ColorClearCard class. PlayCardMethod which implements the logic of playing a safe trump card in color game.
  * @author Dimitar Karamanov.
  */
 public final class ColorSafeTrumpCard extends BaseTrumpMethod {
@@ -37,28 +36,31 @@ public final class ColorSafeTrumpCard extends BaseTrumpMethod {
      * @param trump suit.
      * @return Card object instance or null.
      */
-	public Card getPlayMethodCard(final Player player, final Suit trump) {
-		if (trump != null) {
-			final Pack playerCards = player.getCards().getSuitPack(trump);
-			final Pack restCards = getOtherPlayersSuitCards(player, trump);
+    public Card getPlayMethodCard(final Player player, final Suit trump) {
+        if (trump != null) {
+            final Pack playerCards = player.getCards().getSuitPack(trump);
+            final Pack restCards = getOtherPlayersSuitCards(player, trump);
 
-			for (int i = playerCards.getSize() - 1; i >= 0; i--) {
-				final Card playerMaxCard = playerCards.findMaxSuitCard(trump); // It can't be null
-				final Card restMaxCard = restCards.findMaxSuitCard(trump);
-				final Card restMinCard = restCards.findMinSuitCard(trump);
+            for (int i = playerCards.getSize() - 1; i >= 0; i--) {
+                final Card playerMaxCard = playerCards.findMaxSuitCard(trump); // It
+                                                                               // can't
+                                                                               // be
+                                                                               // null
+                final Card restMaxCard = restCards.findMaxSuitCard(trump);
+                final Card restMinCard = restCards.findMinSuitCard(trump);
 
-				if (restMaxCard == null || restMinCard == null) {
-					return playerMaxCard;
-				}
+                if (restMaxCard == null || restMinCard == null) {
+                    return playerMaxCard;
+                }
 
-				if (playerMaxCard.compareTo(restMaxCard) < 0) {
-					return null;
-				}
+                if (playerMaxCard.compareTo(restMaxCard) < 0) {
+                    return null;
+                }
 
-				playerCards.remove(playerMaxCard);
-				restCards.remove(restMinCard);
-			}
-		}
-		return null;
-	}
+                playerCards.remove(playerMaxCard);
+                restCards.remove(restMinCard);
+            }
+        }
+        return null;
+    }
 }

@@ -10,8 +10,7 @@
 package belote.bean.announce.suit;
 
 /**
- * ColorSuit class.
- * The abstract base class of all color announce suits.
+ * ColorSuit class. The abstract base class of all color announce suits.
  * @author Dimitar Karamanov
  */
 public abstract class ColorSuit extends AnnounceSuit {
@@ -19,9 +18,9 @@ public abstract class ColorSuit extends AnnounceSuit {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -5476666027564282061L;
-	
-	/**
+    private static final long serialVersionUID = -5476666027564282061L;
+
+    /**
      * Game base points constant.
      */
     private static final int GAME_BASE_POINTS = 16;
@@ -35,9 +34,8 @@ public abstract class ColorSuit extends AnnounceSuit {
     }
 
     /**
-     * Color suit classes are Club, Diamond, Heart and Spade. If the objects is instance of some of them the
-     * result is true otherwise is false. 
-     * This is the base class for all color suits so the method result is always true.
+     * Color suit classes are Club, Diamond, Heart and Spade. If the objects is instance of some of them the result is true otherwise is false. This is the base
+     * class for all color suits so the method result is always true.
      * @return boolean true if is color suit false otherwise.
      */
     public final boolean isColorSuit() {
@@ -45,9 +43,7 @@ public abstract class ColorSuit extends AnnounceSuit {
     }
 
     /**
-     * Returns the game base points for that announce suit. The points are used in double and redouble
-     * calculation.
-     * For color suit the base points are the same.
+     * Returns the game base points for that announce suit. The points are used in double and redouble calculation. For color suit the base points are the same.
      * @return int belote game base points.
      */
     public final int getBasePoints() {

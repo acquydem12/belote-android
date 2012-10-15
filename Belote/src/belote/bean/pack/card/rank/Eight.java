@@ -18,9 +18,9 @@ public final class Eight extends Rank {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -4825196775071458888L;
+    private static final long serialVersionUID = -4825196775071458888L;
 
-	/**
+    /**
      * Constructor.
      */
     protected Eight() {

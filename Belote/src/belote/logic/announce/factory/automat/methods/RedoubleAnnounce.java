@@ -20,8 +20,7 @@ import belote.logic.announce.factory.automat.methods.base.ConditionListMethod;
 import belote.logic.announce.factory.automat.methods.conditions.OppositeTeamDoubleAnnounce;
 
 /**
- * RedoubleAnnounce class.
- * Announce factory method which creates a redouble announce.
+ * RedoubleAnnounce class. Announce factory method which creates a redouble announce.
  * @author Dimitar Karamanov
  */
 public final class RedoubleAnnounce extends ConditionListMethod {

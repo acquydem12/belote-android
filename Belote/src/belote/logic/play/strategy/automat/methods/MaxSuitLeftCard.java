@@ -15,8 +15,7 @@ import belote.bean.pack.card.Card;
 import belote.logic.play.strategy.automat.methods.base.BaseMethod;
 
 /**
- * MaxSuitLeftCard class.
- * PlayCardMethod which implements the logic of playing the maximum by rank suit left card.
+ * MaxSuitLeftCard class. PlayCardMethod which implements the logic of playing the maximum by rank suit left card.
  * @author Dimitar Karamanov
  */
 public final class MaxSuitLeftCard extends BaseMethod {

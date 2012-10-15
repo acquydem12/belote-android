@@ -16,8 +16,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * ColorNoTrumpAttackNoObligatoryNoFirstRuffCard class.
- * PlayCardMethod which implements the logic of playing a bigger trump card in color game.
+ * ColorNoTrumpAttackNoObligatoryNoFirstRuffCard class. PlayCardMethod which implements the logic of playing a bigger trump card in color game.
  * @author Dimitar Karamanov
  */
 public final class ColorNoTrumpAttackNoObligatoryNoFirstRuffCard extends BaseTrumpMethod {
@@ -45,8 +44,7 @@ public final class ColorNoTrumpAttackNoObligatoryNoFirstRuffCard extends BaseTru
             if (trumpPlayer != null) {
                 if (trumpPlayer.getTeam().equals(player.getTeam())) {
                     final Card card = player.getCards().findMaxSuitCard(trump);
-                    if (card != null && !isMaxSuitCardLeft(card, true) &&
-                            isEnemyTeamAnnounce(player) && player.getCards().getSize() == TWO_CARDS_COUNT) {
+                    if (card != null && !isMaxSuitCardLeft(card, true) && isEnemyTeamAnnounce(player) && player.getCards().getSize() == TWO_CARDS_COUNT) {
                         return card;
                     }
                 }

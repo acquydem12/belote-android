@@ -9,10 +9,11 @@
  */
 package belote.bean.announce;
 
-import belote.bean.announce.suit.AnnounceSuit;
-import belote.bean.pack.card.suit.Suit;
 import java.util.Enumeration;
 import java.util.Hashtable;
+
+import belote.bean.announce.suit.AnnounceSuit;
+import belote.bean.pack.card.suit.Suit;
 
 /**
  * Transforms from Suit to AnnounceSuit and back.

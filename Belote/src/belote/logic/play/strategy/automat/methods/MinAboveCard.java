@@ -15,8 +15,7 @@ import belote.bean.pack.card.Card;
 import belote.logic.play.strategy.automat.methods.base.BaseMethod;
 
 /**
- * MinAboveCard class.
- * PlayCardMethod which implements the logic of playing the minimum card which is above (bigger) from the attack suit card.
+ * MinAboveCard class. PlayCardMethod which implements the logic of playing the minimum card which is above (bigger) from the attack suit card.
  * @author Dimitar Karamanov
  */
 public final class MinAboveCard extends BaseMethod {

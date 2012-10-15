@@ -22,8 +22,7 @@ import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAnd
 import belote.logic.announce.factory.automat.methods.suitDeterminators.SequenceSuit;
 
 /**
- * RegGameNagAllTrumpWhenFirstAndHasSequenceAnnounce class.
- * Announce factory method which creates nag all trump announce when has a sequence.
+ * RegGameNagAllTrumpWhenFirstAndHasSequenceAnnounce class. Announce factory method which creates nag all trump announce when has a sequence.
  * @author Dimitar Karamanov
  */
 public final class RegGameNagAllTrumpDealAttackHasSequenceAnnounce extends ConditionListMethod {
@@ -46,7 +45,7 @@ public final class RegGameNagAllTrumpDealAttackHasSequenceAnnounce extends Condi
      * @param player who is on turn.
      * @return an Announce instance.
      */
-    protected Announce createAnnounce(Player player) {       
+    protected Announce createAnnounce(Player player) {
         final Suit suit = SequenceSuit.getSequenceSuit(player);
         return Announce.createSuitNormalAnnounce(player, suit);
     }

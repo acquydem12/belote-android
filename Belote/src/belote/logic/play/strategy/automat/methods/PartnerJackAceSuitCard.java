@@ -9,30 +9,30 @@ import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 public class PartnerJackAceSuitCard extends BaseTrumpMethod {
 
-	/**
-	 * Constructor.
-	 * @param game BelotGame instance class.
-	 */
-	public PartnerJackAceSuitCard(final Game game) {
-		super(game);
-	}
+    /**
+     * Constructor.
+     * @param game BelotGame instance class.
+     */
+    public PartnerJackAceSuitCard(final Game game) {
+        super(game);
+    }
 
-	/**
-	 * Returns player's card.
-	 * 
-	 * @param player who is on turn.
-	 * @return Card object instance or null.
-	 */
-	protected Card getPlayMethodCard(final Player player, final Suit trump) {
-		final Player partner = player.getPartner();
-		// Prefer suits
-		for (final SuitIterator iterator = partner.getJackAceSuits().iterator(); iterator.hasNext();) {
-			final Suit suit = iterator.next();
-			final Card card = player.getCards().findMinSuitCard(suit);
-			if (card != null) {
-				return card;
-			}
-		}
-		return null;
-	}
+    /**
+     * Returns player's card.
+     * 
+     * @param player who is on turn.
+     * @return Card object instance or null.
+     */
+    protected Card getPlayMethodCard(final Player player, final Suit trump) {
+        final Player partner = player.getPartner();
+        // Prefer suits
+        for (final SuitIterator iterator = partner.getJackAceSuits().iterator(); iterator.hasNext();) {
+            final Suit suit = iterator.next();
+            final Card card = player.getCards().findMinSuitCard(suit);
+            if (card != null) {
+                return card;
+            }
+        }
+        return null;
+    }
 }

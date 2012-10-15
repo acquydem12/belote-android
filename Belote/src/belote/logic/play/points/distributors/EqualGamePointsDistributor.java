@@ -14,8 +14,7 @@ import belote.bean.Team;
 import belote.bean.announce.Announce;
 
 /**
- * WinGamePointsDistributor distributor class.
- * Points distributor class for equal game.
+ * WinGamePointsDistributor distributor class. Points distributor class for equal game.
  * @author Dimitar Karamanov
  */
 public final class EqualGamePointsDistributor extends PointsDistributor {

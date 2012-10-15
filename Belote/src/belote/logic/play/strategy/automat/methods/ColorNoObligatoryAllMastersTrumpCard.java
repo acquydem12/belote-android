@@ -16,9 +16,8 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * ColorNoObligatoryAllMastersTrumpCard class.
- * PlayCardMethod which implements the logic of playing a card when the player or his partner are trump keeper
- * and all his cards are master cards - play trump card and get all other hands.
+ * ColorNoObligatoryAllMastersTrumpCard class. PlayCardMethod which implements the logic of playing a card when the player or his partner are trump keeper and
+ * all his cards are master cards - play trump card and get all other hands.
  * @author Dimitar Karamanov
  */
 public final class ColorNoObligatoryAllMastersTrumpCard extends BaseTrumpMethod {
@@ -38,7 +37,7 @@ public final class ColorNoObligatoryAllMastersTrumpCard extends BaseTrumpMethod 
      * @return Card object instance or null.
      */
     protected Card getPlayMethodCard(final Player player, final Suit trump) {
-        //if all cards are master and is trump keeper or team suit play trump.
+        // if all cards are master and is trump keeper or team suit play trump.
         if (trump != null && (isPlayerSuit(player, trump) || isTeamSuit(trump, player.getTeam())) && isAllCardsMasters(player)) {
             final Card minTrumpCard = player.getCards().findMinSuitCard(trump);
             if (minTrumpCard != null) {

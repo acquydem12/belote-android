@@ -18,9 +18,8 @@ import belote.bean.pack.card.suit.SuitIterator;
 import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
 
 /**
- * ColorTeamSuitPartnerCard class.
- * PlayCardMethod which implements the logic of playing the minimum card from 
- * the first found partner team suit in a color game mode.
+ * ColorTeamSuitPartnerCard class. PlayCardMethod which implements the logic of playing the minimum card from the first found partner team suit in a color game
+ * mode.
  * @author Dimitar Karamanov
  */
 public final class ColorTeamSuitPartnerCard extends BaseTrumpMethod {
@@ -47,7 +46,8 @@ public final class ColorTeamSuitPartnerCard extends BaseTrumpMethod {
                     final int passedSuitCount = getPassedSuitCardsCount(suit);
                     final int playerSuitCount = player.getCards().getSuitCount(suit);
 
-                    //If the suit is team and the count of left cards == partners cards count (has only from this suit)
+                    // If the suit is team and the count of left cards ==
+                    // partners cards count (has only from this suit)
                     if ((Rank.getRankCount() - passedSuitCount - playerSuitCount) == player.getCards().getSize()) {
                         final Card card = player.getCards().findMaxSuitCard(suit);
                         if (card != null) {

@@ -19,8 +19,7 @@ import belote.logic.announce.factory.automat.methods.conditions.HasSuit;
 import belote.logic.announce.factory.automat.methods.suitDeterminators.SequenceSuit;
 
 /**
- * EndGameSupportFiftyOrHundredAnnounce class.
- * Announce factory method which creates suit announce when the player has 50 or 100 suit sequence.
+ * EndGameSupportFiftyOrHundredAnnounce class. Announce factory method which creates suit announce when the player has 50 or 100 suit sequence.
  * @author Dimitar Karamanov
  */
 public final class EndGameSupportFiftyOrHundredAnnounce extends ConditionListMethod {
@@ -45,4 +44,3 @@ public final class EndGameSupportFiftyOrHundredAnnounce extends ConditionListMet
         return Announce.createSuitNormalAnnounce(player, suit);
     }
 }
-

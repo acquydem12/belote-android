@@ -18,10 +18,10 @@ import belote.bean.pack.card.Card;
  * @author Dimitar Karamanov
  */
 public final class HumanBeloteGame extends BeloteGame {
-	
-	private boolean blackRedCardOrder = false;
-	
-	private boolean playerIsAnnouncing = false;
+
+    private boolean blackRedCardOrder = false;
+
+    private boolean playerIsAnnouncing = false;
 
     /**
      * Human player array index.
@@ -35,9 +35,9 @@ public final class HumanBeloteGame extends BeloteGame {
     public HumanBeloteGame() {
         super();
     }
-    
+
     public final void setBlackRedCardOrder(boolean blackRedCardOrder) {
-    	this.blackRedCardOrder = blackRedCardOrder;
+        this.blackRedCardOrder = blackRedCardOrder;
     }
 
     /**
@@ -161,28 +161,28 @@ public final class HumanBeloteGame extends BeloteGame {
     public final boolean isHumanTrickOrder() {
         return isPlayerTrickOrder(getHumanPlayer());
     }
-    
+
     /**
      * Arranges players cards.
      */
     public final void arrangePlayersCards() {
-    	super.arrangePlayersCards();
-    	
-    	if (blackRedCardOrder) {
-    		Player player = getHumanPlayer();
-    		Pack pack = player.getCards();
-    		BlackRedPackOrderTransformer transformer = new BlackRedPackOrderTransformer(pack);
-    		Pack blackRedPack = transformer.transform();
-    		pack.clear();
-    		pack.addAll(blackRedPack);
-    	}
+        super.arrangePlayersCards();
+
+        if (blackRedCardOrder) {
+            Player player = getHumanPlayer();
+            Pack pack = player.getCards();
+            BlackRedPackOrderTransformer transformer = new BlackRedPackOrderTransformer(pack);
+            Pack blackRedPack = transformer.transform();
+            pack.clear();
+            pack.addAll(blackRedPack);
+        }
     }
-    
+
     public final void setPlayerIsAnnouncing(boolean mode) {
-    	playerIsAnnouncing = mode;
+        playerIsAnnouncing = mode;
     }
-    
+
     public final boolean isPlayerIsAnnoincing() {
-    	return playerIsAnnouncing;
+        return playerIsAnnouncing;
     }
 }

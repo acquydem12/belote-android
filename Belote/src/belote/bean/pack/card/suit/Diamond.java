@@ -18,8 +18,8 @@ public final class Diamond extends Suit {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -1654169925121692794L;
-	/**
+    private static final long serialVersionUID = -1654169925121692794L;
+    /**
      * Diamond ID constant.
      */
     private static final int ID = 1;

@@ -15,8 +15,7 @@ import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCon
 import belote.logic.announce.factory.automat.methods.suitDeterminators.base.SuitDeterminator;
 
 /**
- * SuitCount class.
- * Returns if the announce player has ant minimum cards from dynamically determined suit.
+ * SuitCount class. Returns if the announce player has ant minimum cards from dynamically determined suit.
  * @author Dimitar Karamanov
  */
 public class SuitCount implements AnnounceCondition {

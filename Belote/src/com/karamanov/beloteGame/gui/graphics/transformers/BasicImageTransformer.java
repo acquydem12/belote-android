@@ -9,9 +9,9 @@
  */
 package com.karamanov.beloteGame.gui.graphics.transformers;
 
-import com.karamanov.beloteGame.gui.graphics.Rectangle;
-
 import android.graphics.Bitmap;
+
+import com.karamanov.beloteGame.gui.graphics.Rectangle;
 
 /**
  * BasicImageTransformer class.
@@ -49,9 +49,9 @@ public abstract class BasicImageTransformer {
         } else {
             rectangle = rec;
         }
-        
+
         Bitmap result = Bitmap.createBitmap(image.getWidth(), image.getHeight(), Bitmap.Config.ARGB_8888);
-        
+
         for (int row = rectangle.y, endRow = rectangle.y + rectangle.height; row < endRow; row++) {
             for (int col = rectangle.x, endCol = rectangle.x + rectangle.width; col < endCol; col++) {
                 int pixel = image.getPixel(col, row);

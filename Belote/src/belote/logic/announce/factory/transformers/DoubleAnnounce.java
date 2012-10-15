@@ -37,8 +37,7 @@ public final class DoubleAnnounce extends BaseAnnounceTransformer {
         final Announce lastNotPassAnnounce = game.getAnnounceList().getContractAnnounce();
 
         if (lastNotPassAnnounce != null) {
-            if (!lastNotPassAnnounce.getPlayer().isSameTeam(announce.getPlayer()) &&
-                    lastNotPassAnnounce.getAnnounceSuit().equals(announce.getAnnounceSuit())) {
+            if (!lastNotPassAnnounce.getPlayer().isSameTeam(announce.getPlayer()) && lastNotPassAnnounce.getAnnounceSuit().equals(announce.getAnnounceSuit())) {
                 return Announce.createDoubleAnnounce(announce, player);
             }
         }

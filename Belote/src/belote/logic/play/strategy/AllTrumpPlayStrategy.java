@@ -19,8 +19,7 @@ import belote.logic.play.strategy.automat.executors.AllTrumpThirdDefencePosition
 import belote.logic.play.strategy.validators.AllTrumpCardValidator;
 
 /**
- * AllTrumpPlayStrategy class.
- * All trump game strategy rules.
+ * AllTrumpPlayStrategy class. All trump game strategy rules.
  * @author Dimitar Karamanov
  */
 public final class AllTrumpPlayStrategy extends BasePlayStrategy {
@@ -30,12 +29,8 @@ public final class AllTrumpPlayStrategy extends BasePlayStrategy {
      * @param game BelotGame instance.
      */
     public AllTrumpPlayStrategy(final Game game) {
-        super(game,
-                new AllTrumpCardValidator(game),
-                new AllTrumpAttackCard(game),
-                new AllTrumpFirstDefencePositionCard(game),
-                new AllTrumpSecondDefencePositionCard(game),
-                new AllTrumpThirdDefencePositionCard(game));
+        super(game, new AllTrumpCardValidator(game), new AllTrumpAttackCard(game), new AllTrumpFirstDefencePositionCard(game),
+                new AllTrumpSecondDefencePositionCard(game), new AllTrumpThirdDefencePositionCard(game));
     }
 
     /**

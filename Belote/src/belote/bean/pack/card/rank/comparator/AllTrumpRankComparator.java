@@ -20,9 +20,9 @@ public final class AllTrumpRankComparator extends RankComparator {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 6611295525138045329L;
+    private static final long serialVersionUID = 6611295525138045329L;
 
-	/**
+    /**
      * Constructor.
      */
     protected AllTrumpRankComparator() {
@@ -33,10 +33,8 @@ public final class AllTrumpRankComparator extends RankComparator {
      * Compares rank a with b ones.
      * @param a first comparable object.
      * @param b second comparable object.
-     * @return int value which may be:
-     *         = 0 if both specified objects are equal or null
-     *         > 0 if first object is not null and bigger than the second specified object or the second is null
-     *         < 0 if second object is not null and bigger than the first specified object or the first is null
+     * @return int value which may be: = 0 if both specified objects are equal or null > 0 if first object is not null and bigger than the second specified
+     *         object or the second is null < 0 if second object is not null and bigger than the first specified object or the first is null
      */
     public int compare(Rank a, Rank b) {
         return a.compareToAT(b);

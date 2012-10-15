@@ -18,8 +18,7 @@ import belote.logic.play.strategy.automat.methods.NotTrumpSuitHookCard;
 import belote.logic.play.strategy.automat.methods.PartnerAttackMaxSuitCard;
 
 /**
- * NotTrumpSecondDefencePositionCard executor.
- * Used in NotTrumpPlayStategy getSecondDefencePositionCard().
+ * NotTrumpSecondDefencePositionCard executor. Used in NotTrumpPlayStategy getSecondDefencePositionCard().
  * @author Dimitar Karamanov
  */
 public final class NotTrumpSecondDefencePositionCard extends PlayCardExecutor {
@@ -30,7 +29,7 @@ public final class NotTrumpSecondDefencePositionCard extends PlayCardExecutor {
      */
     public NotTrumpSecondDefencePositionCard(final Game game) {
         super(game);
-        //Register play card methods.
+        // Register play card methods.
         register(new NotTrumpSuitHookCard(game));
         register(new MaxSuitLeftCard(game));
         register(new PartnerAttackMaxSuitCard(game));

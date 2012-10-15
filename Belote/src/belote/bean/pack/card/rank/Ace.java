@@ -18,9 +18,9 @@ public final class Ace extends Rank {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -5156114202785245700L;
+    private static final long serialVersionUID = -5156114202785245700L;
 
-	/**
+    /**
      * Constructor.
      */
     protected Ace() {

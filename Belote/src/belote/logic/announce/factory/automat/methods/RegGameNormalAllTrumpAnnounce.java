@@ -14,12 +14,12 @@ import belote.bean.Player;
 import belote.bean.announce.Announce;
 import belote.bean.pack.card.rank.Rank;
 import belote.logic.announce.factory.automat.methods.base.ConditionListMethod;
-import belote.logic.announce.factory.automat.methods.conditions.ThreePassOpenAnnounce;
 import belote.logic.announce.factory.automat.methods.conditions.DealAttackPlayer;
 import belote.logic.announce.factory.automat.methods.conditions.HasSuit;
 import belote.logic.announce.factory.automat.methods.conditions.RankCount;
 import belote.logic.announce.factory.automat.methods.conditions.SuitCount;
 import belote.logic.announce.factory.automat.methods.conditions.TeamAttack;
+import belote.logic.announce.factory.automat.methods.conditions.ThreePassOpenAnnounce;
 import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCondition;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleOrCondition;
@@ -28,8 +28,7 @@ import belote.logic.announce.factory.automat.methods.suitDeterminators.JackNineS
 import belote.logic.announce.factory.automat.methods.suitDeterminators.SequenceSuit;
 
 /**
- * RegGameNormalAllTrumpAnnounce class.
- * Announce factory method which creates all trump announce.
+ * RegGameNormalAllTrumpAnnounce class. Announce factory method which creates all trump announce.
  * @author Dimitar Karamanov
  */
 public final class RegGameNormalAllTrumpAnnounce extends ConditionListMethod {
@@ -45,13 +44,13 @@ public final class RegGameNormalAllTrumpAnnounce extends ConditionListMethod {
         AnnounceCondition teamDefence = new NotCondition(teamAttackOrPass);
 
         addAnnounceCondition(new MultipleAndCondition(new DealAttackPlayer(game), new SuitCount(new JackNineSuit(), 5)));
-        //teamAttackOrPass
+        // teamAttackOrPass
         addAnnounceCondition(new MultipleAndCondition(teamAttackOrPass, new RankCount(Rank.Jack, 3)));
         addAnnounceCondition(new MultipleAndCondition(teamAttackOrPass, new RankCount(Rank.Jack, 2), new RankCount(Rank.Nine, 1)));
         addAnnounceCondition(new MultipleAndCondition(teamAttackOrPass, new RankCount(Rank.Jack, 2), new HasSuit(new SequenceSuit())));
         addAnnounceCondition(new MultipleAndCondition(teamAttackOrPass, new RankCount(Rank.Jack, 1), new RankCount(Rank.Nine, 3)));
         addAnnounceCondition(new MultipleAndCondition(teamAttackOrPass, new RankCount(Rank.Nine, 4)));
-        //teamDefence
+        // teamDefence
         addAnnounceCondition(new MultipleAndCondition(teamDefence, new RankCount(Rank.Jack, 4)));
         addAnnounceCondition(new MultipleAndCondition(teamDefence, new RankCount(Rank.Jack, 2), new RankCount(Rank.Nine, 2)));
         addAnnounceCondition(new MultipleAndCondition(teamDefence, new RankCount(Rank.Jack, 2), new RankCount(Rank.Nine, 1), new HasSuit(new SequenceSuit())));

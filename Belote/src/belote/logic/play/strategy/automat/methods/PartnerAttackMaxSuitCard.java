@@ -15,9 +15,8 @@ import belote.bean.pack.card.Card;
 import belote.logic.play.strategy.automat.methods.base.BaseMethod;
 
 /**
- * PartnerAttackMaxSuitCard class.
- * PlayCardMethod which implements the logic of playing the bigest card or the min sequence before it when
- * the attack is from partner.
+ * PartnerAttackMaxSuitCard class. PlayCardMethod which implements the logic of playing the bigest card or the min sequence before it when the attack is from
+ * partner.
  * @author Dimitar Karamanov
  */
 public final class PartnerAttackMaxSuitCard extends BaseMethod {
@@ -40,13 +39,14 @@ public final class PartnerAttackMaxSuitCard extends BaseMethod {
         final Player partner = player.getPartner();
         final Card attackCard = game.getTrickCards().getAttackCard();
 
-        if (attackCard != null && isSecondDefencePosition()) { //partner is the attack player
+        if (attackCard != null && isSecondDefencePosition()) { // partner is the
+                                                               // attack player
             final Card maxCard = player.getCards().findMaxSuitCard(attackCard.getSuit());
             if (maxCard != null && hasPlayerAttack(partner)) {
                 result = player.getCards().getMinSequenceCardBefore(maxCard);
                 Card handTrickCard = game.getTrickCards().getHandAttackSuitCard();
                 if (handTrickCard != null && result.compareTo(handTrickCard) < 0) {
-                	result = null;
+                    result = null;
                 }
             }
         }

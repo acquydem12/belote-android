@@ -11,9 +11,9 @@ package belote.bean.announce;
 
 import java.io.Serializable;
 
+import belote.bean.Player;
 import belote.bean.announce.suit.AnnounceSuit;
 import belote.bean.announce.type.AnnounceType;
-import belote.bean.Player;
 import belote.bean.pack.card.suit.Suit;
 
 /**
@@ -25,9 +25,9 @@ public final class Announce implements Serializable {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -895817895417482869L;
+    private static final long serialVersionUID = -895817895417482869L;
 
-	/**
+    /**
      * Announce suit.
      */
     private final AnnounceSuit suit;
@@ -43,9 +43,8 @@ public final class Announce implements Serializable {
     private final Player player;
 
     /**
-     * Constructor.
-     * Constructor is private so use the provided factory methods to create announce.
-     * On this way is impossible to create Pass double or redouble announce.
+     * Constructor. Constructor is private so use the provided factory methods to create announce. On this way is impossible to create Pass double or redouble
+     * announce.
      * @param suit announce suit.
      * @param type announce type.
      * @param player announce player.
@@ -81,10 +80,9 @@ public final class Announce implements Serializable {
     }
 
     /**
-     * Returns a string representation of the object. The return name is based on class short name.
-     * This method has to be used only for debug purpose when the project is not compiled with obfuscating.
-     * Don't use this method to represent the object. When the project is compiled with obfuscating the
-     * class name is not the same.
+     * Returns a string representation of the object. The return name is based on class short name. This method has to be used only for debug purpose when the
+     * project is not compiled with obfuscating. Don't use this method to represent the object. When the project is compiled with obfuscating the class name is
+     * not the same.
      * @return String a string representation of the object.
      */
     public String toString() {
@@ -101,7 +99,7 @@ public final class Announce implements Serializable {
 
     /**
      * Returns AllTrump suit normal type announce for the provided player.
-     * @param  player announce player.
+     * @param player announce player.
      * @return Announce all trump announce for the provided player.
      */
     public static Announce createATNormalAnnounce(final Player player) {
@@ -110,7 +108,7 @@ public final class Announce implements Serializable {
 
     /**
      * Returns not trump normal announce for the provided player.
-     * @param  player announce player.
+     * @param player announce player.
      * @return Announce not trump announce for the provided player.
      */
     public static Announce createNTNormalAnnounce(final Player player) {
@@ -119,8 +117,8 @@ public final class Announce implements Serializable {
 
     /**
      * Returns a suit normal announce for the provided player.
-     * @param  player announce player.
-     * @param  suit of the announce.
+     * @param player announce player.
+     * @param suit of the announce.
      * @return Announce suit announce for the provided player.
      */
     public static Announce createSuitNormalAnnounce(final Player player, final Suit suit) {
@@ -133,8 +131,8 @@ public final class Announce implements Serializable {
 
     /**
      * Returns a suit normal announce for the provided player.
-     * @param  player announce player.
-     * @param  announceSuit of the announce.
+     * @param player announce player.
+     * @param announceSuit of the announce.
      * @return Announce suit announce for the provided player.
      */
     public static Announce createSuitNormalAnnounce(final Player player, final AnnounceSuit announceSuit) {
@@ -143,7 +141,7 @@ public final class Announce implements Serializable {
 
     /**
      * Returns pass announce for the provided player.
-     * @param  player announce player.
+     * @param player announce player.
      * @return Announce pass announce for the provided player.
      */
     public static Announce createPassAnnounce(final Player player) {
@@ -151,11 +149,10 @@ public final class Announce implements Serializable {
     }
 
     /**
-     * Returns a double type announce based on the provided one and player.
-     * If the provided announce suit is Pass the result is the same announce.
-     * Otherwise is created a new announce of the same suit, double type and for provided player.
-     * @param  announce from which is created the double one.
-     * @param  player   announce player.
+     * Returns a double type announce based on the provided one and player. If the provided announce suit is Pass the result is the same announce. Otherwise is
+     * created a new announce of the same suit, double type and for provided player.
+     * @param announce from which is created the double one.
+     * @param player announce player.
      * @return the same announce as provided if is Pass suit one or new of double type.
      */
     public static Announce createDoubleAnnounce(final Announce announce, final Player player) {
@@ -166,11 +163,10 @@ public final class Announce implements Serializable {
     }
 
     /**
-     * Returns a redouble type announce based on the provided one and player.
-     * If the provided announce suit is Pass the result is the same announce.
-     * Otherwise is created a new announce of the same suit, redouble type and for provided player.
-     * @param  announce from which is created the redouble one.
-     * @param  player   announce player.
+     * Returns a redouble type announce based on the provided one and player. If the provided announce suit is Pass the result is the same announce. Otherwise
+     * is created a new announce of the same suit, redouble type and for provided player.
+     * @param announce from which is created the redouble one.
+     * @param player announce player.
      * @return the same announce as provided one if is Pass suit one or new of redouble type.
      */
     public static Announce createRedoubleAnnounce(final Announce announce, final Player player) {

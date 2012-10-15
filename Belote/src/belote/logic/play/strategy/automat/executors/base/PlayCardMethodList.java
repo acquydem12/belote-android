@@ -15,8 +15,7 @@ import java.util.Iterator;
 import belote.logic.play.strategy.automat.base.PlayCardMethod;
 
 /**
- * PlayCardMethodList class.
- * Wrapper class of system collection used to hold and access PlayCardMethod instances.
+ * PlayCardMethodList class. Wrapper class of system collection used to hold and access PlayCardMethod instances.
  * @author Dimitar Karamanov
  */
 public final class PlayCardMethodList {
@@ -65,8 +64,7 @@ public final class PlayCardMethodList {
     }
 
     /**
-     * PlayableIteratorImpl class.
-     * Implements PlayCardMethodIterator interface.
+     * PlayableIteratorImpl class. Implements PlayCardMethodIterator interface.
      */
     private class PlayCardMethodIteratorImpl implements PlayCardMethodIterator {
 

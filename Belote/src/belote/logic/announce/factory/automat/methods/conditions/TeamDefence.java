@@ -14,8 +14,7 @@ import belote.bean.Player;
 import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCondition;
 
 /**
- * TeamDefence class.
- * Returns true if the announce player team is on defense, false otherwise.
+ * TeamDefence class. Returns true if the announce player team is on defense, false otherwise.
  * @author Dimitar Karamanov
  */
 public final class TeamDefence implements AnnounceCondition {
