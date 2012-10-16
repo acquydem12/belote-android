@@ -16,6 +16,7 @@ import belote.logic.play.strategy.automat.methods.MaxSuitLeftCard;
 import belote.logic.play.strategy.automat.methods.MinAboveCard;
 import belote.logic.play.strategy.automat.methods.MinSuitCard;
 import belote.logic.play.strategy.automat.methods.PartnerAttackMaxSuitCard;
+import belote.logic.play.strategy.automat.methods.PartnerAttackPosibleQuintOrQuarteCard;
 
 /**
  * AllTrumpFirstDefencePositionCard executor. Used in AllTrumpPlayStategy getSecondDefencePositionCard().
@@ -32,6 +33,7 @@ public final class AllTrumpSecondDefencePositionCard extends PlayCardExecutor {
         // Register play card methods.
         register(new AllTrumpSuitHookCard(game));
         register(new MaxSuitLeftCard(game));
+        register(new PartnerAttackPosibleQuintOrQuarteCard(game));
         register(new PartnerAttackMaxSuitCard(game));
         register(new MinAboveCard(game));
         register(new MinSuitCard(game));
