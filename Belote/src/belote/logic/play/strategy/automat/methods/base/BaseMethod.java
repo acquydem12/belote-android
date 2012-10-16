@@ -18,11 +18,16 @@ import belote.bean.announce.AnnounceList;
 import belote.bean.announce.AnnounceUnit;
 import belote.bean.announce.suit.AnnounceSuit;
 import belote.bean.pack.Pack;
+import belote.bean.pack.PackExtraAnnouncesManager;
 import belote.bean.pack.PackIterator;
 import belote.bean.pack.card.Card;
 import belote.bean.pack.card.rank.Rank;
 import belote.bean.pack.card.rank.RankIterator;
 import belote.bean.pack.card.suit.Suit;
+import belote.bean.pack.sequence.Sequence;
+import belote.bean.pack.sequence.SequenceIterator;
+import belote.bean.pack.sequence.SequenceList;
+import belote.bean.pack.sequence.SequenceType;
 import belote.bean.trick.Trick;
 import belote.bean.trick.TrickListIterator;
 import belote.logic.play.strategy.automat.base.PlayCardMethod;
@@ -131,6 +136,62 @@ public abstract class BaseMethod implements PlayCardMethod {
             }
         }
         return result;
+    }
+    
+    protected final boolean isPartnerPossibleQuintOrQuarteSuit(final Suit suit, final Player player) {
+        Player partner = player.getPartner();
+        SequenceList sequences = partner.getCards().getSequencesList();
+        for (SequenceIterator iterator = sequences.iterator(); iterator.hasNext();) {
+            Sequence sequence = iterator.next();
+            if (SequenceType.Quint.equals(sequence.getType()) && isPartnerPossibleSequenceSuit(SequenceType.Quint, suit, player)) {
+                return true;
+            }
+            
+            if (SequenceType.Quarte.equals(sequence.getType()) && isPartnerPossibleSequenceSuit(SequenceType.Quarte, suit, player)) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    protected final boolean isPartnerPossibleSequenceSuit(final SequenceType type, final Suit suit, final Player player) {
+        int sequenceCount = getSequenceCount(type);
+        int found = 0;
+        
+        if (player.getPartner().getCards().getSize() >= sequenceCount) {
+            for (RankIterator iterator = Rank.iterator(); iterator.hasNext();) {
+                Rank rank = iterator.next();
+
+                if (player.getCards().findCard(rank, suit) != null) {
+                    found = 0;
+                }
+
+                if (isPassedCard(rank, suit, true)) {
+                    found = 0;
+                }
+
+                found++;
+
+                if (found == sequenceCount) {
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
+    
+    private final int getSequenceCount(final SequenceType type) {
+        if (SequenceType.Quint.equals(type)) {
+            return PackExtraAnnouncesManager.ST_100_COUNT;
+        }
+        
+        if (SequenceType.Quarte.equals(type)) {
+            return PackExtraAnnouncesManager.ST_050_COUNT;
+        }
+        
+        return PackExtraAnnouncesManager.ST_020_COUNT;
     }
 
     /**
