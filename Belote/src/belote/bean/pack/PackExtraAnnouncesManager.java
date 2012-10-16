@@ -41,17 +41,17 @@ public class PackExtraAnnouncesManager implements Serializable {
     /**
      * Cards count for sequence 20.
      */
-    private final static int ST_020_COUNT = 3;
+    public final static int ST_020_COUNT = 3;
 
     /**
      * Cards count for sequence 50.
      */
-    private final static int ST_050_COUNT = 4;
+    public final static int ST_050_COUNT = 4;
 
     /**
      * Cards count for sequence 100.
      */
-    private final static int ST_100_COUNT = 5;
+    public final static int ST_100_COUNT = 5;
 
     /**
      * Internal pack object.
