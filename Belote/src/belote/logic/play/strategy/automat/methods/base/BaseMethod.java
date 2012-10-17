@@ -201,20 +201,34 @@ public abstract class BaseMethod implements PlayCardMethod {
      * @return boolean true if the team players has announce with the provided suit, false otherwise.
      */
     protected boolean isTeamSuitAnnounce(final Team team, final Suit suit) {
-        final AnnounceSuit announceSuit = AnnounceUnit.transformFromSuitToAnnounceSuit(suit);
         for (int i = 0; i < team.getPlayersCount(); i++) {
             final Player player = team.getPlayer(i);
-            final AnnounceList playerAnnounces = game.getAnnounceList().getPlayerAnnounces(player);
-
-            for (final AnnounceIterator iterator = playerAnnounces.iterator(); iterator.hasNext();) {
-                final Announce announce = iterator.next();
-                if (announce.getAnnounceSuit().equals(announceSuit)) {
-                    return true;
-                }
+            if (isPlayerSuitAnnounce(player, suit)) {
+                return true;
             }
         }
         return false;
     }
+    
+    /**
+     * Returns true if one or more team players has declared announce with the provided suit.
+     * @param team provided team.
+     * @param suit provided suit.
+     * @return boolean true if the team players has announce with the provided suit, false otherwise.
+     */
+    protected boolean isPlayerSuitAnnounce(final Player player, final Suit suit) {
+        final AnnounceSuit announceSuit = AnnounceUnit.transformFromSuitToAnnounceSuit(suit);
+        final AnnounceList playerAnnounces = game.getAnnounceList().getPlayerAnnounces(player);
+
+        for (final AnnounceIterator iterator = playerAnnounces.iterator(); iterator.hasNext();) {
+            final Announce announce = iterator.next();
+            if (announce.getAnnounceSuit().equals(announceSuit)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     /**
      * Returns true if the suit is preferred from one ore more team players, false otherwise.
@@ -435,5 +449,20 @@ public abstract class BaseMethod implements PlayCardMethod {
      */
     protected final boolean isThirdDefencePosition() {
         return game.getTrickCards().getSize() == THIRD_DEFENCE_POSITION;
+    }
+    
+    protected final Player getFirstDefencePlayer() {
+        Player player = game.getTrickAttackPlayer();
+        return game.getPlayerAfter(player);
+    }
+    
+    protected final Player getSecondDefencePlayer() {
+        Player player = getFirstDefencePlayer();
+        return game.getPlayerAfter(player);
+    }
+    
+    protected final Player getThirdDefencePlayer() {
+        Player player = getSecondDefencePlayer();
+        return game.getPlayerAfter(player);
     }
 }

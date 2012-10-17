@@ -45,7 +45,10 @@ public final class AllTrumpMakePowerNineCard extends BaseMethod {
             final Card nine = player.getCards().findCard(Rank.Nine, suit);
 
             if (jack == null && nine != null && count > SINGLE_CARD_COUNT && !isMaxSuitCardLeft(nine, false)) {
-                return player.getCards().findMinSuitCard(suit);
+                Player thirdDefencePlayer = getThirdDefencePlayer();
+                if (!isPlayerSuitAnnounce(thirdDefencePlayer, suit)) {
+                    return player.getCards().findMinSuitCard(suit);
+                }
             }
         }
         return null;
