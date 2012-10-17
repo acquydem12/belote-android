@@ -226,7 +226,7 @@ public final class BeloteActivity extends GameActivity implements OnSharedPrefer
 
     protected void onResume() {
         super.onResume();
-
+        dealer.setEndGameActivity(false);
         if (needRefresh) {
             try {
                 if (relative != null && beloteView != null) {
