@@ -64,8 +64,7 @@ public final class DominantSuitCard extends BaseMethod {
         }
 
         if (result != null) {
-            if (!isTeamSuitAnnounce(game.getOppositeTeam(player), result.getSuit())) {
-                // player.getPreferredSuits().add(result.getSuit());
+            if (isTeamSuitAnnounce(game.getOppositeTeam(player), result.getSuit())) {
                 result = null;
             }
         }
