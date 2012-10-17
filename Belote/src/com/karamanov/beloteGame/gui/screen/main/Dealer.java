@@ -253,7 +253,7 @@ public final class Dealer {
             intent.putExtra(GameResumeActivity.BELOTE, game.getGame());
             context.startActivityForResult(intent, BeloteActivity.GAME_RESUME_CODE);
 
-            while (endGameActivity || (context.getWindow() != null && !context.getWindow().isActive())) {
+            while (endGameActivity) {
                 sleep(PLAY_DELAY);
             }
         }
