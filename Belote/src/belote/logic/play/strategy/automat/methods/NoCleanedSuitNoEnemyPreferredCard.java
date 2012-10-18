@@ -14,7 +14,7 @@ import belote.bean.Player;
 import belote.bean.pack.card.Card;
 import belote.bean.pack.card.suit.Suit;
 import belote.bean.pack.card.suit.SuitIterator;
-import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
+import belote.logic.play.strategy.automat.base.method.BaseTrumpMethod;
 
 /**
  * NoCleanedSuitNoEnemyPreferredCard class. PlayCardMethod which implements the logic of playing not cleaned and not enemy preffered suit card.

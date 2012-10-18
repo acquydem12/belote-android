@@ -17,7 +17,7 @@ import belote.bean.announce.AnnounceList;
 import belote.bean.announce.AnnounceUnit;
 import belote.bean.pack.card.Card;
 import belote.bean.pack.card.suit.Suit;
-import belote.logic.play.strategy.automat.methods.base.BaseMethod;
+import belote.logic.play.strategy.automat.base.method.BaseMethod;
 
 /**
  * PartnerSuitAnnounceCard class. PlayCardMethod which implements the logic of playing card from suit declared by partner during game annouce.

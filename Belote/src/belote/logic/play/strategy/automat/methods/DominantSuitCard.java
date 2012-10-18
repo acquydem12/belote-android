@@ -14,7 +14,7 @@ import belote.bean.Player;
 import belote.bean.pack.card.Card;
 import belote.bean.pack.card.rank.Rank;
 import belote.bean.pack.card.suit.Suit;
-import belote.logic.play.strategy.automat.methods.base.BaseMethod;
+import belote.logic.play.strategy.automat.base.method.BaseMethod;
 
 /**
  * DominantSuitCard class. PlayCardMethod which implements the logic of playing a card from the dominant suit.
