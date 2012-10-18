@@ -14,7 +14,7 @@ import belote.bean.Player;
 import belote.bean.pack.card.Card;
 import belote.bean.pack.card.suit.Suit;
 import belote.bean.pack.card.suit.SuitIterator;
-import belote.logic.play.strategy.automat.methods.base.BaseMethod;
+import belote.logic.play.strategy.automat.base.method.BaseMethod;
 
 /**
  * SingleNoMaxCard class. PlayCardMethod which implements the logic of playing the minimum by rank single no maximum left suit card.

@@ -12,7 +12,7 @@ package belote.logic.play.strategy.automat.methods;
 import belote.bean.Game;
 import belote.bean.Player;
 import belote.bean.pack.card.Card;
-import belote.logic.play.strategy.automat.methods.base.BaseMethod;
+import belote.logic.play.strategy.automat.base.method.BaseMethod;
 
 /**
  * PartnerAttackMaxSuitCard class. PlayCardMethod which implements the logic of playing the bigest card or the min sequence before it when the attack is from

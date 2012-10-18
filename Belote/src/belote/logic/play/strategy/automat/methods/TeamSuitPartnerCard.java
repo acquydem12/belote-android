@@ -15,7 +15,7 @@ import belote.bean.pack.card.Card;
 import belote.bean.pack.card.rank.Rank;
 import belote.bean.pack.card.suit.Suit;
 import belote.bean.pack.card.suit.SuitIterator;
-import belote.logic.play.strategy.automat.methods.base.BaseMethod;
+import belote.logic.play.strategy.automat.base.method.BaseMethod;
 
 /**
  * TeamSuitPartnerCard class. PlayCardMethod which implements the logic of playing the minimum card from the first found partner team suit.

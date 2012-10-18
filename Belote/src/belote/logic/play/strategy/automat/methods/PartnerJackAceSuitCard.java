@@ -5,7 +5,7 @@ import belote.bean.Player;
 import belote.bean.pack.card.Card;
 import belote.bean.pack.card.suit.Suit;
 import belote.bean.pack.card.suit.SuitIterator;
-import belote.logic.play.strategy.automat.methods.base.BaseTrumpMethod;
+import belote.logic.play.strategy.automat.base.method.BaseTrumpMethod;
 
 public class PartnerJackAceSuitCard extends BaseTrumpMethod {
 

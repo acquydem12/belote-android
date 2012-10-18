@@ -13,7 +13,7 @@ import belote.bean.Game;
 import belote.bean.Player;
 import belote.bean.pack.card.Card;
 import belote.logic.play.strategy.automat.base.PlayCardMethod;
-import belote.logic.play.strategy.automat.methods.base.BaseMethod;
+import belote.logic.play.strategy.automat.base.method.BaseMethod;
 
 /**
  * SingleCardToPartner class. PlayCardMethod which implements the logic of playing single card to partner if he is the best card player and have played the
