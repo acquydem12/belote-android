@@ -279,12 +279,28 @@ public class BeloteGame {
      */
     public final Card playSingleHand(Player player) throws BelotException {
         final Card card = belotGameLogic.getPlayerCard(player);
+        removePlayerCard(player, card);
+        return card;
+    }
+    
+    private void removePlayerCard(Player player, Card card) {
+        final Card attackCard = game.getTrickCards().getAttackCard();
+        
         player.getCards().remove(card);
         game.getTrickCards().add(card);
+        
         if (hasPlayerCouple(player, card)) {
             setPlayerCouple(player, card.getSuit());
         }
-        return card;
+        
+        if (attackCard == null && game.getTrickList().getAttackCount(player) < 3) {
+            player.getPreferredSuits().add(card.getSuit());
+        }
+        
+        if (attackCard != null && !attackCard.getSuit().equals(card.getSuit())) {
+            player.getUnwantedSuits().add(card.getSuit());
+            player.getMissedSuits().add(attackCard.getSuit());
+        }
     }
 
     /**
@@ -367,23 +383,7 @@ public class BeloteGame {
      * @param card played card.
      */
     public final void processHumanPlayerCard(Player player, Card card) {
-        final Card attackCard = game.getTrickCards().getAttackCard();
-
-        player.getCards().remove(card);
-        game.getTrickCards().add(card);
-
-        if (hasPlayerCouple(player, card)) {
-            setPlayerCouple(player, card.getSuit());
-        }
-
-        if (attackCard == null) {
-            player.getPreferredSuits().add(card.getSuit());
-        }
-
-        if (attackCard != null && !attackCard.getSuit().equals(card.getSuit())) {
-            player.getUnwantedSuits().add(card.getSuit());
-            player.getMissedSuits().add(attackCard.getSuit());
-        }
+        removePlayerCard(player, card);
 
         Announce announce = game.getAnnounceList().getContractAnnounce();
         if (announce != null && announce.getAnnounceSuit().equals(AnnounceSuit.AllTrump) && Rank.Jack.equals(card.getRank())) {
