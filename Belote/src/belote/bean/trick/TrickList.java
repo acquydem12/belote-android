@@ -13,6 +13,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import belote.bean.Player;
 import belote.bean.Team;
 
 /**
@@ -76,6 +77,17 @@ public final class TrickList implements Serializable {
 
             if (!iterator.hasNext()) {
                 result = trick.getWinnerPlayer().getTeam();
+            }
+        }
+        return result;
+    }
+    
+    public int getAttackCount(final Player player) {
+        int result = 0;
+        for (final TrickListIterator iterator = iterator(); iterator.hasNext();) {
+            final Trick trick = iterator.next();
+            if (player.equals(trick.getAttackPlayer())) {
+                result++;
             }
         }
         return result;
