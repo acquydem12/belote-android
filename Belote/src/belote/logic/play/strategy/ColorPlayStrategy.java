@@ -15,8 +15,8 @@ import belote.bean.announce.Announce;
 import belote.bean.announce.AnnounceUnit;
 import belote.bean.pack.card.Card;
 import belote.bean.pack.card.suit.Suit;
-import belote.logic.play.strategy.automat.executors.ColorAttackCard;
-import belote.logic.play.strategy.automat.executors.ColorDefenceCard;
+import belote.logic.play.strategy.automat.executors.trumps.AttackCard;
+import belote.logic.play.strategy.automat.executors.trumps.DefenceCard;
 import belote.logic.play.strategy.validators.ColorGameCardValidator;
 
 /**
@@ -30,7 +30,7 @@ public final class ColorPlayStrategy extends BasePlayStrategy {
      * @param game belote game instance.
      */
     public ColorPlayStrategy(final Game game) {
-        super(game, new ColorGameCardValidator(game), new ColorAttackCard(game), new ColorDefenceCard(game));
+        super(game, new ColorGameCardValidator(game), new AttackCard(game), new DefenceCard(game));
     }
 
     /**

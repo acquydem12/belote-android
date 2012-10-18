@@ -12,10 +12,10 @@ package belote.logic.play.strategy;
 import belote.bean.Game;
 import belote.bean.Player;
 import belote.bean.pack.card.Card;
-import belote.logic.play.strategy.automat.executors.NotTrumpAttackCard;
-import belote.logic.play.strategy.automat.executors.NotTrumpFirstDefencePositionCard;
-import belote.logic.play.strategy.automat.executors.NotTrumpSecondDefencePositionCard;
-import belote.logic.play.strategy.automat.executors.NotTrumpThirdDefencePositionCard;
+import belote.logic.play.strategy.automat.executors.trumpsLess.notTrumps.AttackCard;
+import belote.logic.play.strategy.automat.executors.trumpsLess.notTrumps.FirstDefencePositionCard;
+import belote.logic.play.strategy.automat.executors.trumpsLess.notTrumps.SecondDefencePositionCard;
+import belote.logic.play.strategy.automat.executors.trumpsLess.notTrumps.ThirdDefencePositionCard;
 import belote.logic.play.strategy.validators.NotTrumpCardValidator;
 
 /**
@@ -29,8 +29,8 @@ public final class NotTrumpPlayStrategy extends BasePlayStrategy {
      * @param game BelotGame instance.
      */
     public NotTrumpPlayStrategy(final Game game) {
-        super(game, new NotTrumpCardValidator(game), new NotTrumpAttackCard(game), new NotTrumpFirstDefencePositionCard(game),
-                new NotTrumpSecondDefencePositionCard(game), new NotTrumpThirdDefencePositionCard(game));
+        super(game, new NotTrumpCardValidator(game), new AttackCard(game), new FirstDefencePositionCard(game),
+                new SecondDefencePositionCard(game), new ThirdDefencePositionCard(game));
     }
 
     /**
