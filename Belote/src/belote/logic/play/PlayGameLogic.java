@@ -28,7 +28,7 @@ import belote.logic.play.points.distributors.PointsDistributor;
 import belote.logic.play.points.distributors.WinGamePointsDistributor;
 import belote.logic.play.strategy.AllTrumpPlayStrategy;
 import belote.logic.play.strategy.BasePlayStrategy;
-import belote.logic.play.strategy.ColorPlayStrategy;
+import belote.logic.play.strategy.TrumpPlayStrategy;
 import belote.logic.play.strategy.NotTrumpPlayStrategy;
 import belote.logic.play.strategy.NullPlayCardStrategy;
 
@@ -110,7 +110,7 @@ public final class PlayGameLogic {
     public PlayGameLogic(final Game game) {
         this.game = game;
         // Play card strategies helpers
-        clPlayCardStrategy = new ColorPlayStrategy(game);
+        clPlayCardStrategy = new TrumpPlayStrategy(game);
         atPlayCardStrategy = new AllTrumpPlayStrategy(game);
         ntPlayCardStrategy = new NotTrumpPlayStrategy(game);
         nullPlayCardStrategy = new NullPlayCardStrategy(game);

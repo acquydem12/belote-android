@@ -16,10 +16,10 @@ import belote.bean.announce.AnnounceUnit;
 import belote.bean.pack.card.Card;
 import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.base.executor.PlayCardExecutor;
-import belote.logic.play.strategy.automat.methods.trumps.ColorObligatorySafeTrumpCard;
-import belote.logic.play.strategy.automat.methods.trumps.ColorObligatorySomeTrumpCard;
-import belote.logic.play.strategy.automat.methods.trumps.ColorObligatoryStandardTrumpCard;
-import belote.logic.play.strategy.automat.methods.trumps.ColorObligatoryTrumpRoundLastCard;
+import belote.logic.play.strategy.automat.methods.trumps.obligatoryTrump.TeamAnnounceSafeTrumpCard;
+import belote.logic.play.strategy.automat.methods.trumps.obligatoryTrump.SomeTrumpCard;
+import belote.logic.play.strategy.automat.methods.trumps.obligatoryTrump.StandardTrumpCard;
+import belote.logic.play.strategy.automat.methods.trumps.obligatoryTrump.ThirdDefencePositionTrumpCard;
 
 /**
  * ColorNoTrumpAttackObligatoryFirstRuffCardExecutor executor. Implements the obligatory rules for defense player to play obligatory trump card in a color game.
@@ -34,10 +34,10 @@ public final class NoTrumpAttackObligatoryFirstRuffCardExecutor extends PlayCard
     public NoTrumpAttackObligatoryFirstRuffCardExecutor(final Game game) {
         super(game);
         // Register play card methods.
-        register(new ColorObligatoryTrumpRoundLastCard(game));
-        register(new ColorObligatorySafeTrumpCard(game));
-        register(new ColorObligatoryStandardTrumpCard(game));
-        register(new ColorObligatorySomeTrumpCard(game));
+        register(new ThirdDefencePositionTrumpCard(game));
+        register(new TeamAnnounceSafeTrumpCard(game));
+        register(new StandardTrumpCard(game));
+        register(new SomeTrumpCard(game));
     }
 
     /**
@@ -54,7 +54,7 @@ public final class NoTrumpAttackObligatoryFirstRuffCardExecutor extends PlayCard
             final Card bestAttackCard = game.getTrickCards().getHandAttackSuitCard();
             if (bestAttackCard != null) {
                 final Player handPlayer = game.getPlayerByCard(bestAttackCard);
-                result = someTrumpCard == null && handPlayer != null && !handPlayer.getTeam().equals(player.getTeam());
+                result = someTrumpCard == null && handPlayer != null && !handPlayer.isSameTeam(player);
             }
         }
         return result;

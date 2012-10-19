@@ -15,16 +15,16 @@ import belote.bean.pack.card.Card;
 import belote.logic.play.strategy.automat.base.method.BaseMethod;
 
 /**
- * MaxSuitLeftCard class. PlayCardMethod which implements the logic of playing the maximum by rank suit left card.
+ * MinSuitCard class. PlayCardMethod which implements the logic of playing the minimum by rank suit card.
  * @author Dimitar Karamanov
  */
-public final class MaxSuitLeftCard extends BaseMethod {
+public final class MinimumSuitCard extends BaseMethod {
 
     /**
      * Constructor.
      * @param game BelotGame instance class.
      */
-    public MaxSuitLeftCard(final Game game) {
+    public MinimumSuitCard(final Game game) {
         super(game);
     }
 
@@ -36,12 +36,7 @@ public final class MaxSuitLeftCard extends BaseMethod {
     public Card getPlayMethodCard(final Player player) {
         final Card attackCard = game.getTrickCards().getAttackCard();
         if (attackCard != null) {
-            final Card card = player.getCards().findMaxSuitCard(attackCard.getSuit());
-            if (card != null) {
-                if (isMaxSuitCardLeft(card, true) && card.compareTo(game.getTrickCards().getHandAttackSuitCard()) > 0) {
-                    return card;
-                }
-            }
+            return player.getCards().findMinSuitCard(attackCard.getSuit());
         }
         return null;
     }

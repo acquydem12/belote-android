@@ -11,10 +11,10 @@ package belote.logic.play.strategy.automat.executors.trumps;
 
 import belote.bean.Game;
 import belote.logic.play.strategy.automat.base.executor.PlayCardExecutor;
-import belote.logic.play.strategy.automat.methods.MinSuitCard;
-import belote.logic.play.strategy.automat.methods.trumps.ColorNoTrumpAttackEnemyTrumpCard;
-import belote.logic.play.strategy.automat.methods.trumps.ColorNoTrumpAttackMaxSuitLeftCard;
-import belote.logic.play.strategy.automat.methods.trumps.ColorNoTrumpAttackSuitHookCard;
+import belote.logic.play.strategy.automat.methods.MinimumSuitCard;
+import belote.logic.play.strategy.automat.methods.trumps.noTrumpAttack.EnemyPlayedTrumpCard;
+import belote.logic.play.strategy.automat.methods.trumps.noTrumpAttack.MaxSuitLeftCard;
+import belote.logic.play.strategy.automat.methods.trumps.noTrumpAttack.HookCard;
 
 /**
  * ColorDefenceSuitCard executor. Implements the obligatory rules for defence player when the attack card is not from trump suit. Used in ColorDefenceCard
@@ -30,10 +30,10 @@ public final class DefenceNoTrumpAttackCard extends PlayCardExecutor {
     public DefenceNoTrumpAttackCard(final Game game) {
         super(game);
         // Register play card methods.
-        register(new ColorNoTrumpAttackEnemyTrumpCard(game));
-        register(new ColorNoTrumpAttackSuitHookCard(game));
-        register(new ColorNoTrumpAttackMaxSuitLeftCard(game));
-        register(new MinSuitCard(game));
+        register(new EnemyPlayedTrumpCard(game));
+        register(new HookCard(game));
+        register(new MaxSuitLeftCard(game));
+        register(new MinimumSuitCard(game));
         register(new NoTrumpAttackTrumpCardExecutor(game));
     }
 }

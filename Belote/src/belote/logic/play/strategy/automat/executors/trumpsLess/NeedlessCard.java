@@ -12,13 +12,13 @@ package belote.logic.play.strategy.automat.executors.trumpsLess;
 import belote.bean.Game;
 import belote.logic.play.strategy.automat.base.executor.PlayCardExecutor;
 import belote.logic.play.strategy.automat.methods.MaxSingleNoHandCardToPartner;
-import belote.logic.play.strategy.automat.methods.MinAllCard;
+import belote.logic.play.strategy.automat.methods.MinimumOfAllCard;
 import belote.logic.play.strategy.automat.methods.MinMeterSuitCard;
-import belote.logic.play.strategy.automat.methods.SingleNoMajorCard;
-import belote.logic.play.strategy.automat.methods.SingleNoMaxCard;
-import belote.logic.play.strategy.automat.methods.trumpsLess.ColorlessChooseTwoSuitsCard;
-import belote.logic.play.strategy.automat.methods.trumpsLess.ColorlessClearCard;
-import belote.logic.play.strategy.automat.methods.trumpsLess.ColorlessMinAllMasterCards;
+import belote.logic.play.strategy.automat.methods.trumpsLess.ChooseTwoSuitsCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.ClearCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.MinimumOfAllMastersCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.SingleNoMajorCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.SingleNoMaxCard;
 
 /**
  * ColorlessNeedlessCard class. Implements the logic to play no needed card and is called after obligatory rules. Used in AllTrumptXXX and NotTrumpXXX
@@ -35,12 +35,12 @@ public final class NeedlessCard extends PlayCardExecutor {
         super(game);
         // Register play card methods.
         register(new MaxSingleNoHandCardToPartner(game));
-        register(new ColorlessMinAllMasterCards(game));
+        register(new MinimumOfAllMastersCard(game));
         register(new SingleNoMajorCard(game));
-        register(new ColorlessClearCard(game));
+        register(new ClearCard(game));
         register(new SingleNoMaxCard(game));
         register(new MinMeterSuitCard(game));
-        register(new ColorlessChooseTwoSuitsCard(game));
-        register(new MinAllCard(game));
+        register(new ChooseTwoSuitsCard(game));
+        register(new MinimumOfAllCard(game));
     }
 }

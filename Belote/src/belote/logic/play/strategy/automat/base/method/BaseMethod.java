@@ -465,4 +465,12 @@ public abstract class BaseMethod implements PlayCardMethod {
         Player player = getSecondDefencePlayer();
         return game.getPlayerAfter(player);
     }
+    
+    protected Suit getTrump() {
+        final Announce announce = game.getAnnounceList().getContractAnnounce();
+        if (announce != null) {
+            return AnnounceUnit.transformFromAnnounceSuitToSuit(announce.getAnnounceSuit());
+        }
+        return null;
+    }
 }

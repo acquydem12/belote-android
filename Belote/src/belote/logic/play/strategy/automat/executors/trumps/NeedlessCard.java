@@ -12,12 +12,12 @@ package belote.logic.play.strategy.automat.executors.trumps;
 import belote.bean.Game;
 import belote.logic.play.strategy.automat.base.executor.PlayCardExecutor;
 import belote.logic.play.strategy.automat.methods.MaxSingleNoHandCardToPartner;
-import belote.logic.play.strategy.automat.methods.MinAllCard;
-import belote.logic.play.strategy.automat.methods.trumps.ColorMinAllCard;
-import belote.logic.play.strategy.automat.methods.trumps.ColorMinAllMasterCards;
-import belote.logic.play.strategy.automat.methods.trumps.ColorNeedlessClearCard;
-import belote.logic.play.strategy.automat.methods.trumps.ColorNeedlessClearSingleSuitCard;
-import belote.logic.play.strategy.automat.methods.trumps.ColorNeedlessTrumpCard;
+import belote.logic.play.strategy.automat.methods.MinimumOfAllCard;
+import belote.logic.play.strategy.automat.methods.trumps.needless.MinimumOfAllNoTrumpCard;
+import belote.logic.play.strategy.automat.methods.trumps.needless.MinimumOfAllMastersCards;
+import belote.logic.play.strategy.automat.methods.trumps.needless.ClearCard;
+import belote.logic.play.strategy.automat.methods.trumps.needless.ClearSingleSuitCard;
+import belote.logic.play.strategy.automat.methods.trumps.needless.TrumpCard;
 
 /**
  * ColorNeedlessCard executor. Implements the logic to play no needed card and is called after obligatory rules. Used in ColorAttackCard and ColorDefenceCard
@@ -34,11 +34,11 @@ public final class NeedlessCard extends PlayCardExecutor {
         super(game);
         // Register play card methods.
         register(new MaxSingleNoHandCardToPartner(game));
-        register(new ColorMinAllMasterCards(game));
-        register(new ColorNeedlessClearSingleSuitCard(game));
-        register(new ColorNeedlessClearCard(game));
-        register(new ColorMinAllCard(game));
-        register(new ColorNeedlessTrumpCard(game));
-        register(new MinAllCard(game));
+        register(new MinimumOfAllMastersCards(game));
+        register(new ClearSingleSuitCard(game));
+        register(new ClearCard(game));
+        register(new MinimumOfAllNoTrumpCard(game));
+        register(new TrumpCard(game));
+        register(new MinimumOfAllCard(game));
     }
 }

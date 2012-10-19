@@ -13,11 +13,11 @@ import belote.bean.Game;
 import belote.logic.play.strategy.automat.base.executor.PlayCardExecutor;
 import belote.logic.play.strategy.automat.executors.PossiblePartnerSuitCard;
 import belote.logic.play.strategy.automat.methods.MeterSuitCard;
-import belote.logic.play.strategy.automat.methods.trumps.ColorDominantNoTrumpSuitCard;
-import belote.logic.play.strategy.automat.methods.trumps.ColorDominantTrumpCard;
-import belote.logic.play.strategy.automat.methods.trumps.ColorNoTrumpHandCard;
-import belote.logic.play.strategy.automat.methods.trumps.ColorPartnerTrumpCard;
-import belote.logic.play.strategy.automat.methods.trumps.ColorTeamSuitPartnerCard;
+import belote.logic.play.strategy.automat.methods.trumps.attackCard.DominantNoTrumpCard;
+import belote.logic.play.strategy.automat.methods.trumps.attackCard.DominantTrumpCard;
+import belote.logic.play.strategy.automat.methods.trumps.attackCard.NoTrumpHandCard;
+import belote.logic.play.strategy.automat.methods.trumps.attackCard.TrumpToPartnerCard;
+import belote.logic.play.strategy.automat.methods.trumps.attackCard.TeamSuitCard;
 
 /**
  * ColorAttackCard executor. Used in ColorPlayStategy getAttackCard().
@@ -32,13 +32,13 @@ public final class AttackCard extends PlayCardExecutor {
     public AttackCard(final Game game) {
         super(game);
         // Register play card methods.
-        register(new ColorTeamSuitPartnerCard(game));
-        register(new ColorDominantTrumpCard(game));
-        register(new ColorPartnerTrumpCard(game));
-        register(new ColorNoTrumpHandCard(game));
+        register(new TeamSuitCard(game));
+        register(new DominantTrumpCard(game));
+        register(new TrumpToPartnerCard(game));
+        register(new NoTrumpHandCard(game));
         register(new MeterSuitCard(game));
         register(new PossiblePartnerSuitCard(game));
-        register(new ColorDominantNoTrumpSuitCard(game));
+        register(new DominantNoTrumpCard(game));
         register(new NeedlessCard(game));
     }
 }

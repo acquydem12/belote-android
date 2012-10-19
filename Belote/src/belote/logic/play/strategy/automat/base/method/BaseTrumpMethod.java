@@ -38,7 +38,7 @@ public abstract class BaseTrumpMethod extends BaseMethod {
     public final Card getPlayMethodCard(final Player player) {
         final Announce announce = game.getAnnounceList().getContractAnnounce();
 
-        if (announce != null) {// && announce.isColorAnnounce()) {
+        if (announce != null && announce.isColorAnnounce()) {
             final Suit trump = AnnounceUnit.transformFromAnnounceSuitToSuit(announce.getAnnounceSuit());
             return getPlayMethodCard(player, trump);
         } else {

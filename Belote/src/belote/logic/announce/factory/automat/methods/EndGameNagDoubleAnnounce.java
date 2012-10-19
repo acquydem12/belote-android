@@ -39,7 +39,7 @@ public final class EndGameNagDoubleAnnounce extends ConditionListMethod {
     protected Announce createAnnounce(final Player player) {
         final Announce announce = game.getAnnounceList().getContractAnnounce();
         if (announce != null) {
-            final boolean enemyAnnounce = !announce.getPlayer().getTeam().equals(player.getTeam());
+            final boolean enemyAnnounce = !announce.getPlayer().isSameTeam(player);
             final boolean normalAnnounce = announce.getType().equals(AnnounceType.Normal);
             final boolean normalEnemyAnnounce = enemyAnnounce && normalAnnounce;
             final boolean enemyHasMorePoints = player.getTeam().getPoints().getAllPoints() < game.getOppositeTeam(player).getPoints().getAllPoints();

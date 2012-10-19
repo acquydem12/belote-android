@@ -84,7 +84,7 @@ public abstract class AnnounceExecutor implements AnnounceMethod {
             }
 
             if (contractAnnounce.getAnnounceSuit().equals(announce.getAnnounceSuit())) {
-                if (!contractAnnounce.getPlayer().getTeam().equals(announce.getPlayer().getTeam())) {
+                if (!contractAnnounce.getPlayer().isSameTeam(announce.getPlayer())) {
                     final boolean saidDoubleAfterNormal = contractAnnounce.getType().equals(AnnounceType.Normal)
                             && announce.getType().equals(AnnounceType.Double);
                     final boolean saidRedoubleAfterDouble = contractAnnounce.getType().equals(AnnounceType.Double)
