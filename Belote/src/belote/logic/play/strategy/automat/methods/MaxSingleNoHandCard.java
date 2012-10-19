@@ -14,13 +14,13 @@ import belote.bean.Player;
 import belote.bean.pack.PackIterator;
 import belote.bean.pack.card.Card;
 import belote.bean.pack.card.suit.Suit;
-import belote.logic.play.strategy.automat.base.method.BaseTrumpMethod;
+import belote.logic.play.strategy.automat.base.method.BaseMethod;
 
 /**
  * MaxSingleNoHandCard class. PlayCardMethod which implements the logic of playing the maximum rank single no hand card (to give it to the partner hand).
  * @author Dimitar Karamanov
  */
-public final class MaxSingleNoHandCard extends BaseTrumpMethod {
+public final class MaxSingleNoHandCard extends BaseMethod {
 
     /**
      * Constructor.
@@ -36,9 +36,9 @@ public final class MaxSingleNoHandCard extends BaseTrumpMethod {
      * @param trump suit.
      * @return Card object instance or null.
      */
-    protected Card getPlayMethodCard(final Player player, final Suit trump) {
+    protected Card getPlayMethodCard(final Player player) {
         Card result = null;
-
+        final Suit trump = getTrump();
         for (final PackIterator iterator = player.getCards().iterator(); iterator.hasNext();) {
             final Card card = iterator.next();
             if (trump == null || !trump.equals(card.getSuit())) {

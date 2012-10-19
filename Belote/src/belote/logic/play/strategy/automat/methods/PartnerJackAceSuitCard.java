@@ -5,9 +5,9 @@ import belote.bean.Player;
 import belote.bean.pack.card.Card;
 import belote.bean.pack.card.suit.Suit;
 import belote.bean.pack.card.suit.SuitIterator;
-import belote.logic.play.strategy.automat.base.method.BaseTrumpMethod;
+import belote.logic.play.strategy.automat.base.method.BaseMethod;
 
-public class PartnerJackAceSuitCard extends BaseTrumpMethod {
+public class PartnerJackAceSuitCard extends BaseMethod {
 
     /**
      * Constructor.
@@ -23,7 +23,7 @@ public class PartnerJackAceSuitCard extends BaseTrumpMethod {
      * @param player who is on turn.
      * @return Card object instance or null.
      */
-    protected Card getPlayMethodCard(final Player player, final Suit trump) {
+    protected Card getPlayMethodCard(final Player player) {
         final Player partner = player.getPartner();
         // Prefer suits
         for (final SuitIterator iterator = partner.getJackAceSuits().iterator(); iterator.hasNext();) {

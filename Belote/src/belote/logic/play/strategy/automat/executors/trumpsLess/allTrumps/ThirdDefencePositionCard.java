@@ -12,8 +12,8 @@ package belote.logic.play.strategy.automat.executors.trumpsLess.allTrumps;
 import belote.bean.Game;
 import belote.logic.play.strategy.automat.base.executor.PlayCardExecutor;
 import belote.logic.play.strategy.automat.executors.trumpsLess.NeedlessCard;
-import belote.logic.play.strategy.automat.methods.MinSuitCard;
-import belote.logic.play.strategy.automat.methods.trumpsLess.allTrump.AllTrumpSuitHookCard;
+import belote.logic.play.strategy.automat.methods.MinimumSuitCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.allTrump.HookCard;
 
 /**
  * AllTrumpFirstDefencePositionCard executor. Used in AllTrumpPlayStategy getThirdDefencePositionCard().
@@ -28,8 +28,8 @@ public final class ThirdDefencePositionCard extends PlayCardExecutor {
     public ThirdDefencePositionCard(final Game game) {
         super(game);
         // Register play card methods.
-        register(new AllTrumpSuitHookCard(game));
-        register(new MinSuitCard(game));
+        register(new HookCard(game));
+        register(new MinimumSuitCard(game));
         register(new NeedlessCard(game));
     }
 }

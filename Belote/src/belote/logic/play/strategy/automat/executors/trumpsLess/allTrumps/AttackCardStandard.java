@@ -13,13 +13,13 @@ import belote.bean.Game;
 import belote.logic.play.strategy.automat.base.executor.PlayCardExecutor;
 import belote.logic.play.strategy.automat.executors.PossiblePartnerSuitCard;
 import belote.logic.play.strategy.automat.executors.trumpsLess.NeedlessCard;
-import belote.logic.play.strategy.automat.methods.DominantSuitCard;
 import belote.logic.play.strategy.automat.methods.MeterSuitCard;
-import belote.logic.play.strategy.automat.methods.PartnerSuitAnnounceCard;
-import belote.logic.play.strategy.automat.methods.TeamSuitPartnerCard;
-import belote.logic.play.strategy.automat.methods.trumpsLess.ColorlessHandCard;
-import belote.logic.play.strategy.automat.methods.trumpsLess.allTrump.AllTrumpBelotCard;
-import belote.logic.play.strategy.automat.methods.trumpsLess.allTrump.AllTrumpMakePowerNineCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.DominantSuitCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.HandCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.PartnerSuitAnnounceCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.TeamSuitPartnerCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.allTrump.BelotCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.allTrump.PromoteNineRankCard;
 
 /**
  * Standard AllTrumpAttackCard executor. Used in AllTrumpAttackCard getAttackCard().
@@ -38,10 +38,10 @@ class AttackCardStandard extends PlayCardExecutor {
         register(new TeamSuitPartnerCard(game));
         register(new DominantSuitCard(game));
         register(new PartnerSuitAnnounceCard(game));
-        register(new AllTrumpMakePowerNineCard(game));
-        register(new ColorlessHandCard(game));
+        register(new PromoteNineRankCard(game));
+        register(new HandCard(game));
         register(new PossiblePartnerSuitCard(game));
-        register(new AllTrumpBelotCard(game));
+        register(new BelotCard(game));
         register(new NeedlessCard(game));
     }
 }

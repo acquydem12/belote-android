@@ -15,16 +15,16 @@ import belote.bean.pack.card.Card;
 import belote.logic.play.strategy.automat.base.method.BaseMethod;
 
 /**
- * MinSuitCard class. PlayCardMethod which implements the logic of playing the minimum by rank suit card.
+ * MinAllCard class. PlayCardMethod which implements the logic of playing the minimum by rank of all cards.
  * @author Dimitar Karamanov
  */
-public final class MinSuitCard extends BaseMethod {
+public final class MinimumOfAllCard extends BaseMethod {
 
     /**
      * Constructor.
      * @param game BelotGame instance class.
      */
-    public MinSuitCard(final Game game) {
+    public MinimumOfAllCard(final Game game) {
         super(game);
     }
 
@@ -34,10 +34,6 @@ public final class MinSuitCard extends BaseMethod {
      * @return Card object instance or null.
      */
     public Card getPlayMethodCard(final Player player) {
-        final Card attackCard = game.getTrickCards().getAttackCard();
-        if (attackCard != null) {
-            return player.getCards().findMinSuitCard(attackCard.getSuit());
-        }
-        return null;
+        return player.getCards().findMinAllCard();
     }
 }

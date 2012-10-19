@@ -12,12 +12,12 @@ package belote.logic.play.strategy.automat.executors.trumpsLess.allTrumps;
 import belote.bean.Game;
 import belote.logic.play.strategy.automat.base.executor.PlayCardExecutor;
 import belote.logic.play.strategy.automat.executors.trumpsLess.NeedlessCard;
-import belote.logic.play.strategy.automat.methods.MaxSuitLeftCard;
-import belote.logic.play.strategy.automat.methods.MinAboveCard;
-import belote.logic.play.strategy.automat.methods.MinSuitCard;
-import belote.logic.play.strategy.automat.methods.PartnerAttackMaxSuitCard;
-import belote.logic.play.strategy.automat.methods.PartnerAttackPosibleQuintOrQuarteCard;
-import belote.logic.play.strategy.automat.methods.trumpsLess.allTrump.AllTrumpSuitHookCard;
+import belote.logic.play.strategy.automat.methods.MinimumSuitCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.MaximumSuitLeftCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.MinimumAboveCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.PartnerAttackMaxSuitCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.allTrump.HookCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.allTrump.PartnerAttackPosibleQuintOrQuarteCard;
 
 /**
  * AllTrumpFirstDefencePositionCard executor. Used in AllTrumpPlayStategy getSecondDefencePositionCard().
@@ -32,12 +32,12 @@ public final class SecondDefencePositionCard extends PlayCardExecutor {
     public SecondDefencePositionCard(final Game game) {
         super(game);
         // Register play card methods.
-        register(new AllTrumpSuitHookCard(game));
-        register(new MaxSuitLeftCard(game));
+        register(new HookCard(game));
+        register(new MaximumSuitLeftCard(game));
         register(new PartnerAttackPosibleQuintOrQuarteCard(game));
         register(new PartnerAttackMaxSuitCard(game));
-        register(new MinAboveCard(game));
-        register(new MinSuitCard(game));
+        register(new MinimumAboveCard(game));
+        register(new MinimumSuitCard(game));
         register(new NeedlessCard(game));
     }
 }

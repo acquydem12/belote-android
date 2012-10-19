@@ -23,13 +23,13 @@ import belote.logic.play.strategy.validators.ColorGameCardValidator;
  * CLPlayCardStrategy class. Color suit strategy playing class.
  * @author Dimitar Karamanov
  */
-public final class ColorPlayStrategy extends BasePlayStrategy {
+public final class TrumpPlayStrategy extends BasePlayStrategy {
 
     /**
      * Constructor.
      * @param game belote game instance.
      */
-    public ColorPlayStrategy(final Game game) {
+    public TrumpPlayStrategy(final Game game) {
         super(game, new ColorGameCardValidator(game), new AttackCard(game), new DefenceCard(game));
     }
 

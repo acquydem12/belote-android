@@ -13,12 +13,12 @@ import belote.bean.Game;
 import belote.logic.play.strategy.automat.base.executor.PlayCardExecutor;
 import belote.logic.play.strategy.automat.executors.PossiblePartnerSuitCard;
 import belote.logic.play.strategy.automat.executors.trumpsLess.NeedlessCard;
-import belote.logic.play.strategy.automat.methods.DominantSuitCard;
 import belote.logic.play.strategy.automat.methods.MeterSuitCard;
-import belote.logic.play.strategy.automat.methods.PartnerSuitAnnounceCard;
-import belote.logic.play.strategy.automat.methods.TeamSuitPartnerCard;
-import belote.logic.play.strategy.automat.methods.trumpsLess.ColorlessHandCard;
-import belote.logic.play.strategy.automat.methods.trumpsLess.notTrump.NotTrumpMakePowerTenCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.DominantSuitCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.HandCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.PartnerSuitAnnounceCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.TeamSuitPartnerCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.notTrump.PromoteTenRankCard;
 
 /**
  * Standard NotTrumpAttackCard executor. Used in NotTrumpPlayStategy getAttackCard().
@@ -37,8 +37,8 @@ class AttackCardStandard extends PlayCardExecutor {
         register(new TeamSuitPartnerCard(game));
         register(new DominantSuitCard(game));
         register(new PartnerSuitAnnounceCard(game));
-        register(new NotTrumpMakePowerTenCard(game));
-        register(new ColorlessHandCard(game));
+        register(new PromoteTenRankCard(game));
+        register(new HandCard(game));
         register(new PossiblePartnerSuitCard(game));
         register(new NeedlessCard(game));
     }

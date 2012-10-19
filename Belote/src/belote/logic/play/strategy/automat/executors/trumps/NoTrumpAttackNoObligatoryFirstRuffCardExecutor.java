@@ -16,9 +16,9 @@ import belote.bean.announce.AnnounceUnit;
 import belote.bean.pack.card.Card;
 import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.base.executor.PlayCardExecutor;
-import belote.logic.play.strategy.automat.methods.trumps.ColorNoObligatoryAllMastersTrumpCard;
-import belote.logic.play.strategy.automat.methods.trumps.ColorNoObligatoryEnemyGameSingleTrumpCard;
-import belote.logic.play.strategy.automat.methods.trumps.ColorNoObligatorySecondDeffenceTrumpCard;
+import belote.logic.play.strategy.automat.methods.trumps.noObligatory.TrumpOnAllMastersCard;
+import belote.logic.play.strategy.automat.methods.trumps.noObligatory.EnemyGameSingleTrumpCard;
+import belote.logic.play.strategy.automat.methods.trumps.noObligatory.SecondDeffenceTrumpCard;
 
 /**
  * ColorNoTrumpAttackNoObligatoryFirstRuffCard class. PlayCardMethod is used to play card when the current trick player is player' partner and has no card from
@@ -34,9 +34,9 @@ public final class NoTrumpAttackNoObligatoryFirstRuffCardExecutor extends PlayCa
     public NoTrumpAttackNoObligatoryFirstRuffCardExecutor(final Game game) {
         super(game);
         // Register play card methods.
-        register(new ColorNoObligatoryAllMastersTrumpCard(game));
-        register(new ColorNoObligatoryEnemyGameSingleTrumpCard(game));
-        register(new ColorNoObligatorySecondDeffenceTrumpCard(game));
+        register(new TrumpOnAllMastersCard(game));
+        register(new EnemyGameSingleTrumpCard(game));
+        register(new SecondDeffenceTrumpCard(game));
     }
 
     /**
