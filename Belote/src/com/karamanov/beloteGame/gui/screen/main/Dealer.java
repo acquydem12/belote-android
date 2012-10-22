@@ -33,6 +33,8 @@ import com.karamanov.beloteGame.gui.screen.main.message.MessageScreen;
 public final class Dealer {
 
     private final Handler handler;
+    
+    private final Object _lock = new Object();
 
     /**
      * Standard card delay on painting (effect).
@@ -61,8 +63,6 @@ public final class Dealer {
 
     private final AnnounceDialog announceDialog;
 
-    private volatile boolean endGameActivity = true;
-
     private MessageScreen messageScreen;
 
     private HumanBeloteGame game;
@@ -79,8 +79,19 @@ public final class Dealer {
         handler = new Handler();
     }
 
-    public void setEndGameActivity(boolean endGameActivity) {
-        this.endGameActivity = endGameActivity;
+    protected void unlock() {
+        synchronized(_lock) {
+            _lock.notify();
+        }
+    }
+    
+    private void lock() {
+        synchronized (_lock) {
+            try {
+                _lock.wait();
+            } catch (InterruptedException e) {
+            }
+        }
     }
 
     /**
@@ -247,15 +258,15 @@ public final class Dealer {
         game.calculateTeamsPoints();
 
         if (game.getGame().getAnnounceList().getOpenContractAnnounce() != null) {
-            endGameActivity = true;
+            handler.post(new Runnable() {
+                public void run() {
+                    Intent intent = new Intent(context, GameResumeActivity.class);
+                    intent.putExtra(GameResumeActivity.BELOTE, game.getGame());
+                    context.startActivityForResult(intent, BeloteActivity.GAME_RESUME_CODE);
+                }
+            });
 
-            Intent intent = new Intent(context, GameResumeActivity.class);
-            intent.putExtra(GameResumeActivity.BELOTE, game.getGame());
-            context.startActivityForResult(intent, BeloteActivity.GAME_RESUME_CODE);
-
-            while (endGameActivity) {
-                sleep(PLAY_DELAY);
-            }
+            lock();
         }
         newAnnounceDealRound();
     }
