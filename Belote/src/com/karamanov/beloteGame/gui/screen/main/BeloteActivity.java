@@ -226,7 +226,9 @@ public final class BeloteActivity extends GameActivity implements OnSharedPrefer
 
     protected void onResume() {
         super.onResume();
-        dealer.setEndGameActivity(false);
+        
+        continueGamePlaying();
+        
         if (needRefresh) {
             try {
                 if (relative != null && beloteView != null) {
@@ -403,8 +405,12 @@ public final class BeloteActivity extends GameActivity implements OnSharedPrefer
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == GAME_RESUME_CODE) {
-            dealer.setEndGameActivity(false);
+            continueGamePlaying();
         }
+    }
+    
+    private void continueGamePlaying() {
+        dealer.unlock();
     }
 
     private class KeyPressedListener implements Messageable {
