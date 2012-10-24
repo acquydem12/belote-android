@@ -1,5 +1,9 @@
 package com.karamanov.beloteGame;
 
+import com.karamanov.beloteGame.gui.screen.base.message.Message;
+import com.karamanov.beloteGame.gui.screen.base.message.MessageQueue;
+import com.karamanov.beloteGame.gui.screen.base.message.MessageThread;
+
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
@@ -7,8 +11,19 @@ import android.util.TypedValue;
 
 public class Belote extends Application {
 
+    private final MessageThread messageThread;
+
+    private final MessageQueue messageQueue;
+    
+    private boolean processMessages = true;
+    
+    private Object data;
+
     public Belote() {
         super();
+        
+        messageQueue = new MessageQueue();
+        messageThread = new MessageThread(messageQueue);
         // BelotExceptionHamdler handler = new BelotExceptionHamdler();
         // Thread.setDefaultUncaughtExceptionHandler(handler);
 
@@ -18,7 +33,27 @@ public class Belote extends Application {
          * @Override public void run() { BelotLogicTest.test(); } }); t.start();
          */
     }
-
+    
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        messageThread.start();
+    }
+    
+    /**
+     * Sends message.
+     * @param message - to be send.
+     */
+    public final void sendMessage(Message message) {
+        if (processMessages) {
+            messageQueue.addMessage(message);
+        }
+    }
+    
+    public final MessageQueue getMessageQueue() {
+        return messageQueue;
+    }
+    
     /*
      * public static void _saveLog(ArrayList<String> log) { try { File root = Environment.getExternalStorageDirectory(); if (root.canWrite()){ File file = new
      * File(root, "belotLog.txt"); file.createNewFile(); FileWriter fileWriter = new FileWriter(file); BufferedWriter out = new BufferedWriter(fileWriter); for
@@ -37,6 +72,23 @@ public class Belote extends Application {
     public static float fromPixelToDipF(Context context, float pixels) {
         Resources resources = context.getResources();
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, pixels, resources.getDisplayMetrics());
+    }
+    
+    public final void setData(Object data) {
+        this.data = data;
+    }
+    
+    public final Object getData() {
+        return data;
+    }
+    
+    public final void stopMessaging() {
+        messageQueue.clearAll();
+        processMessages = false;
+    }
+    
+    public final void runMessaging() {
+        processMessages = true;
     }
 }
 

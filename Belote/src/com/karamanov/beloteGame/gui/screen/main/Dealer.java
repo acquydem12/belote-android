@@ -44,7 +44,7 @@ public final class Dealer {
      * Belote painter. (All drawing functionality is in it).
      */
     public final BelotePainter belotPainter;
-
+    
     /**
      * Delay constant
      */
@@ -238,6 +238,9 @@ public final class Dealer {
      * End game.
      */
     private void endGame() {
+        Belote belote = (Belote) context.getApplication();
+        belote.stopMessaging();
+        
         game.processTrickData();
         game.calculateTeamsPoints();
 
@@ -245,14 +248,14 @@ public final class Dealer {
             handler.post(new Runnable() {
                 public void run() {
                     Intent intent = new Intent(context, GameResumeActivity.class);
-                    
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     if (context.getApplication() instanceof Belote) {
                         Belote belote = (Belote) context.getApplication();
                         belote.setData(game.getGame());
                     } else {
                         intent.putExtra(GameResumeActivity.BELOTE, game.getGame());    
                     }
-                    context.startActivityForResult(intent, BeloteActivity.GAME_RESUME_CODE);
+                    context.startActivity(intent);
                 }
             });
         }
