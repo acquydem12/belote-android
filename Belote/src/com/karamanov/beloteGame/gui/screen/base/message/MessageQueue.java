@@ -109,4 +109,8 @@ public final class MessageQueue {
             }
         }
     }
+    
+    public final void clearAll() {
+        messageList.clear();
+    }
 }
