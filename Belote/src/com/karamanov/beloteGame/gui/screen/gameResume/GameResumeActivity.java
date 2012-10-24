@@ -38,6 +38,8 @@ import com.karamanov.beloteGame.R;
 import com.karamanov.beloteGame.gui.graphics.ImageUtil;
 import com.karamanov.beloteGame.gui.graphics.PictureDecorator;
 import com.karamanov.beloteGame.gui.graphics.PlayerNameDecorator;
+import com.karamanov.beloteGame.gui.screen.base.message.UserMessage;
+import com.karamanov.beloteGame.gui.screen.base.message.UserMessageType;
 import com.karamanov.beloteGame.text.TextDecorator;
 
 public final class GameResumeActivity extends Activity {
@@ -57,74 +59,85 @@ public final class GameResumeActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent startingIntent = getIntent();
-        if (startingIntent != null) {
-            Bundle bundle = startingIntent.getExtras();
-            if (bundle != null) {
-                Serializable data = bundle.getSerializable(BELOTE);
-                if (data instanceof Game) {
-                    game = (Game) data;
+        if (getApplication() instanceof Belote) {
+            Belote belote = (Belote) getApplication();
+            if (belote.getData() instanceof Game) {
+                game = (Game) belote.getData();
+            }
+        }
 
-                    showWinner = game.getWinnerTeam() != null;
-
-                    int dip2 = Belote.fromPixelToDip(this, 2);
-                    int dip5 = Belote.fromPixelToDip(this, 5);
-
-                    ScrollView scroll = new ScrollView(this);
-                    LinearLayout vertical = new LinearLayout(this);
-                    vertical.setOrientation(LinearLayout.VERTICAL);
-                    RelativeLayout relative = new RelativeLayout(this);
-
-                    TextDecorator textDecorator = new TextDecorator(this);
-                    final ArrayList<String> announceText = textDecorator.getAnnounceText(game.getAnnounceList());
-
-                    LinearLayout score = new LinearLayout(this);
-                    score.setOrientation(LinearLayout.VERTICAL);
-                    score.setId(123);
-
-                    TextView scoreT = new TextView(this);
-
-                    scoreT.setText(getString(R.string.GameContract));
-                    scoreT.setTypeface(Typeface.SERIF, Typeface.BOLD);
-                    scoreT.setTextColor(Color.YELLOW);
-                    scoreT.setGravity(Gravity.CENTER_HORIZONTAL);
-                    scoreT.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-                    score.addView(scoreT);
-
-                    for (String s : announceText) {
-                        TextView scoreV = new TextView(this);
-                        scoreV.setText(s);
-                        scoreV.setTypeface(Typeface.SERIF, Typeface.BOLD);
-                        scoreV.setTextColor(Color.YELLOW);
-                        scoreV.setGravity(Gravity.CENTER_HORIZONTAL);
-                        scoreV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-                        score.addView(scoreV);
+        if (game == null) {
+            Intent startingIntent = getIntent();
+            if (startingIntent != null) {
+                Bundle bundle = startingIntent.getExtras();
+                if (bundle != null) {
+                    Serializable data = bundle.getSerializable(BELOTE);
+                    if (data instanceof Game) {
+                        game = (Game) data;
                     }
-
-                    RelativeLayout.LayoutParams rp = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-                    rp.addRule(RelativeLayout.CENTER_HORIZONTAL);
-                    rp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-                    rp.topMargin = dip2;
-                    score.setLayoutParams(rp);
-                    relative.addView(score);
-
-                    TableLayout table = getGameInfo(game, textDecorator);
-                    if (table != null) {
-                        rp = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-                        rp.addRule(RelativeLayout.CENTER_HORIZONTAL);
-                        rp.addRule(RelativeLayout.CENTER_IN_PARENT);
-                        rp.addRule(RelativeLayout.BELOW, score.getId());
-                        rp.topMargin = dip5;
-                        table.setLayoutParams(rp);
-                        relative.addView(table);
-                    }
-
-                    vertical.addView(relative);
-                    scroll.addView(vertical);
-                    scroll.setBackgroundResource(R.drawable.score_bkg);
-                    setContentView(scroll);
                 }
             }
+        }
+
+        if (game != null) {
+            showWinner = game.getWinnerTeam() != null;
+
+            int dip2 = Belote.fromPixelToDip(this, 2);
+            int dip5 = Belote.fromPixelToDip(this, 5);
+
+            ScrollView scroll = new ScrollView(this);
+            LinearLayout vertical = new LinearLayout(this);
+            vertical.setOrientation(LinearLayout.VERTICAL);
+            RelativeLayout relative = new RelativeLayout(this);
+
+            TextDecorator textDecorator = new TextDecorator(this);
+            final ArrayList<String> announceText = textDecorator.getAnnounceText(game.getAnnounceList());
+
+            LinearLayout score = new LinearLayout(this);
+            score.setOrientation(LinearLayout.VERTICAL);
+            score.setId(123);
+
+            TextView scoreT = new TextView(this);
+
+            scoreT.setText(getString(R.string.GameContract));
+            scoreT.setTypeface(Typeface.SERIF, Typeface.BOLD);
+            scoreT.setTextColor(Color.YELLOW);
+            scoreT.setGravity(Gravity.CENTER_HORIZONTAL);
+            scoreT.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+            score.addView(scoreT);
+
+            for (String s : announceText) {
+                TextView scoreV = new TextView(this);
+                scoreV.setText(s);
+                scoreV.setTypeface(Typeface.SERIF, Typeface.BOLD);
+                scoreV.setTextColor(Color.YELLOW);
+                scoreV.setGravity(Gravity.CENTER_HORIZONTAL);
+                scoreV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+                score.addView(scoreV);
+            }
+
+            RelativeLayout.LayoutParams rp = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+            rp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+            rp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+            rp.topMargin = dip2;
+            score.setLayoutParams(rp);
+            relative.addView(score);
+
+            TableLayout table = getGameInfo(game, textDecorator);
+            if (table != null) {
+                rp = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                rp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+                rp.addRule(RelativeLayout.CENTER_IN_PARENT);
+                rp.addRule(RelativeLayout.BELOW, score.getId());
+                rp.topMargin = dip5;
+                table.setLayoutParams(rp);
+                relative.addView(table);
+            }
+
+            vertical.addView(relative);
+            scroll.addView(vertical);
+            scroll.setBackgroundResource(R.drawable.score_bkg);
+            setContentView(scroll);
         }
     }
 
@@ -268,7 +281,6 @@ public final class GameResumeActivity extends Activity {
                             h.addView(rightV);
 
                             linear.addView(h);
-
                         }
                     }
 
@@ -658,6 +670,11 @@ public final class GameResumeActivity extends Activity {
             setContentView(relative);
         } else {
             super.onBackPressed();
+            if (getApplication() instanceof Belote) {
+                Belote belote = (Belote) getApplication();
+                UserMessage message = new UserMessage(UserMessageType.MT_CLOSE_END_GAME);
+                belote.getMessageQueue().addMessage(message);
+            }
         }
 
         showWinner = false;
