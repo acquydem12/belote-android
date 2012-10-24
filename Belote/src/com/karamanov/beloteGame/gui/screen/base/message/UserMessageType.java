@@ -14,12 +14,22 @@ package com.karamanov.beloteGame.gui.screen.base.message;
  * @author Dimitar Karamanov
  */
 public final class UserMessageType extends MessageType {
+    
+    public final static UserMessageType MT_KEY_PRESSED = new UserMessageType("MT_KEY_PRESSED");
 
+    public final static UserMessageType MT_TOUCH_EVENT = new UserMessageType("MT_TOUCH_EVENT");
+
+    public final static UserMessageType MT_EXIT_EVENT = new UserMessageType("MT_EXIT_EVENT");
+
+    public final static UserMessageType MT_PAINT_EVENT = new UserMessageType("MT_PAINT_EVENT");
+    
+    public final static UserMessageType MT_CLOSE_END_GAME = new UserMessageType("MT_CLOSE_END_GAME");
+    
     /**
      * Constructor package private.
      * @param type
      */
-    protected UserMessageType(final String type) {
+    private UserMessageType(final String type) {
         super(type);
     }
 
