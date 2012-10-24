@@ -21,6 +21,7 @@ import belote.bean.pack.sequence.SequenceType;
 import belote.bean.pack.square.SquareIterator;
 import belote.logic.HumanBeloteGame;
 
+import com.karamanov.beloteGame.Belote;
 import com.karamanov.beloteGame.R;
 import com.karamanov.beloteGame.gui.graphics.Rectangle;
 import com.karamanov.beloteGame.gui.screen.base.BooleanFlag;
@@ -34,8 +35,6 @@ public final class Dealer {
 
     private final Handler handler;
     
-    private final Object _lock = new Object();
-
     /**
      * Standard card delay on painting (effect).
      */
@@ -77,21 +76,6 @@ public final class Dealer {
         announceDialog = new AnnounceDialog(context, game);
 
         handler = new Handler();
-    }
-
-    protected void unlock() {
-        synchronized(_lock) {
-            _lock.notify();
-        }
-    }
-    
-    private void lock() {
-        synchronized (_lock) {
-            try {
-                _lock.wait();
-            } catch (InterruptedException e) {
-            }
-        }
     }
 
     /**
@@ -261,14 +245,17 @@ public final class Dealer {
             handler.post(new Runnable() {
                 public void run() {
                     Intent intent = new Intent(context, GameResumeActivity.class);
-                    intent.putExtra(GameResumeActivity.BELOTE, game.getGame());
+                    
+                    if (context.getApplication() instanceof Belote) {
+                        Belote belote = (Belote) context.getApplication();
+                        belote.setData(game.getGame());
+                    } else {
+                        intent.putExtra(GameResumeActivity.BELOTE, game.getGame());    
+                    }
                     context.startActivityForResult(intent, BeloteActivity.GAME_RESUME_CODE);
                 }
             });
-
-            lock();
         }
-        newAnnounceDealRound();
     }
 
     /**
@@ -700,5 +687,10 @@ public final class Dealer {
         if (messageScreen != null && messageScreen.isShowing()) {
             positionMessageScreen(messageScreen, messageScreen.getPlayer());
         }
+    }
+
+    public void onCloseEndGame() {
+        sleep(PLAY_DELAY);
+        newAnnounceDealRound();        
     }
 }
