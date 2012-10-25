@@ -45,6 +45,10 @@ import com.karamanov.beloteGame.text.TextDecorator;
 public final class GameResumeActivity extends Activity {
 
     private boolean showWinner = false;
+    
+    private boolean isShowWinner = false;
+
+    private final String showWinnerStr = "SHOW_WINNER";
 
     public GameResumeActivity() {
         super();
@@ -58,6 +62,8 @@ public final class GameResumeActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        loadSavedValues(savedInstanceState);
 
         if (getApplication() instanceof Belote) {
             Belote belote = (Belote) getApplication();
@@ -80,65 +86,87 @@ public final class GameResumeActivity extends Activity {
         }
 
         if (game != null) {
-            showWinner = game.getWinnerTeam() != null;
+            if (isShowWinner) {
+                setFaceView();
+                showWinner = false;
+            } else {
+                isShowWinner = false;
+                showWinner = game.getWinnerTeam() != null;
 
-            int dip2 = Belote.fromPixelToDip(this, 2);
-            int dip5 = Belote.fromPixelToDip(this, 5);
+                int dip2 = Belote.fromPixelToDip(this, 2);
+                int dip5 = Belote.fromPixelToDip(this, 5);
 
-            ScrollView scroll = new ScrollView(this);
-            LinearLayout vertical = new LinearLayout(this);
-            vertical.setOrientation(LinearLayout.VERTICAL);
-            RelativeLayout relative = new RelativeLayout(this);
+                ScrollView scroll = new ScrollView(this);
+                LinearLayout vertical = new LinearLayout(this);
+                vertical.setOrientation(LinearLayout.VERTICAL);
+                RelativeLayout relative = new RelativeLayout(this);
 
-            TextDecorator textDecorator = new TextDecorator(this);
-            final ArrayList<String> announceText = textDecorator.getAnnounceText(game.getAnnounceList());
+                TextDecorator textDecorator = new TextDecorator(this);
+                final ArrayList<String> announceText = textDecorator.getAnnounceText(game.getAnnounceList());
 
-            LinearLayout score = new LinearLayout(this);
-            score.setOrientation(LinearLayout.VERTICAL);
-            score.setId(123);
+                LinearLayout score = new LinearLayout(this);
+                score.setOrientation(LinearLayout.VERTICAL);
+                score.setId(123);
 
-            TextView scoreT = new TextView(this);
+                TextView scoreT = new TextView(this);
 
-            scoreT.setText(getString(R.string.GameContract));
-            scoreT.setTypeface(Typeface.SERIF, Typeface.BOLD);
-            scoreT.setTextColor(Color.YELLOW);
-            scoreT.setGravity(Gravity.CENTER_HORIZONTAL);
-            scoreT.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-            score.addView(scoreT);
+                scoreT.setText(getString(R.string.GameContract));
+                scoreT.setTypeface(Typeface.SERIF, Typeface.BOLD);
+                scoreT.setTextColor(Color.YELLOW);
+                scoreT.setGravity(Gravity.CENTER_HORIZONTAL);
+                scoreT.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+                score.addView(scoreT);
 
-            for (String s : announceText) {
-                TextView scoreV = new TextView(this);
-                scoreV.setText(s);
-                scoreV.setTypeface(Typeface.SERIF, Typeface.BOLD);
-                scoreV.setTextColor(Color.YELLOW);
-                scoreV.setGravity(Gravity.CENTER_HORIZONTAL);
-                scoreV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-                score.addView(scoreV);
-            }
+                for (String s : announceText) {
+                    TextView scoreV = new TextView(this);
+                    scoreV.setText(s);
+                    scoreV.setTypeface(Typeface.SERIF, Typeface.BOLD);
+                    scoreV.setTextColor(Color.YELLOW);
+                    scoreV.setGravity(Gravity.CENTER_HORIZONTAL);
+                    scoreV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+                    score.addView(scoreV);
+                }
 
-            RelativeLayout.LayoutParams rp = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-            rp.addRule(RelativeLayout.CENTER_HORIZONTAL);
-            rp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-            rp.topMargin = dip2;
-            score.setLayoutParams(rp);
-            relative.addView(score);
-
-            TableLayout table = getGameInfo(game, textDecorator);
-            if (table != null) {
-                rp = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                RelativeLayout.LayoutParams rp = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
                 rp.addRule(RelativeLayout.CENTER_HORIZONTAL);
-                rp.addRule(RelativeLayout.CENTER_IN_PARENT);
-                rp.addRule(RelativeLayout.BELOW, score.getId());
-                rp.topMargin = dip5;
-                table.setLayoutParams(rp);
-                relative.addView(table);
-            }
+                rp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+                rp.topMargin = dip2;
+                score.setLayoutParams(rp);
+                relative.addView(score);
 
-            vertical.addView(relative);
-            scroll.addView(vertical);
-            scroll.setBackgroundResource(R.drawable.score_bkg);
-            setContentView(scroll);
+                TableLayout table = getGameInfo(game, textDecorator);
+                if (table != null) {
+                    rp = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                    rp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+                    rp.addRule(RelativeLayout.CENTER_IN_PARENT);
+                    rp.addRule(RelativeLayout.BELOW, score.getId());
+                    rp.topMargin = dip5;
+                    table.setLayoutParams(rp);
+                    relative.addView(table);
+                }
+
+                vertical.addView(relative);
+                scroll.addView(vertical);
+                scroll.setBackgroundResource(R.drawable.score_bkg);
+                setContentView(scroll);
+            }
         }
+    }
+
+    private void loadSavedValues(Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            Boolean bool = savedInstanceState.getBoolean(showWinnerStr);
+            if (bool != null) {
+                isShowWinner = bool.booleanValue();
+            }
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putBoolean(showWinnerStr, isShowWinner);
     }
 
     private TableLayout getGameInfo(Game game, TextDecorator textDecorator) {
@@ -573,101 +601,106 @@ public final class GameResumeActivity extends Activity {
         return null;
     }
 
+    private void setFaceView() {
+        isShowWinner = true;
+        int dip10 = Belote.fromPixelToDip(this, 10);
+
+        LinearLayout vertical = new LinearLayout(this);
+        vertical.setOrientation(LinearLayout.VERTICAL);
+
+        ImageView image = new ImageView(this);
+
+        String message;
+        Player human = game.getPlayer(HumanBeloteGame.HUMAN_PLAYER_INDEX);
+        if (human.getTeam().equals(game.getWinnerTeam())) {
+            image.setBackgroundResource(R.drawable.happy);
+            message = getString(R.string.TeamWinsGame);
+        } else {
+            image.setBackgroundResource(R.drawable.unhappy);
+            message = getString(R.string.TeamLostGame);
+        }
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        params.gravity = Gravity.CENTER_HORIZONTAL;
+        params.topMargin = dip10;
+        params.bottomMargin = dip10;
+
+        image.setLayoutParams(params);
+
+        vertical.addView(image);
+
+        TextView name = new TextView(this);
+        name.setTextColor(Color.YELLOW);
+        name.setTypeface(Typeface.SERIF, Typeface.BOLD);
+        name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+        name.setText(message);
+
+        params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        params.gravity = Gravity.CENTER_HORIZONTAL;
+        params.topMargin = dip10;
+        params.bottomMargin = dip10;
+        name.setLayoutParams(params);
+        vertical.addView(name);
+
+        LinearLayout horizontal = new LinearLayout(this);
+        horizontal.setOrientation(LinearLayout.HORIZONTAL);
+
+        int orange = Color.rgb(255, 128, 64);
+
+        TextView team0 = new TextView(this);
+        if (game.getWinnerTeam().equals(game.getTeam(0))) {
+            team0.setTextColor(orange);
+        } else {
+            team0.setTextColor(Color.YELLOW);
+        }
+        team0.setTypeface(Typeface.SERIF, Typeface.BOLD);
+        team0.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+        team0.setText(String.valueOf(game.getTeam(0).getPoints().getAllPoints()));
+        horizontal.addView(team0);
+
+        TextView sep = new TextView(this);
+        sep.setTextColor(Color.YELLOW);
+        sep.setTypeface(Typeface.SERIF, Typeface.BOLD);
+        sep.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+        sep.setText(" : ");
+        horizontal.addView(sep);
+
+        TextView team1 = new TextView(this);
+        if (game.getWinnerTeam().equals(game.getTeam(1))) {
+            team1.setTextColor(orange);
+        } else {
+            team1.setTextColor(Color.YELLOW);
+        }
+        team1.setTypeface(Typeface.SERIF, Typeface.BOLD);
+        team1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+        team1.setText(String.valueOf(game.getTeam(1).getPoints().getAllPoints()));
+        horizontal.addView(team1);
+
+        params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        params.gravity = Gravity.CENTER_HORIZONTAL;
+        params.topMargin = dip10;
+        params.bottomMargin = dip10;
+        horizontal.setLayoutParams(params);
+        vertical.addView(horizontal);
+
+        RelativeLayout relative = new RelativeLayout(this);
+        relative.setBackgroundResource(R.drawable.score_bkg);
+
+        RelativeLayout.LayoutParams rp = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        rp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        rp.addRule(RelativeLayout.CENTER_VERTICAL);
+        rp.addRule(RelativeLayout.CENTER_IN_PARENT);
+        vertical.setLayoutParams(rp);
+
+        relative.addView(vertical);
+
+        setContentView(relative);
+    }
+
     @Override
     public void onBackPressed() {
         if (game != null && showWinner && game.getWinnerTeam() != null) {
-            int dip10 = Belote.fromPixelToDip(this, 10);
-
-            LinearLayout vertical = new LinearLayout(this);
-            vertical.setOrientation(LinearLayout.VERTICAL);
-
-            ImageView image = new ImageView(this);
-
-            String message;
-            Player human = game.getPlayer(HumanBeloteGame.HUMAN_PLAYER_INDEX);
-            if (human.getTeam().equals(game.getWinnerTeam())) {
-                image.setBackgroundResource(R.drawable.happy);
-                message = getString(R.string.TeamWinsGame);
-            } else {
-                image.setBackgroundResource(R.drawable.unhappy);
-                message = getString(R.string.TeamLostGame);
-            }
-
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-            params.gravity = Gravity.CENTER_HORIZONTAL;
-            params.topMargin = dip10;
-            params.bottomMargin = dip10;
-
-            image.setLayoutParams(params);
-
-            vertical.addView(image);
-
-            TextView name = new TextView(this);
-            name.setTextColor(Color.YELLOW);
-            name.setTypeface(Typeface.SERIF, Typeface.BOLD);
-            name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-            name.setText(message);
-
-            params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-            params.gravity = Gravity.CENTER_HORIZONTAL;
-            params.topMargin = dip10;
-            params.bottomMargin = dip10;
-            name.setLayoutParams(params);
-            vertical.addView(name);
-
-            LinearLayout horizontal = new LinearLayout(this);
-            horizontal.setOrientation(LinearLayout.HORIZONTAL);
-
-            int orange = Color.rgb(255, 128, 64);
-
-            TextView team0 = new TextView(this);
-            if (game.getWinnerTeam().equals(game.getTeam(0))) {
-                team0.setTextColor(orange);
-            } else {
-                team0.setTextColor(Color.YELLOW);
-            }
-            team0.setTypeface(Typeface.SERIF, Typeface.BOLD);
-            team0.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
-            team0.setText(String.valueOf(game.getTeam(0).getPoints().getAllPoints()));
-            horizontal.addView(team0);
-
-            TextView sep = new TextView(this);
-            sep.setTextColor(Color.YELLOW);
-            sep.setTypeface(Typeface.SERIF, Typeface.BOLD);
-            sep.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
-            sep.setText(" : ");
-            horizontal.addView(sep);
-
-            TextView team1 = new TextView(this);
-            if (game.getWinnerTeam().equals(game.getTeam(1))) {
-                team1.setTextColor(orange);
-            } else {
-                team1.setTextColor(Color.YELLOW);
-            }
-            team1.setTypeface(Typeface.SERIF, Typeface.BOLD);
-            team1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
-            team1.setText(String.valueOf(game.getTeam(1).getPoints().getAllPoints()));
-            horizontal.addView(team1);
-
-            params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-            params.gravity = Gravity.CENTER_HORIZONTAL;
-            params.topMargin = dip10;
-            params.bottomMargin = dip10;
-            horizontal.setLayoutParams(params);
-            vertical.addView(horizontal);
-
-            RelativeLayout relative = new RelativeLayout(this);
-            relative.setBackgroundResource(R.drawable.score_bkg);
-
-            RelativeLayout.LayoutParams rp = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-            rp.addRule(RelativeLayout.CENTER_HORIZONTAL);
-            rp.addRule(RelativeLayout.CENTER_VERTICAL);
-            rp.addRule(RelativeLayout.CENTER_IN_PARENT);
-            vertical.setLayoutParams(rp);
-
-            relative.addView(vertical);
-
-            setContentView(relative);
+            setFaceView();
         } else {
             super.onBackPressed();
             if (getApplication() instanceof Belote) {
