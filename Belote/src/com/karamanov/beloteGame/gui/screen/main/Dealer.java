@@ -694,6 +694,8 @@ public final class Dealer {
 
     public void onCloseEndGame() {
         sleep(PLAY_DELAY);
-        newAnnounceDealRound();        
+        newAnnounceDealRound();    
+        Belote belote = (Belote) context.getApplication();
+        belote.runMessaging();
     }
 }

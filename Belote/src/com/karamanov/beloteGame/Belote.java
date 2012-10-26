@@ -44,10 +44,18 @@ public class Belote extends Application {
      * Sends message.
      * @param message - to be send.
      */
-    public final void sendMessage(Message message) {
-        if (processMessages) {
+    public final void sendMessage(Message message, boolean always) {
+        if (processMessages || always) {
             messageQueue.addMessage(message);
         }
+    }
+    
+    /**
+     * Sends message.
+     * @param message - to be send.
+     */
+    public final void sendMessage(Message message) {
+        sendMessage(message, false);
     }
     
     public final MessageQueue getMessageQueue() {
