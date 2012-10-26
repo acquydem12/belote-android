@@ -705,9 +705,8 @@ public final class GameResumeActivity extends Activity {
             super.onBackPressed();
             if (getApplication() instanceof Belote) {
                 Belote belote = (Belote) getApplication();
-                belote.runMessaging();
                 UserMessage message = new UserMessage(UserMessageType.MT_CLOSE_END_GAME);
-                belote.getMessageQueue().addMessage(message);
+                belote.sendMessage(message, true);
             }
         }
 
