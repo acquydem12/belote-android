@@ -38,8 +38,8 @@ import com.karamanov.beloteGame.R;
 import com.karamanov.beloteGame.gui.graphics.ImageUtil;
 import com.karamanov.beloteGame.gui.graphics.PictureDecorator;
 import com.karamanov.beloteGame.gui.graphics.PlayerNameDecorator;
-import com.karamanov.beloteGame.gui.screen.base.message.UserMessage;
-import com.karamanov.beloteGame.gui.screen.base.message.UserMessageType;
+import com.karamanov.beloteGame.gui.screen.base.message.Message;
+import com.karamanov.beloteGame.gui.screen.base.message.MessageType;
 import com.karamanov.beloteGame.text.TextDecorator;
 
 public final class GameResumeActivity extends Activity {
@@ -705,7 +705,7 @@ public final class GameResumeActivity extends Activity {
             super.onBackPressed();
             if (getApplication() instanceof Belote) {
                 Belote belote = (Belote) getApplication();
-                UserMessage message = new UserMessage(UserMessageType.MT_CLOSE_END_GAME);
+                Message message = new Message(MessageType.MT_CLOSE_END_GAME);
                 belote.getMessageProcessor().sendMessage(message, true);
             }
         }
