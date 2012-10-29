@@ -69,7 +69,7 @@ public class GameActivity extends Activity {
     public final void addMessageListener(final UserMessageType messageType, final Messageable messageable) {
         if (getApplication() instanceof Belote) {
             Belote belote = (Belote) getApplication();
-            belote.getMessageQueue().addMessageListener(messageType, messageable);
+            belote.getMessageProcessor().addMessageListener(messageType, messageable);
         }
     }
 
@@ -80,7 +80,7 @@ public class GameActivity extends Activity {
     public final void removeMessageListener(final UserMessageType messageType) {
         if (getApplication() instanceof Belote) {
             Belote belote = (Belote) getApplication();
-            belote.getMessageQueue().removeMessageListener(messageType);
+            belote.getMessageProcessor().removeMessageListener(messageType);
         }
     }
 }

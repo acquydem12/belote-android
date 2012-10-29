@@ -1,29 +1,24 @@
 package com.karamanov.beloteGame;
 
-import com.karamanov.beloteGame.gui.screen.base.message.Message;
-import com.karamanov.beloteGame.gui.screen.base.message.MessageQueue;
-import com.karamanov.beloteGame.gui.screen.base.message.MessageThread;
-
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.TypedValue;
 
+import com.karamanov.beloteGame.gui.screen.base.message.Message;
+import com.karamanov.beloteGame.gui.screen.base.message.MessageProcessor;
+
 public class Belote extends Application {
 
-    private final MessageThread messageThread;
-
-    private final MessageQueue messageQueue;
-    
-    private boolean processMessages = true;
-    
     private Object data;
+
+    private final MessageProcessor messageProcessor;
 
     public Belote() {
         super();
-        
-        messageQueue = new MessageQueue();
-        messageThread = new MessageThread(messageQueue);
+
+        messageProcessor = new MessageProcessor();
+
         // BelotExceptionHamdler handler = new BelotExceptionHamdler();
         // Thread.setDefaultUncaughtExceptionHandler(handler);
 
@@ -33,35 +28,33 @@ public class Belote extends Application {
          * @Override public void run() { BelotLogicTest.test(); } }); t.start();
          */
     }
-    
+
     @Override
     public void onCreate() {
         super.onCreate();
-        messageThread.start();
+        messageProcessor.start();
     }
-    
+
     /**
      * Sends message.
      * @param message - to be send.
      */
     public final void sendMessage(Message message, boolean always) {
-        if (processMessages || always) {
-            messageQueue.addMessage(message);
-        }
+        messageProcessor.sendMessage(message, always);
     }
-    
+
     /**
      * Sends message.
      * @param message - to be send.
      */
     public final void sendMessage(Message message) {
-        sendMessage(message, false);
+        messageProcessor.sendMessage(message, false);
     }
-    
-    public final MessageQueue getMessageQueue() {
-        return messageQueue;
+
+    public final MessageProcessor getMessageProcessor() {
+        return messageProcessor;
     }
-    
+
     /*
      * public static void _saveLog(ArrayList<String> log) { try { File root = Environment.getExternalStorageDirectory(); if (root.canWrite()){ File file = new
      * File(root, "belotLog.txt"); file.createNewFile(); FileWriter fileWriter = new FileWriter(file); BufferedWriter out = new BufferedWriter(fileWriter); for
@@ -81,22 +74,13 @@ public class Belote extends Application {
         Resources resources = context.getResources();
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, pixels, resources.getDisplayMetrics());
     }
-    
+
     public final void setData(Object data) {
         this.data = data;
     }
-    
+
     public final Object getData() {
         return data;
-    }
-    
-    public final void stopMessaging() {
-        messageQueue.clearAll();
-        processMessages = false;
-    }
-    
-    public final void runMessaging() {
-        processMessages = true;
     }
 }
 

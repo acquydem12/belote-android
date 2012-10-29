@@ -10,7 +10,6 @@
 package com.karamanov.beloteGame.gui.screen.base.message;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
 
 /**
  * MessageQueue class.
@@ -24,11 +23,6 @@ public final class MessageQueue {
     private final ArrayList<Message> messageList = new ArrayList<Message>();
 
     /**
-     * Hash table which maps messages with handlers.
-     */
-    private final Hashtable<MessageType, Messageable> listenersHash = new Hashtable<MessageType, Messageable>();
-
-    /**
      * Constructor.
      */
     public MessageQueue() {
@@ -39,7 +33,7 @@ public final class MessageQueue {
      * Adds message to the list.
      * @param message new message.
      */
-    public final void addMessage(final Message message) {
+    protected final void addMessage(final Message message) {
         synchronized (messageList) {
             if (message != null) {
                 messageList.add(message);
@@ -52,7 +46,7 @@ public final class MessageQueue {
      * Returns one message from the queue.
      * @return Message extracted from queue.
      */
-    private Message getMessage() {
+    protected final Message getMessage() {
         synchronized (messageList) {
             while (messageList.size() == 0) {
                 try {
@@ -70,26 +64,6 @@ public final class MessageQueue {
     }
 
     /**
-     * Adds message listener for the concrete message type.
-     * @param messageType concrete message type.
-     * @param messageable message listener.
-     */
-    public final void addMessageListener(final MessageType messageType, final Messageable messageable) {
-        if (listenersHash.containsKey(messageType)) {
-            listenersHash.remove(messageType);
-        }
-        listenersHash.put(messageType, messageable);
-    }
-
-    /**
-     * Removes message listener for the concrete message type.
-     * @param messageType concrete message type.
-     */
-    public final void removeMessageListener(final MessageType messageType) {
-        listenersHash.remove(messageType);
-    }
-
-    /**
      * Returns true if there are messages int the queue false otherwise.
      * @return boolean true if there are messages int the queue false otherwise.
      */
@@ -97,19 +71,6 @@ public final class MessageQueue {
         return messageList.size() > 0;
     }
 
-    /**
-     * Process one message.
-     */
-    public final void processMessage() {
-        final Message message = getMessage();
-        if (message != null) {
-            final Messageable messageable = (Messageable) listenersHash.get(message.getMessageType());
-            if (messageable != null) {
-                messageable.performMessage(message);
-            }
-        }
-    }
-    
     public final void clearAll() {
         messageList.clear();
     }

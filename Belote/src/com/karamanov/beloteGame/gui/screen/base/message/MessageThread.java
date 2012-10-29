@@ -21,17 +21,17 @@ public final class MessageThread extends Thread {
     /**
      * Message queue.
      */
-    private final MessageQueue messageQueue;
+    private final Processor messageProcessor;
 
     /**
      * Constructor.
      *
      * @param messageQueue which the thread will process.
      */
-    public MessageThread(MessageQueue messageQueue) {
+    public MessageThread(Processor messageProcessor) {
         setSuspended(false);
         setDaemon(true);
-        this.messageQueue = messageQueue;
+        this.messageProcessor = messageProcessor;
     }
 
     /**
@@ -41,7 +41,7 @@ public final class MessageThread extends Thread {
         final Thread mythread = Thread.currentThread();
         if (mythread == this) {
             while (!suspended) {
-                messageQueue.processMessage();
+                messageProcessor.process();
             }
         }
     }
