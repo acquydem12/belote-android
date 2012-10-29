@@ -13,9 +13,9 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import com.karamanov.beloteGame.Belote;
-import com.karamanov.beloteGame.gui.screen.base.message.Message;
-import com.karamanov.beloteGame.gui.screen.base.message.Messageable;
-import com.karamanov.beloteGame.gui.screen.base.message.MessageType;
+import com.karamanov.beloteGame.message.Message;
+import com.karamanov.beloteGame.message.MessageType;
+import com.karamanov.beloteGame.message.Messageable;
 
 /**
  * GameActivity class.
