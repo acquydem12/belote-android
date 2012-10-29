@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.TypedValue;
 
-import com.karamanov.beloteGame.gui.screen.base.message.Message;
 import com.karamanov.beloteGame.gui.screen.base.message.MessageProcessor;
 
 public class Belote extends Application {
@@ -33,22 +32,6 @@ public class Belote extends Application {
     public void onCreate() {
         super.onCreate();
         messageProcessor.start();
-    }
-
-    /**
-     * Sends message.
-     * @param message - to be send.
-     */
-    public final void sendMessage(Message message, boolean always) {
-        messageProcessor.sendMessage(message, always);
-    }
-
-    /**
-     * Sends message.
-     * @param message - to be send.
-     */
-    public final void sendMessage(Message message) {
-        messageProcessor.sendMessage(message, false);
     }
 
     public final MessageProcessor getMessageProcessor() {

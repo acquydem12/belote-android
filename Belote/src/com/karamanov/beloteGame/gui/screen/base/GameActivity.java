@@ -57,7 +57,7 @@ public class GameActivity extends Activity {
     public final void triggerMessage(final UserMessage message) {
         if (getApplication() instanceof Belote) {
             Belote belote = (Belote) getApplication();
-            belote.sendMessage(message);
+            belote.getMessageProcessor().sendMessage(message);
         }
     }
 
