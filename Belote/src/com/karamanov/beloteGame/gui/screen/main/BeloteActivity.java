@@ -40,12 +40,12 @@ import belote.logic.HumanBeloteGame;
 
 import com.karamanov.beloteGame.R;
 import com.karamanov.beloteGame.gui.screen.base.GameActivity;
-import com.karamanov.beloteGame.gui.screen.base.message.Message;
-import com.karamanov.beloteGame.gui.screen.base.message.Messageable;
-import com.karamanov.beloteGame.gui.screen.base.message.MessageType;
 import com.karamanov.beloteGame.gui.screen.pref.BelotePreferencesActivity;
 import com.karamanov.beloteGame.gui.screen.score.ScoreActivity;
 import com.karamanov.beloteGame.gui.screen.tricks.TricksActivity;
+import com.karamanov.beloteGame.message.Message;
+import com.karamanov.beloteGame.message.MessageType;
+import com.karamanov.beloteGame.message.Messageable;
 
 /**
  * BelotGameCanvas class.
