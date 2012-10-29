@@ -10,11 +10,21 @@
 package com.karamanov.beloteGame.gui.screen.base.message;
 
 /**
- * MessageType class.
+ * UserMessageType class used in SystemMessage class as type.
  * @author Dimitar Karamanov
  */
-public abstract class MessageType {
+public final class MessageType {
+    
+    public final static MessageType MT_KEY_PRESSED = new MessageType("MT_KEY_PRESSED");
 
+    public final static MessageType MT_TOUCH_EVENT = new MessageType("MT_TOUCH_EVENT");
+
+    public final static MessageType MT_EXIT_EVENT = new MessageType("MT_EXIT_EVENT");
+
+    public final static MessageType MT_PAINT_EVENT = new MessageType("MT_PAINT_EVENT");
+    
+    public final static MessageType MT_CLOSE_END_GAME = new MessageType("MT_CLOSE_END_GAME");
+    
     /**
      * Type ID.
      */
@@ -29,27 +39,25 @@ public abstract class MessageType {
     }
 
     /**
-     * Returns hash code generated on message type ID value.
-     * @param multiplicator of the result;
-     * @return int hash code.
+     * The method checks if this MessageType and specified object (MessageType) are equal.
+     * @param obj specified object.
+     * @return true if this MessageType is equal to specified object and false otherwise.
      */
-    protected final int hashCode(int multiplicator) {
-        int hash = 5;
-        hash = 37 * hash + (this.type != null ? this.type.hashCode() : 0);
-        hash = hash * multiplicator;
-        return hash;
+    public boolean equals(final Object obj) {
+        if (obj instanceof MessageType) {
+            final MessageType messageType = (MessageType) obj;
+            return type.equals(messageType.type);
+        }
+        return false;
     }
 
     /**
      * Returns hash code generated on message type ID value.
      * @return int hash code.
      */
-    public abstract int hashCode();
-
-    /**
-     * The method checks if this MessageType and specified object (MessageType) are equal.
-     * @param obj specified object.
-     * @return true if this MessageType is equal to specified object and false otherwise.
-     */
-    public abstract boolean equals(final Object obj);
+    public int hashCode() {
+        int hash = 5;
+        hash = 37 * hash + (this.type != null ? this.type.hashCode() : 0);
+        return hash;
+    }
 }

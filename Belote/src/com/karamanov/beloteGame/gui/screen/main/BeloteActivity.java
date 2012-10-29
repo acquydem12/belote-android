@@ -42,8 +42,7 @@ import com.karamanov.beloteGame.R;
 import com.karamanov.beloteGame.gui.screen.base.GameActivity;
 import com.karamanov.beloteGame.gui.screen.base.message.Message;
 import com.karamanov.beloteGame.gui.screen.base.message.Messageable;
-import com.karamanov.beloteGame.gui.screen.base.message.UserMessage;
-import com.karamanov.beloteGame.gui.screen.base.message.UserMessageType;
+import com.karamanov.beloteGame.gui.screen.base.message.MessageType;
 import com.karamanov.beloteGame.gui.screen.pref.BelotePreferencesActivity;
 import com.karamanov.beloteGame.gui.screen.score.ScoreActivity;
 import com.karamanov.beloteGame.gui.screen.tricks.TricksActivity;
@@ -107,15 +106,15 @@ public final class BeloteActivity extends GameActivity implements OnSharedPrefer
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        addMessageListener(UserMessageType.MT_KEY_PRESSED, new KeyPressedListener());
+        addMessageListener(MessageType.MT_KEY_PRESSED, new KeyPressedListener());
 
-        addMessageListener(UserMessageType.MT_TOUCH_EVENT, new TouchListener());
+        addMessageListener(MessageType.MT_TOUCH_EVENT, new TouchListener());
 
-        addMessageListener(UserMessageType.MT_EXIT_EVENT, new ExitListener());
+        addMessageListener(MessageType.MT_EXIT_EVENT, new ExitListener());
 
-        addMessageListener(UserMessageType.MT_PAINT_EVENT, new PaintListener());
+        addMessageListener(MessageType.MT_PAINT_EVENT, new PaintListener());
         
-        addMessageListener(UserMessageType.MT_CLOSE_END_GAME, new CloseEndGameListener());
+        addMessageListener(MessageType.MT_CLOSE_END_GAME, new CloseEndGameListener());
         
         Serializable serializable = getBundleData(savedInstanceState, BELOTE_GAME);
         if (serializable instanceof Game) {
@@ -459,7 +458,7 @@ public final class BeloteActivity extends GameActivity implements OnSharedPrefer
             myAlertDialog.setMessage(getString(R.string.ExitQuestion));
             myAlertDialog.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
-                    UserMessage tMessage = new UserMessage(UserMessageType.MT_EXIT_EVENT);
+                    Message tMessage = new Message(MessageType.MT_EXIT_EVENT);
                     triggerMessage(tMessage);
                 }
             });
@@ -471,7 +470,7 @@ public final class BeloteActivity extends GameActivity implements OnSharedPrefer
             });
             myAlertDialog.show();
         } else {
-            UserMessage tMessage = new UserMessage(UserMessageType.MT_EXIT_EVENT);
+            Message tMessage = new Message(MessageType.MT_EXIT_EVENT);
             triggerMessage(tMessage);
         }
     }
@@ -512,7 +511,7 @@ public final class BeloteActivity extends GameActivity implements OnSharedPrefer
     }
 
     public void repaint() {
-        UserMessage tMessage = new UserMessage(UserMessageType.MT_PAINT_EVENT);
+        Message tMessage = new Message(MessageType.MT_PAINT_EVENT);
         triggerMessage(tMessage);
     }
 
@@ -526,7 +525,7 @@ public final class BeloteActivity extends GameActivity implements OnSharedPrefer
 
         @Override
         public void onClick(View view) {
-            UserMessage tMessage = new UserMessage(UserMessageType.MT_KEY_PRESSED, i);
+            Message tMessage = new Message(MessageType.MT_KEY_PRESSED, i);
             triggerMessage(tMessage);
         }
     }

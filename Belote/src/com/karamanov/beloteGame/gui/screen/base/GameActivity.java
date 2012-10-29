@@ -13,9 +13,9 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import com.karamanov.beloteGame.Belote;
+import com.karamanov.beloteGame.gui.screen.base.message.Message;
 import com.karamanov.beloteGame.gui.screen.base.message.Messageable;
-import com.karamanov.beloteGame.gui.screen.base.message.UserMessage;
-import com.karamanov.beloteGame.gui.screen.base.message.UserMessageType;
+import com.karamanov.beloteGame.gui.screen.base.message.MessageType;
 
 /**
  * GameActivity class.
@@ -54,7 +54,7 @@ public class GameActivity extends Activity {
      * Adds user message to the end of the queue.
      * @param message new message.
      */
-    public final void triggerMessage(final UserMessage message) {
+    public final void triggerMessage(final Message message) {
         if (getApplication() instanceof Belote) {
             Belote belote = (Belote) getApplication();
             belote.getMessageProcessor().sendMessage(message);
@@ -66,7 +66,7 @@ public class GameActivity extends Activity {
      * @param messageType concrete user message type.
      * @param messageable message listener.
      */
-    public final void addMessageListener(final UserMessageType messageType, final Messageable messageable) {
+    public final void addMessageListener(final MessageType messageType, final Messageable messageable) {
         if (getApplication() instanceof Belote) {
             Belote belote = (Belote) getApplication();
             belote.getMessageProcessor().addMessageListener(messageType, messageable);
@@ -77,7 +77,7 @@ public class GameActivity extends Activity {
      * Removes message listener for the concrete message type.
      * @param messageType concrete user message type.
      */
-    public final void removeMessageListener(final UserMessageType messageType) {
+    public final void removeMessageListener(final MessageType messageType) {
         if (getApplication() instanceof Belote) {
             Belote belote = (Belote) getApplication();
             belote.getMessageProcessor().removeMessageListener(messageType);
