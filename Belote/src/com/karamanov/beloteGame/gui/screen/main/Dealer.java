@@ -239,7 +239,7 @@ public final class Dealer {
      */
     private void endGame() {
         Belote belote = (Belote) context.getApplication();
-        belote.stopMessaging();
+        belote.getMessageProcessor().stopMessaging();
         
         game.processTrickData();
         game.calculateTeamsPoints();
@@ -696,6 +696,6 @@ public final class Dealer {
         sleep(PLAY_DELAY);
         newAnnounceDealRound();    
         Belote belote = (Belote) context.getApplication();
-        belote.runMessaging();
+        belote.getMessageProcessor().runMessaging();
     }
 }
