@@ -38,8 +38,8 @@ import com.karamanov.beloteGame.R;
 import com.karamanov.beloteGame.gui.graphics.ImageUtil;
 import com.karamanov.beloteGame.gui.graphics.PictureDecorator;
 import com.karamanov.beloteGame.gui.graphics.PlayerNameDecorator;
-import com.karamanov.beloteGame.gui.screen.base.message.Message;
-import com.karamanov.beloteGame.gui.screen.base.message.MessageType;
+import com.karamanov.beloteGame.message.Message;
+import com.karamanov.beloteGame.message.MessageType;
 import com.karamanov.beloteGame.text.TextDecorator;
 
 public final class GameResumeActivity extends Activity {
