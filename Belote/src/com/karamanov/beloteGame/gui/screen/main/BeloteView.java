@@ -11,8 +11,8 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import com.karamanov.beloteGame.gui.screen.base.message.Message;
-import com.karamanov.beloteGame.gui.screen.base.message.MessageType;
+import com.karamanov.beloteGame.message.Message;
+import com.karamanov.beloteGame.message.MessageType;
 
 public final class BeloteView extends SurfaceView implements SurfaceHolder.Callback {
 
