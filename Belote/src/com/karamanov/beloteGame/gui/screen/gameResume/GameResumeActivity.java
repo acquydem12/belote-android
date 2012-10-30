@@ -40,7 +40,6 @@ import com.karamanov.beloteGame.text.PlayerNameDecorator;
 import com.karamanov.beloteGame.text.TextDecorator;
 import com.karamanov.framework.graphics.ImageUtil;
 import com.karamanov.framework.message.Message;
-import com.karamanov.framework.message.MessageType;
 
 public final class GameResumeActivity extends Activity {
 
@@ -705,7 +704,7 @@ public final class GameResumeActivity extends Activity {
             super.onBackPressed();
             if (getApplication() instanceof Belote) {
                 Belote belote = (Belote) getApplication();
-                Message message = new Message(MessageType.MT_CLOSE_END_GAME);
+                Message message = new Message(Belote.MT_CLOSE_END_GAME);
                 belote.getMessageProcessor().sendMessage(message, true);
             }
         }
