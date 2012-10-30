@@ -35,12 +35,12 @@ import belote.logic.HumanBeloteGame;
 
 import com.karamanov.beloteGame.Belote;
 import com.karamanov.beloteGame.R;
-import com.karamanov.beloteGame.gui.graphics.ImageUtil;
 import com.karamanov.beloteGame.gui.graphics.PictureDecorator;
-import com.karamanov.beloteGame.gui.graphics.PlayerNameDecorator;
-import com.karamanov.beloteGame.message.Message;
-import com.karamanov.beloteGame.message.MessageType;
+import com.karamanov.beloteGame.text.PlayerNameDecorator;
 import com.karamanov.beloteGame.text.TextDecorator;
+import com.karamanov.framework.graphics.ImageUtil;
+import com.karamanov.framework.message.Message;
+import com.karamanov.framework.message.MessageType;
 
 public final class GameResumeActivity extends Activity {
 

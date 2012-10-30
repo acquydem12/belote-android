@@ -7,17 +7,20 @@
  *
  * This software is provided "AS IS," without a warranty of any kind.
  */
-package com.karamanov.beloteGame.message;
+package com.karamanov.framework.graphics.transformers;
 
 /**
- * Messageable interface.
+ * InvertedImageTransformer class.
  * @author Dimitar Karamanov
  */
-public interface Messageable {
+public final class InvertedImageTransformer extends BasicImageTransformer {
 
     /**
-     * Performs message.
-     * @param message performing message.
+     * Transform method.
+     * @param pixel which be transformed.
+     * @return int transformed pixel value.
      */
-    void performMessage(Message message);
+    protected int transformPixel(final int pixel) {
+        return pixel ^ 0x00FFFFFF;
+    }
 }

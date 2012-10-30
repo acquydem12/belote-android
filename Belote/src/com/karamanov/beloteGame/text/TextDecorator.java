@@ -22,8 +22,6 @@ import belote.bean.pack.card.rank.Rank;
 import belote.bean.pack.square.Square;
 
 import com.karamanov.beloteGame.R;
-import com.karamanov.beloteGame.gui.graphics.PlayerNameDecorator;
-import com.karamanov.beloteGame.gui.graphics.ShortPlayerNameDecorator;
 
 /**
  * TextDecorator class.

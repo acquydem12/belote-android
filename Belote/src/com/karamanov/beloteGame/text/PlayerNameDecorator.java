@@ -1,4 +1,4 @@
-package com.karamanov.beloteGame.gui.graphics;
+package com.karamanov.beloteGame.text;
 
 import java.util.Hashtable;
 
@@ -7,13 +7,13 @@ import belote.bean.Player;
 
 import com.karamanov.beloteGame.R;
 
-public class ShortPlayerNameDecorator {
+public class PlayerNameDecorator {
 
     private final static Hashtable<Integer, Integer> names = crateHashtable();
 
     private final Integer ID;
 
-    public ShortPlayerNameDecorator(Player player) {
+    public PlayerNameDecorator(Player player) {
         ID = Integer.valueOf(player.getID());
     }
 
@@ -31,14 +31,8 @@ public class ShortPlayerNameDecorator {
     public String decorate(Context context) {
         Integer integer = names.get(ID);
         if (integer == null) {
-            return "?";
+            return ID.toString();
         }
-
-        String result = context.getString(integer);
-
-        if (result.length() > 0) {
-            return result.substring(0, 1);
-        }
-        return "?";
+        return context.getString(integer);
     }
 }

@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.TypedValue;
 
-import com.karamanov.beloteGame.message.MessageProcessor;
+import com.karamanov.framework.message.MessageProcessor;
 
 public class Belote extends Application {
 

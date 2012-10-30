@@ -7,9 +7,9 @@
  *
  * This software is provided "AS IS," without a warranty of any kind.
  */
-package com.karamanov.beloteGame.gui.graphics.transformers;
+package com.karamanov.framework.graphics.transformers;
 
-import com.karamanov.beloteGame.gui.graphics.Color;
+import com.karamanov.framework.graphics.Color;
 
 /**
  * MixedColorImageTransformer class.

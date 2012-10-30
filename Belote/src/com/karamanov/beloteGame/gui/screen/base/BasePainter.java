@@ -21,11 +21,11 @@ import belote.bean.pack.sequence.SequenceType;
 import belote.bean.pack.square.Square;
 
 import com.karamanov.beloteGame.R;
-import com.karamanov.beloteGame.gui.graphics.Color;
-import com.karamanov.beloteGame.gui.graphics.ImageUtil;
 import com.karamanov.beloteGame.gui.graphics.PictureDecorator;
-import com.karamanov.beloteGame.gui.graphics.Rectangle;
 import com.karamanov.beloteGame.text.TextDecorator;
+import com.karamanov.framework.graphics.Color;
+import com.karamanov.framework.graphics.ImageUtil;
+import com.karamanov.framework.graphics.Rectangle;
 
 /**
  * BasePainter class.

@@ -23,13 +23,13 @@ import belote.logic.HumanBeloteGame;
 
 import com.karamanov.beloteGame.Belote;
 import com.karamanov.beloteGame.R;
-import com.karamanov.beloteGame.gui.graphics.Rectangle;
-import com.karamanov.beloteGame.gui.screen.base.BooleanFlag;
-import com.karamanov.beloteGame.gui.screen.base.GameActivity;
 import com.karamanov.beloteGame.gui.screen.gameResume.GameResumeActivity;
 import com.karamanov.beloteGame.gui.screen.main.announce.AnnounceDialog;
 import com.karamanov.beloteGame.gui.screen.main.message.MessageData;
 import com.karamanov.beloteGame.gui.screen.main.message.MessageScreen;
+import com.karamanov.framework.BooleanFlag;
+import com.karamanov.framework.MessageActivity;
+import com.karamanov.framework.graphics.Rectangle;
 
 public final class Dealer {
 
@@ -54,7 +54,7 @@ public final class Dealer {
     public static final int NAV_LEFT = -2;
     public static final int NAV_RIGHT = -3;
 
-    private final GameActivity context;
+    private final MessageActivity context;
 
     private final BeloteView belotPanel;
 
@@ -66,7 +66,7 @@ public final class Dealer {
 
     private HumanBeloteGame game;
 
-    public Dealer(GameActivity context, HumanBeloteGame game, BeloteView belotPanel, View buttons) {
+    public Dealer(MessageActivity context, HumanBeloteGame game, BeloteView belotPanel, View buttons) {
         this.context = context;
         this.belotPanel = belotPanel;
         this.buttons = buttons;

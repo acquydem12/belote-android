@@ -30,8 +30,8 @@ import belote.logic.BeloteGame;
 
 import com.karamanov.beloteGame.Belote;
 import com.karamanov.beloteGame.R;
-import com.karamanov.beloteGame.gui.screen.base.BooleanFlag;
 import com.karamanov.beloteGame.text.TextDecorator;
+import com.karamanov.framework.BooleanFlag;
 
 /**
  * AnnouncePanel class.
