@@ -11,10 +11,10 @@ import belote.bean.pack.card.Card;
 import belote.bean.trick.Trick;
 
 import com.karamanov.beloteGame.Belote;
-import com.karamanov.beloteGame.gui.graphics.Color;
-import com.karamanov.beloteGame.gui.graphics.ImageUtil;
 import com.karamanov.beloteGame.gui.graphics.PictureDecorator;
-import com.karamanov.beloteGame.gui.graphics.Rectangle;
+import com.karamanov.framework.graphics.Color;
+import com.karamanov.framework.graphics.ImageUtil;
+import com.karamanov.framework.graphics.Rectangle;
 
 public final class TrickView extends LinearLayout {
 

@@ -39,20 +39,20 @@ import belote.bean.Game;
 import belote.logic.HumanBeloteGame;
 
 import com.karamanov.beloteGame.R;
-import com.karamanov.beloteGame.gui.screen.base.GameActivity;
 import com.karamanov.beloteGame.gui.screen.pref.BelotePreferencesActivity;
 import com.karamanov.beloteGame.gui.screen.score.ScoreActivity;
 import com.karamanov.beloteGame.gui.screen.tricks.TricksActivity;
-import com.karamanov.beloteGame.message.Message;
-import com.karamanov.beloteGame.message.MessageType;
-import com.karamanov.beloteGame.message.Messageable;
+import com.karamanov.framework.MessageActivity;
+import com.karamanov.framework.message.Message;
+import com.karamanov.framework.message.MessageType;
+import com.karamanov.framework.message.Messageable;
 
 /**
  * BelotGameCanvas class.
  * 
  * @author Dimitar Karamanov
  */
-public final class BeloteActivity extends GameActivity implements OnSharedPreferenceChangeListener {
+public final class BeloteActivity extends MessageActivity implements OnSharedPreferenceChangeListener {
 
     private static final String BELOTE_GAME = "BeloteGame";
 

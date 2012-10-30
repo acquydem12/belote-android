@@ -11,7 +11,7 @@ import android.view.WindowManager;
 import belote.bean.Player;
 
 import com.karamanov.beloteGame.R;
-import com.karamanov.beloteGame.gui.screen.base.BooleanFlag;
+import com.karamanov.framework.BooleanFlag;
 
 public class MessageScreen extends Dialog {
 

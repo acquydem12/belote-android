@@ -7,11 +7,11 @@
  *
  * This software is provided "AS IS," without a warranty of any kind.
  */
-package com.karamanov.beloteGame.gui.graphics.transformers;
+package com.karamanov.framework.graphics.transformers;
 
 import android.graphics.Bitmap;
 
-import com.karamanov.beloteGame.gui.graphics.Rectangle;
+import com.karamanov.framework.graphics.Rectangle;
 
 /**
  * BasicImageTransformer class.

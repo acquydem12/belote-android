@@ -24,7 +24,7 @@ import belote.bean.Player;
 
 import com.karamanov.beloteGame.Belote;
 import com.karamanov.beloteGame.R;
-import com.karamanov.beloteGame.gui.graphics.PlayerNameDecorator;
+import com.karamanov.beloteGame.text.PlayerNameDecorator;
 
 /**
  * MessagePanel class.

@@ -1,4 +1,4 @@
-package com.karamanov.beloteGame.gui.screen.base;
+package com.karamanov.framework;
 
 import java.io.Serializable;
 

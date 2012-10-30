@@ -32,11 +32,11 @@ import belote.logic.HumanBeloteGame;
 
 import com.karamanov.beloteGame.Belote;
 import com.karamanov.beloteGame.R;
-import com.karamanov.beloteGame.gui.graphics.Color;
-import com.karamanov.beloteGame.gui.graphics.PlayerNameDecorator;
-import com.karamanov.beloteGame.gui.graphics.Rectangle;
-import com.karamanov.beloteGame.gui.graphics.ShortPlayerNameDecorator;
 import com.karamanov.beloteGame.gui.screen.base.BasePainter;
+import com.karamanov.beloteGame.text.PlayerNameDecorator;
+import com.karamanov.beloteGame.text.ShortPlayerNameDecorator;
+import com.karamanov.framework.graphics.Color;
+import com.karamanov.framework.graphics.Rectangle;
 
 /**
  * BelotPainter class.

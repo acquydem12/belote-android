@@ -1,4 +1,4 @@
-package com.karamanov.beloteGame.gui.screen.base;
+package com.karamanov.framework;
 
 /*
  * Copyright (c) Dimitar Karamanov 2008-2010. All Rights Reserved.
@@ -13,21 +13,21 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import com.karamanov.beloteGame.Belote;
-import com.karamanov.beloteGame.message.Message;
-import com.karamanov.beloteGame.message.MessageType;
-import com.karamanov.beloteGame.message.Messageable;
+import com.karamanov.framework.message.Message;
+import com.karamanov.framework.message.MessageType;
+import com.karamanov.framework.message.Messageable;
 
 /**
  * GameActivity class.
  * @author Dimitar Karamanov
  */
-public class GameActivity extends Activity {
+public class MessageActivity extends Activity {
 
     /**
      * Constructor.
      * @param suppressKeyEvents indicates if the key events are suppressed.
      */
-    public GameActivity() {
+    public MessageActivity() {
         super();
     }
 
