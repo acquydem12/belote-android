@@ -38,13 +38,13 @@ import android.widget.RelativeLayout;
 import belote.bean.Game;
 import belote.logic.HumanBeloteGame;
 
+import com.karamanov.beloteGame.Belote;
 import com.karamanov.beloteGame.R;
 import com.karamanov.beloteGame.gui.screen.pref.BelotePreferencesActivity;
 import com.karamanov.beloteGame.gui.screen.score.ScoreActivity;
 import com.karamanov.beloteGame.gui.screen.tricks.TricksActivity;
 import com.karamanov.framework.MessageActivity;
 import com.karamanov.framework.message.Message;
-import com.karamanov.framework.message.MessageType;
 import com.karamanov.framework.message.Messageable;
 
 /**
@@ -106,15 +106,15 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        addMessageListener(MessageType.MT_KEY_PRESSED, new KeyPressedListener());
+        addMessageListener(Belote.MT_KEY_PRESSED, new KeyPressedListener());
 
-        addMessageListener(MessageType.MT_TOUCH_EVENT, new TouchListener());
+        addMessageListener(Belote.MT_TOUCH_EVENT, new TouchListener());
 
-        addMessageListener(MessageType.MT_EXIT_EVENT, new ExitListener());
+        addMessageListener(Belote.MT_EXIT_EVENT, new ExitListener());
 
-        addMessageListener(MessageType.MT_PAINT_EVENT, new PaintListener());
+        addMessageListener(Belote.MT_PAINT_EVENT, new PaintListener());
         
-        addMessageListener(MessageType.MT_CLOSE_END_GAME, new CloseEndGameListener());
+        addMessageListener(Belote.MT_CLOSE_END_GAME, new CloseEndGameListener());
         
         Serializable serializable = getBundleData(savedInstanceState, BELOTE_GAME);
         if (serializable instanceof Game) {
@@ -458,7 +458,7 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
             myAlertDialog.setMessage(getString(R.string.ExitQuestion));
             myAlertDialog.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
-                    Message tMessage = new Message(MessageType.MT_EXIT_EVENT);
+                    Message tMessage = new Message(Belote.MT_EXIT_EVENT);
                     triggerMessage(tMessage);
                 }
             });
@@ -470,7 +470,7 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
             });
             myAlertDialog.show();
         } else {
-            Message tMessage = new Message(MessageType.MT_EXIT_EVENT);
+            Message tMessage = new Message(Belote.MT_EXIT_EVENT);
             triggerMessage(tMessage);
         }
     }
@@ -511,7 +511,7 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
     }
 
     public void repaint() {
-        Message tMessage = new Message(MessageType.MT_PAINT_EVENT);
+        Message tMessage = new Message(Belote.MT_PAINT_EVENT);
         triggerMessage(tMessage);
     }
 
@@ -525,7 +525,7 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
 
         @Override
         public void onClick(View view) {
-            Message tMessage = new Message(MessageType.MT_KEY_PRESSED, i);
+            Message tMessage = new Message(Belote.MT_KEY_PRESSED, i);
             triggerMessage(tMessage);
         }
     }

@@ -11,8 +11,8 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import com.karamanov.beloteGame.Belote;
 import com.karamanov.framework.message.Message;
-import com.karamanov.framework.message.MessageType;
 
 public final class BeloteView extends SurfaceView implements SurfaceHolder.Callback {
 
@@ -118,7 +118,7 @@ public final class BeloteView extends SurfaceView implements SurfaceHolder.Callb
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            Message tMessage = new Message(MessageType.MT_TOUCH_EVENT, new PointF(event.getX(), event.getY()));
+            Message tMessage = new Message(Belote.MT_TOUCH_EVENT, new PointF(event.getX(), event.getY()));
             activity.triggerMessage(tMessage);
             return true;
         }
