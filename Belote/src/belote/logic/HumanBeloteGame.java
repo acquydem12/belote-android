@@ -109,6 +109,9 @@ public final class HumanBeloteGame extends BeloteGame {
         Card card;
         do {
             index = getNextLeftCardIndex(index);
+            if (index == -1) {
+                return null;
+            }
             card = getHumanPlayer().getCards().getCard(index);
         } while (!validatePlayerCard(getHumanPlayer(), card));
 
@@ -140,6 +143,9 @@ public final class HumanBeloteGame extends BeloteGame {
         Card card;
         do {
             index = getNextRightCardIndex(index);
+            if (index == -1) {
+                return null;
+            }
             card = getHumanPlayer().getCards().getCard(index);
         } while (!validatePlayerCard(getHumanPlayer(), card));
 
