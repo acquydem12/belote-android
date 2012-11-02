@@ -22,7 +22,7 @@ import belote.base.IntegerIterator;
 public final class SuitCountHashTable implements Serializable {
 
     /**
-	 * 
+	 * Serial versionUID.
 	 */
     private static final long serialVersionUID = 1804382243836131584L;
 
