@@ -11,7 +11,7 @@ import belote.bean.GameMode;
 import belote.bean.Player;
 import belote.bean.announce.Announce;
 import belote.bean.pack.card.Card;
-import belote.logic.BeloteGame;
+import belote.logic.BeloteFacade;
 
 public class BeloteLogicTest {
     /**
@@ -48,7 +48,7 @@ public class BeloteLogicTest {
 
         addLog("--------------------------------------------------------------------------------");
 
-        BeloteGame game = new BeloteGame();
+        BeloteFacade game = new BeloteFacade();
         game.newGame();
 
         while (gameCount < TEST_GAMES_COUNT) {
@@ -64,14 +64,14 @@ public class BeloteLogicTest {
         addLog("--------------------------------------------------------------------------------");
     }
 
-    private static void newAnnounceDeal(BeloteGame game) {
+    private static void newAnnounceDeal(BeloteFacade game) {
         game.processTrickData();
         game.setNextDealAttackPlayer();
         saveLogInfo(game);
         game.newGame();
     }
 
-    private static void processPlaying(BeloteGame game) throws BelotException {
+    private static void processPlaying(BeloteFacade game) throws BelotException {
         if (game.isPlayingGameMode()) {
             processGamePlaying(game);
         } else {
@@ -79,7 +79,7 @@ public class BeloteLogicTest {
         }
     }
 
-    private static void processAnnounceDeal(BeloteGame game) {
+    private static void processAnnounceDeal(BeloteFacade game) {
         if (!game.isAnnounceGameMode() && !game.isPlayingGameMode()) {
             newAnnounceDeal(game);
         } else if (game.canDeal()) {
@@ -93,11 +93,11 @@ public class BeloteLogicTest {
         }
     }
 
-    private static void processSingleAnnounceDeal(BeloteGame game) {
+    private static void processSingleAnnounceDeal(BeloteFacade game) {
         game.processNextAnnounce();
     }
 
-    private static void processGamePlaying(BeloteGame game) throws BelotException {
+    private static void processGamePlaying(BeloteFacade game) throws BelotException {
         checkRoundEnd(game);
         if (game.checkGameEnd()) {
             endGame(game);
@@ -110,24 +110,24 @@ public class BeloteLogicTest {
     /**
      * Checks for round end.
      */
-    private static void checkRoundEnd(BeloteGame game) {
+    private static void checkRoundEnd(BeloteFacade game) {
         if (game.isTrickEnd()) {
             addLog("New Round");
             game.processTrickData();
         }
     }
 
-    private static void newGame(BeloteGame game) {
+    private static void newGame(BeloteFacade game) {
         game.setGameMode(GameMode.PlayGameMode);
         game.manageRestCards();
     }
 
-    private static void endGame(BeloteGame game) {
+    private static void endGame(BeloteFacade game) {
         game.processTrickData();
         game.calculateTeamsPoints();
     }
 
-    private static void playOneRound(BeloteGame game) throws BelotException {
+    private static void playOneRound(BeloteFacade game) throws BelotException {
         Player player = game.getGame().getTrickAttackPlayer();
 
         for (int i = 0; i < game.getGame().getPlayersCount(); i++) {
@@ -145,7 +145,7 @@ public class BeloteLogicTest {
         }
     }
 
-    private static void saveLogInfo(BeloteGame game) {
+    private static void saveLogInfo(BeloteFacade game) {
         // System.out.println("saveLogInfo");
         Announce announce = game.getGame().getAnnounceList().getContractAnnounce();
         if (announce != null) {

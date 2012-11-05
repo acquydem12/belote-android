@@ -1,10 +1,8 @@
 package com.karamanov.beloteGame.gui.screen.gameResume;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -31,7 +29,7 @@ import belote.bean.pack.sequence.SequenceList;
 import belote.bean.pack.square.Square;
 import belote.bean.pack.square.SquareIterator;
 import belote.bean.pack.square.SquareList;
-import belote.logic.HumanBeloteGame;
+import belote.logic.HumanBeloteFacade;
 
 import com.karamanov.beloteGame.Belote;
 import com.karamanov.beloteGame.R;
@@ -53,8 +51,6 @@ public final class GameResumeActivity extends Activity {
         super();
     }
 
-    public final static String BELOTE = "BELOTE";
-
     private Game game;
 
     /** Called when the activity is first created. */
@@ -63,26 +59,8 @@ public final class GameResumeActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         loadSavedValues(savedInstanceState);
-
-        if (getApplication() instanceof Belote) {
-            Belote belote = (Belote) getApplication();
-            if (belote.getData() instanceof Game) {
-                game = (Game) belote.getData();
-            }
-        }
-
-        if (game == null) {
-            Intent startingIntent = getIntent();
-            if (startingIntent != null) {
-                Bundle bundle = startingIntent.getExtras();
-                if (bundle != null) {
-                    Serializable data = bundle.getSerializable(BELOTE);
-                    if (data instanceof Game) {
-                        game = (Game) data;
-                    }
-                }
-            }
-        }
+        
+        game = Belote.getBeloteFacade(this).getGame();
 
         if (game != null) {
             if (isShowWinner) {
@@ -610,7 +588,7 @@ public final class GameResumeActivity extends Activity {
         ImageView image = new ImageView(this);
 
         String message;
-        Player human = game.getPlayer(HumanBeloteGame.HUMAN_PLAYER_INDEX);
+        Player human = game.getPlayer(HumanBeloteFacade.HUMAN_PLAYER_INDEX);
         if (human.getTeam().equals(game.getWinnerTeam())) {
             image.setBackgroundResource(R.drawable.happy);
             message = getString(R.string.TeamWinsGame);

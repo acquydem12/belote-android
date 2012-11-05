@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 
+import com.karamanov.beloteGame.Belote;
 import com.karamanov.beloteGame.gui.screen.main.BeloteActivity;
 
 /**
@@ -60,6 +61,7 @@ public final class LogoActivity extends Activity {
     private void startBeloteActivity() {
         if (!send) {
             send = true;
+            Belote.initBeloteFacade(this);
             Intent intent = new Intent(this, BeloteActivity.class);
             startActivity(intent);
         }
