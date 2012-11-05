@@ -30,7 +30,7 @@ import belote.logic.play.PlayGameLogic;
  * BeloteGame class. Facade and proxy class which is the base point for the logic game.
  * @author Dimitar Karamanov
  */
-public class BeloteGame {
+public class BeloteFacade {
 
     /**
      * Announce card number constant.
@@ -56,7 +56,7 @@ public class BeloteGame {
      * Constructor the only one.
      * @param names of the players.
      */
-    public BeloteGame() {
+    public BeloteFacade() {
         this(new Game());
     }
 
@@ -64,7 +64,7 @@ public class BeloteGame {
      * Constructor the only one.
      * @param names of the players.
      */
-    public BeloteGame(Game game) {
+    public BeloteFacade(Game game) {
         setGame(game);
     }
 

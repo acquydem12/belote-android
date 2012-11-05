@@ -19,7 +19,7 @@ import belote.bean.pack.sequence.Sequence;
 import belote.bean.pack.sequence.SequenceIterator;
 import belote.bean.pack.sequence.SequenceType;
 import belote.bean.pack.square.SquareIterator;
-import belote.logic.HumanBeloteGame;
+import belote.logic.HumanBeloteFacade;
 
 import com.karamanov.beloteGame.Belote;
 import com.karamanov.beloteGame.R;
@@ -64,16 +64,16 @@ public final class Dealer {
 
     private MessageScreen messageScreen;
 
-    private HumanBeloteGame game;
+    private HumanBeloteFacade beloteFacade;
 
-    public Dealer(MessageActivity context, HumanBeloteGame game, BeloteView belotPanel, View buttons) {
+    public Dealer(MessageActivity context, BeloteView belotPanel, View buttons) {
         this.context = context;
         this.belotPanel = belotPanel;
         this.buttons = buttons;
-        this.game = game;
+        this.beloteFacade = Belote.getBeloteFacade(context);
 
         belotPainter = new BelotePainter(context);
-        announceDialog = new AnnounceDialog(context, game);
+        announceDialog = new AnnounceDialog(context, beloteFacade);
 
         handler = new Handler();
     }
@@ -84,7 +84,7 @@ public final class Dealer {
      * @param y position.
      */
     public void checkPointerPressed(float x, float y) {
-        if (game.isAnnounceGameMode()) {
+        if (beloteFacade.isAnnounceGameMode()) {
             processAnnounceDealRound();
         } else {
             checkPointerPressedPlayGameMode(x, y);
@@ -103,10 +103,10 @@ public final class Dealer {
             isPlayedCard = processSelectHumanCard(x, y);
         }
 
-        if (!isPlayedCard || !game.isTrickEnd()) {
+        if (!isPlayedCard || !beloteFacade.isTrickEnd()) {
             checkTrickEnd();
 
-            if (game.checkGameEnd()) {
+            if (beloteFacade.checkGameEnd()) {
                 endGame();
             } else {
                 processRoundPlay(x, y);
@@ -118,10 +118,10 @@ public final class Dealer {
      * Process announce deal round (Until 3 or 4 last pass announces).
      */
     private void processAnnounceDealRound() {
-        if (game.canDeal()) {
+        if (beloteFacade.canDeal()) {
             processSingleAnnounceDeal();
         } else {
-            if (game.getGame().getAnnounceList().getContractAnnounce() == null) {
+            if (beloteFacade.getGame().getAnnounceList().getContractAnnounce() == null) {
                 newAnnounceDealRound();
             } else {
                 newGame();
@@ -130,14 +130,14 @@ public final class Dealer {
     }
 
     private Card getHumanCardUnderPointer(final float x, final float y) {
-        Player player = game.getHumanPlayer();
+        Player player = beloteFacade.getHumanPlayer();
 
         Canvas canvas = belotPanel.getBufferedCanvas();
         if (canvas != null) {
             for (int i = 0; i < Rank.getRankCount(); i++) {
                 if (i < player.getCards().getSize()) {
 
-                    Rectangle rec = belotPainter.getPlayerCardRectangle(canvas, game, i, player);
+                    Rectangle rec = belotPainter.getPlayerCardRectangle(canvas, beloteFacade, i, player);
                     Card card = player.getCards().getCard(i);
 
                     if (rec.include((int) x, (int) y)) {
@@ -153,12 +153,12 @@ public final class Dealer {
      * Checks double click card.
      */
     private boolean processPlaySelectedCard() {
-        if (game.isPlayingGameMode() && game.isHumanTrickOrder() && game.getHumanPlayer().getSelectedCard() != null) {
-            Player player = game.getHumanPlayer();
+        if (beloteFacade.isPlayingGameMode() && beloteFacade.isHumanTrickOrder() && beloteFacade.getHumanPlayer().getSelectedCard() != null) {
+            Player player = beloteFacade.getHumanPlayer();
 
-            if (game.validatePlayerCard(player, player.getSelectedCard())) {
+            if (beloteFacade.validatePlayerCard(player, player.getSelectedCard())) {
                 // couples, preferred, unwanted and missed suit
-                game.processHumanPlayerCard(player, game.getHumanPlayer().getSelectedCard());
+                beloteFacade.processHumanPlayerCard(player, beloteFacade.getHumanPlayer().getSelectedCard());
                 // repaint frame
                 invalidateGame();
 
@@ -197,11 +197,11 @@ public final class Dealer {
      * @param card selected one.
      */
     private void processSelectCard(final Card card) {
-        final Player player = game.getHumanPlayer();
+        final Player player = beloteFacade.getHumanPlayer();
 
-        if (card != null && game.validatePlayerCard(player, card)) {
-            if (!card.equals(game.getHumanPlayer().getSelectedCard())) {
-                game.getHumanPlayer().setSelectedCard(card);
+        if (card != null && beloteFacade.validatePlayerCard(player, card)) {
+            if (!card.equals(beloteFacade.getHumanPlayer().getSelectedCard())) {
+                beloteFacade.getHumanPlayer().setSelectedCard(card);
                 invalidateGame();
             }
         }
@@ -214,7 +214,7 @@ public final class Dealer {
      * @param gameAction
      */
     private void processPlayAfterHumanPlayer(int keyCode) {
-        game.getHumanPlayer().setSelectedCard(null);
+        beloteFacade.getHumanPlayer().setSelectedCard(null);
         playRepeatedSingleRoundAfterHumanPlayer();
     }
 
@@ -225,7 +225,7 @@ public final class Dealer {
      * @param gameAction
      */
     private void processPlayTillHumanPlayer(int keyCode) {
-        if (game.getHumanPlayer().equals(game.getGame().getTrickAttackPlayer())) {
+        if (beloteFacade.getHumanPlayer().equals(beloteFacade.getGame().getTrickAttackPlayer())) {
             selectHumanSingleCard();
             processSelectCard(keyCode);
         } else {
@@ -241,20 +241,14 @@ public final class Dealer {
         Belote belote = (Belote) context.getApplication();
         belote.getMessageProcessor().stopMessaging();
         
-        game.processTrickData();
-        game.calculateTeamsPoints();
+        beloteFacade.processTrickData();
+        beloteFacade.calculateTeamsPoints();
 
-        if (game.getGame().getAnnounceList().getOpenContractAnnounce() != null) {
+        if (beloteFacade.getGame().getAnnounceList().getOpenContractAnnounce() != null) {
             handler.post(new Runnable() {
                 public void run() {
                     Intent intent = new Intent(context, GameResumeActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    if (context.getApplication() instanceof Belote) {
-                        Belote belote = (Belote) context.getApplication();
-                        belote.setData(game.getGame());
-                    } else {
-                        intent.putExtra(GameResumeActivity.BELOTE, game.getGame());    
-                    }
                     context.startActivity(intent);
                 }
             });
@@ -265,8 +259,8 @@ public final class Dealer {
      * Checks for round end.
      */
     private void checkTrickEnd() {
-        if (game.isTrickEnd()) {
-            game.processTrickData();
+        if (beloteFacade.isTrickEnd()) {
+            beloteFacade.processTrickData();
             invalidateGame();
         }
     }
@@ -278,8 +272,8 @@ public final class Dealer {
      * @param gameAction status.
      */
     private void processRoundPlaying(int keyCode) {
-        if (!game.isHumanTrickOrder()) {
-            if (game.getHumanTrickCard() == null) {
+        if (!beloteFacade.isHumanTrickOrder()) {
+            if (beloteFacade.getHumanTrickCard() == null) {
                 processPlayTillHumanPlayer(keyCode);
             } else {
                 processPlayAfterHumanPlayer(keyCode);
@@ -296,7 +290,7 @@ public final class Dealer {
     private void processGamePlaying(int keyCode) {
         checkTrickEnd();
 
-        if (game.checkGameEnd()) {
+        if (beloteFacade.checkGameEnd()) {
             endGame();
         } else {
             processRoundPlaying(keyCode);
@@ -311,15 +305,15 @@ public final class Dealer {
      */
     private void processSelectCard(int keyCode) {
         boolean keyLeftRightAction = keyCode == NAV_LEFT || keyCode == NAV_RIGHT;
-        if (game.isPlayingGameMode() && game.isHumanTrickOrder() && keyLeftRightAction) {
+        if (beloteFacade.isPlayingGameMode() && beloteFacade.isHumanTrickOrder() && keyLeftRightAction) {
             Card card = null;
 
             if (keyCode == NAV_LEFT) {
-                card = game.selectNextLeftCard();
+                card = beloteFacade.selectNextLeftCard();
             }
 
             if (keyCode == NAV_RIGHT) {
-                card = game.selectNextRightCard();
+                card = beloteFacade.selectNextRightCard();
             }
 
             processSelectCard(card);
@@ -333,7 +327,7 @@ public final class Dealer {
      * @param gameAction status.
      */
     public void checkKeyPressed(int keyCode) {
-        if (game.isAnnounceGameMode()) {
+        if (beloteFacade.isAnnounceGameMode()) {
             checkKeyPressedAnnounceGameMode(keyCode);
         } else {
             checkKeyPressedPlayGameMode(keyCode);
@@ -346,14 +340,14 @@ public final class Dealer {
 
             // Don't process game playing after human has played and trick is
             // ended.
-            if (!isPlayedCard || !game.isTrickEnd()) {
+            if (!isPlayedCard || !beloteFacade.isTrickEnd()) {
                 processGamePlaying(keyCode);
             }
-        } else if (keyCode == NAV_LEFT && game.isHumanTrickOrder()) {
-            final Card card = game.selectNextLeftCard();
+        } else if (keyCode == NAV_LEFT && beloteFacade.isHumanTrickOrder()) {
+            final Card card = beloteFacade.selectNextLeftCard();
             processSelectCard(card);
-        } else if (keyCode == NAV_RIGHT && game.isHumanTrickOrder()) {
-            final Card card = game.selectNextRightCard();
+        } else if (keyCode == NAV_RIGHT && beloteFacade.isHumanTrickOrder()) {
+            final Card card = beloteFacade.selectNextRightCard();
             processSelectCard(card);
         } else {
             processGamePlaying(keyCode);
@@ -374,8 +368,8 @@ public final class Dealer {
      * Selects human single card.
      */
     private void selectHumanSingleCard() {
-        final Player player = game.getHumanPlayer();
-        if (game.isPlayingGameMode() && game.isHumanTrickOrder() && player.getCards().getSize() == 1) {
+        final Player player = beloteFacade.getHumanPlayer();
+        if (beloteFacade.isPlayingGameMode() && beloteFacade.isHumanTrickOrder() && player.getCards().getSize() == 1) {
             final Card card = player.getCards().getFirstNoNullCard();
             processSelectCard(card);
         }
@@ -385,7 +379,7 @@ public final class Dealer {
      * Plays one round till human player.
      */
     private void playRepeatedSingleRoundTillHumanPlayer() {
-        for (Player player = game.getGame().getTrickAttackPlayer(); !player.equals(game.getHumanPlayer()); player = game.getPlayerAfter(player)) {
+        for (Player player = beloteFacade.getGame().getTrickAttackPlayer(); !player.equals(beloteFacade.getHumanPlayer()); player = beloteFacade.getPlayerAfter(player)) {
             playSingleRoundPlayerCard(player);
         }
     }
@@ -394,7 +388,7 @@ public final class Dealer {
      * Plays one round after human player (Till end of round).
      */
     private void playRepeatedSingleRoundAfterHumanPlayer() {
-        for (Player player = game.getPlayerAfter(game.getHumanPlayer()); !player.equals(game.getGame().getTrickAttackPlayer()); player = game
+        for (Player player = beloteFacade.getPlayerAfter(beloteFacade.getHumanPlayer()); !player.equals(beloteFacade.getGame().getTrickAttackPlayer()); player = beloteFacade
                 .getPlayerAfter(player)) {
             playSingleRoundPlayerCard(player);
         }
@@ -402,7 +396,7 @@ public final class Dealer {
 
     private void playSingleRoundPlayerCard(final Player player) {
         try {
-            Card card = game.playSingleHand(player);
+            Card card = beloteFacade.playSingleHand(player);
             invalidateGame();
 
             ArrayList<MessageData> messages = getMessageList(player, card);
@@ -420,7 +414,7 @@ public final class Dealer {
      * Shows announce panel.
      */
     private void showAnnounceDialog() {
-        game.setPlayerIsAnnouncing(true);
+        beloteFacade.setPlayerIsAnnouncing(true);
         announceDialog.setTrue();
         invalidateGame();
         handler.post(new Runnable() {
@@ -440,17 +434,17 @@ public final class Dealer {
             sleep(PLAY_DELAY);
             invalidateGame();
         }
-        game.setPlayerIsAnnouncing(false);
+        beloteFacade.setPlayerIsAnnouncing(false);
     }
 
     /**
      * Process single announce deal.
      */
     private void processSingleAnnounceDeal() {
-        if (game.getNextAnnouncePlayer().equals(game.getHumanPlayer())) {
+        if (beloteFacade.getNextAnnouncePlayer().equals(beloteFacade.getHumanPlayer())) {
             showAnnounceDialog();
         } else {
-            game.processNextAnnounce();
+            beloteFacade.processNextAnnounce();
         }
 
         invalidateGame();
@@ -460,8 +454,8 @@ public final class Dealer {
      * New game.
      */
     private void newGame() {
-        game.setGameMode(GameMode.PlayGameMode);
-        game.manageRestCards();
+        beloteFacade.setGameMode(GameMode.PlayGameMode);
+        beloteFacade.manageRestCards();
         invalidateGame();
     }
 
@@ -471,10 +465,10 @@ public final class Dealer {
      * @param repaint
      */
     protected void newAnnounceDealRound() {
-        game.processTrickData();
-        game.setNextDealAttackPlayer();
-        game.newGame();
-        game.getHumanPlayer().setSelectedCard(null);
+        beloteFacade.processTrickData();
+        beloteFacade.setNextDealAttackPlayer();
+        beloteFacade.newGame();
+        beloteFacade.getHumanPlayer().setSelectedCard(null);
 
         if (context.getWindow() != null && context.getWindow().isActive()) {
             invalidateGame(STANDARD_CARD_DELAY);
@@ -486,13 +480,13 @@ public final class Dealer {
     private ArrayList<MessageData> getMessageList(final Player player, final Card card) {
         ArrayList<MessageData> result = new ArrayList<MessageData>();
 
-        if (player.equals(game.getGame().getTrickCouplePlayer())) {
+        if (player.equals(beloteFacade.getGame().getTrickCouplePlayer())) {
             result.add(new MessageData(belotPainter.getCoupleImage(card.getSuit()), context.getString(R.string.Belote)));
         }
         // Add equals and sequences messages on first round and when the game is
         // not NT.
-        Announce announce = game.getGame().getAnnounceList().getOpenContractAnnounce();
-        if (announce != null && !announce.getAnnounceSuit().equals(AnnounceSuit.NotTrump) && game.getGame().getTrickList().isEmpty()) {
+        Announce announce = beloteFacade.getGame().getAnnounceList().getOpenContractAnnounce();
+        if (announce != null && !announce.getAnnounceSuit().equals(AnnounceSuit.NotTrump) && beloteFacade.getGame().getTrickList().isEmpty()) {
             for (SquareIterator it = player.getCards().getSquaresList().iterator(); it.hasNext();) {
                 result.add(new MessageData(belotPainter.getEqualCardsImage(it.next()), context.getString(R.string.FourCards)));
             }
@@ -547,7 +541,7 @@ public final class Dealer {
         Canvas canvas = belotPanel.getBufferedCanvas();
 
         if (canvas != null) {
-            Rectangle rect = belotPainter.getPlayerCardRectangle(canvas, game, 0, player);
+            Rectangle rect = belotPainter.getPlayerCardRectangle(canvas, beloteFacade, 0, player);
 
             switch (player.getID()) {
             case 0:
@@ -591,7 +585,7 @@ public final class Dealer {
      * @param gameAction
      */
     private void processAfterHumanPlayer(float x, float y) {
-        game.getHumanPlayer().setSelectedCard(null);
+        beloteFacade.getHumanPlayer().setSelectedCard(null);
         playRepeatedSingleRoundAfterHumanPlayer();
     }
 
@@ -602,7 +596,7 @@ public final class Dealer {
      * @param gameAction
      */
     private void processTillHumanPlayer(float x, float y) {
-        if (game.getHumanPlayer().equals(game.getGame().getTrickAttackPlayer())) {
+        if (beloteFacade.getHumanPlayer().equals(beloteFacade.getGame().getTrickAttackPlayer())) {
             selectHumanSingleCard();
             processSelectHumanCard(x, y);
         } else {
@@ -619,7 +613,7 @@ public final class Dealer {
      * @return if a card was selected.
      */
     private boolean processSelectHumanCard(float x, float y) {
-        if (game.isPlayingGameMode() && game.isHumanTrickOrder()) {
+        if (beloteFacade.isPlayingGameMode() && beloteFacade.isHumanTrickOrder()) {
             Card card = getHumanCardUnderPointer(x, y);
             processSelectCard(card);
             return true;
@@ -631,17 +625,17 @@ public final class Dealer {
      * Checks double click card.
      */
     private boolean processPlaySelectedCard(final Card card) {
-        if (game.isPlayingGameMode() && game.isHumanTrickOrder() && game.getHumanPlayer().getSelectedCard() != null
-                && game.getHumanPlayer().getSelectedCard().equals(card)) {
-            final Player player = game.getHumanPlayer();
+        if (beloteFacade.isPlayingGameMode() && beloteFacade.isHumanTrickOrder() && beloteFacade.getHumanPlayer().getSelectedCard() != null
+                && beloteFacade.getHumanPlayer().getSelectedCard().equals(card)) {
+            final Player player = beloteFacade.getHumanPlayer();
 
-            if (game.validatePlayerCard(player, game.getHumanPlayer().getSelectedCard())) {
+            if (beloteFacade.validatePlayerCard(player, beloteFacade.getHumanPlayer().getSelectedCard())) {
                 // couples, preferred, unwanted and missed suit
-                game.processHumanPlayerCard(player, player.getSelectedCard());
+                beloteFacade.processHumanPlayerCard(player, player.getSelectedCard());
                 // repaint frame
                 invalidateGame();
                 // check for display message
-                ArrayList<MessageData> messages = getMessageList(player, game.getHumanPlayer().getSelectedCard());
+                ArrayList<MessageData> messages = getMessageList(player, beloteFacade.getHumanPlayer().getSelectedCard());
                 if (messages.size() > 0) {
                     displayMessage(player, messages);
                 } else {
@@ -661,8 +655,8 @@ public final class Dealer {
      * @param gameAction status.
      */
     private void processRoundPlay(float x, float y) {
-        if (!game.isHumanTrickOrder()) {
-            if (game.getHumanTrickCard() == null) {
+        if (!beloteFacade.isHumanTrickOrder()) {
+            if (beloteFacade.getHumanTrickCard() == null) {
                 processTillHumanPlayer(x, y);
             } else {
                 processAfterHumanPlayer(x, y);
@@ -677,7 +671,7 @@ public final class Dealer {
     public void invalidateGame(int delay) {
         Canvas canvas = belotPanel.getBufferedCanvas();
         if (canvas != null) {
-            belotPainter.drawGame(canvas, game, belotPanel, delay);
+            belotPainter.drawGame(canvas, beloteFacade, belotPanel, delay);
             belotPanel.refresh();
         }
     }

@@ -9,17 +9,9 @@
  */
 package com.karamanov.beloteGame.gui.screen.main;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.io.StreamCorruptedException;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -35,8 +27,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
-import belote.bean.Game;
-import belote.logic.HumanBeloteGame;
 
 import com.karamanov.beloteGame.Belote;
 import com.karamanov.beloteGame.R;
@@ -53,18 +43,6 @@ import com.karamanov.framework.message.Messageable;
  * @author Dimitar Karamanov
  */
 public final class BeloteActivity extends MessageActivity implements OnSharedPreferenceChangeListener {
-
-    private static final String BELOTE_GAME = "BeloteGame";
-
-    /**
-     * Belote game facade (The enter point of game AI).
-     */
-    private final HumanBeloteGame beloteGame;
-
-    /**
-     * BELOTE_DAT constant.
-     */
-    private static final String BELOTE_DAT = "belote.dat";
 
     /**
      * GAME_RESUME_CODE constant.
@@ -97,8 +75,6 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
      */
     public BeloteActivity() {
         super();
-
-        beloteGame = new HumanBeloteGame();
     }
 
     /** Called when the activity is first created. */
@@ -116,20 +92,10 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
         
         addMessageListener(Belote.MT_CLOSE_END_GAME, new CloseEndGameListener());
         
-        Serializable serializable = getBundleData(savedInstanceState, BELOTE_GAME);
-        if (serializable instanceof Game) {
-            Game game = (Game) serializable;
-            beloteGame.setGame(game);
-        } else {
-            if (!loadGame()) {
-                beloteGame.newGame();
-            }
-        }
-
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String key = getString(R.string.prefBlackRedOrder);
         boolean blackRedOrder = preferences.getBoolean(key, Boolean.FALSE);
-        beloteGame.setBlackRedCardOrder(blackRedOrder);
+        Belote.getBeloteFacade(this).setBlackRedCardOrder(blackRedOrder);
 
         buttons = new RelativeLayout(this);
         buttons.setId(1);
@@ -170,7 +136,7 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
         relative.addView(buttons);
 
         beloteView = new BeloteView(this);
-        dealer = new Dealer(this, beloteGame, beloteView, buttons);
+        dealer = new Dealer(this, beloteView, buttons);
         rlp = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         rlp.addRule(RelativeLayout.ABOVE, buttons.getId());
         beloteView.setLayoutParams(rlp);
@@ -182,13 +148,6 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
         setContentView(relative);
 
         preferences.registerOnSharedPreferenceChangeListener(this);
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        outState.putSerializable(BELOTE_GAME, beloteGame.getGame());
     }
 
     protected final Serializable getBundleData(Bundle savedInstanceState, String key) {
@@ -214,54 +173,13 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
         }
     }
 
-    private void resetGame() {
-        beloteGame.setGame(new Game());
-        beloteGame.newGame();
-        deleteFile(BELOTE_DAT);
-
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String key = getString(R.string.prefBlackRedOrder);
-        boolean blackRedOrder = preferences.getBoolean(key, Boolean.FALSE);
-        beloteGame.setBlackRedCardOrder(blackRedOrder);
-    }
-
-    private boolean loadGame() {
-
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String key = getString(R.string.prefStoreGame);
-        boolean storeGame = preferences.getBoolean(key, Boolean.FALSE);
-
-        if (storeGame) {
-            try {
-                FileInputStream fis = openFileInput(BELOTE_DAT);
-                try {
-                    ObjectInputStream ois = new ObjectInputStream(fis);
-                    try {
-                        Object object = ois.readObject();
-                        if (object instanceof Game) {
-                            Game game = (Game) object;
-                            beloteGame.setGame(game);
-                            return true;
-                        }
-                    } finally {
-                        ois.close();
-                    }
-                } finally {
-                    fis.close();
-                }
-            } catch (FileNotFoundException e) {
-            } catch (StreamCorruptedException e) {
-            } catch (IOException e) {
-            } catch (ClassNotFoundException e) {
-            }
-        }
-        return false;
-    }
-
     @Override
     protected void onDestroy() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         preferences.unregisterOnSharedPreferenceChangeListener(this);
+        
+        Belote.terminate(this);
+        
         super.onDestroy();
     }
 
@@ -293,7 +211,7 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
 
         int base = Menu.CATEGORY_SECONDARY;
 
-        boolean showTricks = !beloteGame.getGame().getTrickList().isEmpty();
+        boolean showTricks = !Belote.getBeloteFacade(this).getGame().getTrickList().isEmpty();
 
         MenuItem historyMenu = menu.findItem(base + PLAYED_CARDS_INDEX);
         if (showTricks) {
@@ -308,7 +226,7 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
         }
 
         MenuItem resetAnnounceMenu = menu.findItem(base + RESET_ANNOUNCE_INDEX);
-        if (beloteGame.getGame().isAnnounceGameMode() && beloteGame.getGame().getAnnounceList().getCount() > 0) {
+        if (Belote.getBeloteFacade(this).getGame().isAnnounceGameMode() && Belote.getBeloteFacade(this).getGame().getAnnounceList().getCount() > 0) {
             if (resetAnnounceMenu == null) {
                 resetAnnounceMenu = menu.add(base, base + RESET_ANNOUNCE_INDEX, base + RESET_ANNOUNCE_INDEX, getString(R.string.ResetAnnounce));
                 resetAnnounceMenu.setIcon(android.R.drawable.ic_menu_close_clear_cancel);
@@ -334,7 +252,7 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
             myAlertDialog.setMessage(getString(R.string.NewEraseQuestion));
             myAlertDialog.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
-                    resetGame();
+                    Belote.resetGame(BeloteActivity.this);
                     repaint();
                 }
             });
@@ -350,13 +268,13 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
         if (item.getItemId() == base + PLAYED_CARDS_INDEX) {
             Intent intent = new Intent(this, TricksActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.putExtra(TricksActivity.BELOTE, beloteGame.getGame());
+            intent.putExtra(TricksActivity.BELOTE, Belote.getBeloteFacade(this).getGame());
             startActivity(intent);
         }
 
         if (item.getItemId() == base + GAME_SCORE_INDEX) {
             Intent intent = new Intent(this, ScoreActivity.class);
-            intent.putExtra(ScoreActivity.BELOTE, beloteGame.getGame());
+            intent.putExtra(ScoreActivity.BELOTE, Belote.getBeloteFacade(this).getGame());
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
@@ -368,7 +286,7 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
         }
 
         if (item.getItemId() == base + RESET_ANNOUNCE_INDEX) {
-            beloteGame.getGame().getAnnounceList().clear();
+            Belote.getBeloteFacade(this).getGame().getAnnounceList().clear();
             repaint();
         }
 
@@ -401,7 +319,6 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
 
         @Override
         public void performMessage(Message message) {
-            onTerminate();
             dealer.onExit();
         }
     }
@@ -422,30 +339,6 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
         }
     }
     
-    public void onTerminate() {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String key = getString(R.string.prefStoreGame);
-        boolean storeGame = preferences.getBoolean(key, Boolean.FALSE);
-
-        if (storeGame) {
-            try {
-                FileOutputStream fos = openFileOutput(BELOTE_DAT, Context.MODE_PRIVATE);
-                try {
-                    ObjectOutputStream oos = new ObjectOutputStream(fos);
-                    try {
-                        oos.writeObject(beloteGame.getGame());
-                    } finally {
-                        oos.close();
-                    }
-                } finally {
-                    fos.close();
-                }
-            } catch (FileNotFoundException e) {
-            } catch (IOException e) {
-            }
-        }
-    }
-
     @Override
     public void onBackPressed() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -492,8 +385,8 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
 
         if (key.equals(getString(R.string.prefBlackRedOrder))) {
             boolean blackRedOrder = sharedPreferences.getBoolean(key, Boolean.FALSE);
-            beloteGame.setBlackRedCardOrder(blackRedOrder);
-            beloteGame.arrangePlayersCards();
+            Belote.getBeloteFacade(this).setBlackRedCardOrder(blackRedOrder);
+            Belote.getBeloteFacade(this).arrangePlayersCards();
             if (beloteView != null) {
                 repaint();
                 beloteView.invalidate(); // Work fine.

@@ -17,7 +17,7 @@ import belote.bean.pack.card.Card;
  * HumanBelotGame class.
  * @author Dimitar Karamanov
  */
-public final class HumanBeloteGame extends BeloteGame {
+public final class HumanBeloteFacade extends BeloteFacade {
 
     private boolean blackRedCardOrder = false;
 
@@ -32,7 +32,7 @@ public final class HumanBeloteGame extends BeloteGame {
      * Constructor
      * @param names of the players.
      */
-    public HumanBeloteGame() {
+    public HumanBeloteFacade() {
         super();
     }
 

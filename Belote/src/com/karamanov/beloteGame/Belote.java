@@ -1,19 +1,25 @@
 package com.karamanov.beloteGame;
 
-import android.app.Application;
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.TypedValue;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.StreamCorruptedException;
 
-import com.karamanov.framework.message.MessageProcessor;
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import belote.bean.Game;
+import belote.logic.HumanBeloteFacade;
+
+import com.karamanov.framework.MessageApplication;
 import com.karamanov.framework.message.MessageType;
 
-public class Belote extends Application {
+public class Belote extends MessageApplication {
 
-    private Object data;
-
-    private final MessageProcessor messageProcessor;
-    
     public final static MessageType MT_KEY_PRESSED = new MessageType("MT_KEY_PRESSED");
 
     public final static MessageType MT_TOUCH_EVENT = new MessageType("MT_TOUCH_EVENT");
@@ -23,64 +29,106 @@ public class Belote extends Application {
     public final static MessageType MT_PAINT_EVENT = new MessageType("MT_PAINT_EVENT");
     
     public final static MessageType MT_CLOSE_END_GAME = new MessageType("MT_CLOSE_END_GAME");
+    
+    /**
+     * BELOTE_DAT constant.
+     */
+    private static final String BELOTE_DAT = "belote.dat";
+    
+    /**
+     * Belote game facade (The enter point of game AI).
+     */
+    private final HumanBeloteFacade beloteFacade;
 
     public Belote() {
         super();
-
-        messageProcessor = new MessageProcessor();
-
-        // BelotExceptionHamdler handler = new BelotExceptionHamdler();
-        // Thread.setDefaultUncaughtExceptionHandler(handler);
-
-        /*
-         * Thread t = new Thread(new Runnable() {
-         * 
-         * @Override public void run() { BelotLogicTest.test(); } }); t.start();
-         */
+        beloteFacade = new HumanBeloteFacade();
     }
+    
+    public static HumanBeloteFacade getBeloteFacade(Activity context) {
+        if (context.getApplication() instanceof Belote) {
+            return ((Belote) context.getApplication()).beloteFacade;
+        }
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        messageProcessor.start();
+        return new HumanBeloteFacade();
     }
-
-    public final MessageProcessor getMessageProcessor() {
-        return messageProcessor;
+    
+    public static synchronized void initBeloteFacade(Activity context) {
+        if (!loadGame(context)) {
+            getBeloteFacade(context).newGame();
+        }
+        
+        checkBlackRedCardOrder(context);
     }
+    
+    public static void resetGame(Activity context) {
+        getBeloteFacade(context).setGame(new Game());
+        getBeloteFacade(context).newGame();
+        context.deleteFile(BELOTE_DAT);
 
-    /*
-     * public static void _saveLog(ArrayList<String> log) { try { File root = Environment.getExternalStorageDirectory(); if (root.canWrite()){ File file = new
-     * File(root, "belotLog.txt"); file.createNewFile(); FileWriter fileWriter = new FileWriter(file); BufferedWriter out = new BufferedWriter(fileWriter); for
-     * (String text : log) { out.write(text + "\n"); } out.close(); } } catch (IOException e) { //D.N. } }
-     */
+        checkBlackRedCardOrder(context);
+    }
+    
+    private static void checkBlackRedCardOrder(Activity context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String key = context.getString(R.string.prefBlackRedOrder);
+        boolean blackRedOrder = preferences.getBoolean(key, Boolean.FALSE);
+        getBeloteFacade(context).setBlackRedCardOrder(blackRedOrder);
+    }
+    
+    public static boolean loadGame(Activity context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String key = context.getString(R.string.prefStoreGame);
+        boolean storeGame = preferences.getBoolean(key, Boolean.FALSE);
 
-    public static int fromPixelToDip(Context context, int pixels) {
-        Resources resources = context.getResources();
-        if (pixels == 1) {
-            return Math.max(1, Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, pixels, resources.getDisplayMetrics())));
-        } else {
-            return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, pixels, resources.getDisplayMetrics()));
+        if (storeGame) {
+            try {
+                FileInputStream fis = context.openFileInput(BELOTE_DAT);
+                try {
+                    ObjectInputStream ois = new ObjectInputStream(fis);
+                    try {
+                        Object object = ois.readObject();
+                        if (object instanceof Game) {
+                            Game game = (Game) object;
+                            getBeloteFacade(context).setGame(game);
+                            return true;
+                        }
+                    } finally {
+                        ois.close();
+                    }
+                } finally {
+                    fis.close();
+                }
+            } catch (FileNotFoundException e) {
+            } catch (StreamCorruptedException e) {
+            } catch (IOException e) {
+            } catch (ClassNotFoundException e) {
+            }
+        }
+        return false;
+    }
+    
+    public static void terminate(Activity context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String key = context.getString(R.string.prefStoreGame);
+        boolean storeGame = preferences.getBoolean(key, Boolean.FALSE);
+
+        if (storeGame) {
+            try {
+                FileOutputStream fos = context.openFileOutput(BELOTE_DAT, Context.MODE_PRIVATE);
+                try {
+                    ObjectOutputStream oos = new ObjectOutputStream(fos);
+                    try {
+                        oos.writeObject(getBeloteFacade(context).getGame());
+                    } finally {
+                        oos.close();
+                    }
+                } finally {
+                    fos.close();
+                }
+            } catch (FileNotFoundException e) {
+            } catch (IOException e) {
+            }
         }
     }
-
-    public static float fromPixelToDipF(Context context, float pixels) {
-        Resources resources = context.getResources();
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, pixels, resources.getDisplayMetrics());
-    }
-
-    public final void setData(Object data) {
-        this.data = data;
-    }
-
-    public final Object getData() {
-        return data;
-    }
 }
-
-/*
- * class BelotExceptionHandler implements UncaughtExceptionHandler {
- * 
- * @Override public void uncaughtException(Thread thread, Throwable ex) { Context context = Belote.getContext(); if (context != null) { AlertDialog alertDialog
- * = new AlertDialog.Builder(context).create(); alertDialog.setTitle("Error"); alertDialog.setMessage(ex.toString()); } } }
- */

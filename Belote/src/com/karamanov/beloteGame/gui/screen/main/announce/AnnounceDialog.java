@@ -26,7 +26,7 @@ import belote.bean.Player;
 import belote.bean.announce.Announce;
 import belote.bean.announce.suit.AnnounceSuit;
 import belote.bean.announce.type.AnnounceType;
-import belote.logic.BeloteGame;
+import belote.logic.BeloteFacade;
 
 import com.karamanov.beloteGame.Belote;
 import com.karamanov.beloteGame.R;
@@ -134,7 +134,7 @@ public class AnnounceDialog extends Dialog {
     /**
      * Belot game object.
      */
-    private final BeloteGame game;
+    private final BeloteFacade game;
 
     /**
      * Text decorator of game beans object (Suit, Rank, Announce ...)
@@ -148,7 +148,7 @@ public class AnnounceDialog extends Dialog {
      * @param game a BelotGame instance.
      * @param parent component.
      */
-    public AnnounceDialog(Context context, final BeloteGame game) {
+    public AnnounceDialog(Context context, final BeloteFacade game) {
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);

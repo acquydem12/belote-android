@@ -27,8 +27,8 @@ import belote.bean.pack.PackIterator;
 import belote.bean.pack.card.Card;
 import belote.bean.pack.card.rank.Rank;
 import belote.bean.pack.card.suit.Suit;
-import belote.logic.BeloteGame;
-import belote.logic.HumanBeloteGame;
+import belote.logic.BeloteFacade;
+import belote.logic.HumanBeloteFacade;
 
 import com.karamanov.beloteGame.Belote;
 import com.karamanov.beloteGame.R;
@@ -89,7 +89,7 @@ final class BelotePainter extends BasePainter {
      * @param g Graphics instance.
      * @param player which name is vertical drawn.
      */
-    private void drawPlayerName(Canvas canvas, HumanBeloteGame game, Player player) {
+    private void drawPlayerName(Canvas canvas, HumanBeloteFacade game, Player player) {
         int x;
         int y;
 
@@ -206,7 +206,7 @@ final class BelotePainter extends BasePainter {
      * @param player which card rectangle is retrieved.
      * @return Rectangle player' card one.
      */
-    public final Rectangle getPlayerCardRectangle(Canvas canvas, HumanBeloteGame game, final int index, Player player) {
+    public final Rectangle getPlayerCardRectangle(Canvas canvas, HumanBeloteFacade game, final int index, Player player) {
         int x = 0;
         int y = 0;
 
@@ -247,7 +247,7 @@ final class BelotePainter extends BasePainter {
         }
     }
 
-    private int getCardsCount(BeloteGame game) {
+    private int getCardsCount(BeloteFacade game) {
         final int nCards = (game.isAnnounceGameMode()) ? 5 : 8;
         return nCards;
     }
@@ -257,7 +257,7 @@ final class BelotePainter extends BasePainter {
      * @param game BelotGame instance.
      * @return int position.
      */
-    private int getPlayer2FirstCardX(Canvas canvas, BeloteGame game) {
+    private int getPlayer2FirstCardX(Canvas canvas, BeloteFacade game) {
         final int nCards = getCardsCount(game);
         int dip2 = Belote.fromPixelToDip(context, 2);
 
@@ -283,7 +283,7 @@ final class BelotePainter extends BasePainter {
      * @param game BelotGame instance.
      * @return position.
      */
-    private int getPlayer0FirstCardX(Canvas canvas, BeloteGame game) {
+    private int getPlayer0FirstCardX(Canvas canvas, BeloteFacade game) {
         final int nCards = getCardsCount(game);
         return (canvas.getWidth() - nCards * cardBackWidth + (nCards - 1) * Player0CardsOverlapped) / 2;
     }
@@ -293,7 +293,7 @@ final class BelotePainter extends BasePainter {
      * @param game BelotGame instance.
      * @return position.
      */
-    private int getFirstCardPosY(Canvas canvas, BeloteGame game) {
+    private int getFirstCardPosY(Canvas canvas, BeloteFacade game) {
         final int nCards = getCardsCount(game);
         return (canvas.getHeight() - nCards * cardBackWidth + (nCards - 1) * Player1Player3CardsOverlapped) / 2;
     }
@@ -334,7 +334,7 @@ final class BelotePainter extends BasePainter {
      * @param g Graphics instance.
      * @return Rectangle of the announce.
      */
-    private Rectangle getAnnounceRectangle(Canvas canvas, HumanBeloteGame game, Announce announce, Paint paint) {
+    private Rectangle getAnnounceRectangle(Canvas canvas, HumanBeloteFacade game, Announce announce, Paint paint) {
         int dip2 = Belote.fromPixelToDip(context, 2);
         int dip4 = Belote.fromPixelToDip(context, 4);
         int dip6 = Belote.fromPixelToDip(context, 6);
@@ -391,7 +391,7 @@ final class BelotePainter extends BasePainter {
      * @param game BelotGame instance.
      * @param g Graphics instance.
      */
-    private Rect drawLastAnnounce(Canvas canvas, HumanBeloteGame game) {
+    private Rect drawLastAnnounce(Canvas canvas, HumanBeloteFacade game) {
         if (game.isAnnounceGameMode()) {
             final int count = game.getGame().getAnnounceList().getCount();
             if (count > 0) {
@@ -409,7 +409,7 @@ final class BelotePainter extends BasePainter {
      * @param announce to be draw.
      * @param g Graphics instance.
      */
-    private Rect drawAnnounce(Canvas canvas, HumanBeloteGame game, Announce announce) {
+    private Rect drawAnnounce(Canvas canvas, HumanBeloteFacade game, Announce announce) {
         Paint paint = new Paint();
         paint.setColor(Color.clDarkRed.getRGB());
         paint.setFakeBoldText(true);
@@ -445,7 +445,7 @@ final class BelotePainter extends BasePainter {
         return dest;
     }
 
-    private Rect getBubbleAnnounceRectangle(Canvas canvas, HumanBeloteGame game, Announce announce) {
+    private Rect getBubbleAnnounceRectangle(Canvas canvas, HumanBeloteFacade game, Announce announce) {
         Paint paint = new Paint();
         paint.setFakeBoldText(true);
         paint.setAntiAlias(true);
@@ -514,7 +514,7 @@ final class BelotePainter extends BasePainter {
      * @param game BelotGame instance.
      * @param g Graphics instance.
      */
-    private void drawAnnounce(Canvas canvas, BeloteGame game) {
+    private void drawAnnounce(Canvas canvas, BeloteFacade game) {
         if (game.isPlayingGameMode()) {
             Paint paint = new Paint();
             float dip12 = Belote.fromPixelToDipF(context, 12);
@@ -643,7 +643,7 @@ final class BelotePainter extends BasePainter {
      * @param game BelotGame instance.
      * @param g Graphics instance.
      */
-    private void drawScore(Canvas canvas, BeloteGame game) {
+    private void drawScore(Canvas canvas, BeloteFacade game) {
         float dip12 = Belote.fromPixelToDipF(context, 12);
         Paint paint = new Paint();
         paint.setTextSize(dip12);
@@ -687,7 +687,7 @@ final class BelotePainter extends BasePainter {
      * @param game BelotGame instance.
      * @param g Graphics instance.
      */
-    private void drawCurrentTrickCards(Canvas canvas, HumanBeloteGame game) {
+    private void drawCurrentTrickCards(Canvas canvas, HumanBeloteFacade game) {
         Player player = game.getGame().getTrickAttackPlayer();
         for (PackIterator iterator = game.getGame().getTrickCards().iterator(); iterator.hasNext();) {
             final Card card = iterator.next();
@@ -703,7 +703,7 @@ final class BelotePainter extends BasePainter {
      * @param card played card.
      * @param g Graphics instance.
      */
-    private void drawPlayedCardByPlayer(Canvas canvas, HumanBeloteGame game, Player player, Card card) {
+    private void drawPlayedCardByPlayer(Canvas canvas, HumanBeloteFacade game, Player player, Card card) {
         final Rectangle rec = getPlayerPlayedCardRectangle(canvas, game, player);
 
         final Player winner = game.getNextTrickAttackPlayer();
@@ -720,7 +720,7 @@ final class BelotePainter extends BasePainter {
      * @param player which rectangle is retrieved.
      * @return Rectangle instance.
      */
-    private Rectangle getPlayerPlayedCardRectangle(Canvas canvas, HumanBeloteGame game, Player player) {
+    private Rectangle getPlayerPlayedCardRectangle(Canvas canvas, HumanBeloteFacade game, Player player) {
         Rectangle rect = getPlayerCardRectangle(canvas, game, 0, player);
         int x = 0;
         int y = 0;
@@ -756,7 +756,7 @@ final class BelotePainter extends BasePainter {
      * @param g Graphics object.
      * @param delay between drawing cards.
      */
-    private void drawPlayersNames(Canvas canvas, BeloteView view, HumanBeloteGame game) {
+    private void drawPlayersNames(Canvas canvas, BeloteView view, HumanBeloteFacade game) {
         for (int i = 0; i < game.getGame().getPlayersCount(); i++) {
             drawPlayerName(canvas, game, game.getGame().getPlayer(i));
         }
@@ -767,7 +767,7 @@ final class BelotePainter extends BasePainter {
      * @param g Graphics object.
      * @param delay between drawing cards.
      */
-    private void drawPlayersCards(Canvas canvas, BeloteView view, HumanBeloteGame game, long delay) {
+    private void drawPlayersCards(Canvas canvas, BeloteView view, HumanBeloteFacade game, long delay) {
         Player player = game.getGame().getDealAttackPlayer();
         for (int i = 0; i < game.getGame().getPlayersCount(); i++) {
             drawPlayerCards(canvas, view, game, player, delay);
@@ -781,8 +781,8 @@ final class BelotePainter extends BasePainter {
      * @param player player which cards are drawn.
      * @param delay between drawing cards.
      */
-    private void drawPlayerCards(Canvas canvas, final BeloteView view, HumanBeloteGame game, Player player, long delay) {
-        int nCards = (game.isAnnounceGameMode()) ? BeloteGame.ANNOUNCE_CARD_COUNT : Rank.getRankCount();
+    private void drawPlayerCards(Canvas canvas, final BeloteView view, HumanBeloteFacade game, Player player, long delay) {
+        int nCards = (game.isAnnounceGameMode()) ? BeloteFacade.ANNOUNCE_CARD_COUNT : Rank.getRankCount();
         for (int i = 0; i < nCards; i++) {
 
             if (i < player.getCards().getSize()) {
@@ -832,7 +832,7 @@ final class BelotePainter extends BasePainter {
         bkg.draw(graphics);
     }
 
-    public final void drawGame(Canvas graphics, HumanBeloteGame game, BeloteView view, long delay) {
+    public final void drawGame(Canvas graphics, HumanBeloteFacade game, BeloteView view, long delay) {
         clearBackground(graphics);
         drawScore(graphics, game);
         drawAnnounce(graphics, game);
