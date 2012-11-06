@@ -41,12 +41,20 @@ public class MessageActivity extends Activity {
      */
     protected void onResume() {
         super.onResume();
+        if (getApplication() instanceof Belote) {
+            Belote belote = (Belote) getApplication();
+            belote.getMessageProcessor().start();
+        }
     }
 
     /**
      * The canvas is being removed from the screen. Stop the event handling and animation thread.
      */
     protected void onPause() {
+        if (getApplication() instanceof Belote) {
+            Belote belote = (Belote) getApplication();
+            belote.getMessageProcessor().stop();
+        }
         super.onPause();
     }
 
