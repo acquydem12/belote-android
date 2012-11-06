@@ -4,7 +4,7 @@ import java.util.Hashtable;
 
 public final class MessageProcessor implements Processor {
 
-    private MessageThread messageThread;
+    private final MessageThread messageThread;
 
     private final MessageQueue messageQueue;
 
@@ -17,18 +17,15 @@ public final class MessageProcessor implements Processor {
 
     public MessageProcessor() {
         messageQueue = new MessageQueue();
+        messageThread = new MessageThread(this);
     }
 
     public final void start() {
-        messageThread = new MessageThread(this);
         messageThread.start();
     }
     
     public final void stop() {
-        if (messageThread != null) {
-            messageThread.setSuspended(true);
-            messageThread = null;
-        }
+        messageThread.setSuspended(true);
         messageQueue.clearAll();
     }
 
@@ -83,11 +80,13 @@ public final class MessageProcessor implements Processor {
      * Process one message.
      */
     public final void process() {
-        final Message message = messageQueue.getMessage();
-        if (message != null) {
-            final Messageable messageable = (Messageable) listenersHash.get(message.getMessageType());
-            if (messageable != null) {
-                messageable.performMessage(message);
+        if (processMessages) {
+            final Message message = messageQueue.getMessage();
+            if (message != null) {
+                final Messageable messageable = (Messageable) listenersHash.get(message.getMessageType());
+                if (messageable != null) {
+                    messageable.performMessage(message);
+                }
             }
         }
     }
