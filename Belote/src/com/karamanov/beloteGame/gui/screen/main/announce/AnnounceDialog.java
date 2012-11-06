@@ -404,7 +404,7 @@ public class AnnounceDialog extends Dialog {
 
     protected void onStop() {
         Belote belote = (Belote) activity.getApplication();
-        belote.getMessageProcessor().unlock();
+        belote.getMessageProcessor().runMessaging();
     }
 
     /**

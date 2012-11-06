@@ -431,7 +431,7 @@ public final class Dealer {
         });
         
         Belote belote = (Belote) context.getApplication();
-        belote.getMessageProcessor().lock();
+        belote.getMessageProcessor().stopMessaging();
         /*
         while (announceDialog.getValue()) {
             sleep(PLAY_DELAY);
@@ -536,7 +536,7 @@ public final class Dealer {
         });
 
         Belote belote = (Belote) context.getApplication();
-        belote.getMessageProcessor().lock();
+        belote.getMessageProcessor().stopMessaging();
     }
 
     private void positionMessageScreen(MessageScreen messageScreen, Player player) {
