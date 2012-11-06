@@ -47,6 +47,7 @@ public class MessageActivity extends Activity {
         super.onResume();
         if (getApplication() instanceof Belote) {
             Belote belote = (Belote) getApplication();
+            belote.getMessageProcessor().unlock();
             belote.getMessageProcessor().runMessaging();
         }
     }

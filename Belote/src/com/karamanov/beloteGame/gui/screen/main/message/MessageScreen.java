@@ -3,32 +3,32 @@ package com.karamanov.beloteGame.gui.screen.main.message;
 import java.util.ArrayList;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
 import belote.bean.Player;
 
+import com.karamanov.beloteGame.Belote;
 import com.karamanov.beloteGame.R;
-import com.karamanov.framework.BooleanFlag;
+import com.karamanov.framework.MessageActivity;
 
 public class MessageScreen extends Dialog {
 
-    private final BooleanFlag flag;
-
     private final Player player;
+    
+    private final MessageActivity activity;
 
-    public MessageScreen(Context context, Player player, ArrayList<MessageData> messages, BooleanFlag flag) {
+    public MessageScreen(MessageActivity context, Player player, ArrayList<MessageData> messages) {
         super(context);
-
+        
+        activity = context;
         this.player = player;
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         getWindow().setBackgroundDrawableResource(R.drawable.message_shape);
 
-        this.flag = flag;
         MessagePanel messagePanel = new MessagePanel(context, player, messages);
         setContentView(messagePanel);
     }
@@ -38,7 +38,8 @@ public class MessageScreen extends Dialog {
     }
 
     protected void onStop() {
-        flag.setFalse();
+        Belote belote = (Belote) activity.getApplication();
+        belote.getMessageProcessor().unlock();
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
