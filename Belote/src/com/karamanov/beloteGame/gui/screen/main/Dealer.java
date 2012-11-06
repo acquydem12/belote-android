@@ -27,6 +27,7 @@ import com.karamanov.beloteGame.gui.screen.gameResume.GameResumeActivity;
 import com.karamanov.beloteGame.gui.screen.main.announce.AnnounceDialog;
 import com.karamanov.beloteGame.gui.screen.main.message.MessageData;
 import com.karamanov.beloteGame.gui.screen.main.message.MessageScreen;
+import com.karamanov.framework.BooleanFlag;
 import com.karamanov.framework.MessageActivity;
 import com.karamanov.framework.graphics.Rectangle;
 
@@ -61,7 +62,7 @@ public final class Dealer {
 
     private final AnnounceDialog announceDialog;
 
-    private final MessageScreen messageScreen;
+    private MessageScreen messageScreen;
 
     private HumanBeloteFacade beloteFacade;
 
@@ -75,8 +76,6 @@ public final class Dealer {
         announceDialog = new AnnounceDialog(context, beloteFacade);
 
         handler = new Handler();
-        
-        messageScreen = new MessageScreen(context);
     }
 
     /**
@@ -527,15 +526,16 @@ public final class Dealer {
      * @param card played by player.
      */
     private void displayMessage(final Player player, final ArrayList<MessageData> messages) {
-        messageScreen.setMessage(player, messages);
+        final BooleanFlag flag = new BooleanFlag();
         handler.post(new Runnable() {
             public void run() {
+                messageScreen = new MessageScreen(context, player, messages, flag);
                 positionMessageScreen(messageScreen, player);
                 messageScreen.show();
             }
         });
 
-        while (messageScreen.getValue()) {
+        while (flag.getValue()) {
             invalidateGame();
             sleep(PLAY_DELAY);
         }
