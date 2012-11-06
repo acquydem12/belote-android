@@ -61,7 +61,7 @@ public final class Dealer {
 
     private final AnnounceDialog announceDialog;
 
-    private MessageScreen messageScreen;
+    private final MessageScreen messageScreen;
 
     private HumanBeloteFacade beloteFacade;
 
@@ -75,6 +75,8 @@ public final class Dealer {
         announceDialog = new AnnounceDialog(context, beloteFacade);
 
         handler = new Handler();
+        
+        messageScreen = new MessageScreen(context);
     }
 
     /**
@@ -525,9 +527,9 @@ public final class Dealer {
      * @param card played by player.
      */
     private void displayMessage(final Player player, final ArrayList<MessageData> messages) {
+        messageScreen.setMessage(player, messages);
         handler.post(new Runnable() {
             public void run() {
-                messageScreen = new MessageScreen(context, player, messages);
                 positionMessageScreen(messageScreen, player);
                 messageScreen.show();
             }

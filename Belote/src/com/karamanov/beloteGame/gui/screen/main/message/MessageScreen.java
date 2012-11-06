@@ -14,23 +14,24 @@ import com.karamanov.framework.MessageActivity;
 
 public class MessageScreen extends Dialog {
 
-    private final Player player;
+    private Player player;
     
     //private final MessageActivity activity;
     
     private boolean value = true;
 
-    public MessageScreen(MessageActivity context, Player player, ArrayList<MessageData> messages) {
+    public MessageScreen(MessageActivity context) {
         super(context);
         
-        //activity = context;
-        this.player = player;
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         getWindow().setBackgroundDrawableResource(R.drawable.message_shape);
-
-        MessagePanel messagePanel = new MessagePanel(context, player, messages);
+    }
+    
+    public final void setMessage(Player player, ArrayList<MessageData> messages) {
+        value = true;
+        this.player = player;
+        MessagePanel messagePanel = new MessagePanel(getContext(), player, messages);
         setContentView(messagePanel);
     }
 
