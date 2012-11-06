@@ -9,7 +9,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import belote.bean.Player;
 
-import com.karamanov.beloteGame.Belote;
 import com.karamanov.beloteGame.R;
 import com.karamanov.framework.MessageActivity;
 
@@ -17,12 +16,14 @@ public class MessageScreen extends Dialog {
 
     private final Player player;
     
-    private final MessageActivity activity;
+    //private final MessageActivity activity;
+    
+    private boolean value = true;
 
     public MessageScreen(MessageActivity context, Player player, ArrayList<MessageData> messages) {
         super(context);
         
-        activity = context;
+        //activity = context;
         this.player = player;
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -38,8 +39,9 @@ public class MessageScreen extends Dialog {
     }
 
     protected void onStop() {
-        Belote belote = (Belote) activity.getApplication();
-        belote.getMessageProcessor().runMessaging();
+        //Belote belote = (Belote) activity.getApplication();
+        //belote.getMessageProcessor().runMessaging();
+        value = false;
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -55,5 +57,9 @@ public class MessageScreen extends Dialog {
     public boolean onTouchEvent(MotionEvent event) {
         dismiss();
         return true;
+    }
+
+    public boolean getValue() {
+        return value;
     }
 }

@@ -103,4 +103,9 @@ public class MessageActivity extends Activity {
             belote.getMessageProcessor().removeMessageListener(messageType);
         }
     }
+    
+    public final void repaint() {
+        Message tMessage = new Message(Belote.MT_PAINT_EVENT);
+        triggerMessage(tMessage, true);
+    }
 }

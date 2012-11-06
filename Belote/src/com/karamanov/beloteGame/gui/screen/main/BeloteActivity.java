@@ -409,11 +409,6 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
         dealer.onSurfaceChanged();
     }
 
-    public void repaint() {
-        Message tMessage = new Message(Belote.MT_PAINT_EVENT);
-        triggerMessage(tMessage, true);
-    }
-
     private class ButtonPressListener implements OnClickListener {
 
         private final Integer i;
