@@ -29,6 +29,7 @@ public final class MessageProcessor implements Processor {
             messageThread.setSuspended(true);
             messageThread = null;
         }
+        messageQueue.clearAll();
     }
 
     /**
