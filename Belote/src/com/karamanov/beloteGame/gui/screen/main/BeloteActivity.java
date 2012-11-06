@@ -400,10 +400,12 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
     }
 
     public void onSurfaceChanged() {
+        /*
         if (beloteView != null) {
             repaint();
             beloteView.invalidate(); // Work fine.
         }
+        */
         dealer.onSurfaceChanged();
     }
 

@@ -10,7 +10,7 @@ public final class MessageProcessor implements Processor {
 
     private boolean processMessages = true;
     
-    private final Object locker = new Object();
+    //private final Object locker = new Object();
     
     /**
      * Hash table which maps messages with handlers.
@@ -58,6 +58,7 @@ public final class MessageProcessor implements Processor {
         processMessages = true;
     }
     
+    /*
     public void lock() {
         synchronized (locker) {
             try {
@@ -72,6 +73,7 @@ public final class MessageProcessor implements Processor {
             locker.notify();
         }
     }
+    */
     
     /**
      * Adds message listener for the concrete message type.
