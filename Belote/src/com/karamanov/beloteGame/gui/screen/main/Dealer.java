@@ -439,7 +439,7 @@ public final class Dealer {
         }
         */
         
-        beloteFacade.setPlayerIsAnnouncing(false);
+        //beloteFacade.setPlayerIsAnnouncing(false);
     }
 
     /**
@@ -534,9 +534,14 @@ public final class Dealer {
                 messageScreen.show();
             }
         });
+        
+         while (messageScreen.getValue()) {
+            invalidateGame();
+            sleep(PLAY_DELAY);
+        }
 
-        Belote belote = (Belote) context.getApplication();
-        belote.getMessageProcessor().stopMessaging();
+        //Belote belote = (Belote) context.getApplication();
+        //belote.getMessageProcessor().stopMessaging();
     }
 
     private void positionMessageScreen(MessageScreen messageScreen, Player player) {

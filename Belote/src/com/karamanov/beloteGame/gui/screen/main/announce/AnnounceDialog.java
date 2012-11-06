@@ -403,6 +403,8 @@ public class AnnounceDialog extends Dialog {
     //}
 
     protected void onStop() {
+        Belote.getBeloteFacade(activity).setPlayerIsAnnouncing(false);
+        activity.repaint();
         Belote belote = (Belote) activity.getApplication();
         belote.getMessageProcessor().runMessaging();
     }
