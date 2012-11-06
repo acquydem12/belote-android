@@ -10,7 +10,6 @@
 package com.karamanov.beloteGame.gui.screen.main.announce;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
@@ -31,7 +30,7 @@ import belote.logic.BeloteFacade;
 import com.karamanov.beloteGame.Belote;
 import com.karamanov.beloteGame.R;
 import com.karamanov.beloteGame.text.TextDecorator;
-import com.karamanov.framework.BooleanFlag;
+import com.karamanov.framework.MessageActivity;
 
 /**
  * AnnouncePanel class.
@@ -141,20 +140,21 @@ public class AnnounceDialog extends Dialog {
      */
     private final TextDecorator decorator;
 
-    private final BooleanFlag wait;
-
+    private final MessageActivity activity;
+    
     /**
      * Constructor.
      * @param game a BelotGame instance.
      * @param parent component.
      */
-    public AnnounceDialog(Context context, final BeloteFacade game) {
+    public AnnounceDialog(MessageActivity context, final BeloteFacade game) {
         super(context);
+        activity = context;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         getWindow().setBackgroundDrawableResource(R.drawable.announce_dlg);
 
-        wait = new BooleanFlag();
+        //wait = new BooleanFlag();
         int dip5 = Belote.fromPixelToDip(context, 5);
         int dip15 = Belote.fromPixelToDip(context, 15);
 
@@ -394,16 +394,17 @@ public class AnnounceDialog extends Dialog {
         initButtonsByAnnounces();
     }
 
-    public boolean getValue() {
-        return wait.getValue();
-    }
+    //public boolean getValue() {
+    //    return wait.getValue();
+    //}
 
-    public void setTrue() {
-        wait.setTrue();
-    }
+    //public void setTrue() {
+    //    wait.setTrue();
+    //}
 
     protected void onStop() {
-        wait.setFalse();
+        Belote belote = (Belote) activity.getApplication();
+        belote.getMessageProcessor().unlock();
     }
 
     /**

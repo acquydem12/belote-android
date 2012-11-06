@@ -27,7 +27,6 @@ import com.karamanov.beloteGame.gui.screen.gameResume.GameResumeActivity;
 import com.karamanov.beloteGame.gui.screen.main.announce.AnnounceDialog;
 import com.karamanov.beloteGame.gui.screen.main.message.MessageData;
 import com.karamanov.beloteGame.gui.screen.main.message.MessageScreen;
-import com.karamanov.framework.BooleanFlag;
 import com.karamanov.framework.MessageActivity;
 import com.karamanov.framework.graphics.Rectangle;
 
@@ -415,7 +414,7 @@ public final class Dealer {
      */
     private void showAnnounceDialog() {
         beloteFacade.setPlayerIsAnnouncing(true);
-        announceDialog.setTrue();
+//        announceDialog.setTrue();
         invalidateGame();
         handler.post(new Runnable() {
             public void run() {
@@ -430,10 +429,16 @@ public final class Dealer {
                 announceDialog.show();
             }
         });
+        
+        Belote belote = (Belote) context.getApplication();
+        belote.getMessageProcessor().lock();
+        /*
         while (announceDialog.getValue()) {
             sleep(PLAY_DELAY);
             invalidateGame();
         }
+        */
+        
         beloteFacade.setPlayerIsAnnouncing(false);
     }
 
@@ -522,19 +527,16 @@ public final class Dealer {
      * @param card played by player.
      */
     private void displayMessage(final Player player, final ArrayList<MessageData> messages) {
-        final BooleanFlag wait = new BooleanFlag();
         handler.post(new Runnable() {
             public void run() {
-                messageScreen = new MessageScreen(context, player, messages, wait);
+                messageScreen = new MessageScreen(context, player, messages);
                 positionMessageScreen(messageScreen, player);
                 messageScreen.show();
             }
         });
 
-        while (wait.getValue()) {
-            invalidateGame();
-            sleep(PLAY_DELAY);
-        }
+        Belote belote = (Belote) context.getApplication();
+        belote.getMessageProcessor().lock();
     }
 
     private void positionMessageScreen(MessageScreen messageScreen, Player player) {

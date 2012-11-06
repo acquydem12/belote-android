@@ -160,7 +160,7 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
 
     protected void onResume() {
         super.onResume();
-        
+        repaint();
         if (needRefresh) {
             try {
                 if (relative != null && beloteView != null) {
