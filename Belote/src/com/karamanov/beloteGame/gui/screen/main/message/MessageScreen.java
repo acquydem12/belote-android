@@ -3,6 +3,7 @@ package com.karamanov.beloteGame.gui.screen.main.message;
 import java.util.ArrayList;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.Window;
@@ -10,28 +11,25 @@ import android.view.WindowManager;
 import belote.bean.Player;
 
 import com.karamanov.beloteGame.R;
-import com.karamanov.framework.MessageActivity;
+import com.karamanov.framework.BooleanFlag;
 
 public class MessageScreen extends Dialog {
 
-    private Player player;
-    
-    //private final MessageActivity activity;
-    
-    private boolean value = true;
+    private final BooleanFlag flag;
 
-    public MessageScreen(MessageActivity context) {
+    private final Player player;
+
+    public MessageScreen(Context context, Player player, ArrayList<MessageData> messages, BooleanFlag flag) {
         super(context);
-        
+
+        this.player = player;
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         getWindow().setBackgroundDrawableResource(R.drawable.message_shape);
-    }
-    
-    public final void setMessage(Player player, ArrayList<MessageData> messages) {
-        value = true;
-        this.player = player;
-        MessagePanel messagePanel = new MessagePanel(getContext(), player, messages);
+
+        this.flag = flag;
+        MessagePanel messagePanel = new MessagePanel(context, player, messages);
         setContentView(messagePanel);
     }
 
@@ -40,9 +38,7 @@ public class MessageScreen extends Dialog {
     }
 
     protected void onStop() {
-        //Belote belote = (Belote) activity.getApplication();
-        //belote.getMessageProcessor().runMessaging();
-        value = false;
+        flag.setFalse();
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -58,9 +54,5 @@ public class MessageScreen extends Dialog {
     public boolean onTouchEvent(MotionEvent event) {
         dismiss();
         return true;
-    }
-
-    public boolean getValue() {
-        return value;
     }
 }
