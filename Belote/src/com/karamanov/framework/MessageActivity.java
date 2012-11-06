@@ -34,6 +34,10 @@ public class MessageActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getApplication() instanceof Belote) {
+            Belote belote = (Belote) getApplication();
+            belote.getMessageProcessor().runMessaging();
+        }
     }
 
     /**
@@ -43,7 +47,7 @@ public class MessageActivity extends Activity {
         super.onResume();
         if (getApplication() instanceof Belote) {
             Belote belote = (Belote) getApplication();
-            belote.getMessageProcessor().start();
+            belote.getMessageProcessor().runMessaging();
         }
     }
 
@@ -53,7 +57,7 @@ public class MessageActivity extends Activity {
     protected void onPause() {
         if (getApplication() instanceof Belote) {
             Belote belote = (Belote) getApplication();
-            belote.getMessageProcessor().stop();
+            belote.getMessageProcessor().stopMessaging();
         }
         super.onPause();
     }
