@@ -68,9 +68,17 @@ public class MessageActivity extends Activity {
      * @param message new message.
      */
     public final void triggerMessage(final Message message) {
+        triggerMessage(message, false);
+    }
+    
+    /**
+     * Adds user message to the end of the queue.
+     * @param message new message.
+     */
+    public final void triggerMessage(final Message message, boolean always) {
         if (getApplication() instanceof Belote) {
             Belote belote = (Belote) getApplication();
-            belote.getMessageProcessor().sendMessage(message);
+            belote.getMessageProcessor().sendMessage(message, always);
         }
     }
 
