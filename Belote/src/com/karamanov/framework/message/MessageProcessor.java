@@ -97,13 +97,11 @@ public final class MessageProcessor implements Processor {
      * Process one message.
      */
     public final void process() {
-        if (processMessages) {
-            final Message message = messageQueue.getMessage();
-            if (message != null) {
-                final Messageable messageable = (Messageable) listenersHash.get(message.getMessageType());
-                if (messageable != null) {
-                    messageable.performMessage(message);
-                }
+        final Message message = messageQueue.getMessage();
+        if (message != null) {
+            final Messageable messageable = (Messageable) listenersHash.get(message.getMessageType());
+            if (messageable != null) {
+                messageable.performMessage(message);
             }
         }
     }

@@ -400,12 +400,16 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
     }
 
     public void onSurfaceChanged() {
+        if (beloteView != null) {
+            repaint();
+            beloteView.invalidate(); // Work fine.
+        }
         dealer.onSurfaceChanged();
     }
 
     public void repaint() {
         Message tMessage = new Message(Belote.MT_PAINT_EVENT);
-        triggerMessage(tMessage);
+        triggerMessage(tMessage, true);
     }
 
     private class ButtonPressListener implements OnClickListener {
