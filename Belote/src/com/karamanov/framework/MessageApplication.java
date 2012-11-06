@@ -19,7 +19,6 @@ public class MessageApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        messageProcessor.start();
     }
 
     public final MessageProcessor getMessageProcessor() {
