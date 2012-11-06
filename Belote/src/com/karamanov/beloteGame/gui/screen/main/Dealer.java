@@ -33,7 +33,7 @@ import com.karamanov.framework.graphics.Rectangle;
 public final class Dealer {
 
     private final Handler handler;
-    
+
     /**
      * Standard card delay on painting (effect).
      */
@@ -43,7 +43,7 @@ public final class Dealer {
      * Belote painter. (All drawing functionality is in it).
      */
     public final BelotePainter belotPainter;
-    
+
     /**
      * Delay constant
      */
@@ -239,7 +239,7 @@ public final class Dealer {
     private void endGame() {
         Belote belote = (Belote) context.getApplication();
         belote.getMessageProcessor().stopMessaging();
-        
+
         beloteFacade.processTrickData();
         beloteFacade.calculateTeamsPoints();
 
@@ -378,7 +378,8 @@ public final class Dealer {
      * Plays one round till human player.
      */
     private void playRepeatedSingleRoundTillHumanPlayer() {
-        for (Player player = beloteFacade.getGame().getTrickAttackPlayer(); !player.equals(beloteFacade.getHumanPlayer()); player = beloteFacade.getPlayerAfter(player)) {
+        for (Player player = beloteFacade.getGame().getTrickAttackPlayer(); !player.equals(beloteFacade.getHumanPlayer()); player = beloteFacade
+                .getPlayerAfter(player)) {
             playSingleRoundPlayerCard(player);
         }
     }
@@ -414,7 +415,7 @@ public final class Dealer {
      */
     private void showAnnounceDialog() {
         beloteFacade.setPlayerIsAnnouncing(true);
-//        announceDialog.setTrue();
+        // announceDialog.setTrue();
         invalidateGame();
         handler.post(new Runnable() {
             public void run() {
@@ -429,17 +430,14 @@ public final class Dealer {
                 announceDialog.show();
             }
         });
-        
+
         Belote belote = (Belote) context.getApplication();
         belote.getMessageProcessor().stopMessaging();
         /*
-        while (announceDialog.getValue()) {
-            sleep(PLAY_DELAY);
-            invalidateGame();
-        }
-        */
-        
-        //beloteFacade.setPlayerIsAnnouncing(false);
+         * while (announceDialog.getValue()) { sleep(PLAY_DELAY); invalidateGame(); }
+         */
+
+        // beloteFacade.setPlayerIsAnnouncing(false);
     }
 
     /**
@@ -534,14 +532,14 @@ public final class Dealer {
                 messageScreen.show();
             }
         });
-        
-         while (messageScreen.getValue()) {
+
+        while (messageScreen.getValue()) {
             invalidateGame();
             sleep(PLAY_DELAY);
         }
 
-        //Belote belote = (Belote) context.getApplication();
-        //belote.getMessageProcessor().stopMessaging();
+        // Belote belote = (Belote) context.getApplication();
+        // belote.getMessageProcessor().stopMessaging();
     }
 
     private void positionMessageScreen(MessageScreen messageScreen, Player player) {
@@ -694,7 +692,7 @@ public final class Dealer {
     }
 
     public void onCloseEndGame() {
-        newAnnounceDealRound();    
+        newAnnounceDealRound();
         Belote belote = (Belote) context.getApplication();
         belote.getMessageProcessor().runMessaging();
     }
