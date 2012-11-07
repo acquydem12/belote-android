@@ -176,6 +176,7 @@ public class BeloteFacade {
         game.setGameMode(GameMode.AnnounceGameMode);
         game.getAnnounceList().clear();
         game.getTrickList().clear();
+        game.clearHangedPoints();
         clearTeamsData();
         clearPlayersData();
         dealAnnounceCards();
