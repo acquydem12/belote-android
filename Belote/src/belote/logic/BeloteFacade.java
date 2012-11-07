@@ -165,6 +165,7 @@ public class BeloteFacade {
         if (team != null) {
             clearTeamsBeloteGameData();
             team.increaseWinBelotGames();
+            game.clearHangedPoints();
         }
     }
 
@@ -176,7 +177,6 @@ public class BeloteFacade {
         game.setGameMode(GameMode.AnnounceGameMode);
         game.getAnnounceList().clear();
         game.getTrickList().clear();
-        game.clearHangedPoints();
         clearTeamsData();
         clearPlayersData();
         dealAnnounceCards();
