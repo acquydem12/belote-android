@@ -131,7 +131,7 @@ public class AnnounceDialog extends Dialog {
     private final TextView announceLabel;
 
     /**
-     * Belot game object.
+     * Belote game object.
      */
     private final BeloteFacade game;
 
@@ -154,7 +154,6 @@ public class AnnounceDialog extends Dialog {
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         getWindow().setBackgroundDrawableResource(R.drawable.announce_dlg);
 
-        //wait = new BooleanFlag();
         int dip5 = Belote.fromPixelToDip(context, 5);
         int dip15 = Belote.fromPixelToDip(context, 15);
 
@@ -175,8 +174,6 @@ public class AnnounceDialog extends Dialog {
 
         MyFieldChangeListener mfl = new MyFieldChangeListener();
 
-        // First Row
-        // Second Row
         TableRow row = new TableRow(context);
         // Left
         jrbClubs = new AnnounceButtonField(context, context.getString(R.string.ClubsAnnounce));
@@ -393,14 +390,6 @@ public class AnnounceDialog extends Dialog {
     public void init() {
         initButtonsByAnnounces();
     }
-
-    //public boolean getValue() {
-    //    return wait.getValue();
-    //}
-
-    //public void setTrue() {
-    //    wait.setTrue();
-    //}
 
     protected void onStop() {
         Belote.getBeloteFacade(activity).setPlayerIsAnnouncing(false);
