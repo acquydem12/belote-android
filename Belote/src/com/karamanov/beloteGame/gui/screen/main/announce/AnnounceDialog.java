@@ -366,6 +366,9 @@ public class AnnounceDialog extends Dialog {
         vertical.addView(tl);
 
         setContentView(vertical);
+        
+        setCancelable(false);
+        setCanceledOnTouchOutside(false);
     }
 
     public void onBackPressed() {

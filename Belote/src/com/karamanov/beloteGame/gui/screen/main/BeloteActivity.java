@@ -262,6 +262,8 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
                     //
                 }
             });
+            
+            myAlertDialog.setCancelable(false);
             myAlertDialog.show();
         }
 
@@ -361,6 +363,8 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
                     //
                 }
             });
+            
+            myAlertDialog.setCancelable(false);
             myAlertDialog.show();
         } else {
             Message tMessage = new Message(Belote.MT_EXIT_EVENT);
