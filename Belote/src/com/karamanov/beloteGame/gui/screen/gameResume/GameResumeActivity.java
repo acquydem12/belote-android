@@ -63,7 +63,7 @@ public final class GameResumeActivity extends Activity {
         game = Belote.getBeloteFacade(this).getGame();
 
         if (game != null) {
-            if (isShowWinner) {
+            if (isShowWinner && game.getWinnerTeam() != null) {
                 setFaceView();
                 showWinner = false;
             } else {
