@@ -16,8 +16,6 @@ import com.karamanov.framework.message.Message;
 
 public final class BeloteView extends SurfaceView implements SurfaceHolder.Callback {
 
-    private final Object _lock = new Object();
-
     private boolean active = false;
 
     private final Paint mSmooth;
@@ -41,22 +39,16 @@ public final class BeloteView extends SurfaceView implements SurfaceHolder.Callb
         mSmooth.setDither(true);
     }
 
-    public final void draw(Canvas canvas) {
-        synchronized (_lock) {
-            canvas.drawBitmap(getBufferBitmap(canvas.getWidth(), canvas.getHeight()), 0, 0, mSmooth);
-        }
-    }
-
     private Bitmap getBufferBitmap(int width, int height) {
         Bitmap bitmap = null;
-        synchronized (_lock) {
-            Point point = new Point(width, height);
-            bitmap = bitmaps.get(point);
-            if (bitmap == null) {
-                bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-                bitmaps.put(point, bitmap);
-            }
+
+        Point point = new Point(width, height);
+        bitmap = bitmaps.get(point);
+        if (bitmap == null) {
+            bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+            bitmaps.put(point, bitmap);
         }
+
         return bitmap;
     }
 
@@ -64,7 +56,7 @@ public final class BeloteView extends SurfaceView implements SurfaceHolder.Callb
         Canvas canvas = null;
 
         if (oldWidth > 0 && oldHeight > 0) {
-            canvas = new BeloteCanvas(getBufferBitmap(oldWidth, oldHeight), this, _lock);
+            canvas = new Canvas(getBufferBitmap(oldWidth, oldHeight));
         }
         return canvas;
     }
@@ -102,7 +94,7 @@ public final class BeloteView extends SurfaceView implements SurfaceHolder.Callb
             try {
                 canvas = getHolder().lockCanvas(null);
                 if (canvas != null) {
-                    draw(canvas);
+                    canvas.drawBitmap(getBufferBitmap(canvas.getWidth(), canvas.getHeight()), 0, 0, mSmooth);
                 }
             } finally {
                 // do this in a finally so that if an exception is thrown
