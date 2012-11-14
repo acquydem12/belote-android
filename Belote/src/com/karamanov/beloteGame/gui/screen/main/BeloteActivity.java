@@ -160,7 +160,7 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
 
     protected void onResume() {
         super.onResume();
-        repaint();
+        //repaint();
         if (needRefresh) {
             try {
                 if (relative != null && beloteView != null) {
@@ -177,9 +177,7 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
     protected void onDestroy() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         preferences.unregisterOnSharedPreferenceChangeListener(this);
-        
-        Belote.terminate(this);
-        
+               
         super.onDestroy();
     }
 
@@ -321,6 +319,7 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
 
         @Override
         public void performMessage(Message message) {
+            Belote.terminate(BeloteActivity.this);
             dealer.onExit();
         }
     }

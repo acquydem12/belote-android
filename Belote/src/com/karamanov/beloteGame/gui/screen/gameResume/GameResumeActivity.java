@@ -679,12 +679,12 @@ public final class GameResumeActivity extends Activity {
         if (game != null && showWinner && game.getWinnerTeam() != null) {
             setFaceView();
         } else {
-            super.onBackPressed();
             if (getApplication() instanceof Belote) {
                 Belote belote = (Belote) getApplication();
                 Message message = new Message(Belote.MT_CLOSE_END_GAME);
                 belote.getMessageProcessor().sendMessage(message, true);
             }
+            super.onBackPressed();
         }
 
         showWinner = false;
