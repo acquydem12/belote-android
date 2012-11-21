@@ -181,7 +181,7 @@ public final class Dealer {
      * Sleeps for provided millisecond.
      * @param ms provided millisecond.
      */
-    public final void sleep(final long ms) {
+    private final void sleep(final long ms) {
         if (ms > 0) {
             try {
                 Thread.sleep(ms);
@@ -463,7 +463,7 @@ public final class Dealer {
      * 
      * @param repaint
      */
-    protected void newAnnounceDealRound() {
+    private void newAnnounceDealRound() {
         beloteFacade.processTrickData();
         beloteFacade.setNextDealAttackPlayer();
         beloteFacade.newGame();
