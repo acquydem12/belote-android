@@ -676,6 +676,8 @@ public final class Dealer {
     }
 
     public void onExit() {
+        Belote belote = (Belote) context.getApplication();
+        belote.getMessageProcessor().stop();
         context.finish();
     }
 
