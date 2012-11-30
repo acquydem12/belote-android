@@ -67,7 +67,6 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
         addMessageListener(Belote.MT_EXIT_EVENT, new ExitListener());
         addMessageListener(Belote.MT_PAINT_EVENT, new PaintListener());
         addMessageListener(Belote.MT_CLOSE_END_GAME, new CloseEndGameListener());
-        addMessageListener(Belote.MT_SURFACE_CHANGE, new SurfaceChangeListener());
         
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String key = getString(R.string.prefBlackRedOrder);
@@ -291,14 +290,6 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
             dealer.onCloseEndGame();
         }
     }
-
-    private class SurfaceChangeListener implements Messageable {
-
-        @Override
-        public void performMessage(Message message) {
-            dealer.onSurfaceChanged();
-        }
-    }
     
     @Override
     public void onBackPressed() {
@@ -310,12 +301,14 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
             AlertDialog.Builder myAlertDialog = new AlertDialog.Builder(this);
             myAlertDialog.setTitle(getString(R.string.Confirm));
             myAlertDialog.setMessage(getString(R.string.ExitQuestion));
+            
             myAlertDialog.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     Message tMessage = new Message(Belote.MT_EXIT_EVENT);
                     triggerMessage(tMessage);
                 }
             });
+            
             myAlertDialog.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     //
@@ -334,14 +327,7 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (key.equals(getString(R.string.prefShowBtns))) {
             boolean showBtns = sharedPreferences.getBoolean(key, Boolean.TRUE);
-
-            if (buttonsView != null) {
-                buttonsView.setVisibility(showBtns ? View.VISIBLE : View.GONE);
-                repaint();
-                if (beloteView != null) {
-                    beloteView.invalidate();
-                }
-            }
+            buttonsView.setVisibility(showBtns ? View.VISIBLE : View.GONE);
         }
 
         if (key.equals(getString(R.string.prefBlackRedOrder))) {
@@ -349,9 +335,6 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
             Belote.getBeloteFacade(this).setBlackRedCardOrder(blackRedOrder);
             Belote.getBeloteFacade(this).arrangePlayersCards();
             repaint();
-            if (beloteView != null) {
-                beloteView.invalidate();
-            }
         }
     }
 
