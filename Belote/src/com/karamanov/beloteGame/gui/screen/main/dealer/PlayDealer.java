@@ -18,7 +18,7 @@ import com.karamanov.beloteGame.gui.screen.main.message.MessageData;
 import com.karamanov.framework.MessageActivity;
 import com.karamanov.framework.graphics.Rectangle;
 
-public class PlayDealer extends BaseDealer {
+final class PlayDealer extends BaseDealer {
     
     public PlayDealer(MessageActivity context, BeloteView belotPanel, View buttons) {
         super(context, belotPanel, buttons);
