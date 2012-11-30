@@ -24,11 +24,6 @@ public final class MessageProcessor implements Processor {
         messageThread.start();
     }
     
-    public final void stop() {
-        messageThread.setSuspended(true);
-        messageQueue.clearAll();
-    }
-
     /**
      * Sends message.
      * @param message - to be send.
