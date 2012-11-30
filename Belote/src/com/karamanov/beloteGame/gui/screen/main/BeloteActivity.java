@@ -27,6 +27,7 @@ import android.widget.RelativeLayout;
 
 import com.karamanov.beloteGame.Belote;
 import com.karamanov.beloteGame.R;
+import com.karamanov.beloteGame.gui.screen.main.dealer.DealerFacade;
 import com.karamanov.beloteGame.gui.screen.pref.BelotePreferencesActivity;
 import com.karamanov.beloteGame.gui.screen.score.ScoreActivity;
 import com.karamanov.beloteGame.gui.screen.tricks.TricksActivity;
@@ -51,7 +52,7 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
     private static final int MENU_PREF_INDEX = 4;
     private static final int MENU_RESET_INDEX = 5;
 
-    private Dealer dealer;
+    private DealerFacade dealer;
     private BeloteView beloteView;
     private RelativeLayout buttonsView;
     private RelativeLayout bodyView;
@@ -66,6 +67,7 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
         addMessageListener(Belote.MT_EXIT_EVENT, new ExitListener());
         addMessageListener(Belote.MT_PAINT_EVENT, new PaintListener());
         addMessageListener(Belote.MT_CLOSE_END_GAME, new CloseEndGameListener());
+        addMessageListener(Belote.MT_SURFACE_CHANGE, new SurfaceChangeListener());
         
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String key = getString(R.string.prefBlackRedOrder);
@@ -111,7 +113,7 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
         buttonsView.setVisibility(showBtns ? View.VISIBLE : View.GONE);
 
         beloteView = new BeloteView(this);
-        dealer = new Dealer(this, beloteView, buttonsView);
+        dealer = new DealerFacade(this, beloteView, buttonsView);
         rlp = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         rlp.addRule(RelativeLayout.ABOVE, buttonsView.getId());
         beloteView.setLayoutParams(rlp);
@@ -270,7 +272,6 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
 
         @Override
         public void performMessage(Message message) {
-            Belote.terminate(BeloteActivity.this);
             dealer.onExit();
         }
     }
@@ -288,6 +289,14 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
         @Override
         public void performMessage(Message message) {
             dealer.onCloseEndGame();
+        }
+    }
+
+    private class SurfaceChangeListener implements Messageable {
+
+        @Override
+        public void performMessage(Message message) {
+            dealer.onSurfaceChanged();
         }
     }
     
