@@ -30,8 +30,6 @@ public class Belote extends MessageApplication {
     
     public final static MessageType MT_CLOSE_END_GAME = new MessageType("MT_CLOSE_END_GAME");
     
-    public final static MessageType MT_SURFACE_CHANGE = new MessageType("MT_SURFACE_CHANGE");
-    
     /**
      * BELOTE_DAT constant.
      */
