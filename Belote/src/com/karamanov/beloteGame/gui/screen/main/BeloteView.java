@@ -52,7 +52,7 @@ public final class BeloteView extends SurfaceView implements SurfaceHolder.Callb
         return bitmap;
     }
 
-    public final Canvas getBufferedCanvas() {
+    public Canvas getBufferedCanvas() {
         Canvas canvas = null;
 
         if (oldWidth > 0 && oldHeight > 0) {
@@ -76,7 +76,7 @@ public final class BeloteView extends SurfaceView implements SurfaceHolder.Callb
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         active = true;
-        refresh();
+        activity.repaint();
     }
 
     @Override
