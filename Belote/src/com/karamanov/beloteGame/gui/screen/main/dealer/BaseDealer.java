@@ -30,7 +30,7 @@ import com.karamanov.framework.graphics.Rectangle;
  * BaseDealer class.
  * @author Dimitar Karamanov
  */
-public abstract class BaseDealer {
+abstract class BaseDealer {
     
     /**
      * Handler to GUI thread.
@@ -62,7 +62,7 @@ public abstract class BaseDealer {
 
     private MessageScreen messageScreen;
     
-    public BaseDealer(MessageActivity context, BeloteView belotPanel, View buttons) {
+    protected BaseDealer(MessageActivity context, BeloteView belotPanel, View buttons) {
         this.context = context;
         this.belotPanel = belotPanel;
         this.buttons = buttons;
@@ -89,14 +89,14 @@ public abstract class BaseDealer {
     /**
      * Invalidate game on belote panel.
      */
-    public void invalidateGame() {
+    public final void invalidateGame() {
         invalidateGame(0);
     }
 
     /**
      * Invalidate game on belote panel.
      */
-    public void invalidateGame(int delay) {
+    public final void invalidateGame(int delay) {
         Canvas canvas = belotPanel.getBufferedCanvas();
         if (canvas != null) {
             belotPainter.drawGame(canvas, beloteFacade, belotPanel, delay);
@@ -110,7 +110,7 @@ public abstract class BaseDealer {
      * @param card
      * @return
      */
-    protected ArrayList<MessageData> getMessageList(final Player player, final Card card) {
+    protected final ArrayList<MessageData> getMessageList(final Player player, final Card card) {
         ArrayList<MessageData> result = new ArrayList<MessageData>();
 
         if (player.equals(beloteFacade.getGame().getTrickCouplePlayer())) {
@@ -158,7 +158,7 @@ public abstract class BaseDealer {
      * @param player which call the message function.
      * @param card played by player.
      */
-    protected void displayMessage(final Player player, final ArrayList<MessageData> messages) {
+    protected final void displayMessage(final Player player, final ArrayList<MessageData> messages) {
         final BooleanFlag flag = new BooleanFlag();
         handler.post(new Runnable() {
             public void run() {
@@ -255,7 +255,7 @@ public abstract class BaseDealer {
     /**
      * On surface change (reposition message screen if is visible)
      */
-    public void onSurfaceChanged() {
+    public final void onSurfaceChanged() {
         if (messageScreen != null && messageScreen.isShowing()) {
             positionMessageScreen(messageScreen, messageScreen.getPlayer());
         }
@@ -264,7 +264,7 @@ public abstract class BaseDealer {
     /**
      * Called when end game activity is closed.
      */
-    public void onCloseEndGame() {
+    public final void onCloseEndGame() {
         sleep(PLAY_DELAY);
         newAnnounceDealRound();
     }

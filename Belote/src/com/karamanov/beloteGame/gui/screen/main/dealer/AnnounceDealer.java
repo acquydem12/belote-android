@@ -14,7 +14,7 @@ import com.karamanov.framework.MessageActivity;
  * AnnounceDealer class.
  * @author Dimitar Karamanov
  */
-public class AnnounceDealer extends BaseDealer {
+final class AnnounceDealer extends BaseDealer {
     
     /**
      * Announce dialog.
