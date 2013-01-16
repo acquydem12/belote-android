@@ -274,6 +274,9 @@ final class PlayDealer extends BaseDealer {
         beloteFacade.calculateTeamsPoints();
 
         if (beloteFacade.getGame().getAnnounceList().getOpenContractAnnounce() != null) {
+            
+            //save game log
+            
             handler.post(new Runnable() {
                 public void run() {
                     Intent intent = new Intent(context, GameResumeActivity.class);
