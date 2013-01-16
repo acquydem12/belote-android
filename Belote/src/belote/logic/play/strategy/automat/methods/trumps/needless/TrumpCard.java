@@ -44,6 +44,14 @@ public final class TrumpCard extends BaseTrumpMethod {
                 return card;
             }
         }
+        
+        if (count == SINGLE_CARD_COUNT) {
+            final Card card = player.getCards().findMaxSuitCard(trump);
+            if (card != null && isMaxSuitCardLeft(card, true)) {
+                return null;
+            }
+        }
+        
         return player.getCards().findMinSuitCard(trump);
     }
 }
