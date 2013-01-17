@@ -646,6 +646,7 @@ public class Pack implements Serializable {
         for (final PackIterator iterator = iterator(); iterator.hasNext();) {
             final Card card = iterator.next();
             card.setCompareMode(compareMode);
+            card.setCardAcquireMethod(null);
         }
     }
 
