@@ -19,6 +19,7 @@ import belote.logic.HumanBeloteFacade;
 
 import com.karamanov.beloteGame.Belote;
 import com.karamanov.beloteGame.R;
+import com.karamanov.beloteGame.gui.screen.base.BeloteLog;
 import com.karamanov.beloteGame.gui.screen.main.BeloteView;
 import com.karamanov.beloteGame.gui.screen.main.message.MessageData;
 import com.karamanov.beloteGame.gui.screen.main.message.MessageScreen;
@@ -265,6 +266,9 @@ abstract class BaseDealer {
      * Called when end game activity is closed.
      */
     public final void onCloseEndGame() {
+        //save game log
+        BeloteLog.saveGameInfo(beloteFacade.getGame(), context);
+        
         sleep(PLAY_DELAY);
         newAnnounceDealRound();
     }
