@@ -19,7 +19,7 @@ import com.karamanov.framework.MessageActivity;
 import com.karamanov.framework.graphics.Rectangle;
 
 final class PlayDealer extends BaseDealer {
-    
+
     public PlayDealer(MessageActivity context, BeloteView belotPanel, View buttons) {
         super(context, belotPanel, buttons);
     }
@@ -43,7 +43,7 @@ final class PlayDealer extends BaseDealer {
             processGamePlaying(keyCode);
         }
     }
-    
+
     /**
      * Checks double click card.
      */
@@ -71,7 +71,7 @@ final class PlayDealer extends BaseDealer {
 
         return false;
     }
-    
+
     /**
      * Process game playing.
      * 
@@ -87,7 +87,7 @@ final class PlayDealer extends BaseDealer {
             processRoundPlaying(keyCode);
         }
     }
-    
+
     /**
      * Process round playing.
      * 
@@ -103,7 +103,7 @@ final class PlayDealer extends BaseDealer {
             }
         }
     }
-    
+
     /**
      * Process rounds after human player.
      * 
@@ -114,7 +114,7 @@ final class PlayDealer extends BaseDealer {
         beloteFacade.getHumanPlayer().setSelectedCard(null);
         playRepeatedSingleRoundAfterHumanPlayer();
     }
-    
+
     /**
      * Process rounds till human player.
      * 
@@ -130,7 +130,7 @@ final class PlayDealer extends BaseDealer {
             selectHumanSingleCard();
         }
     }
-    
+
     /**
      * Checks card click.
      * 
@@ -153,7 +153,7 @@ final class PlayDealer extends BaseDealer {
             processSelectCard(card);
         }
     }
-    
+
     @Override
     public void checkPointerPressed(float x, float y) {
         boolean isPlayedCard = processPlaySelectedCard(getHumanCardUnderPointer(x, y));
@@ -172,7 +172,7 @@ final class PlayDealer extends BaseDealer {
             }
         }
     }
-    
+
     private Card getHumanCardUnderPointer(final float x, final float y) {
         Player player = beloteFacade.getHumanPlayer();
 
@@ -192,7 +192,7 @@ final class PlayDealer extends BaseDealer {
         }
         return null;
     }
-    
+
     /**
      * Checks double click card.
      */
@@ -220,7 +220,7 @@ final class PlayDealer extends BaseDealer {
 
         return false;
     }
-    
+
     /**
      * Checks card click.
      * 
@@ -236,7 +236,7 @@ final class PlayDealer extends BaseDealer {
         }
         return false;
     }
-    
+
     /**
      * Process the selected card.
      * 
@@ -252,7 +252,7 @@ final class PlayDealer extends BaseDealer {
             }
         }
     }
-    
+
     /**
      * Checks for round end.
      */
@@ -262,7 +262,7 @@ final class PlayDealer extends BaseDealer {
             invalidateGame();
         }
     }
-    
+
     /**
      * End game.
      */
@@ -274,9 +274,7 @@ final class PlayDealer extends BaseDealer {
         beloteFacade.calculateTeamsPoints();
 
         if (beloteFacade.getGame().getAnnounceList().getOpenContractAnnounce() != null) {
-            
-            //save game log
-            
+
             handler.post(new Runnable() {
                 public void run() {
                     Intent intent = new Intent(context, GameResumeActivity.class);
@@ -286,7 +284,7 @@ final class PlayDealer extends BaseDealer {
             });
         }
     }
-    
+
     /**
      * Process round playing.
      * @param keyCode pressed key code.
@@ -301,7 +299,7 @@ final class PlayDealer extends BaseDealer {
             }
         }
     }
-    
+
     /**
      * Process rounds till human player.
      * 
@@ -317,7 +315,7 @@ final class PlayDealer extends BaseDealer {
             selectHumanSingleCard();
         }
     }
-    
+
     /**
      * Selects human single card.
      */
@@ -328,7 +326,7 @@ final class PlayDealer extends BaseDealer {
             processSelectCard(card);
         }
     }
-    
+
     /**
      * Process rounds after human player.
      * 
@@ -359,7 +357,7 @@ final class PlayDealer extends BaseDealer {
             playSingleRoundPlayerCard(player);
         }
     }
-    
+
     private void playSingleRoundPlayerCard(final Player player) {
         try {
             Card card = beloteFacade.playSingleHand(player);
