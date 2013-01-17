@@ -16,7 +16,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.base.method.BaseTrumpMethod;
 
 /**
- * ColorNoObligatorySecondDeffenceTrumpCard class. PlayCardMethod which implements the logic of playing a card when the player is on second defence position.
+ * ColorNoObligatorySecondDeffenceTrumpCard class. PlayCardMethod which implements the logic of playing a card when the player is on second defense position.
  * (Analyze if to play trump or not).
  * @author Dimitar Karamanov
  */
