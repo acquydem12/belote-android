@@ -9,6 +9,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -19,6 +20,7 @@ import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
 import belote.bean.Game;
 import belote.bean.Player;
+import belote.bean.Team;
 import belote.bean.announce.Announce;
 import belote.bean.announce.suit.AnnounceSuit;
 import belote.bean.pack.card.suit.Suit;
@@ -69,63 +71,7 @@ public final class GameResumeActivity extends Activity {
             } else {
                 isShowWinner = false;
                 showWinner = game.getWinnerTeam() != null;
-
-                int dip2 = Belote.fromPixelToDip(this, 2);
-                int dip5 = Belote.fromPixelToDip(this, 5);
-
-                ScrollView scroll = new ScrollView(this);
-                LinearLayout vertical = new LinearLayout(this);
-                vertical.setOrientation(LinearLayout.VERTICAL);
-                RelativeLayout relative = new RelativeLayout(this);
-
-                TextDecorator textDecorator = new TextDecorator(this);
-                final ArrayList<String> announceText = textDecorator.getAnnounceText(game.getAnnounceList());
-
-                LinearLayout score = new LinearLayout(this);
-                score.setOrientation(LinearLayout.VERTICAL);
-                score.setId(123);
-
-                TextView scoreT = new TextView(this);
-
-                scoreT.setText(getString(R.string.GameContract));
-                scoreT.setTypeface(Typeface.SERIF, Typeface.BOLD);
-                scoreT.setTextColor(Color.YELLOW);
-                scoreT.setGravity(Gravity.CENTER_HORIZONTAL);
-                scoreT.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-                score.addView(scoreT);
-
-                for (String s : announceText) {
-                    TextView scoreV = new TextView(this);
-                    scoreV.setText(s);
-                    scoreV.setTypeface(Typeface.SERIF, Typeface.BOLD);
-                    scoreV.setTextColor(Color.YELLOW);
-                    scoreV.setGravity(Gravity.CENTER_HORIZONTAL);
-                    scoreV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-                    score.addView(scoreV);
-                }
-
-                RelativeLayout.LayoutParams rp = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-                rp.addRule(RelativeLayout.CENTER_HORIZONTAL);
-                rp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-                rp.topMargin = dip2;
-                score.setLayoutParams(rp);
-                relative.addView(score);
-
-                TableLayout table = getGameInfo(game, textDecorator);
-                if (table != null) {
-                    rp = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-                    rp.addRule(RelativeLayout.CENTER_HORIZONTAL);
-                    rp.addRule(RelativeLayout.CENTER_IN_PARENT);
-                    rp.addRule(RelativeLayout.BELOW, score.getId());
-                    rp.topMargin = dip5;
-                    table.setLayoutParams(rp);
-                    relative.addView(table);
-                }
-
-                vertical.addView(relative);
-                scroll.addView(vertical);
-                scroll.setBackgroundResource(R.drawable.score_bkg);
-                setContentView(scroll);
+                setContentView(consructContentView());
             }
         }
     }
@@ -145,8 +91,73 @@ public final class GameResumeActivity extends Activity {
 
         outState.putBoolean(showWinnerStr, isShowWinner);
     }
+    
+    private View consructContentView() {
+        int dip2 = Belote.fromPixelToDip(this, 2);
+        int dip5 = Belote.fromPixelToDip(this, 5);
 
-    private TableLayout getGameInfo(Game game, TextDecorator textDecorator) {
+        ScrollView scroll = new ScrollView(this);
+        LinearLayout vertical = new LinearLayout(this);
+        vertical.setOrientation(LinearLayout.VERTICAL);
+        RelativeLayout relative = new RelativeLayout(this);
+
+        TextDecorator textDecorator = new TextDecorator(this);
+
+        View contractView = consructContractView(textDecorator);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        params.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        params.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+        params.topMargin = dip2;
+        contractView.setLayoutParams(params);
+        relative.addView(contractView);
+
+        TableLayout table = getGameInfo(textDecorator);
+        if (table != null) {
+            params = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+            params.addRule(RelativeLayout.CENTER_HORIZONTAL);
+            params.addRule(RelativeLayout.CENTER_IN_PARENT);
+            params.addRule(RelativeLayout.BELOW, contractView.getId());
+            params.topMargin = dip5;
+            table.setLayoutParams(params);
+            relative.addView(table);
+        }
+
+        vertical.addView(relative);
+        scroll.addView(vertical);
+        scroll.setBackgroundResource(R.drawable.score_bkg);
+        
+        return scroll;
+    }
+    
+    private View consructContractView(TextDecorator textDecorator) {
+        LinearLayout contractView = new LinearLayout(this);
+        contractView.setOrientation(LinearLayout.VERTICAL);
+        contractView.setId(123);
+
+        TextView contractTitle = new TextView(this);
+
+        contractTitle.setText(getString(R.string.GameContract));
+        contractTitle.setTypeface(Typeface.SERIF, Typeface.BOLD);
+        contractTitle.setTextColor(Color.YELLOW);
+        contractTitle.setGravity(Gravity.CENTER_HORIZONTAL);
+        contractTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+        contractView.addView(contractTitle);
+
+        final ArrayList<String> announceText = textDecorator.getAnnounceText(game.getAnnounceList());
+        for (String announceLine : announceText) {
+            TextView announceLineView = new TextView(this);
+            announceLineView.setText(announceLine);
+            announceLineView.setTypeface(Typeface.SERIF, Typeface.BOLD);
+            announceLineView.setTextColor(Color.YELLOW);
+            announceLineView.setGravity(Gravity.CENTER_HORIZONTAL);
+            announceLineView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+            contractView.addView(announceLineView);
+        }
+        
+        return contractView;
+    }
+
+    private TableLayout getGameInfo(TextDecorator textDecorator) {
         int dip2 = Belote.fromPixelToDip(this, 2);
         int dip4 = Belote.fromPixelToDip(this, 4);
         int dip5 = Belote.fromPixelToDip(this, 5);
@@ -158,21 +169,10 @@ public final class GameResumeActivity extends Activity {
 
             TableLayout table = new TableLayout(this);
             // Draw team player' sequences.
-            PictureDecorator pictureDecorator = new PictureDecorator(this);
 
             for (int i = 0; i < game.getTeamsCount(); i++) {
                 if (i == 1) {
-                    TableRow fake = new TableRow(this);
-                    TextView empty = new TextView(this);
-                    TableRow.LayoutParams trlp = new TableRow.LayoutParams();
-                    trlp.span = 2;
-                    empty.setLayoutParams(trlp);
-                    fake.addView(empty);
-
-                    TableLayout.LayoutParams tlp = new TableLayout.LayoutParams();
-                    tlp.bottomMargin = dip4;
-                    tlp.topMargin = dip4;
-                    fake.setLayoutParams(tlp);
+                    TableRow fake = createFakeRow(2, dip4, dip4);
                     table.addView(fake);
                 }
 
@@ -224,76 +224,7 @@ public final class GameResumeActivity extends Activity {
                 table.addView(row);
 
                 if (game.getTeam(i).getAnnouncePoints() > 0 && !ntAnnounce) {
-                    final String announcePoints = String.valueOf(game.getTeam(i).getPointsInfo().getAnnouncePoints());
-                    row = new TableRow(this);
-
-                    name = new TextView(this);
-                    name.setText(getString(R.string.Announce));
-                    name.setTextColor(Color.WHITE);
-                    tp = new TableRow.LayoutParams();
-                    // tp.weight = 0.3f;
-                    name.setLayoutParams(tp);
-                    row.addView(name);
-
-                    LinearLayout linear = new LinearLayout(this);
-                    linear.setOrientation(LinearLayout.VERTICAL);
-
-                    value = new TextView(this);
-                    value.setText(announcePoints);
-                    value.setTextColor(Color.WHITE);
-
-                    linear.addView(value);
-
-                    for (int j = 0; j < game.getTeam(i).getPlayersCount(); j++) {
-
-                        SquareList equalCardsList = game.getTeam(i).getPlayer(j).getCards().getSquaresList();
-                        for (SquareIterator iterator = equalCardsList.iterator(); iterator.hasNext();) {
-                            Square square = iterator.next();
-                            TextView squareV = new TextView(this);
-                            squareV.setText(textDecorator.getSquareText(square));
-                            linear.addView(squareV);
-                        }
-                    }
-
-                    for (int j = 0; j < game.getTeam(i).getPlayersCount(); j++) {
-                        SequenceList sequencesList = game.getTeam(i).getPlayer(j).getCards().getSequencesList();
-                        for (SequenceIterator iterator = sequencesList.iterator(); iterator.hasNext();) {
-                            Sequence sequence = iterator.next();
-                            Suit suit = sequence.getMaxCard().getSuit();
-
-                            String strLeft = String.valueOf(sequence.getType().getSequencePoints());
-                            strLeft += " (" + textDecorator.getRankSign(sequence.getMaxCard().getRank());
-                            String strRight = ")";
-
-                            Bitmap suitImage = game.getTeam(i).getPointsInfo().getAnnouncePoints() == 0 ? ImageUtil.transformToDisabledImage(pictureDecorator
-                                    .getSuitImage(suit)) : pictureDecorator.getSuitImage(suit);
-
-                            LinearLayout h = new LinearLayout(this);
-                            h.setOrientation(LinearLayout.HORIZONTAL);
-
-                            TextView leftV = new TextView(this);
-                            leftV.setText(strLeft);
-                            leftV.setTextColor(game.getTeam(i).getPointsInfo().getAnnouncePoints() == 0 ? Color.LTGRAY : Color.WHITE);
-                            h.addView(leftV);
-
-                            ImageView image = new ImageView(this);
-                            image.setImageBitmap(suitImage);
-                            h.addView(image);
-
-                            TextView rightV = new TextView(this);
-                            rightV.setText(strRight);
-                            rightV.setTextColor(game.getTeam(i).getPointsInfo().getAnnouncePoints() == 0 ? Color.LTGRAY : Color.WHITE);
-                            h.addView(rightV);
-
-                            linear.addView(h);
-                        }
-                    }
-
-                    tp = new TableRow.LayoutParams();
-                    tp.weight = 1;
-                    tp.leftMargin = dip10;
-                    linear.setLayoutParams(tp);
-                    row.addView(linear);
+                    row = createAnnouncePointsRow(game.getTeam(i), textDecorator); 
 
                     tap = new TableLayout.LayoutParams();
                     tap.bottomMargin = dip2;
@@ -330,6 +261,7 @@ public final class GameResumeActivity extends Activity {
                     for (SuitIterator iterator = Suit.iterator(); iterator.hasNext();) {
                         Suit suit = iterator.next();
                         if (game.getTeam(i).getCouples().hasCouple(suit)) {
+                            PictureDecorator pictureDecorator = new PictureDecorator(this);
                             Bitmap suitImage = pictureDecorator.getSuitImage(suit);
                             ImageView iv = new ImageView(this);
                             iv.setImageBitmap(suitImage);
@@ -475,17 +407,7 @@ public final class GameResumeActivity extends Activity {
                 }
             }
 
-            TableRow fake = new TableRow(this);
-            TextView empty = new TextView(this);
-            TableRow.LayoutParams trlp = new TableRow.LayoutParams();
-            trlp.span = 2;
-            empty.setLayoutParams(trlp);
-            fake.addView(empty);
-
-            TableLayout.LayoutParams tlp = new TableLayout.LayoutParams();
-            tlp.bottomMargin = dip5;
-            tlp.topMargin = dip5;
-            fake.setLayoutParams(tlp);
+            TableRow fake = createFakeRow(2, dip5, dip5);
             table.addView(fake);
 
             TableRow caption = new TableRow(this);
@@ -576,6 +498,103 @@ public final class GameResumeActivity extends Activity {
         }
 
         return null;
+    }
+    
+    private TableRow createAnnouncePointsRow(Team team, TextDecorator textDecorator) {
+        TableRow row = new TableRow(this);
+
+        TextView name = new TextView(this);
+        name.setText(getString(R.string.Announce));
+        name.setTextColor(Color.WHITE);
+        
+        TableRow.LayoutParams params = new TableRow.LayoutParams();
+        name.setLayoutParams(params);
+        row.addView(name);
+
+        LinearLayout vertical = new LinearLayout(this);
+        vertical.setOrientation(LinearLayout.VERTICAL);
+
+        TextView value = new TextView(this);
+        String announcePoints = String.valueOf(team.getPointsInfo().getAnnouncePoints());
+        value.setText(announcePoints);
+        value.setTextColor(Color.WHITE);
+
+        vertical.addView(value);
+
+        for (int j = 0; j < team.getPlayersCount(); j++) {
+
+            SquareList equalCardsList = team.getPlayer(j).getCards().getSquaresList();
+            for (SquareIterator iterator = equalCardsList.iterator(); iterator.hasNext();) {
+                Square square = iterator.next();
+                TextView squareView = new TextView(this);
+                squareView.setText(textDecorator.getSquareText(square));
+                vertical.addView(squareView);
+            }
+        }
+
+        PictureDecorator pictureDecorator = new PictureDecorator(this);
+        for (int j = 0; j < team.getPlayersCount(); j++) {
+            SequenceList sequencesList = team.getPlayer(j).getCards().getSequencesList();
+            for (SequenceIterator iterator = sequencesList.iterator(); iterator.hasNext();) {
+                Sequence sequence = iterator.next();
+                Suit suit = sequence.getMaxCard().getSuit();
+
+                String strLeft = String.valueOf(sequence.getType().getSequencePoints());
+                strLeft += " (" + textDecorator.getRankSign(sequence.getMaxCard().getRank());
+                String strRight = ")";
+               
+                Bitmap suitImage;
+                if (team.getPointsInfo().getAnnouncePoints() == 0) {
+                    suitImage = ImageUtil.transformToDisabledImage(pictureDecorator.getSuitImage(suit));
+                } else {
+                    suitImage = pictureDecorator.getSuitImage(suit);
+                }
+
+                LinearLayout horizontal = new LinearLayout(this);
+                horizontal.setOrientation(LinearLayout.HORIZONTAL);
+
+                TextView leftView = new TextView(this);
+                leftView.setText(strLeft);
+                leftView.setTextColor(team.getPointsInfo().getAnnouncePoints() == 0 ? Color.LTGRAY : Color.WHITE);
+                horizontal.addView(leftView);
+
+                ImageView image = new ImageView(this);
+                image.setImageBitmap(suitImage);
+                horizontal.addView(image);
+
+                TextView rightView = new TextView(this);
+                rightView.setText(strRight);
+                rightView.setTextColor(team.getPointsInfo().getAnnouncePoints() == 0 ? Color.LTGRAY : Color.WHITE);
+                horizontal.addView(rightView);
+
+                vertical.addView(horizontal);
+            }
+        }
+        
+        int dip10 = Belote.fromPixelToDip(this, 10);
+        params = new TableRow.LayoutParams();
+        params.weight = 1;
+        params.leftMargin = dip10;
+        vertical.setLayoutParams(params);
+        row.addView(vertical);
+        
+        return row;
+    }
+
+    private TableRow createFakeRow(int span, int topMargin, int bottomMargin) {
+        TableRow row = new TableRow(this);
+        TextView empty = new TextView(this);
+        TableRow.LayoutParams params = new TableRow.LayoutParams();
+        params.span = span;
+        empty.setLayoutParams(params);
+        row.addView(empty);
+
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams();
+        tableParams.topMargin = topMargin;
+        tableParams.bottomMargin = bottomMargin;
+        row.setLayoutParams(tableParams);
+        
+        return row;
     }
 
     private void setFaceView() {
