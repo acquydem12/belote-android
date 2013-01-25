@@ -212,7 +212,7 @@ public abstract class BasePainter {
      * @param suit instance.
      * @return Image instance.
      */
-    public final Bitmap getCoupleImage(Suit suit) {
+    public final Bitmap getCoupleImage(final Suit suit) {
         return pictureDecorator.getCoupleImage(suit);
     }
 
