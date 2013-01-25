@@ -40,7 +40,7 @@ public final class TrumpToPartnerCard extends BaseTrumpMethod {
     public Card getPlayMethodCard(final Player player, final Suit trump) {
         final Player partner = player.getPartner();
         if (trump != null && partner.equals(game.getAnnounceList().getOpenContractAnnouncePlayer()) && !isTeamSuit(trump, player.getTeam())
-                && !hasPlayerSuitAttack(player, trump)) {
+                && !hasPlayerSuitAttack(player, trump) && !(player.getCards().getSize() <= TWO_CARDS_COUNT)) {
             final Card card = player.getCards().findMaxSuitCard(trump);
             if (card != null && isMaxSuitCardLeft(card, false)) {
                 return card;
