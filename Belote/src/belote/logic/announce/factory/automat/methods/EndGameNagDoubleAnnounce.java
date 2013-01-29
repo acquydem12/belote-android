@@ -48,6 +48,6 @@ public final class EndGameNagDoubleAnnounce extends ConditionListMethod {
                 return Announce.createDoubleAnnounce(announce, player);
             }
         }
-        return Announce.createPassAnnounce(player);
+        return null;
     }
 }

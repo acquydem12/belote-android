@@ -14,6 +14,7 @@ import belote.bean.Player;
 import belote.bean.announce.Announce;
 import belote.logic.announce.factory.automat.executors.base.AnnounceExecutor;
 import belote.logic.announce.factory.automat.methods.EndGameNagDoubleAnnounce;
+import belote.logic.announce.factory.automat.methods.EndGamePassAnnounce;
 
 /**
  * BelotGameAnnounce class.
@@ -32,6 +33,9 @@ public class BeloteGameAnnounceFactory extends AnnounceExecutor {
         register(new EndGameNormalAnnounce(game));
         register(new EndGameSupportAnnounce(game));
         register(new EndGameNagDoubleAnnounce(game));
+        
+        register(new EndGamePassAnnounce(game));
+        
         register(new RegGameOpenAnnounce(game));
         register(new RegGameNormalAnnounce(game));
         register(new RegGameSupportAnnounce(game));
