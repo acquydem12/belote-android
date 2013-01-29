@@ -15,6 +15,8 @@ import belote.bean.announce.Announce;
 import belote.logic.announce.factory.automat.executors.base.AnnounceExecutor;
 import belote.logic.announce.factory.automat.methods.EndGameNagDoubleAnnounce;
 import belote.logic.announce.factory.automat.methods.EndGamePassAnnounce;
+import belote.logic.announce.factory.automat.methods.conditions.PartnerDoubleRedoubleContractAnnounce;
+import belote.logic.announce.factory.automat.methods.conditions.base.NotCondition;
 
 /**
  * BelotGameAnnounce class.
@@ -28,6 +30,8 @@ public class BeloteGameAnnounceFactory extends AnnounceExecutor {
      */
     public BeloteGameAnnounceFactory(final Game game) {
         super(game);
+        
+        addPreCondition(new NotCondition(new PartnerDoubleRedoubleContractAnnounce(game)));
 
         register(new EndGameOpenAnnounce(game));
         register(new EndGameNormalAnnounce(game));
