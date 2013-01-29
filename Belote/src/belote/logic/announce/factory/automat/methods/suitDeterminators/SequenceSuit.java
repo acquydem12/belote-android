@@ -64,7 +64,7 @@ public final class SequenceSuit implements SuitDeterminator {
      * @param player which has to declare the next announce.
      * @return Suit instance or null.
      */
-    public Suit determinateSuit(Player player) {
+    public Suit determineSuit(Player player) {
         final Sequence sequence = getSequence(player);
         if (sequence != null) {
             if ((sequenceType == null || sequence.getType().equals(sequenceType)) && (rank == null || rank.equals(sequence.getMaxCard().getRank()))) {

@@ -20,7 +20,7 @@ import belote.logic.announce.factory.automat.methods.suitDeterminators.base.Suit
 public final class HasSuit implements AnnounceCondition {
 
     /**
-     * SuitDeterminator which dynamically by provided player determinates the suit.
+     * SuitDeterminator which dynamically by provided player determines the suit.
      */
     private final SuitDeterminator suitDeterminator;
 
@@ -38,6 +38,6 @@ public final class HasSuit implements AnnounceCondition {
      * @return boolean true if the condition fits, false otherwise.
      */
     public boolean process(final Player player) {
-        return suitDeterminator.determinateSuit(player) != null;
+        return suitDeterminator.determineSuit(player) != null;
     }
 }

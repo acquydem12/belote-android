@@ -46,7 +46,7 @@ public final class EndGameSupportJackNineSuitAnnounce extends ConditionListMetho
      * @return an Announce instance.
      */
     protected Announce createAnnounce(Player player) {
-        final Suit suit = suitDeterminator.determinateSuit(player);
+        final Suit suit = suitDeterminator.determineSuit(player);
         return Announce.createSuitNormalAnnounce(player, suit);
     }
 }

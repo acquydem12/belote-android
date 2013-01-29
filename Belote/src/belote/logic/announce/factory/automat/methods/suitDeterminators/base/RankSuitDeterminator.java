@@ -13,7 +13,7 @@ public abstract class RankSuitDeterminator implements SuitDeterminator {
     private final ArrayList<Rank> ranks = new ArrayList<Rank>();
 
     @Override
-    public final Suit determinateSuit(Player player) {
+    public final Suit determineSuit(Player player) {
         for (SuitIterator iterator = Suit.iterator(); iterator.hasNext();) {
             final Suit suit = iterator.next();
 

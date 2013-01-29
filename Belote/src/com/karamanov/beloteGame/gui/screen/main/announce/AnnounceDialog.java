@@ -11,6 +11,7 @@ package com.karamanov.beloteGame.gui.screen.main.announce;
 
 import android.app.Dialog;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -98,12 +99,12 @@ public class AnnounceDialog extends Dialog {
     /**
      * Double picture.
      */
-    private final ImageView pDouble;
+    private final TextView pDouble;
 
     /**
      * Redouble picture.
      */
-    private final ImageView pRedouble;
+    private final TextView pRedouble;
 
     /**
      * Club picture.
@@ -155,7 +156,7 @@ public class AnnounceDialog extends Dialog {
         getWindow().setBackgroundDrawableResource(R.drawable.announce_dlg);
 
         int dip5 = Belote.fromPixelToDip(context, 5);
-        int dip15 = Belote.fromPixelToDip(context, 15);
+        int dip10 = Belote.fromPixelToDip(context, 10);
 
         vertical = new LinearLayout(context);
         vertical.setOrientation(LinearLayout.VERTICAL);
@@ -202,18 +203,17 @@ public class AnnounceDialog extends Dialog {
         pAllAces = new ImageView(context);
         pAllAces.setImageResource(R.drawable.all_aces);
 
-        relative = new LinearLayout(context);
-        lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        lp.gravity = Gravity.CENTER;
-        lp.leftMargin = dip15;
-        pAllAces.setLayoutParams(lp);
-        relative.addView(pAllAces);
-        relative.addView(jrbNotTrump);
+        trlp = new TableRow.LayoutParams();
+        trlp.gravity = Gravity.CENTER;
+        trlp.weight = 0.25f;
+        trlp.leftMargin = dip10;
+        pAllAces.setLayoutParams(trlp);
+        row.addView(pAllAces);
 
         trlp = new TableRow.LayoutParams();
-        trlp.weight = 0.5f;
-        relative.setLayoutParams(trlp);
-        row.addView(relative);
+        trlp.weight = 0.25f;
+        jrbNotTrump.setLayoutParams(trlp);
+        row.addView(jrbNotTrump);
 
         tl.addView(row);
 
@@ -245,19 +245,18 @@ public class AnnounceDialog extends Dialog {
 
         pAllJacks = new ImageView(context);
         pAllJacks.setImageResource(R.drawable.all_jacks);
-        lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        lp.gravity = Gravity.CENTER;
-        lp.leftMargin = dip15;
-        pAllJacks.setLayoutParams(lp);
-
-        relative = new LinearLayout(context);
-        relative.addView(pAllJacks);
-        relative.addView(jrbAllTrump);
+        
+        trlp = new TableRow.LayoutParams();
+        trlp.gravity = Gravity.CENTER;
+        trlp.weight = 0.25f;
+        trlp.leftMargin = dip10;
+        pAllJacks.setLayoutParams(trlp);
+        row.addView(pAllJacks);
 
         trlp = new TableRow.LayoutParams();
-        trlp.weight = 0.5f;
-        relative.setLayoutParams(trlp);
-        row.addView(relative);
+        trlp.weight = 0.25f;
+        jrbAllTrump.setLayoutParams(trlp);
+        row.addView(jrbAllTrump);
 
         tl.addView(row);
 
@@ -287,21 +286,22 @@ public class AnnounceDialog extends Dialog {
         jrbDouble = new AnnounceButtonField(context, context.getString(R.string.DoubleAnnounce));
         jrbDouble.setOnClickListener(mfl);
 
-        pDouble = new ImageView(context);
-        pDouble.setImageResource(R.drawable.double_c);
-        lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        lp.gravity = Gravity.CENTER;
-        lp.leftMargin = dip15;
-        pDouble.setLayoutParams(lp);
-
-        relative = new LinearLayout(context);
-        relative.addView(pDouble);
-        relative.addView(jrbDouble);
+        pDouble = new TextView(context);
+        pDouble.setText("x 2");
+        pDouble.setTypeface(Typeface.DEFAULT_BOLD);
+        pDouble.setTextColor(Color.RED);
+        
+        trlp = new TableRow.LayoutParams();
+        trlp.gravity = Gravity.CENTER;
+        trlp.weight = 0.25f;
+        trlp.leftMargin = dip10;
+        pDouble.setLayoutParams(trlp);
+        row.addView(pDouble);
 
         trlp = new TableRow.LayoutParams();
-        trlp.weight = 0.5f;
+        trlp.weight = 0.25f;
         relative.setLayoutParams(trlp);
-        row.addView(relative);
+        row.addView(jrbDouble);
 
         tl.addView(row);
 
@@ -330,29 +330,30 @@ public class AnnounceDialog extends Dialog {
         jrbRedouble = new AnnounceButtonField(context, context.getString(R.string.RedoubleAnnounce));
         jrbRedouble.setOnClickListener(mfl);
 
-        pRedouble = new ImageView(context);
-        pRedouble.setImageResource(R.drawable.redouble);
-        lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        lp.gravity = Gravity.CENTER;
-        lp.leftMargin = dip15;
-        pRedouble.setLayoutParams(lp);
+        pRedouble = new TextView(context);
+        pRedouble.setText("x 4");
+        pRedouble.setTypeface(Typeface.DEFAULT_BOLD);
+        pRedouble.setTextColor(Color.RED);
 
-        relative = new LinearLayout(context);
-        relative.addView(pRedouble);
-        relative.addView(jrbRedouble);
+        trlp = new TableRow.LayoutParams();
+        trlp.gravity = Gravity.CENTER;
+        trlp.weight = 0.25f;
+        trlp.leftMargin = dip10;
+        pRedouble.setLayoutParams(trlp);
+        row.addView(pRedouble);
 
         trlp = new TableRow.LayoutParams();
         trlp.weight = 0.5f;
-        relative.setLayoutParams(trlp);
-        row.addView(relative);
+        jrbRedouble.setLayoutParams(trlp);
+        row.addView(jrbRedouble);
 
         tl.addView(row);
 
         row = new TableRow(context);
         jrbPass = new AnnounceButtonField(context, context.getString(R.string.PassAnnounce));
         jrbPass.setOnClickListener(mfl);
-        trlp = new TableRow.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        trlp.span = 2;
+        trlp = new TableRow.LayoutParams();
+        trlp.span = 3;
         trlp.gravity = Gravity.CENTER_HORIZONTAL;
 
         relative = new LinearLayout(context);
@@ -388,7 +389,7 @@ public class AnnounceDialog extends Dialog {
     }
 
     /**
-     * Init method.
+     * Initialize method.
      */
     public void init() {
         initButtonsByAnnounces();
@@ -402,7 +403,7 @@ public class AnnounceDialog extends Dialog {
     }
 
     /**
-     * Buttons initialisation depending current announce status.
+     * Buttons initialization depending current announce status.
      */
     private void initButtonsByAnnounces() {
         jrbDouble.setEnabled(false);

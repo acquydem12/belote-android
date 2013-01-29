@@ -29,7 +29,7 @@ public final class AnnounceList implements Serializable {
     private static final long serialVersionUID = 763763319248786518L;
 
     /**
-     * Constant used to determinate end announce tour.
+     * Constant used to determine end announce tour.
      */
     private final int PASS_COUNT = 3;
 

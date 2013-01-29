@@ -15,7 +15,7 @@ import belote.bean.announce.Announce;
 import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCondition;
 
 /**
- * PartnerSuitAnnounce class. Returns true if the announce player partner has daclared a suit announce, false otherwise.
+ * PartnerSuitAnnounce class. Returns true if the announce player partner has declared a suit announce, false otherwise.
  * @author Dimitar Karamanov
  */
 public final class PartnerColorAnnounce implements AnnounceCondition {

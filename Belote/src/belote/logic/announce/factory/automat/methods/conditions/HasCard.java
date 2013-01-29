@@ -27,7 +27,7 @@ public final class HasCard implements AnnounceCondition {
     private final Rank rank;
 
     /**
-     * SuitDeterminator which dynamically by provided player determinate the suit.
+     * SuitDeterminator which dynamically by provided player determines the suit.
      */
     private final SuitDeterminator suitDeterminator;
 
@@ -47,7 +47,7 @@ public final class HasCard implements AnnounceCondition {
      * @return boolean true if the condition fits, false otherwise.
      */
     public boolean process(final Player player) {
-        final Suit suit = suitDeterminator.determinateSuit(player);
+        final Suit suit = suitDeterminator.determineSuit(player);
 
         if (suit != null) {
             return player.getCards().findCard(rank, suit) != null;

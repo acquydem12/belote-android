@@ -14,7 +14,7 @@ import belote.bean.Player;
 import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCondition;
 
 /**
- * TeamAttack class. Returns true if the announce player team is on atrack, false otherwise.
+ * TeamAttack class. Returns true if the announce player team is on attack, false otherwise.
  * @author Dimitar Karamanov
  */
 public final class TeamAttack implements AnnounceCondition {
