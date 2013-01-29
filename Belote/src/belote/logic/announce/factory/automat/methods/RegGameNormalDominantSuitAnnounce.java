@@ -69,7 +69,7 @@ public final class RegGameNormalDominantSuitAnnounce extends ConditionListMethod
      * @return an Announce instance.
      */
     protected Announce createAnnounce(Player player) {
-        final Suit suit = suitDeterminator.determinateSuit(player);
+        final Suit suit = suitDeterminator.determineSuit(player);
         return Announce.createSuitNormalAnnounce(player, suit);
     }
 }

@@ -24,7 +24,7 @@ public final class DominantSuit implements SuitDeterminator {
      * @param player which has to declare the next announce.
      * @return Suit instance or null.
      */
-    public Suit determinateSuit(final Player player) {
+    public Suit determineSuit(final Player player) {
         return player.getCards().getDominantSuit();
     }
 }

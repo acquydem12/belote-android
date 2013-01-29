@@ -46,7 +46,7 @@ public class SuitCount implements AnnounceCondition {
      * @return boolean true if the condition fits, false otherwise.
      */
     public boolean process(final Player player) {
-        final Suit suit = suitDeterminator.determinateSuit(player);
+        final Suit suit = suitDeterminator.determineSuit(player);
 
         if (suit != null) {
             return player.getCards().getSuitCount(suit) >= count;

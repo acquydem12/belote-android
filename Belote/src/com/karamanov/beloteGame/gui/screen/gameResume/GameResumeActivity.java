@@ -326,6 +326,10 @@ public final class GameResumeActivity extends Activity {
                 Bitmap suitImage = pictureDecorator.getSuitImage(suit);
                 ImageView imageView = new ImageView(this);
                 imageView.setImageBitmap(suitImage);
+                
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                params.gravity = Gravity.BOTTOM;
+                imageView.setLayoutParams(params);
                 horizontal.addView(imageView);
             }
         }
@@ -383,6 +387,11 @@ public final class GameResumeActivity extends Activity {
 
                 ImageView image = new ImageView(this);
                 image.setImageBitmap(suitImage);
+                
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                params.gravity = Gravity.BOTTOM;
+                image.setLayoutParams(params);
+                
                 horizontal.addView(image);
 
                 TextView rightView = new TextView(this);

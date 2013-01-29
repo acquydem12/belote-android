@@ -17,7 +17,7 @@ import belote.logic.announce.factory.automat.methods.base.ConditionListMethod;
 import belote.logic.announce.factory.automat.methods.conditions.OppositeTeamEndGameZone;
 
 /**
- * EndGameNagDoubleAnnounce class. Announce factory method which creates double announce if the enemey team declared game and is in end game zone.
+ * EndGameNagDoubleAnnounce class. Announce factory method which creates double announce if the enemy team declared game and is in end game zone.
  * @author Dimitar Karamanov
  */
 public final class EndGameNagDoubleAnnounce extends ConditionListMethod {

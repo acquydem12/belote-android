@@ -23,6 +23,6 @@ public interface SuitDeterminator {
      * @param player which has to declare the next announce.
      * @return Suit instance or null.
      */
-    Suit determinateSuit(Player player);
+    Suit determineSuit(Player player);
 
 }

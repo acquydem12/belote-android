@@ -21,6 +21,7 @@ import belote.bean.pack.card.suit.Suit;
 
 import com.karamanov.beloteGame.Belote;
 import com.karamanov.beloteGame.R;
+import com.karamanov.framework.graphics.ImageUtil;
 
 public final class LogoView extends View {
 
@@ -148,6 +149,7 @@ public final class LogoView extends View {
         b = belotePainter.getSuitImage(Suit.Diamond);
         canvas.drawBitmap(b, dip5, getHeight() - dip5 - b.getHeight(), paint);
         b = belotePainter.getSuitImage(Suit.Club);
+        b = ImageUtil.transformToDisabledImage(b);
         canvas.drawBitmap(b, getWidth() - dip5 - b.getWidth(), getHeight() - dip5 - b.getHeight(), paint);
     }
 
