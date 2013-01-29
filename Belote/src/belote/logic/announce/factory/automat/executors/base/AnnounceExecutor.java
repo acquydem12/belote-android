@@ -65,10 +65,9 @@ public abstract class AnnounceExecutor implements AnnounceMethod {
                     result = null;
                 }
             }
-
-            result = afterExecution(player, result);
         }
-        return result;
+
+        return afterExecution(player, result);
     }
 
     /**
