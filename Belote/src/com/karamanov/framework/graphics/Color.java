@@ -87,7 +87,7 @@ public final class Color {
      * Constructor.
      * @param gray segment
      */
-    private Color(final int gray) {
+    public Color(final int gray) {
         this(gray, gray, gray);
     }
 
@@ -97,7 +97,7 @@ public final class Color {
      * @param green segment
      * @param blue segment
      */
-    private Color(final int red, final int green, final int blue) {
+    public Color(final int red, final int green, final int blue) {
         RGB = (red << 16) + (green << 8) + blue;
     }
 
