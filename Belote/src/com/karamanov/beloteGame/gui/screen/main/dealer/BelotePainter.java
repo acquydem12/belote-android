@@ -37,6 +37,7 @@ import com.karamanov.beloteGame.gui.screen.main.BeloteView;
 import com.karamanov.beloteGame.text.PlayerNameDecorator;
 import com.karamanov.beloteGame.text.ShortPlayerNameDecorator;
 import com.karamanov.framework.graphics.Color;
+import com.karamanov.framework.graphics.ImageUtil;
 import com.karamanov.framework.graphics.Rectangle;
 
 /**
@@ -555,6 +556,7 @@ final class BelotePainter extends BasePainter {
                 if (announce.isColorAnnounce()) {
                     Suit suit = AnnounceUnit.transformFromAnnounceSuitToSuit(announce.getAnnounceSuit());
                     Bitmap image = getSuitImage(suit);
+                    image = ImageUtil.transformToMixedColorImage(image, new Color(192), null);
                     x -= image.getWidth() + dip5;
                     y = dip1;
                     if (bounds.height() - image.getHeight() > 0) {
