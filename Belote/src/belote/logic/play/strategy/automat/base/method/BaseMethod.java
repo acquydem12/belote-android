@@ -49,9 +49,14 @@ public abstract class BaseMethod implements PlayCardMethod {
     protected static final int TWO_CARDS_COUNT = 2;
     
     /**
-     * Two cards count constant.
+     * Three cards count constant.
      */
     protected static final int THREE_CARDS_COUNT = 3;
+    
+    /**
+     * Four cards count constant.
+     */
+    protected static final int FOUR_CARDS_COUNT = 4;
 
     /**
      * Minimum suit's card number used to determine dominant suit.
@@ -471,11 +476,22 @@ public abstract class BaseMethod implements PlayCardMethod {
         return game.getPlayerAfter(player);
     }
     
-    protected Suit getTrump() {
+    protected final Suit getTrump() {
         final Announce announce = game.getAnnounceList().getContractAnnounce();
         if (announce != null) {
             return AnnounceUnit.transformFromAnnounceSuitToSuit(announce.getAnnounceSuit());
         }
         return null;
+    }
+    
+    protected boolean hasTrickAttackSuit(final Suit suit) {
+        for (final TrickListIterator iterator = game.getTrickList().iterator(); iterator.hasNext();) {
+            final Trick round = iterator.next();
+            Card card = round.getTrickCards().getFirstNoNullCard();
+            if (card != null && card.getSuit().equals(suit)) {
+                return true;            
+            }
+        }
+        return false;
     }
 }

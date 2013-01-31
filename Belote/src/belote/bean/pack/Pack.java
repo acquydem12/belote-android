@@ -138,7 +138,8 @@ public class Pack implements Serializable {
      */
     public final void addAll(final Pack pack) {
         for (final PackIterator iterator = pack.iterator(); iterator.hasNext();) {
-            add(iterator.next());
+            Card card = iterator.next();
+            add(card);
         }
     }
 
@@ -647,7 +648,6 @@ public class Pack implements Serializable {
         for (final PackIterator iterator = iterator(); iterator.hasNext();) {
             final Card card = iterator.next();
             card.setCompareMode(compareMode);
-            card.setCardAcquireMethod(null);
         }
     }
 
@@ -705,6 +705,13 @@ public class Pack implements Serializable {
      */
     public final PackIterator iterator() {
         return new PackIteratorImpl(collection.iterator());
+    }
+    
+    public final void nullCardAcquireMethod() {
+        for (final PackIterator iterator = iterator(); iterator.hasNext();) {
+            final Card card = iterator.next();
+            card.setCardAcquireMethod(null);
+        }
     }
 
     /**

@@ -14,7 +14,7 @@ import belote.bean.Player;
 import belote.bean.pack.card.Card;
 import belote.logic.play.strategy.automat.base.method.BaseMethod;
 
-public class PartnerFirstAttackMaxSuitCard  extends BaseMethod {
+public class PartnerFirstAttackMaxSuitCard extends BaseMethod {
 
     /**
      * Constructor.
