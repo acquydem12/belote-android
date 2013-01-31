@@ -12,6 +12,7 @@ package belote.logic.play.strategy.automat.methods;
 import belote.bean.Game;
 import belote.bean.Player;
 import belote.bean.pack.card.Card;
+import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.base.PlayCardMethod;
 import belote.logic.play.strategy.automat.base.method.BaseMethod;
 
@@ -43,7 +44,8 @@ public final class MaxSingleNoHandCardToPartner extends BaseMethod {
      * @return Card object instance or null.
      */
     public Card getPlayMethodCard(final Player player) {
-        final Card handAttackSuitCard = game.getTrickCards().getHandAttackSuitCard();
+        Suit trump = getTrump();
+        final Card handAttackSuitCard = game.getTrickCards().getHandAttackSuitCard(trump);
         if (handAttackSuitCard != null) {
             final Player partner = player.getPartner();
             final Player handPlayer = game.getPlayerByCard(handAttackSuitCard);
