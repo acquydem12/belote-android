@@ -11,8 +11,8 @@ package belote.bean.pack;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
+import java.util.Random;
 
 import belote.bean.pack.card.Card;
 import belote.bean.pack.card.CardComparableMode;
@@ -38,7 +38,7 @@ public class Pack implements Serializable {
     /**
      * Shuffle count.
      */
-    //private static final int SHUFFLE_COUNT = 1000;
+    private static final int SHUFFLE_COUNT = 1000;
 
     /**
      * Cashed full pack.
@@ -64,6 +64,8 @@ public class Pack implements Serializable {
      * PackExtraAnnouncesManager announce manager.
      */
     private final PackExtraAnnouncesManager packExtraAnnouncesManager;
+    
+    private final static Random random = new Random();
 
     /**
      * Default constructor
@@ -228,11 +230,6 @@ public class Pack implements Serializable {
      * Shuffles the pack.
      */
     public final void shuffle() {
-        Collections.shuffle(collection);
-        /*
-        final long milliseconds = new Date().getTime();
-        final Random random = new Random(milliseconds);
-
         for (int i = 0; i < SHUFFLE_COUNT; i++) {
             int randomInt = random.nextInt();
             final int index = Math.abs(randomInt % collection.size());
@@ -241,7 +238,6 @@ public class Pack implements Serializable {
                 collection.add(indexCard);
             }
         }
-        */
     }
 
     /**
