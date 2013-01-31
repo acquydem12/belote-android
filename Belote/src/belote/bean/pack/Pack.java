@@ -65,6 +65,9 @@ public class Pack implements Serializable {
      */
     private final PackExtraAnnouncesManager packExtraAnnouncesManager;
     
+    /**
+     * Random generator.
+     */
     private final static Random random = new Random();
 
     /**
