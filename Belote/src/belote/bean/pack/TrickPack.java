@@ -54,4 +54,18 @@ public final class TrickPack extends Pack {
         }
         return null;
     }
+    
+    /**
+     * Returns the card with best rank and suit equals to attack card's suit.
+     * @return Card with the best(max) rank and suit equals to attack card's suit.
+     */
+    public Card getHandAttackSuitCard(Suit suit) {
+        if (suit != null) {
+            Card card = findMaxSuitCard(suit);
+            if (card != null) {
+                return card;
+            }
+        }
+        return getHandAttackSuitCard();
+    }
 }

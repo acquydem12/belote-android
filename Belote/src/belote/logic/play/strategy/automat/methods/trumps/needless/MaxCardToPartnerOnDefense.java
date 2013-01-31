@@ -27,7 +27,7 @@ public class MaxCardToPartnerOnDefense extends BaseTrumpMethod {
         Card result = null;
 
         if (isEnemyTeamAnnounce(player) && isTeamSuit(trump, game.getOppositeTeam(player)) && player.getCards().getSize() <= THREE_CARDS_COUNT) {
-            final Card handAttackSuitCard = game.getTrickCards().getHandAttackSuitCard();
+            final Card handAttackSuitCard = game.getTrickCards().getHandAttackSuitCard(trump);
             if (handAttackSuitCard != null) {
                 final Player partner = player.getPartner();
                 final Player handPlayer = game.getPlayerByCard(handAttackSuitCard);
