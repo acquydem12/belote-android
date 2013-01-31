@@ -127,6 +127,7 @@ public final class Game implements Serializable {
     public void initPack() {
         pack = Pack.createFullPack();
         pack.shuffle();
+        pack.nullCardAcquireMethod();
     }
 
     /**
