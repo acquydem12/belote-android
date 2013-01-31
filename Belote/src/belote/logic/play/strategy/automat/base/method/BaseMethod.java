@@ -47,6 +47,11 @@ public abstract class BaseMethod implements PlayCardMethod {
      * Two cards count constant.
      */
     protected static final int TWO_CARDS_COUNT = 2;
+    
+    /**
+     * Two cards count constant.
+     */
+    protected static final int THREE_CARDS_COUNT = 3;
 
     /**
      * Minimum suit's card number used to determine dominant suit.

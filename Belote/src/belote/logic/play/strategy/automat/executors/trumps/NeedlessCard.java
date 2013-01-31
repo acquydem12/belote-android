@@ -13,6 +13,7 @@ import belote.bean.Game;
 import belote.logic.play.strategy.automat.base.executor.PlayCardExecutor;
 import belote.logic.play.strategy.automat.methods.MaxSingleNoHandCardToPartner;
 import belote.logic.play.strategy.automat.methods.MinimumOfAllCard;
+import belote.logic.play.strategy.automat.methods.trumps.needless.MaxCardToPartnerOnDefense;
 import belote.logic.play.strategy.automat.methods.trumps.needless.MinimumOfAllNoTrumpCard;
 import belote.logic.play.strategy.automat.methods.trumps.needless.MinimumOfAllMastersCards;
 import belote.logic.play.strategy.automat.methods.trumps.needless.ClearCard;
@@ -33,6 +34,7 @@ public final class NeedlessCard extends PlayCardExecutor {
     public NeedlessCard(final Game game) {
         super(game);
         // Register play card methods.
+        register(new MaxCardToPartnerOnDefense(game));
         register(new MaxSingleNoHandCardToPartner(game));
         register(new MinimumOfAllMastersCards(game));
         register(new ClearSingleSuitCard(game));
