@@ -16,6 +16,7 @@ import belote.logic.play.strategy.automat.methods.MinimumOfAllCard;
 import belote.logic.play.strategy.automat.methods.MinMeterSuitCard;
 import belote.logic.play.strategy.automat.methods.trumpsLess.ChooseTwoSuitsCard;
 import belote.logic.play.strategy.automat.methods.trumpsLess.ClearCard;
+import belote.logic.play.strategy.automat.methods.trumpsLess.MaximumOfAllMastersCard;
 import belote.logic.play.strategy.automat.methods.trumpsLess.MinimumOfAllMastersCard;
 import belote.logic.play.strategy.automat.methods.trumpsLess.SingleNoMajorCard;
 import belote.logic.play.strategy.automat.methods.trumpsLess.SingleNoMaxCard;
@@ -35,6 +36,7 @@ public final class NeedlessCard extends PlayCardExecutor {
         super(game);
         // Register play card methods.
         register(new MaxSingleNoHandCardToPartner(game));
+        register(new MaximumOfAllMastersCard(game));
         register(new MinimumOfAllMastersCard(game));
         register(new SingleNoMajorCard(game));
         register(new ClearCard(game));
