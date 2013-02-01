@@ -192,7 +192,7 @@ public abstract class BaseMethod implements PlayCardMethod {
         return false;
     }
     
-    private final int getSequenceCount(final SequenceType type) {
+    private int getSequenceCount(final SequenceType type) {
         if (SequenceType.Quint.equals(type)) {
             return PackExtraAnnouncesManager.ST_100_COUNT;
         }
