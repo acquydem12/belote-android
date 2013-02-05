@@ -18,7 +18,7 @@ import belote.logic.announce.factory.automat.methods.base.ConditionListMethod;
 import belote.logic.announce.factory.automat.methods.conditions.HasSuit;
 import belote.logic.announce.factory.automat.methods.conditions.RankCount;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
-import belote.logic.announce.factory.automat.methods.suitDeterminators.SequenceSuit;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.SequenceSuit;
 
 /**
  * EndGameSupportAllTrumpAnnounce class. Announce factory method which creates support all trump announce.

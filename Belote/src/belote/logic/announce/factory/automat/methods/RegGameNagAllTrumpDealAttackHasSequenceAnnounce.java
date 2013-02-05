@@ -19,7 +19,7 @@ import belote.logic.announce.factory.automat.methods.base.ConditionListMethod;
 import belote.logic.announce.factory.automat.methods.conditions.DealAttackPlayer;
 import belote.logic.announce.factory.automat.methods.conditions.HasSuit;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
-import belote.logic.announce.factory.automat.methods.suitDeterminators.SequenceSuit;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.SequenceSuit;
 
 /**
  * RegGameNagAllTrumpWhenFirstAndHasSequenceAnnounce class. Announce factory method which creates nag all trump announce when has a sequence.
