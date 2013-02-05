@@ -13,7 +13,7 @@ import belote.bean.Player;
 import belote.bean.pack.card.rank.Rank;
 import belote.bean.pack.card.suit.Suit;
 import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCondition;
-import belote.logic.announce.factory.automat.methods.suitDeterminators.base.SuitDeterminator;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.base.SuitDeterminant;
 
 /**
  * PlayerCard class. Returns true if the announce player has card from provided rank and suit.
@@ -27,18 +27,18 @@ public final class HasCard implements AnnounceCondition {
     private final Rank rank;
 
     /**
-     * SuitDeterminator which dynamically by provided player determines the suit.
+     * Suit determinant which dynamically by provided player determines the suit.
      */
-    private final SuitDeterminator suitDeterminator;
+    private final SuitDeterminant suitDeterminant;
 
     /**
      * Constructor.
      * @param rank of the card.
-     * @param suitDeterminator used to determine the suit.
+     * @param suitDeterminant used to determine the suit.
      */
-    public HasCard(final Rank rank, final SuitDeterminator suitDeterminator) {
+    public HasCard(final Rank rank, final SuitDeterminant suitDeterminant) {
         this.rank = rank;
-        this.suitDeterminator = suitDeterminator;
+        this.suitDeterminant = suitDeterminant;
     }
 
     /**
@@ -47,7 +47,7 @@ public final class HasCard implements AnnounceCondition {
      * @return boolean true if the condition fits, false otherwise.
      */
     public boolean process(final Player player) {
-        final Suit suit = suitDeterminator.determineSuit(player);
+        final Suit suit = suitDeterminant.determineSuit(player);
 
         if (suit != null) {
             return player.getCards().findCard(rank, suit) != null;

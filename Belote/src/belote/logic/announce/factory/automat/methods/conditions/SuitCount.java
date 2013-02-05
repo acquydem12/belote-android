@@ -12,7 +12,7 @@ package belote.logic.announce.factory.automat.methods.conditions;
 import belote.bean.Player;
 import belote.bean.pack.card.suit.Suit;
 import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCondition;
-import belote.logic.announce.factory.automat.methods.suitDeterminators.base.SuitDeterminator;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.base.SuitDeterminant;
 
 /**
  * SuitCount class. Returns if the announce player has ant minimum cards from dynamically determined suit.
@@ -21,9 +21,9 @@ import belote.logic.announce.factory.automat.methods.suitDeterminators.base.Suit
 public class SuitCount implements AnnounceCondition {
 
     /**
-     * Suit determinator.
+     * Suit determinant.
      */
-    private final SuitDeterminator suitDeterminator;
+    private final SuitDeterminant suitDeterminant;
 
     /**
      * Minimum needed suit cards count.
@@ -32,11 +32,11 @@ public class SuitCount implements AnnounceCondition {
 
     /**
      * Constructor.
-     * @param suitDeterminator used to determine dynamically the suit.
+     * @param suitDeterminant used to determine dynamically the suit.
      * @param count the minimum needed.
      */
-    public SuitCount(final SuitDeterminator suitDeterminator, final int count) {
-        this.suitDeterminator = suitDeterminator;
+    public SuitCount(final SuitDeterminant suitDeterminant, final int count) {
+        this.suitDeterminant = suitDeterminant;
         this.count = count;
     }
 
@@ -46,7 +46,7 @@ public class SuitCount implements AnnounceCondition {
      * @return boolean true if the condition fits, false otherwise.
      */
     public boolean process(final Player player) {
-        final Suit suit = suitDeterminator.determineSuit(player);
+        final Suit suit = suitDeterminant.determineSuit(player);
 
         if (suit != null) {
             return player.getCards().getSuitCount(suit) >= count;
