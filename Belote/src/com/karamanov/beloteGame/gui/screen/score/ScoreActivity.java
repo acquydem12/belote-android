@@ -29,8 +29,6 @@ public final class ScoreActivity extends Activity {
 
     public final static String BELOTE = "BELOTE";
 
-    private Game game;
-
     public ScoreActivity() {
         super();
     }
@@ -46,7 +44,7 @@ public final class ScoreActivity extends Activity {
             if (bundle != null) {
                 Serializable data = bundle.getSerializable(BELOTE);
                 if (data instanceof Game) {
-                    game = (Game) data;
+                    Game game = (Game) data;
 
                     int dip5 = Belote.fromPixelToDip(this, 5);
 
