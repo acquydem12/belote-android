@@ -52,8 +52,8 @@ public final class ScoreActivity extends Activity {
 
                     ScrollView scroll = new ScrollView(this);
 
-                    LinearLayout relative = new LinearLayout(this);
-                    relative.setOrientation(LinearLayout.VERTICAL);
+                    LinearLayout vertical = new LinearLayout(this);
+                    vertical.setOrientation(LinearLayout.VERTICAL);
 
                     TextView scoreView = new TextView(this);
                     scoreView.setText(getString(R.string.Score));
@@ -61,16 +61,15 @@ public final class ScoreActivity extends Activity {
                     scoreView.setTextColor(Color.YELLOW);
                     scoreView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
 
-                    LinearLayout.LayoutParams rp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-                    rp.gravity = Gravity.CENTER_HORIZONTAL;
-                    rp.topMargin = dip5;
-                    rp.bottomMargin = dip5;
-                    scoreView.setLayoutParams(rp);
-                    relative.addView(scoreView);
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                    params.gravity = Gravity.CENTER_HORIZONTAL;
+                    params.topMargin = dip5;
+                    params.bottomMargin = dip5;
+                    scoreView.setLayoutParams(params);
+                    vertical.addView(scoreView);
 
                     LinearLayout horizontal = new LinearLayout(this);
                     horizontal.setOrientation(LinearLayout.HORIZONTAL);
-                    horizontal.setId(2);
 
                     int c1 = game.getTeam(0).getPoints().size();
                     int c2 = game.getTeam(1).getPoints().size();
@@ -79,35 +78,34 @@ public final class ScoreActivity extends Activity {
                     View left = getScore(game.getTeam(0), count);
                     View right = getScore(game.getTeam(1), count);
 
-                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-                    lp.rightMargin = dip5;
-                    left.setLayoutParams(lp);
+                    params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                    params.rightMargin = dip5;
+                    left.setLayoutParams(params);
                     horizontal.addView(left);
                     horizontal.addView(right);
 
-                    rp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-                    rp.gravity = Gravity.CENTER_HORIZONTAL;
-                    rp.topMargin = dip5;
-                    horizontal.setLayoutParams(rp);
-                    relative.addView(horizontal);
+                    params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                    params.gravity = Gravity.CENTER_HORIZONTAL;
+                    params.topMargin = dip5;
+                    horizontal.setLayoutParams(params);
+                    vertical.addView(horizontal);
 
-                    TextView hanged = new TextView(this);
-                    hanged.setId(3);
                     if (game.getHangedPoints() > 0) {
-                        String hp = getString(R.string.HangedPoints);
-                        hanged.setText(hp + " " + game.getHangedPoints());
+                        TextView hanged = new TextView(this);
+                        String hangedPoints = getString(R.string.HangedPoints);
+                        hanged.setText(hangedPoints + " " + game.getHangedPoints());
+                        hanged.setTypeface(Typeface.SERIF, Typeface.BOLD);
+                        hanged.setTextColor(Color.RED);
+                        hanged.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+
+                        params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                        params.gravity = Gravity.CENTER_HORIZONTAL;
+                        params.topMargin = dip5;
+                        hanged.setLayoutParams(params);
+                        vertical.addView(hanged);
                     }
-                    hanged.setTypeface(Typeface.SERIF, Typeface.BOLD);
-                    hanged.setTextColor(Color.RED);
-                    hanged.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
 
-                    rp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-                    rp.gravity = Gravity.CENTER_HORIZONTAL;
-                    rp.topMargin = dip5;
-                    hanged.setLayoutParams(rp);
-                    relative.addView(hanged);
-
-                    scroll.addView(relative);
+                    scroll.addView(vertical);
                     scroll.setBackgroundResource(R.drawable.score_bkg);
                     setContentView(scroll);
                 }
@@ -246,13 +244,13 @@ public final class ScoreActivity extends Activity {
             TableRow row = new TableRow(this);
 
             TextView v1 = new TextView(this);
-            Rect r = new Rect();
-            v1.getPaint().getTextBounds(sample, 0, sample.length(), r);
-            int minWidth = r.width();
+            Rect rect = new Rect();
+            v1.getPaint().getTextBounds(sample, 0, sample.length(), rect);
+            int minWidth = rect.width();
 
-            r = new Rect();
-            v1.getPaint().getTextBounds(tString, 0, tString.length(), r);
-            int tWidth = r.width();
+            rect = new Rect();
+            v1.getPaint().getTextBounds(tString, 0, tString.length(), rect);
+            int tWidth = rect.width();
 
             v1.setMinWidth(minWidth);
             row.addView(v1);
