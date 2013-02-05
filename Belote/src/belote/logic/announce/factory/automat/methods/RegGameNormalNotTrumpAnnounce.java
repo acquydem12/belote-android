@@ -24,7 +24,7 @@ import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCon
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleOrCondition;
 import belote.logic.announce.factory.automat.methods.conditions.base.NotCondition;
-import belote.logic.announce.factory.automat.methods.suitDeterminators.AceTenKingSuit;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.AceTenKingSuit;
 
 /**
  * RegGameNormalNotTrumpAnnounce class. Announce factory method which creates not trump announce.

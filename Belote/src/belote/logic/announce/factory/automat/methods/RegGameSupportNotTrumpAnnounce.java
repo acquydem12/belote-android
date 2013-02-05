@@ -19,7 +19,7 @@ import belote.logic.announce.factory.automat.methods.conditions.RankCount;
 import belote.logic.announce.factory.automat.methods.conditions.TeamAttack;
 import belote.logic.announce.factory.automat.methods.conditions.TeamDefence;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
-import belote.logic.announce.factory.automat.methods.suitDeterminators.AceTenKingSuit;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.AceTenKingSuit;
 
 /**
  * RegGameSupportNotTrumpAnnounce class. Announce factory method which creates support not trump announce.

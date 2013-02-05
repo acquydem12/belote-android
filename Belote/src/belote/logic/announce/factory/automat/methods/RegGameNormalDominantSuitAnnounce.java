@@ -21,8 +21,8 @@ import belote.logic.announce.factory.automat.methods.conditions.SuitCount;
 import belote.logic.announce.factory.automat.methods.conditions.TeamAdvance;
 import belote.logic.announce.factory.automat.methods.conditions.ThreePassOpenAnnounce;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
-import belote.logic.announce.factory.automat.methods.suitDeterminators.DominantSuit;
-import belote.logic.announce.factory.automat.methods.suitDeterminators.base.SuitDeterminator;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.DominantSuit;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.base.SuitDeterminant;
 
 /**
  * RegGameNormalDominantSuitAnnounce class. Announce factory method which creates a dominant suit announce.
@@ -30,7 +30,7 @@ import belote.logic.announce.factory.automat.methods.suitDeterminators.base.Suit
  */
 public final class RegGameNormalDominantSuitAnnounce extends ConditionListMethod {
 
-    private final SuitDeterminator suitDeterminator;
+    private final SuitDeterminant suitDeterminant;
 
     /**
      * Constructor.
@@ -38,29 +38,29 @@ public final class RegGameNormalDominantSuitAnnounce extends ConditionListMethod
      */
     public RegGameNormalDominantSuitAnnounce(final Game game) {
         super(game);
-        suitDeterminator = new DominantSuit();
+        suitDeterminant = new DominantSuit();
 
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Jack, suitDeterminator), new HasCard(Rank.Nine,
-                suitDeterminator), new ThreePassOpenAnnounce(game)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Jack, suitDeterminator), new HasCard(Rank.Ace,
-                suitDeterminator), new ThreePassOpenAnnounce(game)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Jack, suitDeterminator), new HasCard(Rank.Nine,
-                suitDeterminator), new RankCount(Rank.Ace, 1)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Jack, suitDeterminator), new HasCard(Rank.Ace,
-                suitDeterminator), new RankCount(Rank.Ace, 2)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Jack, suitDeterminator), new TeamAdvance(game),
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminant, 3), new HasCard(Rank.Jack, suitDeterminant), new HasCard(Rank.Nine,
+                suitDeterminant), new ThreePassOpenAnnounce(game)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminant, 3), new HasCard(Rank.Jack, suitDeterminant), new HasCard(Rank.Ace,
+                suitDeterminant), new ThreePassOpenAnnounce(game)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminant, 3), new HasCard(Rank.Jack, suitDeterminant), new HasCard(Rank.Nine,
+                suitDeterminant), new RankCount(Rank.Ace, 1)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminant, 3), new HasCard(Rank.Jack, suitDeterminant), new HasCard(Rank.Ace,
+                suitDeterminant), new RankCount(Rank.Ace, 2)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminant, 3), new HasCard(Rank.Jack, suitDeterminant), new TeamAdvance(game),
                 new RankCount(Rank.Ace, 1)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Jack, suitDeterminator), new HasCard(Rank.Ten,
-                suitDeterminator), new RankCount(Rank.Ace, 1)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 3), new HasCard(Rank.Jack, suitDeterminator), new RankCount(Rank.Ace, 2)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 4), new HasCard(Rank.Nine, suitDeterminator), new HasCard(Rank.Ace,
-                suitDeterminator)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 4), new HasCard(Rank.Nine, suitDeterminator), new HasCard(Rank.Ten,
-                suitDeterminator)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 4), new HasCard(Rank.Nine, suitDeterminator), new HasCard(Rank.King,
-                suitDeterminator), new HasCard(Rank.Queen, suitDeterminator)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 4), new HasCard(Rank.Jack, suitDeterminator)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 5), new HasCard(Rank.Nine, suitDeterminator)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminant, 3), new HasCard(Rank.Jack, suitDeterminant), new HasCard(Rank.Ten,
+                suitDeterminant), new RankCount(Rank.Ace, 1)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminant, 3), new HasCard(Rank.Jack, suitDeterminant), new RankCount(Rank.Ace, 2)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminant, 4), new HasCard(Rank.Nine, suitDeterminant), new HasCard(Rank.Ace,
+                suitDeterminant)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminant, 4), new HasCard(Rank.Nine, suitDeterminant), new HasCard(Rank.Ten,
+                suitDeterminant)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminant, 4), new HasCard(Rank.Nine, suitDeterminant), new HasCard(Rank.King,
+                suitDeterminant), new HasCard(Rank.Queen, suitDeterminant)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminant, 4), new HasCard(Rank.Jack, suitDeterminant)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminant, 5), new HasCard(Rank.Nine, suitDeterminant)));
     }
 
     /**
@@ -69,7 +69,7 @@ public final class RegGameNormalDominantSuitAnnounce extends ConditionListMethod
      * @return an Announce instance.
      */
     protected Announce createAnnounce(Player player) {
-        final Suit suit = suitDeterminator.determineSuit(player);
+        final Suit suit = suitDeterminant.determineSuit(player);
         return Announce.createSuitNormalAnnounce(player, suit);
     }
 }

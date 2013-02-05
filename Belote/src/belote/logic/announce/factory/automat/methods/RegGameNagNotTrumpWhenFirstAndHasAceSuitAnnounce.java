@@ -18,8 +18,8 @@ import belote.logic.announce.factory.automat.methods.conditions.DealAttackPlayer
 import belote.logic.announce.factory.automat.methods.conditions.HasCard;
 import belote.logic.announce.factory.automat.methods.conditions.SuitCount;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
-import belote.logic.announce.factory.automat.methods.suitDeterminators.DominantSuit;
-import belote.logic.announce.factory.automat.methods.suitDeterminators.base.SuitDeterminator;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.DominantSuit;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.base.SuitDeterminant;
 
 /**
  * RegGameNagNotTrumpWhenFirstAndHasAceSuitAnnounce class. Announce factory method which creates nag NT announce on ace suit and player is attack one.
@@ -33,8 +33,8 @@ public final class RegGameNagNotTrumpWhenFirstAndHasAceSuitAnnounce extends Cond
      */
     public RegGameNagNotTrumpWhenFirstAndHasAceSuitAnnounce(final Game game) {
         super(game);
-        final SuitDeterminator suitDeterminator = new DominantSuit();
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 5), new HasCard(Rank.Ace, suitDeterminator), new DealAttackPlayer(game)));
+        final SuitDeterminant suitDeterminant = new DominantSuit();
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminant, 5), new HasCard(Rank.Ace, suitDeterminant), new DealAttackPlayer(game)));
     }
 
     /**
