@@ -40,7 +40,7 @@ public final class LogoView extends View {
      */
     private final int CardHeight;
 
-    private final LogoPainter belotePainter;
+    private final LogoPainter logoPainter;
 
     public LogoView(Context context) {
         super(context);
@@ -51,7 +51,7 @@ public final class LogoView extends View {
         CardWidth = desk.getWidth();
         CardHeight = desk.getHeight();
 
-        belotePainter = new LogoPainter(context);
+        logoPainter = new LogoPainter(context);
     }
 
     @Override
@@ -82,7 +82,7 @@ public final class LogoView extends View {
         // draw all cards
         for (int i = 0; i < pack.getSize(); i++) {
             final Card card = pack.getCard(i);
-            belotePainter.drawCard(canvas, card, x + i * visiblePart + 1, y);
+            logoPainter.drawCard(canvas, card, x + i * visiblePart + 1, y);
         }
     }
 
@@ -142,18 +142,18 @@ public final class LogoView extends View {
 
         int dip5 = Belote.fromPixelToDip(getContext(), 5);
 
-        Bitmap b = belotePainter.getSuitImage(Suit.Spade);
+        Bitmap b = logoPainter.getSuitImage(Suit.Spade);
         canvas.drawBitmap(b, dip5, dip5, paint);
-        b = belotePainter.getSuitImage(Suit.Heart);
+        b = logoPainter.getSuitImage(Suit.Heart);
         canvas.drawBitmap(b, getWidth() - dip5 - b.getWidth(), dip5, paint);
-        b = belotePainter.getSuitImage(Suit.Diamond);
+        b = logoPainter.getSuitImage(Suit.Diamond);
         canvas.drawBitmap(b, dip5, getHeight() - dip5 - b.getHeight(), paint);
-        b = belotePainter.getSuitImage(Suit.Club);
+        b = logoPainter.getSuitImage(Suit.Club);
         b = ImageUtil.transformToDisabledImage(b);
         canvas.drawBitmap(b, getWidth() - dip5 - b.getWidth(), getHeight() - dip5 - b.getHeight(), paint);
     }
 
-    private static float _getAdvance(Paint paint, String text) {
+    private float getTextWidth(Paint paint, String text) {
         float result = 0;
         float[] widths = new float[text.length()];
         paint.getTextWidths(text, widths);
@@ -180,7 +180,7 @@ public final class LogoView extends View {
         String bridgeBelote = getContext().getString(R.string.BridgeBelote);
         paint.getTextBounds(bridgeBelote, 0, bridgeBelote.length(), rect);
 
-        int beloteWidth = Math.round(_getAdvance(paint, bridgeBelote));
+        int beloteWidth = Math.round(getTextWidth(paint, bridgeBelote));
 
         Bitmap gradientBitmap = Bitmap.createBitmap(beloteWidth, rect.height(), Bitmap.Config.ARGB_8888);
         Canvas gradientCanvas = new Canvas(gradientBitmap);
