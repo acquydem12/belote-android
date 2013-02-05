@@ -19,8 +19,8 @@ import belote.logic.announce.factory.automat.methods.conditions.HasCard;
 import belote.logic.announce.factory.automat.methods.conditions.RankCount;
 import belote.logic.announce.factory.automat.methods.conditions.SuitCount;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
-import belote.logic.announce.factory.automat.methods.suitDeterminators.DominantSuit;
-import belote.logic.announce.factory.automat.methods.suitDeterminators.base.SuitDeterminator;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.DominantSuit;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.base.SuitDeterminant;
 
 /**
  * RegGameNagAllTrumpWhenFirstAndHasJackSuitAnnounce class. Announce factory method which creates nag all trump jack suit announce.
@@ -28,7 +28,7 @@ import belote.logic.announce.factory.automat.methods.suitDeterminators.base.Suit
  */
 public final class RegGameNagAllTrumpDealAttackHasJackSuitAnnounce extends ConditionListMethod {
 
-    private final SuitDeterminator suitDeterminator;
+    private final SuitDeterminant suitDeterminant;
 
     /**
      * Constructor.
@@ -36,9 +36,9 @@ public final class RegGameNagAllTrumpDealAttackHasJackSuitAnnounce extends Condi
      */
     public RegGameNagAllTrumpDealAttackHasJackSuitAnnounce(final Game game) {
         super(game);
-        suitDeterminator = new DominantSuit();
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 5), new HasCard(Rank.Jack, suitDeterminator), new DealAttackPlayer(game)));
-        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminator, 4), new HasCard(Rank.Jack, suitDeterminator), new DealAttackPlayer(game),
+        suitDeterminant = new DominantSuit();
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminant, 5), new HasCard(Rank.Jack, suitDeterminant), new DealAttackPlayer(game)));
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminant, 4), new HasCard(Rank.Jack, suitDeterminant), new DealAttackPlayer(game),
                 new RankCount(Rank.Jack, 2)));
     }
 

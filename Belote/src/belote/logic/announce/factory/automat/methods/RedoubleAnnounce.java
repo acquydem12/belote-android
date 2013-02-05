@@ -13,9 +13,9 @@ import belote.bean.Game;
 import belote.bean.Player;
 import belote.bean.announce.Announce;
 import belote.bean.announce.suit.AnnounceSuit;
-import belote.logic.announce.factory.adviser.AllTrumpRedoubleAdviser;
-import belote.logic.announce.factory.adviser.ColorRedoubleAdviser;
-import belote.logic.announce.factory.adviser.NotTrumpRedoubleAdviser;
+import belote.logic.announce.factory.adviser.AllTrumpsRedoubleAdviser;
+import belote.logic.announce.factory.adviser.SuitRedoubleAdviser;
+import belote.logic.announce.factory.adviser.NoTrumpsRedoubleAdviser;
 import belote.logic.announce.factory.automat.methods.base.ConditionListMethod;
 import belote.logic.announce.factory.automat.methods.conditions.OppositeTeamDoubleAnnounce;
 
@@ -28,17 +28,17 @@ public final class RedoubleAnnounce extends ConditionListMethod {
     /**
      * Not trump redouble adviser.
      */
-    private final NotTrumpRedoubleAdviser ntRedoubleAdviser;
+    private final NoTrumpsRedoubleAdviser ntRedoubleAdviser;
 
     /**
      * All trump redouble adviser.
      */
-    private final AllTrumpRedoubleAdviser atRedoubleAdviser;
+    private final AllTrumpsRedoubleAdviser atRedoubleAdviser;
 
     /**
      * Color suit redouble adviser.
      */
-    private final ColorRedoubleAdviser clRedoubleAdviser;
+    private final SuitRedoubleAdviser clRedoubleAdviser;
 
     /**
      * Constructor.
@@ -46,9 +46,9 @@ public final class RedoubleAnnounce extends ConditionListMethod {
      */
     public RedoubleAnnounce(final Game game) {
         super(game);
-        ntRedoubleAdviser = new NotTrumpRedoubleAdviser(game);
-        atRedoubleAdviser = new AllTrumpRedoubleAdviser(game);
-        clRedoubleAdviser = new ColorRedoubleAdviser(game);
+        ntRedoubleAdviser = new NoTrumpsRedoubleAdviser(game);
+        atRedoubleAdviser = new AllTrumpsRedoubleAdviser(game);
+        clRedoubleAdviser = new SuitRedoubleAdviser(game);
 
         addAnnounceCondition(new OppositeTeamDoubleAnnounce(game));
     }

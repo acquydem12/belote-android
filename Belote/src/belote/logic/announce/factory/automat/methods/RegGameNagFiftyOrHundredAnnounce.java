@@ -16,7 +16,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.bean.pack.sequence.SequenceType;
 import belote.logic.announce.factory.automat.methods.base.ConditionListMethod;
 import belote.logic.announce.factory.automat.methods.conditions.HasSuit;
-import belote.logic.announce.factory.automat.methods.suitDeterminators.SequenceSuit;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.SequenceSuit;
 
 /**
  * RegGameNagFiftyOrHundredAnnounce class. Announce factory method which creates nag color suit announce based on 50 or 100 sequence.
