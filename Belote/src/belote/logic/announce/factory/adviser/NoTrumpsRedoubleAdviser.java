@@ -17,16 +17,16 @@ import belote.logic.announce.factory.automat.methods.conditions.RankCount;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
 
 /**
- * NTRedoubleAdviser class.
+ * NoTrumpsRedoubleAdviser class.
  * @author Dimitar Karamanov
  */
-public final class NotTrumpRedoubleAdviser extends BaseRedoubleAdviser {
+public final class NoTrumpsRedoubleAdviser extends BaseRedoubleAdviser {
 
     /**
      * Constructor.
      * @param game Belote game instance
      */
-    public NotTrumpRedoubleAdviser(final Game game) {
+    public NoTrumpsRedoubleAdviser(final Game game) {
         super(game);
         // Player made last announce
         addAnnounceCondition(new MultipleAndCondition(new PlayerRegularAnnounce(game), new RankCount(Rank.Ace, 4)));

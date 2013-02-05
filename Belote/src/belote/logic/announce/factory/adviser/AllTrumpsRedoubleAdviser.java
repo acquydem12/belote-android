@@ -17,19 +17,19 @@ import belote.logic.announce.factory.automat.methods.conditions.PartnerRegularAn
 import belote.logic.announce.factory.automat.methods.conditions.PlayerRegularAnnounce;
 import belote.logic.announce.factory.automat.methods.conditions.RankCount;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
-import belote.logic.announce.factory.automat.methods.suitDeterminators.SequenceSuit;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.SequenceSuit;
 
 /**
- * ATRedoubleAdviser class.
+ * AllTrumpsRedoubleAdviser class.
  * @author Dimitar Karamanov
  */
-public final class AllTrumpRedoubleAdviser extends BaseRedoubleAdviser {
+public final class AllTrumpsRedoubleAdviser extends BaseRedoubleAdviser {
 
     /**
      * Constructor.
      * @param game Belote game instance.
      */
-    public AllTrumpRedoubleAdviser(final Game game) {
+    public AllTrumpsRedoubleAdviser(final Game game) {
         super(game);
         // Player made last announce
         addAnnounceCondition(new MultipleAndCondition(new PlayerRegularAnnounce(game), new RankCount(Rank.Jack, 4)));
