@@ -17,19 +17,19 @@ import belote.logic.announce.factory.automat.methods.conditions.HasSuit;
 import belote.logic.announce.factory.automat.methods.conditions.PartnerRegularAnnounce;
 import belote.logic.announce.factory.automat.methods.conditions.PlayerRegularAnnounce;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
-import belote.logic.announce.factory.automat.methods.suitDeterminators.SequenceSuit;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.SequenceSuit;
 
 /**
- * CLRedoubleAdviser class.
+ * SuitRedoubleAdviser class.
  * @author Dimitar Karamanov
  */
-public final class ColorRedoubleAdviser extends BaseRedoubleAdviser {
+public final class SuitRedoubleAdviser extends BaseRedoubleAdviser {
 
     /**
      * Constructor.
      * @param game Belote game instance.
      */
-    public ColorRedoubleAdviser(final Game game) {
+    public SuitRedoubleAdviser(final Game game) {
         super(game);
         // Player made last announce
         addAnnounceCondition(new MultipleAndCondition(new PlayerRegularAnnounce(game), new HasSuit(new SequenceSuit(SequenceType.Quint, Rank.Ace))));
