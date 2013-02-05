@@ -21,8 +21,6 @@ public final class TricksActivity extends Activity {
 
     public final static String BELOTE = "BELOTE";
 
-    private Game game;
-
     public TricksActivity() {
         super();
     }
@@ -38,7 +36,7 @@ public final class TricksActivity extends Activity {
             if (bundle != null) {
                 Serializable data = bundle.getSerializable(BELOTE);
                 if (data instanceof Game) {
-                    game = (Game) data;
+                    Game game = (Game) data;
 
                     ScrollView scroll = new ScrollView(this);
 
@@ -49,11 +47,11 @@ public final class TricksActivity extends Activity {
 
                     for (TrickListIterator i = tricks.iterator(); i.hasNext();) {
                         Trick trick = i.next();
-                        TrickView tv = new TrickView(this, trick, game);
-                        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-                        lp.gravity = Gravity.CENTER_HORIZONTAL;
-                        tv.setLayoutParams(lp);
-                        vertical.addView(tv);
+                        TrickView trickView = new TrickView(this, trick, game);
+                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                        params.gravity = Gravity.CENTER_HORIZONTAL;
+                        trickView.setLayoutParams(params);
+                        vertical.addView(trickView);
                     }
 
                     scroll.addView(vertical);
