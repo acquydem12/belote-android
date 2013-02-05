@@ -18,8 +18,8 @@ import belote.logic.announce.factory.automat.methods.base.ConditionListMethod;
 import belote.logic.announce.factory.automat.methods.conditions.HasSuit;
 import belote.logic.announce.factory.automat.methods.conditions.RankCount;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
-import belote.logic.announce.factory.automat.methods.suitDeterminators.JackNineSuit;
-import belote.logic.announce.factory.automat.methods.suitDeterminators.base.SuitDeterminator;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.JackNineSuit;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.base.SuitDeterminant;
 
 /**
  * RegGameNormalJackNineSuitAnnounce class. Announce factory method which creates suit announce based on jack nine suit.
@@ -27,7 +27,7 @@ import belote.logic.announce.factory.automat.methods.suitDeterminators.base.Suit
  */
 public final class RegGameNormalJackNineSuitAnnounce extends ConditionListMethod {
 
-    private final SuitDeterminator suitDeterminator;
+    private final SuitDeterminant suitDeterminant;
 
     /**
      * Constructor.
@@ -35,9 +35,9 @@ public final class RegGameNormalJackNineSuitAnnounce extends ConditionListMethod
      */
     public RegGameNormalJackNineSuitAnnounce(final Game game) {
         super(game);
-        suitDeterminator = new JackNineSuit();
-        addAnnounceCondition(new MultipleAndCondition(new HasSuit(suitDeterminator), new RankCount(Rank.Ace, 2)));
-        addAnnounceCondition(new MultipleAndCondition(new HasSuit(suitDeterminator), new RankCount(Rank.Ace, 1), new RankCount(Rank.Ten, 1)));
+        suitDeterminant = new JackNineSuit();
+        addAnnounceCondition(new MultipleAndCondition(new HasSuit(suitDeterminant), new RankCount(Rank.Ace, 2)));
+        addAnnounceCondition(new MultipleAndCondition(new HasSuit(suitDeterminant), new RankCount(Rank.Ace, 1), new RankCount(Rank.Ten, 1)));
     }
 
     /**
@@ -46,7 +46,7 @@ public final class RegGameNormalJackNineSuitAnnounce extends ConditionListMethod
      * @return an Announce instance.
      */
     protected Announce createAnnounce(Player player) {
-        final Suit suit = suitDeterminator.determineSuit(player);
+        final Suit suit = suitDeterminant.determineSuit(player);
         return Announce.createSuitNormalAnnounce(player, suit);
     }
 }

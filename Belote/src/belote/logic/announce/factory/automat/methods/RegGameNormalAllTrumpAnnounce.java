@@ -24,8 +24,8 @@ import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCon
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleOrCondition;
 import belote.logic.announce.factory.automat.methods.conditions.base.NotCondition;
-import belote.logic.announce.factory.automat.methods.suitDeterminators.JackNineSuit;
-import belote.logic.announce.factory.automat.methods.suitDeterminators.SequenceSuit;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.JackNineSuit;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.SequenceSuit;
 
 /**
  * RegGameNormalAllTrumpAnnounce class. Announce factory method which creates all trump announce.
