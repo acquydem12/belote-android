@@ -11,7 +11,7 @@ package belote.logic.announce.factory.automat.methods.conditions;
 
 import belote.bean.Player;
 import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCondition;
-import belote.logic.announce.factory.automat.methods.suitDeterminators.base.SuitDeterminator;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.base.SuitDeterminant;
 
 /**
  * PlayerSuit class. Returns true if the announce player has card from provided suit.
@@ -20,16 +20,16 @@ import belote.logic.announce.factory.automat.methods.suitDeterminators.base.Suit
 public final class HasSuit implements AnnounceCondition {
 
     /**
-     * SuitDeterminator which dynamically by provided player determines the suit.
+     * Suit determinant which dynamically by provided player determines the suit.
      */
-    private final SuitDeterminator suitDeterminator;
+    private final SuitDeterminant suitDeterminant;
 
     /**
      * Constructor.
-     * @param suitDeterminator used to determine the suit.
+     * @param suitDeterminant used to determine the suit.
      */
-    public HasSuit(final SuitDeterminator suitDeterminator) {
-        this.suitDeterminator = suitDeterminator;
+    public HasSuit(final SuitDeterminant suitDeterminant) {
+        this.suitDeterminant = suitDeterminant;
     }
 
     /**
@@ -38,6 +38,6 @@ public final class HasSuit implements AnnounceCondition {
      * @return boolean true if the condition fits, false otherwise.
      */
     public boolean process(final Player player) {
-        return suitDeterminator.determineSuit(player) != null;
+        return suitDeterminant.determineSuit(player) != null;
     }
 }
