@@ -7,7 +7,7 @@
  *
  * This software is provided "AS IS," without a warranty of any kind.
  */
-package belote.logic.announce.factory.automat.methods.conditions;
+package belote.logic.announce.factory.automat.methods.conditions.base;
 
 import belote.bean.Game;
 import belote.bean.Player;
@@ -19,7 +19,6 @@ import belote.bean.pack.sequence.SequenceType;
 import belote.bean.pack.square.Square;
 import belote.bean.pack.square.SquareIterator;
 import belote.bean.pack.square.SquareList;
-import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCondition;
 
 /**
  * BaseTeamCanAnnounce class.
