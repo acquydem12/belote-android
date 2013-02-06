@@ -15,7 +15,7 @@ import belote.bean.Player;
  * NotCondition class. NotCondition is an complicated condition which reverts the result of other announce condition.
  * @author Dimitar Karamanov
  */
-public class NotCondition implements AnnounceCondition {
+public final class NotCondition implements AnnounceCondition {
 
     private final AnnounceCondition condition;
 
