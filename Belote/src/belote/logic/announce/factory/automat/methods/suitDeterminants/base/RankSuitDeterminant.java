@@ -37,5 +37,4 @@ public abstract class RankSuitDeterminant implements SuitDeterminant {
         }
         return true;
     }
-
 }
