@@ -10,6 +10,7 @@
 package belote.logic.announce.factory.automat.methods.conditions;
 
 import belote.bean.Game;
+import belote.logic.announce.factory.automat.methods.conditions.base.BaseTeamCanAnnounce;
 
 /**
  * TeamCanAnnounce class.
