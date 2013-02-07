@@ -16,9 +16,10 @@ package belote.bean.announce.type;
 public final class Redouble extends AnnounceType {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = 8761962864858525925L;
+    
     /**
      * Unique object id.
      */
