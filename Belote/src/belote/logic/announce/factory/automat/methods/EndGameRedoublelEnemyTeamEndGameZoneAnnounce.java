@@ -12,8 +12,7 @@ import belote.logic.announce.factory.automat.methods.base.ConditionListMethod;
 import belote.logic.announce.factory.automat.methods.conditions.OppositeTeamEndGameZone;
 
 /**
- * 
- * @author dkaramanov
+ * @author Dimitar Karamanov
  */
 public class EndGameRedoublelEnemyTeamEndGameZoneAnnounce extends ConditionListMethod {
 

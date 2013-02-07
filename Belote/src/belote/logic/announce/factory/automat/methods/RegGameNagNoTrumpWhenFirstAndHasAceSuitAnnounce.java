@@ -14,26 +14,27 @@ import belote.bean.Player;
 import belote.bean.announce.Announce;
 import belote.bean.pack.card.rank.Rank;
 import belote.logic.announce.factory.automat.methods.base.ConditionListMethod;
-import belote.logic.announce.factory.automat.methods.conditions.RankCount;
-import belote.logic.announce.factory.automat.methods.conditions.TeamAttack;
-import belote.logic.announce.factory.automat.methods.conditions.TeamDefence;
+import belote.logic.announce.factory.automat.methods.conditions.DealAttackPlayer;
+import belote.logic.announce.factory.automat.methods.conditions.HasCard;
+import belote.logic.announce.factory.automat.methods.conditions.SuitCount;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.DominantSuit;
+import belote.logic.announce.factory.automat.methods.suitDeterminants.base.SuitDeterminant;
 
 /**
- * EndGameOpenNotTrumpAnnounce class. Announce factory method which creates normal not trump announce.
+ * RegGameNagNotTrumpWhenFirstAndHasAceSuitAnnounce class. Announce factory method which creates nag NT announce on ace suit and player is attack one.
  * @author Dimitar Karamanov
  */
-public final class EndGameOpenNotTrumpAnnounce extends ConditionListMethod {
+public final class RegGameNagNoTrumpWhenFirstAndHasAceSuitAnnounce extends ConditionListMethod {
 
     /**
      * Constructor.
      * @param game BelotGame instance class.
      */
-    public EndGameOpenNotTrumpAnnounce(final Game game) {
+    public RegGameNagNoTrumpWhenFirstAndHasAceSuitAnnounce(final Game game) {
         super(game);
-        addAnnounceCondition(new RankCount(Rank.Ace, 4));
-        addAnnounceCondition(new MultipleAndCondition(new TeamAttack(game), new RankCount(Rank.Ace, 3), new RankCount(Rank.Ten, 1)));
-        addAnnounceCondition(new MultipleAndCondition(new TeamDefence(game), new RankCount(Rank.Ace, 3), new RankCount(Rank.Ten, 1)));
+        final SuitDeterminant suitDeterminant = new DominantSuit();
+        addAnnounceCondition(new MultipleAndCondition(new SuitCount(suitDeterminant, 5), new HasCard(Rank.Ace, suitDeterminant), new DealAttackPlayer(game)));
     }
 
     /**
