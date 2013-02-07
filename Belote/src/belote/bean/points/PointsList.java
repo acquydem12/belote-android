@@ -20,9 +20,10 @@ import java.util.Iterator;
 public final class PointsList implements Serializable {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = 8379973340881747881L;
+    
     /**
      * Internal container object.
      */

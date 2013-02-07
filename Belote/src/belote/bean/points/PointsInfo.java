@@ -18,7 +18,7 @@ import java.io.Serializable;
 public final class PointsInfo implements Serializable {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = -6993520653948056582L;
 
