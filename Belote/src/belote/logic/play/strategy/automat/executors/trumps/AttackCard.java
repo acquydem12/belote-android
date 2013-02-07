@@ -20,7 +20,7 @@ import belote.logic.play.strategy.automat.methods.trumps.attackCard.TrumpToPartn
 import belote.logic.play.strategy.automat.methods.trumps.attackCard.TeamSuitCard;
 
 /**
- * ColorAttackCard executor. Used in ColorPlayStategy getAttackCard().
+ * AttackCard executor. Used in TrumpPlayStategy getAttackCard().
  * @author Dimitar Karamanov
  */
 public final class AttackCard extends PlayCardExecutor {

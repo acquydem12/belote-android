@@ -21,7 +21,7 @@ import belote.logic.play.strategy.automat.methods.trumps.trumpAttack.MinAboveCar
 import belote.logic.play.strategy.automat.methods.trumps.trumpAttack.MinTrumpCard;
 
 /**
- * ColorSuitCard executor. Implements the obligatory rules for defense player when the attack card is from trump suit. Used in ColorDefenceCard executor.
+ * DefenceTrumpAttackCard executor. Implements the obligatory rules for defense player when the attack card is from trump suit. Used in TrumpDefenceCard executor.
  * @author Dimitar Karamanov
  */
 public final class DefenceTrumpAttackCard extends PlayCardExecutor {
@@ -33,7 +33,7 @@ public final class DefenceTrumpAttackCard extends PlayCardExecutor {
      */
     protected boolean fitPreCondition(final Player player) {
         final Announce announce = game.getAnnounceList().getContractAnnounce();
-        if (announce != null && announce.isColorAnnounce()) {
+        if (announce != null && announce.isTrumpAnnounce()) {
             final Suit trump = AnnounceUnit.transformFromAnnounceSuitToSuit(announce.getAnnounceSuit());
             final Card attackCard = game.getTrickCards().getAttackCard();
             return attackCard != null && trump != null && attackCard.getSuit().equals(trump);

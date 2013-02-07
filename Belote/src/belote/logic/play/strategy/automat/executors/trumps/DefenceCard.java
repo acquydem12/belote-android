@@ -13,7 +13,7 @@ import belote.bean.Game;
 import belote.logic.play.strategy.automat.base.executor.PlayCardExecutor;
 
 /**
- * ColorDefenceCard executor. Used in ColorPlayStategy getXXXDefencePositionCard().
+ * DefenceCard executor. Used in TrumpPlayStategy getXXXDefencePositionCard().
  * @author Dimitar Karamanov
  */
 public final class DefenceCard extends PlayCardExecutor {

@@ -22,7 +22,7 @@ import belote.logic.play.strategy.automat.methods.trumps.obligatoryTrump.Standar
 import belote.logic.play.strategy.automat.methods.trumps.obligatoryTrump.ThirdDefencePositionTrumpCard;
 
 /**
- * ColorNoTrumpAttackObligatoryFirstRuffCardExecutor executor. Implements the obligatory rules for defense player to play obligatory trump card in a color game.
+ * NoTrumpAttackObligatoryFirstRuffCardExecutor executor. Implements the obligatory rules for defense player to play obligatory trump card in a color game.
  * @author Dimitar Karamanov
  */
 public final class NoTrumpAttackObligatoryFirstRuffCardExecutor extends PlayCardExecutor {
@@ -48,7 +48,7 @@ public final class NoTrumpAttackObligatoryFirstRuffCardExecutor extends PlayCard
     protected boolean fitPreCondition(final Player player) {
         boolean result = false;
         final Announce announce = game.getAnnounceList().getContractAnnounce();
-        if (announce != null && announce.isColorAnnounce()) {
+        if (announce != null && announce.isTrumpAnnounce()) {
             final Suit trump = AnnounceUnit.transformFromAnnounceSuitToSuit(announce.getAnnounceSuit());
             final Card someTrumpCard = game.getTrickCards().findMaxSuitCard(trump);
             final Card bestAttackCard = game.getTrickCards().getHandAttackSuitCard();
