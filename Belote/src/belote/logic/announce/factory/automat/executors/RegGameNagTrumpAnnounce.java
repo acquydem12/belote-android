@@ -15,16 +15,16 @@ import belote.logic.announce.factory.automat.methods.RegGameNagFiftyOrHundredAnn
 import belote.logic.announce.factory.automat.methods.RegGameNagTerzaAnnounce;
 
 /**
- * RegGameNagColorAnnounce class.
+ * RegGameNagTrumpAnnounce class.
  * @author Dimitar Karamanov
  */
-public final class RegGameNagColorAnnounce extends AnnounceExecutor {
+public final class RegGameNagTrumpAnnounce extends AnnounceExecutor {
 
     /**
      * Constructor.
      * @param game BelotGame instance class.
      */
-    public RegGameNagColorAnnounce(final Game game) {
+    public RegGameNagTrumpAnnounce(final Game game) {
         super(game);
 
         register(new RegGameNagFiftyOrHundredAnnounce(game));

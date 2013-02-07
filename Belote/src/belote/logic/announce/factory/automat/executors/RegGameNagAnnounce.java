@@ -14,8 +14,8 @@ import belote.logic.announce.factory.automat.executors.base.AnnounceExecutor;
 import belote.logic.announce.factory.automat.methods.RegGameNagAllTrumpAnnounce;
 import belote.logic.announce.factory.automat.methods.RegGameNagAllTrumpDealAttackHasJackSuitAnnounce;
 import belote.logic.announce.factory.automat.methods.RegGameNagAllTrumpDealAttackHasSequenceAnnounce;
-import belote.logic.announce.factory.automat.methods.RegGameNagNotTrumpAnnounce;
-import belote.logic.announce.factory.automat.methods.RegGameNagNotTrumpWhenFirstAndHasAceSuitAnnounce;
+import belote.logic.announce.factory.automat.methods.RegGameNagNoTrumpAnnounce;
+import belote.logic.announce.factory.automat.methods.RegGameNagNoTrumpWhenFirstAndHasAceSuitAnnounce;
 import belote.logic.announce.factory.automat.methods.conditions.OppositeTeamNormalAnnounce;
 
 /**
@@ -36,8 +36,8 @@ public final class RegGameNagAnnounce extends AnnounceExecutor {
         register(new RegGameNagAllTrumpDealAttackHasSequenceAnnounce(game));
         register(new RegGameNagAllTrumpDealAttackHasJackSuitAnnounce(game));
         register(new RegGameNagAllTrumpAnnounce(game));
-        register(new RegGameNagNotTrumpAnnounce(game));
-        register(new RegGameNagNotTrumpWhenFirstAndHasAceSuitAnnounce(game));
-        register(new RegGameNagColorAnnounce(game));
+        register(new RegGameNagNoTrumpAnnounce(game));
+        register(new RegGameNagNoTrumpWhenFirstAndHasAceSuitAnnounce(game));
+        register(new RegGameNagTrumpAnnounce(game));
     }
 }

@@ -13,16 +13,15 @@ import belote.bean.Game;
 import belote.bean.Player;
 import belote.bean.announce.Announce;
 import belote.logic.announce.factory.automat.executors.base.AnnounceExecutor;
-import belote.logic.announce.factory.automat.methods.RegGameSupportFiftyOrHundredAnnounce;
-import belote.logic.announce.factory.automat.methods.RegGameSupportTerzaAnnounce;
+import belote.logic.announce.factory.automat.methods.EndGameSupportFiftyOrHundredAnnounce;
 import belote.logic.announce.factory.transformers.AnnounceTransformer;
 import belote.logic.announce.factory.transformers.SuitToAllTrumpAnnounce;
 
 /**
- * RegGameSupportColorAnnounce class.
+ * EndGameSupportTrumpAnnounce class.
  * @author Dimitar Karamanov
  */
-public final class RegGameSupportColorAnnounce extends AnnounceExecutor {
+public final class EndGameSupportTrumpAnnounce extends AnnounceExecutor {
 
     private final AnnounceTransformer suitToAllTrumpAnnounce;
 
@@ -30,14 +29,13 @@ public final class RegGameSupportColorAnnounce extends AnnounceExecutor {
      * Constructor.
      * @param game BelotGame instance class.
      */
-    public RegGameSupportColorAnnounce(final Game game) {
+    public EndGameSupportTrumpAnnounce(final Game game) {
         super(game);
 
         suitToAllTrumpAnnounce = new SuitToAllTrumpAnnounce(game);
 
-        register(new RegGameSupportFiftyOrHundredAnnounce(game));
-        register(new RegGameSupportTerzaAnnounce(game));
-        register(new RegGameSupportSimpleAnnounce(game));
+        register(new EndGameSupportFiftyOrHundredAnnounce(game));
+        register(new EndGameSupportSimpleAnnounce(game));
     }
 
     /**

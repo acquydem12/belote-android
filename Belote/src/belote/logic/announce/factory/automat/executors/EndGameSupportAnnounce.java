@@ -14,7 +14,7 @@ import belote.logic.announce.factory.automat.executors.base.AnnounceExecutor;
 import belote.logic.announce.factory.automat.methods.EndGameSupportAllTrumpAnnounce;
 import belote.logic.announce.factory.automat.methods.EndGameSupportNoTrumpAnnounce;
 import belote.logic.announce.factory.automat.methods.conditions.OppositeTeamEndGameZone;
-import belote.logic.announce.factory.automat.methods.conditions.PartnerNormalSuitAnnounce;
+import belote.logic.announce.factory.automat.methods.conditions.PartnerNormalTrumpAnnounce;
 import belote.logic.announce.factory.automat.methods.conditions.PlayerTeamEndGameZone;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleOrCondition;
 
@@ -32,9 +32,9 @@ public final class EndGameSupportAnnounce extends AnnounceExecutor {
         super(game);
         // Pre conditions
         addPreCondition(new MultipleOrCondition(new OppositeTeamEndGameZone(game), new PlayerTeamEndGameZone()));
-        addPreCondition(new PartnerNormalSuitAnnounce(game));
+        addPreCondition(new PartnerNormalTrumpAnnounce(game));
         // Methods
-        register(new EndGameSupportColorAnnounce(game));
+        register(new EndGameSupportTrumpAnnounce(game));
         register(new EndGameSupportAllTrumpAnnounce(game));
         register(new EndGameSupportNoTrumpAnnounce(game));
     }
