@@ -93,8 +93,8 @@ public final class Announce implements Serializable {
      * Returns if announce suit is from color announce suit (Club, Diamond, Heart and Spade) or not.
      * @return boolean true if announce suit is color false otherwise.
      */
-    public boolean isColorAnnounce() {
-        return suit.isColorSuit();
+    public boolean isTrumpAnnounce() {
+        return suit.isTrumpSuit();
     }
 
     /**
