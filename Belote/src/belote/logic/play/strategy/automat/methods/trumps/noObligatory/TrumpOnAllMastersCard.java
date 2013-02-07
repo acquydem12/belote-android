@@ -16,7 +16,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.base.method.BaseTrumpMethod;
 
 /**
- * ColorNoObligatoryAllMastersTrumpCard class. PlayCardMethod which implements the logic of playing a card when the player or his partner are trump keeper and
+ * TrumpOnAllMastersCard class. PlayCardMethod which implements the logic of playing a card when the player or his partner are trump keeper and
  * all his cards are master cards - play trump card and get all other hands.
  * @author Dimitar Karamanov
  */
