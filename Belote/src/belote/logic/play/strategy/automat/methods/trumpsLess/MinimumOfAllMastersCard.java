@@ -17,7 +17,7 @@ import belote.logic.play.strategy.automat.base.method.BaseMethod;
 import belote.logic.play.strategy.automat.methods.MinMeterSuitCard;
 
 /**
- * ColorlessMinAllMasterCards class. PlayCardMethod which implements the logic of playing the minimum by rank card when all cards are master.
+ * MinimumOfAllMastersCard class. PlayCardMethod which implements the logic of playing the minimum by rank card when all cards are master.
  * @author Dimitar Karamanov.
  */
 public final class MinimumOfAllMastersCard extends BaseMethod {

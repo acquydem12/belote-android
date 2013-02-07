@@ -17,7 +17,7 @@ import belote.bean.pack.card.suit.SuitIterator;
 import belote.logic.play.strategy.automat.base.method.BaseMethod;
 
 /**
- * ColorlessHandCard class. PlayCardMethod which implements the logic of playing a hand card in a not color game.
+ * HandCard class. PlayCardMethod which implements the logic of playing a hand card in a not color game.
  * @author Dimitar Karamanov.
  */
 public final class HandCard extends BaseMethod {

@@ -18,7 +18,7 @@ import belote.bean.pack.card.suit.SuitIterator;
 import belote.logic.play.strategy.automat.base.method.BaseMethod;
 
 /**
- * ColorlessClearCard class. PlayCardMethod which implements the logic of playing a "clear" card in not color game.
+ * ClearCard class. PlayCardMethod which implements the logic of playing a "clear" card in not color game.
  * @author Dimitar Karamanov
  */
 public final class ClearCard extends BaseMethod {
