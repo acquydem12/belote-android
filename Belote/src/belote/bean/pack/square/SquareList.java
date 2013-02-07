@@ -20,9 +20,10 @@ import java.util.Iterator;
 public final class SquareList implements Serializable {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = 2716681164194070603L;
+    
     /**
      * Internal container collection.
      */
