@@ -19,7 +19,7 @@ import belote.bean.pack.card.Card;
 public final class Sequence extends ComparableObject {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = -2337961220980036566L;
 
