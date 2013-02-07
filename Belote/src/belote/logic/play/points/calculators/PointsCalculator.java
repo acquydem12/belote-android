@@ -109,7 +109,7 @@ public abstract class PointsCalculator {
     }
 
     /**
-     * Calculates team points for Color or AT game.
+     * Calculates team points for Trump or AT game.
      * @param team for which the points will be calculated.
      */
     protected final void calculateTrumpTeamPoints(Team team) {
