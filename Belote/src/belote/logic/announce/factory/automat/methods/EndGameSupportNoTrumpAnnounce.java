@@ -23,13 +23,13 @@ import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAnd
  * EndGameSupportNotTrumpAnnounce class. Announce factory method which creates not trump support announce.
  * @author Dimitar Karamanov
  */
-public final class EndGameSupportNotTrumpAnnounce extends ConditionListMethod {
+public final class EndGameSupportNoTrumpAnnounce extends ConditionListMethod {
 
     /**
      * Constructor.
      * @param game BelotGame instance class.
      */
-    public EndGameSupportNotTrumpAnnounce(final Game game) {
+    public EndGameSupportNoTrumpAnnounce(final Game game) {
         super(game);
         addAnnounceCondition(new MultipleAndCondition(new TeamAttack(game), new RankCount(Rank.Ace, 3)));
         addAnnounceCondition(new MultipleAndCondition(new TeamAttack(game), new RankCount(Rank.Ace, 2), new RankCount(Rank.Ten, 1)));

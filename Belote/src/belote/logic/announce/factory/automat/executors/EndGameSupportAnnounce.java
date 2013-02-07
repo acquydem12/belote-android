@@ -12,7 +12,7 @@ package belote.logic.announce.factory.automat.executors;
 import belote.bean.Game;
 import belote.logic.announce.factory.automat.executors.base.AnnounceExecutor;
 import belote.logic.announce.factory.automat.methods.EndGameSupportAllTrumpAnnounce;
-import belote.logic.announce.factory.automat.methods.EndGameSupportNotTrumpAnnounce;
+import belote.logic.announce.factory.automat.methods.EndGameSupportNoTrumpAnnounce;
 import belote.logic.announce.factory.automat.methods.conditions.OppositeTeamEndGameZone;
 import belote.logic.announce.factory.automat.methods.conditions.PartnerNormalSuitAnnounce;
 import belote.logic.announce.factory.automat.methods.conditions.PlayerTeamEndGameZone;
@@ -36,6 +36,6 @@ public final class EndGameSupportAnnounce extends AnnounceExecutor {
         // Methods
         register(new EndGameSupportColorAnnounce(game));
         register(new EndGameSupportAllTrumpAnnounce(game));
-        register(new EndGameSupportNotTrumpAnnounce(game));
+        register(new EndGameSupportNoTrumpAnnounce(game));
     }
 }
