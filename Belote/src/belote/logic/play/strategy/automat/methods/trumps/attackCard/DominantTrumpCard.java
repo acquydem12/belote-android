@@ -17,7 +17,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.base.method.BaseTrumpMethod;
 
 /**
- * ColorDominantTrumpCard class. PlayCardMethod which implements the logic of playing a dominant card trump suit in color game.
+ * DominantTrumpCard class. PlayCardMethod which implements the logic of playing a dominant card trump suit in color game.
  * @author Dimitar Karamanov
  */
 public final class DominantTrumpCard extends BaseTrumpMethod {

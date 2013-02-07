@@ -18,7 +18,7 @@ import belote.bean.pack.card.suit.SuitIterator;
 import belote.logic.play.strategy.automat.base.method.BaseTrumpMethod;
 
 /**
- * ColorTeamSuitPartnerCard class. PlayCardMethod which implements the logic of playing the minimum card from the first found partner team suit in a color game
+ * TeamSuitCard class. PlayCardMethod which implements the logic of playing the minimum card from the first found partner team suit in a color game
  * mode.
  * @author Dimitar Karamanov
  */
