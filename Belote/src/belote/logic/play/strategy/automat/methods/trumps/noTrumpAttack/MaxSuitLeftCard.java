@@ -16,7 +16,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.base.method.BaseTrumpMethod;
 
 /**
- * ColorNoTrumpAttackMaxSuitLeftCard class. PlayCardMethod which implements the logic of playing the max left suit card in defence of color game.
+ * MaxSuitLeftCard class. PlayCardMethod which implements the logic of playing the max left suit card in defence of color game.
  * @author Dimitar Karamanov
  */
 public final class MaxSuitLeftCard extends BaseTrumpMethod {
