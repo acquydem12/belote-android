@@ -17,7 +17,7 @@ import belote.bean.pack.card.suit.SuitIterator;
 import belote.logic.play.strategy.automat.base.method.BaseTrumpMethod;
 
 /**
- * ColorNoTrumpHandCard class. PlayCardMethod which implements the logic of playing a not trump hand card in a color game.
+ * NoTrumpHandCard class. PlayCardMethod which implements the logic of playing a not trump hand card in a color game.
  * @author Dimitar Karamanov
  */
 public final class NoTrumpHandCard extends BaseTrumpMethod {

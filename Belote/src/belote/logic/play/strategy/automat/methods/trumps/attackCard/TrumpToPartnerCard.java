@@ -18,7 +18,7 @@ import belote.bean.trick.TrickListIterator;
 import belote.logic.play.strategy.automat.base.method.BaseTrumpMethod;
 
 /**
- * ColorPartnerTrumpCard class. PlayCardMethod which implements the logic of playing a trump card if the partner declared the color game.
+ * TrumpToPartnerCard class. PlayCardMethod which implements the logic of playing a trump card if the partner declared the color game.
  * @author Dimitar Karamanov
  */
 public final class TrumpToPartnerCard extends BaseTrumpMethod {
