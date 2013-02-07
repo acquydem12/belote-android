@@ -15,7 +15,7 @@ import belote.bean.pack.card.rank.Rank;
  * Not trump rank comparator.
  * @author Dimitar Karamanov
  */
-public final class NoTrumpRankComparator extends RankComparator {
+public final class NotTrumpRankComparator extends RankComparator {
 
     /**
 	 * 
@@ -25,7 +25,7 @@ public final class NoTrumpRankComparator extends RankComparator {
     /**
      * Constructor.
      */
-    protected NoTrumpRankComparator() {
+    protected NotTrumpRankComparator() {
         super();
     }
 
