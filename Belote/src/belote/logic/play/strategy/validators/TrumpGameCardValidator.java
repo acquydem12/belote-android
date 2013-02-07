@@ -17,16 +17,16 @@ import belote.bean.pack.card.Card;
 import belote.bean.pack.card.suit.Suit;
 
 /**
- * ColorGameCardValidator class.
+ * TrumpGameCardValidator class.
  * @author Dimitar Karamanov
  */
-public class ColorGameCardValidator extends BaseCardValidator {
+public class TrumpGameCardValidator extends BaseCardValidator {
 
     /**
      * Constructor.
      * @param game BelotGame instance.
      */
-    public ColorGameCardValidator(final Game game) {
+    public TrumpGameCardValidator(final Game game) {
         super(game);
     }
 
