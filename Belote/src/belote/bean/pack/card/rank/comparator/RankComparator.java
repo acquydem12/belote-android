@@ -32,7 +32,7 @@ public abstract class RankComparator implements Serializable {
     /**
      * Not trump comparator.
      */
-    public final static RankComparator ntComparator = new NotTrumpRankComparator();
+    public final static RankComparator ntComparator = new NoTrumpRankComparator();
 
     /**
      * Standard comparator.
