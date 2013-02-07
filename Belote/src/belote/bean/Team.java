@@ -33,7 +33,7 @@ import belote.bean.points.PointsList;
 public final class Team implements Serializable {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = 3269463892642834632L;
 
