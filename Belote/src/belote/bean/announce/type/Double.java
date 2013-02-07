@@ -16,9 +16,10 @@ package belote.bean.announce.type;
 public final class Double extends AnnounceType {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = -8731377557781368653L;
+    
     /**
      * Unique object id.
      */

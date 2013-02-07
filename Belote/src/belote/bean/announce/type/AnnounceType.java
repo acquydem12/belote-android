@@ -18,7 +18,7 @@ import belote.base.ComparableObject;
 public abstract class AnnounceType extends ComparableObject {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = -1500662241487451693L;
 
