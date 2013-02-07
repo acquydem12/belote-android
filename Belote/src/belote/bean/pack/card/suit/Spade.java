@@ -16,9 +16,10 @@ package belote.bean.pack.card.suit;
 public final class Spade extends Suit {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = 3200954318160833662L;
+    
     /**
      * Spade ID constant.
      */

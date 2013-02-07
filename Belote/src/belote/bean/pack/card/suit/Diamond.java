@@ -16,9 +16,10 @@ package belote.bean.pack.card.suit;
 public final class Diamond extends Suit {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = -1654169925121692794L;
+    
     /**
      * Diamond ID constant.
      */

@@ -16,9 +16,10 @@ package belote.bean.pack.card.suit;
 public final class Club extends Suit {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = -2588635664982772738L;
+    
     /**
      * Club ID constant.
      */
