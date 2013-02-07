@@ -19,9 +19,10 @@ import belote.bean.pack.card.rank.Rank;
 public final class Square extends ComparableObject {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = -3899337028903726108L;
+    
     /**
      * Square's rank.
      */
