@@ -20,7 +20,7 @@ import belote.bean.pack.card.rank.Rank;
 public abstract class CardComparableMode implements Serializable {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = -5914095706786960457L;
 
