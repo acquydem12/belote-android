@@ -18,7 +18,7 @@ import belote.logic.play.strategy.automat.base.method.BaseTrumpMethod;
 import belote.logic.play.strategy.automat.methods.MinMeterSuitCard;
 
 /**
- * ColorMinAllMasterCards class. PlayCardMethod which implements the logic of playing when all user's cards are master's in a color game.
+ * MinimumOfAllMastersCards class. PlayCardMethod which implements the logic of playing when all user's cards are master's in a color game.
  * @author Dimitar Karamanov
  */
 public final class MinimumOfAllMastersCards extends BaseTrumpMethod {

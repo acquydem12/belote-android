@@ -18,7 +18,7 @@ import belote.bean.pack.card.suit.SuitIterator;
 import belote.logic.play.strategy.automat.base.method.BaseTrumpMethod;
 
 /**
- * ColorNeedlessClearSingleSuitCard class. PlayCardMethod which implements the logic of playing an no needed single suit card.
+ * ClearSingleSuitCard class. PlayCardMethod which implements the logic of playing an no needed single suit card.
  * @author Dimitar Karmaanov.
  */
 public final class ClearSingleSuitCard extends BaseTrumpMethod {

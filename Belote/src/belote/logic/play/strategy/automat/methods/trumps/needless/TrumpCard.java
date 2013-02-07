@@ -16,7 +16,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.base.method.BaseTrumpMethod;
 
 /**
- * ColorNeedlessTrumpCard class. PlayCardMethod which implements the logic of playing a trump card when there is not what other to play.
+ * TrumpCard class. PlayCardMethod which implements the logic of playing a trump card when there is not what other to play.
  * @author Dimitar Karamanov.
  */
 public final class TrumpCard extends BaseTrumpMethod {
