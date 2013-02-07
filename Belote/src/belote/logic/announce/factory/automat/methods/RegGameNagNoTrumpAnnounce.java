@@ -14,30 +14,25 @@ import belote.bean.Player;
 import belote.bean.announce.Announce;
 import belote.bean.pack.card.rank.Rank;
 import belote.logic.announce.factory.automat.methods.base.ConditionListMethod;
-import belote.logic.announce.factory.automat.methods.conditions.HasSuit;
+import belote.logic.announce.factory.automat.methods.conditions.PartnerSuitAnnounce;
 import belote.logic.announce.factory.automat.methods.conditions.RankCount;
-import belote.logic.announce.factory.automat.methods.conditions.TeamAttack;
-import belote.logic.announce.factory.automat.methods.conditions.TeamDefence;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
-import belote.logic.announce.factory.automat.methods.suitDeterminants.AceTenKingSuit;
 
 /**
- * RegGameSupportNotTrumpAnnounce class. Announce factory method which creates support not trump announce.
+ * RegGameNagNotTrumpAnnounce class. Announce factory method which creates nag not trump announce.
  * @author Dimitar Karamanov
  */
-public final class RegGameSupportNotTrumpAnnounce extends ConditionListMethod {
+public final class RegGameNagNoTrumpAnnounce extends ConditionListMethod {
 
     /**
      * Constructor.
      * @param game BelotGame instance class.
      */
-    public RegGameSupportNotTrumpAnnounce(final Game game) {
+    public RegGameNagNoTrumpAnnounce(final Game game) {
         super(game);
-        addAnnounceCondition(new MultipleAndCondition(new TeamAttack(game), new RankCount(Rank.Ace, 3)));
-        addAnnounceCondition(new MultipleAndCondition(new TeamAttack(game), new RankCount(Rank.Ace, 2), new RankCount(Rank.Ten, 1)));
-        addAnnounceCondition(new MultipleAndCondition(new TeamDefence(game), new RankCount(Rank.Ace, 3)));
-        addAnnounceCondition(new MultipleAndCondition(new TeamDefence(game), new RankCount(Rank.Ace, 2), new RankCount(Rank.Ten, 2)));
-        addAnnounceCondition(new MultipleAndCondition(new TeamDefence(game), new RankCount(Rank.Ace, 2), new HasSuit(new AceTenKingSuit())));
+        addAnnounceCondition(new MultipleAndCondition(new RankCount(Rank.Ace, 2), new PartnerSuitAnnounce(game)));
+        addAnnounceCondition(new RankCount(Rank.Ace, 3));
+        addAnnounceCondition(new MultipleAndCondition(new RankCount(Rank.Ace, 2), new RankCount(Rank.Ten, 1)));
     }
 
     /**

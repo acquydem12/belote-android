@@ -30,13 +30,13 @@ import belote.logic.announce.factory.automat.methods.suitDeterminants.AceTenKing
  * RegGameNormalNotTrumpAnnounce class. Announce factory method which creates not trump announce.
  * @author Dimitar Karamanov
  */
-public final class RegGameNormalNotTrumpAnnounce extends ConditionListMethod {
+public final class RegGameNormalNoTrumpAnnounce extends ConditionListMethod {
 
     /**
      * Constructor.
      * @param game BelotGame instance class.
      */
-    public RegGameNormalNotTrumpAnnounce(final Game game) {
+    public RegGameNormalNoTrumpAnnounce(final Game game) {
         super(game);
 
         AnnounceCondition teamAttackOrPass = new MultipleOrCondition(new TeamAttack(game), new ThreePassOpenAnnounce(game));
