@@ -13,7 +13,7 @@ package belote.bean.announce.suit;
  * Club class.
  * @author Dimitar Karamanov
  */
-public final class Club extends TrumpSuit {
+public final class Club extends ColorSuit {
 
     /**
 	 * SerialVersionUID

@@ -50,7 +50,7 @@ public abstract class AnnounceSuit extends ComparableObject {
     /**
      * Not trump announce constant.
      */
-    public static final AnnounceSuit NotTrump = new NoTrump();
+    public static final AnnounceSuit NotTrump = new NotTrump();
 
     /**
      * All trump announce constant.
