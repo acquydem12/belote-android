@@ -16,10 +16,10 @@ import belote.bean.announce.type.AnnounceType;
 import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCondition;
 
 /**
- * PartnerColorAnnounce class.
+ * PartnerNormalTrumpAnnounce class.
  * @author Dimitar Karamanov
  */
-public final class PartnerNormalSuitAnnounce implements AnnounceCondition {
+public final class PartnerNormalTrumpAnnounce implements AnnounceCondition {
 
     /**
      * BelotGame instance.
@@ -30,7 +30,7 @@ public final class PartnerNormalSuitAnnounce implements AnnounceCondition {
      * Constructor.
      * @param game a BelotGame instance.
      */
-    public PartnerNormalSuitAnnounce(final Game game) {
+    public PartnerNormalTrumpAnnounce(final Game game) {
         this.game = game;
     }
 
@@ -42,6 +42,6 @@ public final class PartnerNormalSuitAnnounce implements AnnounceCondition {
     public boolean process(final Player player) {
         final Player partner = player.getPartner();
         final Announce partnerAnnounce = game.getAnnounceList().getContractAnnounce(partner);
-        return partnerAnnounce != null && partnerAnnounce.isColorAnnounce() && partnerAnnounce.getType().equals(AnnounceType.Normal);
+        return partnerAnnounce != null && partnerAnnounce.isTrumpAnnounce() && partnerAnnounce.getType().equals(AnnounceType.Normal);
     }
 }

@@ -41,6 +41,6 @@ public final class PartnerSuitAnnounce implements AnnounceCondition {
     public boolean process(final Player player) {
         final Player partner = player.getPartner();
         final Announce partnerAnnounce = game.getAnnounceList().getContractAnnounce(partner);
-        return partnerAnnounce != null && partnerAnnounce.isColorAnnounce();
+        return partnerAnnounce != null && partnerAnnounce.isTrumpAnnounce();
     }
 }
