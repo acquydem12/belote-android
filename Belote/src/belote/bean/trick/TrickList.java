@@ -23,9 +23,10 @@ import belote.bean.Team;
 public final class TrickList implements Serializable {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = -8020613612899133438L;
+    
     /**
      * Internal container object.
      */
