@@ -17,10 +17,10 @@ import belote.bean.pack.card.Card;
 import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.executors.trumps.AttackCard;
 import belote.logic.play.strategy.automat.executors.trumps.DefenceCard;
-import belote.logic.play.strategy.validators.ColorGameCardValidator;
+import belote.logic.play.strategy.validators.TrumpGameCardValidator;
 
 /**
- * CLPlayCardStrategy class. Color suit strategy playing class.
+ * CLPlayCardStrategy class. Trump suit strategy playing class.
  * @author Dimitar Karamanov
  */
 public final class TrumpPlayStrategy extends BasePlayStrategy {
@@ -30,7 +30,7 @@ public final class TrumpPlayStrategy extends BasePlayStrategy {
      * @param game belote game instance.
      */
     public TrumpPlayStrategy(final Game game) {
-        super(game, new ColorGameCardValidator(game), new AttackCard(game), new DefenceCard(game));
+        super(game, new TrumpGameCardValidator(game), new AttackCard(game), new DefenceCard(game));
     }
 
     /**
