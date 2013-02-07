@@ -22,7 +22,7 @@ import belote.logic.play.strategy.automat.methods.trumpsLess.SingleNoMajorCard;
 import belote.logic.play.strategy.automat.methods.trumpsLess.SingleNoMaxCard;
 
 /**
- * ColorlessNeedlessCard class. Implements the logic to play no needed card and is called after obligatory rules. Used in AllTrumptXXX and NotTrumpXXX
+ * NeedlessCard class. Implements the logic to play no needed card and is called after obligatory rules. Used in AllTrumptXXX and NoTrumpXXX
  * executors.
  * @author Dimitar Karamanov
  */
