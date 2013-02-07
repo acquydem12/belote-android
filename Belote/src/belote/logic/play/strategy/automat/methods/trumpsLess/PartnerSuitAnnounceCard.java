@@ -44,7 +44,7 @@ public final class PartnerSuitAnnounceCard extends BaseMethod {
 
         for (final AnnounceIterator iterator = partnerAnnounces.iterator(); iterator.hasNext();) {
             final Announce announce = iterator.next();
-            if (announce.isColorAnnounce()) {
+            if (announce.isTrumpAnnounce()) {
                 final Suit suit = AnnounceUnit.transformFromAnnounceSuitToSuit(announce.getAnnounceSuit());
 
                 Card result;
