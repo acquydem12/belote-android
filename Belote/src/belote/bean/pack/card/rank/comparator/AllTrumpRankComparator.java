@@ -18,7 +18,7 @@ import belote.bean.pack.card.rank.Rank;
 public final class AllTrumpRankComparator extends RankComparator {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = 6611295525138045329L;
 
