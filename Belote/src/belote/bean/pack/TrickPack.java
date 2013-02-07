@@ -19,7 +19,7 @@ import belote.bean.pack.card.suit.Suit;
 public final class TrickPack extends Pack {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = 7015330407925820737L;
 
