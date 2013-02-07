@@ -11,16 +11,14 @@ package belote.logic.announce.factory.automat.methods.conditions;
 
 import belote.bean.Game;
 import belote.bean.Player;
-import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCondition;
+import belote.logic.announce.factory.automat.methods.conditions.base.TeamEndGameZone;
 
 /**
  * OppositeTeamEndGameZone class.
  * @author Dimitar Karamanov
  */
-public final class OppositeTeamEndGameZone implements AnnounceCondition {
-
-    private static final int MINIMUM_OFFSET = 13;
-
+public final class OppositeTeamEndGameZone extends TeamEndGameZone {
+    
     /**
      * BelotGame instance.
      */
@@ -41,6 +39,6 @@ public final class OppositeTeamEndGameZone implements AnnounceCondition {
      */
     public boolean process(final Player player) {
         final int teamPoints = game.getOppositeTeam(player).getPoints().getAllPoints();
-        return (Game.END_GAME_POINTS - teamPoints) <= MINIMUM_OFFSET;
+        return process(teamPoints);
     }
 }
