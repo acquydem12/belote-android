@@ -30,7 +30,7 @@ public abstract class RankSuitDeterminant implements SuitDeterminant {
 
     private boolean containRanks(Player player, Suit suit) {
         for (Iterator<Rank> iterator = ranks.iterator(); iterator.hasNext();) {
-            Rank rank = iterator.next();
+            final Rank rank = iterator.next();
             if (player.getCards().findCard(rank, suit) == null) {
                 return false;
             }
