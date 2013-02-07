@@ -29,7 +29,7 @@ import belote.bean.pack.square.SquareIterator;
 public class PackExtraAnnouncesManager implements Serializable {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = -7740837122383291209L;
 
