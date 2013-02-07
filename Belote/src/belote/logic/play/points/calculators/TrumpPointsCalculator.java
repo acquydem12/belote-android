@@ -13,10 +13,10 @@ import belote.bean.Game;
 import belote.bean.Team;
 
 /**
- * CLPointsCalculator class. Points calculator class for Color game.
+ * TrumpPointsCalculator class. Points calculator class for Trump game.
  * @author Dimitar Karamanov
  */
-public final class ColorPointsCalculator extends PointsCalculator {
+public final class TrumpPointsCalculator extends PointsCalculator {
 
     /**
      * Digits used for rounding.
@@ -27,7 +27,7 @@ public final class ColorPointsCalculator extends PointsCalculator {
      * Constructor.
      * @param game belote game instance.
      */
-    public ColorPointsCalculator(Game game) {
+    public TrumpPointsCalculator(Game game) {
         super(game);
     }
 
