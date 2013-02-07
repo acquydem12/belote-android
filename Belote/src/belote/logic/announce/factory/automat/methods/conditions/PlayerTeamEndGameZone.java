@@ -9,17 +9,14 @@
  */
 package belote.logic.announce.factory.automat.methods.conditions;
 
-import belote.bean.Game;
 import belote.bean.Player;
-import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCondition;
+import belote.logic.announce.factory.automat.methods.conditions.base.TeamEndGameZone;
 
 /**
  * PlayerTeamEndGameZone class. Returns true if the announce player team is in the end game zone, false otherwise.
  * @author Dimitar Karamanov
  */
-public final class PlayerTeamEndGameZone implements AnnounceCondition {
-
-    private static final int MINIMUM_OFFSET = 13;
+public final class PlayerTeamEndGameZone extends TeamEndGameZone{
 
     /**
      * The method which returns the result of condition.
@@ -28,6 +25,6 @@ public final class PlayerTeamEndGameZone implements AnnounceCondition {
      */
     public boolean process(final Player player) {
         final int playerTeamPoints = player.getTeam().getPoints().getAllPoints();
-        return (Game.END_GAME_POINTS - playerTeamPoints) <= MINIMUM_OFFSET;
+        return process(playerTeamPoints);
     }
 }
