@@ -20,16 +20,16 @@ import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAnd
 import belote.logic.announce.factory.automat.methods.suitDeterminants.SequenceSuit;
 
 /**
- * SuitRedoubleAdviser class.
+ * TrumpRedoubleAdviser class.
  * @author Dimitar Karamanov
  */
-public final class SuitRedoubleAdviser extends BaseRedoubleAdviser {
+public final class TrumpRedoubleAdviser extends BaseRedoubleAdviser {
 
     /**
      * Constructor.
      * @param game Belote game instance.
      */
-    public SuitRedoubleAdviser(final Game game) {
+    public TrumpRedoubleAdviser(final Game game) {
         super(game);
         // Player made last announce
         addAnnounceCondition(new MultipleAndCondition(new PlayerRegularAnnounce(game), new HasSuit(new SequenceSuit(SequenceType.Quint, Rank.Ace))));
