@@ -13,10 +13,10 @@ package belote.bean.announce.suit;
  * NotTrump class.
  * @author Dimitar Karamanov
  */
-public final class NotTrump extends ColorlessSuit {
+public final class NoTrump extends TrumplessSuit {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = -4894507932307781932L;
 
@@ -28,7 +28,7 @@ public final class NotTrump extends ColorlessSuit {
     /**
      * Constructor.
      */
-    protected NotTrump() {
+    protected NoTrump() {
         super(ID);
     }
 }
