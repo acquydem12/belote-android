@@ -24,7 +24,7 @@ import belote.bean.announce.type.AnnounceType;
 public final class AnnounceList implements Serializable {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = 763763319248786518L;
 
