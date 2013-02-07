@@ -20,9 +20,10 @@ import java.util.Iterator;
 public final class SuitList implements Serializable {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = -7015889465999912329L;
+    
     /**
      * Internal container collection.
      */

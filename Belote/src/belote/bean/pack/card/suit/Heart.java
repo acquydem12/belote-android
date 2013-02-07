@@ -16,9 +16,10 @@ package belote.bean.pack.card.suit;
 public final class Heart extends Suit {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = -7054021151876037143L;
+    
     /**
      * Heart ID constant.
      */

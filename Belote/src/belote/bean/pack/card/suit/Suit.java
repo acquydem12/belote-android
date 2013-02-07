@@ -18,7 +18,7 @@ import belote.base.ComparableObject;
 public abstract class Suit extends ComparableObject {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = -7817406518667306126L;
 
