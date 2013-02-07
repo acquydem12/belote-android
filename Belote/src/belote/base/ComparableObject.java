@@ -18,7 +18,7 @@ import java.io.Serializable;
 public abstract class ComparableObject implements Serializable {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = 5914683970428793375L;
 
