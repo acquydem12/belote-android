@@ -10,13 +10,13 @@
 package belote.bean.announce.suit;
 
 /**
- * ColorSuit class. The abstract base class of all color announce suits.
+ * TrumpSuit class. The abstract base class of all color announce suits.
  * @author Dimitar Karamanov
  */
-public abstract class ColorSuit extends AnnounceSuit {
+public abstract class TrumpSuit extends AnnounceSuit {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = -5476666027564282061L;
 
@@ -29,16 +29,16 @@ public abstract class ColorSuit extends AnnounceSuit {
      * Constructor.
      * @param type Type.
      */
-    protected ColorSuit(final int type) {
+    protected TrumpSuit(final int type) {
         super(type);
     }
 
     /**
-     * Color suit classes are Club, Diamond, Heart and Spade. If the objects is instance of some of them the result is true otherwise is false. This is the base
+     * Trump suit classes are Club, Diamond, Heart and Spade. If the objects is instance of some of them the result is true otherwise is false. This is the base
      * class for all color suits so the method result is always true.
      * @return boolean true if is color suit false otherwise.
      */
-    public final boolean isColorSuit() {
+    public final boolean isTrumpSuit() {
         return true;
     }
 

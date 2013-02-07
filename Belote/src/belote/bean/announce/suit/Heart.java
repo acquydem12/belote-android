@@ -13,10 +13,10 @@ package belote.bean.announce.suit;
  * Heart class.
  * @author Dimitar Karamanov
  */
-public final class Heart extends ColorSuit {
+public final class Heart extends TrumpSuit {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = -3967030891541808923L;
 

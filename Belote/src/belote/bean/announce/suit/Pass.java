@@ -16,7 +16,7 @@ package belote.bean.announce.suit;
 public final class Pass extends AnnounceSuit {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = -4241790610370358080L;
 
@@ -28,10 +28,10 @@ public final class Pass extends AnnounceSuit {
     }
 
     /**
-     * Color suit classes are Club, Diamond, Heart and Spade. If the objects is instance of some of them the result is true otherwise is false.
+     * Trump suit classes are Club, Diamond, Heart and Spade. If the objects is instance of some of them the result is true otherwise is false.
      * @return boolean true if is color suit false otherwise.
      */
-    public boolean isColorSuit() {
+    public boolean isTrumpSuit() {
         return false;
     }
 

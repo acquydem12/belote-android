@@ -18,7 +18,7 @@ import belote.base.ComparableObject;
 public abstract class AnnounceSuit extends ComparableObject {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = -2463912940977232511L;
 
@@ -50,7 +50,7 @@ public abstract class AnnounceSuit extends ComparableObject {
     /**
      * Not trump announce constant.
      */
-    public static final AnnounceSuit NotTrump = new NotTrump();
+    public static final AnnounceSuit NotTrump = new NoTrump();
 
     /**
      * All trump announce constant.
@@ -79,10 +79,10 @@ public abstract class AnnounceSuit extends ComparableObject {
     }
 
     /**
-     * Color suit classes are Club, Diamond, Heart and Spade. If the objects is instance of some of them the result is true otherwise is false.
+     * Trump suit classes are Club, Diamond, Heart and Spade. If the objects is instance of some of them the result is true otherwise is false.
      * @return boolean true if is color suit false otherwise.
      */
-    public abstract boolean isColorSuit();
+    public abstract boolean isTrumpSuit();
 
     /**
      * Returns the game base points for that announce suit. The points are used in double and redouble calculation.
