@@ -21,7 +21,7 @@ import belote.logic.play.strategy.automat.methods.trumps.needless.ClearSingleSui
 import belote.logic.play.strategy.automat.methods.trumps.needless.TrumpCard;
 
 /**
- * ColorNeedlessCard executor. Implements the logic to play no needed card and is called after obligatory rules. Used in ColorAttackCard and ColorDefenceCard
+ * NeedlessCard executor. Implements the logic to play no needed card and is called after obligatory rules. Used in TrumpAttackCard and TrumpDefenceCard
  * executors.
  * @author Dimitar Karamanov
  */

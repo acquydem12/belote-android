@@ -17,7 +17,7 @@ import belote.logic.play.strategy.automat.methods.trumps.noTrumpAttack.MaxSuitLe
 import belote.logic.play.strategy.automat.methods.trumps.noTrumpAttack.HookCard;
 
 /**
- * ColorDefenceSuitCard executor. Implements the obligatory rules for defence player when the attack card is not from trump suit. Used in ColorDefenceCard
+ * DefenceNoTrumpAttackCard executor. Implements the obligatory rules for defense player when the attack card is not from trump suit. Used in TrumpDefenceCard
  * executor.
  * @author Dimitar Karamanov
  */

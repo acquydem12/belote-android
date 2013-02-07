@@ -21,7 +21,7 @@ import belote.logic.play.strategy.automat.methods.trumps.noObligatory.EnemyGameS
 import belote.logic.play.strategy.automat.methods.trumps.noObligatory.SecondDeffenceTrumpCard;
 
 /**
- * ColorNoTrumpAttackNoObligatoryFirstRuffCard class. PlayCardMethod is used to play card when the current trick player is player' partner and has no card from
+ * NoTrumpAttackNoObligatoryFirstRuffCardExecutor class. PlayCardMethod is used to play card when the current trick player is player' partner and has no card from
  * attack suit and trump card is NOT PLAYED YET.
  * @author Dimitar Karamanov
  */
@@ -47,7 +47,7 @@ public final class NoTrumpAttackNoObligatoryFirstRuffCardExecutor extends PlayCa
     protected boolean fitPreCondition(final Player player) {
         boolean result = false;
         final Announce announce = game.getAnnounceList().getContractAnnounce();
-        if (announce != null && announce.isColorAnnounce()) {
+        if (announce != null && announce.isTrumpAnnounce()) {
             final Suit trump = AnnounceUnit.transformFromAnnounceSuitToSuit(announce.getAnnounceSuit());
 
             final Card someTrumpCard = game.getTrickCards().findMaxSuitCard(trump);
