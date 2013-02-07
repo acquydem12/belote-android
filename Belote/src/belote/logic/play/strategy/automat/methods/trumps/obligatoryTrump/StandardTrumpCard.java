@@ -16,7 +16,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.base.method.BaseTrumpMethod;
 
 /**
- * ColorObligatoryStandardTrumpCard class. PlayCardMethod which implements the logic of playing a standard trump card.
+ * StandardTrumpCard class. PlayCardMethod which implements the logic of playing a standard trump card.
  * @author Dimitar Karamanov
  */
 public final class StandardTrumpCard extends BaseTrumpMethod {

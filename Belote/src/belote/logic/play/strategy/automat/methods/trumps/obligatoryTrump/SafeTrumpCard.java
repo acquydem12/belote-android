@@ -17,7 +17,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.base.method.BaseTrumpMethod;
 
 /**
- * ColorClearCard class. PlayCardMethod which implements the logic of playing a safe trump card in color game.
+ * SafeTrumpCard class. PlayCardMethod which implements the logic of playing a safe trump card in color game.
  * @author Dimitar Karamanov.
  */
 public final class SafeTrumpCard extends BaseTrumpMethod {

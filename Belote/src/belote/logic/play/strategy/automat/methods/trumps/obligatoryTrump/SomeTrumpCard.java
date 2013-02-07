@@ -16,7 +16,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.base.method.BaseTrumpMethod;
 
 /**
- * ColorObligatorySomeTrumpCard class. PlayCardMethod which implements the logic of playing a trump card to fit the obligatory mode.
+ * SomeTrumpCard class. PlayCardMethod which implements the logic of playing a trump card to fit the obligatory mode.
  * @author Dimitar Karamanov
  */
 public final class SomeTrumpCard extends BaseTrumpMethod {
