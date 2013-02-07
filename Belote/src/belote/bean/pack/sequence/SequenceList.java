@@ -20,9 +20,10 @@ import java.util.Iterator;
 public final class SequenceList implements Serializable {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = 6748182747989159923L;
+    
     /**
      * Internal container.
      */

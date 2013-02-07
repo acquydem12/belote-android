@@ -18,7 +18,7 @@ import belote.base.ComparableObject;
 public final class SequenceType extends ComparableObject {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = 961246918139208205L;
 
