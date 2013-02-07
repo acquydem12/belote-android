@@ -307,7 +307,7 @@ final class BelotePainter extends BasePainter {
      */
     private String getAnnounceText(Announce announce) {
         String result;
-        if (announce.isColorAnnounce()) {
+        if (announce.isTrumpAnnounce()) {
 
             if (announce.getType().equals(AnnounceType.Double)) {
                 result = textDecorator.getAnnounceType(AnnounceType.Double);
@@ -353,7 +353,7 @@ final class BelotePainter extends BasePainter {
         Rect bounds = new Rect();
         paint.getTextBounds(str, 0, str.length(), bounds);
 
-        if (announce.isColorAnnounce()) {
+        if (announce.isTrumpAnnounce()) {
             Suit suit = AnnounceUnit.transformFromAnnounceSuitToSuit(announce.getAnnounceSuit());
             Bitmap image = getSuitImage(suit);
             w = bounds.width() + dip6 + image.getWidth() + dip4;
@@ -435,7 +435,7 @@ final class BelotePainter extends BasePainter {
         bubble.setBounds(dest);
         bubble.draw(canvas);
 
-        if (announce.isColorAnnounce()) {
+        if (announce.isTrumpAnnounce()) {
             Suit suit = AnnounceUnit.transformFromAnnounceSuitToSuit(announce.getAnnounceSuit());
             Bitmap image = getSuitImage(suit);
             canvas.drawBitmap(image, dest.left + dip10, 2 * dip10 + dest.top - bounds.height() + (bounds.height() - image.getHeight()) / 2, paint);
@@ -472,7 +472,7 @@ final class BelotePainter extends BasePainter {
         int dip3 = Belote.fromPixelToDip(context, 3);
         int dip10 = Belote.fromPixelToDip(context, 10);
 
-        if (announce.isColorAnnounce()) {
+        if (announce.isTrumpAnnounce()) {
             int x = rect.x + dip3;
             Suit suit = AnnounceUnit.transformFromAnnounceSuitToSuit(announce.getAnnounceSuit());
             Bitmap image = getSuitImage(suit);
@@ -553,7 +553,7 @@ final class BelotePainter extends BasePainter {
                 paint.setColor(Color.clLightGreen.getRGB());
                 canvas.drawText(announceShort, x, y, paint);
             } else {
-                if (announce.isColorAnnounce()) {
+                if (announce.isTrumpAnnounce()) {
                     Suit suit = AnnounceUnit.transformFromAnnounceSuitToSuit(announce.getAnnounceSuit());
                     Bitmap image = getSuitImage(suit);
                     image = ImageUtil.transformToMixedColorImage(image, new Color(192), null);
