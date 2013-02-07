@@ -22,7 +22,7 @@ import belote.bean.pack.card.suit.SuitList;
 public final class Player implements Serializable {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = 7234505479951609925L;
 

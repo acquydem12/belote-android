@@ -18,7 +18,7 @@ import java.io.Serializable;
 public final class GameMode implements Serializable {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = -5609712288998797955L;
 

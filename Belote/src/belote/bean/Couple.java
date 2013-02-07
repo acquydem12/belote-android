@@ -21,7 +21,7 @@ import belote.bean.pack.card.suit.SuitIterator;
 public final class Couple implements Serializable {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = -7275183680786350586L;
 
