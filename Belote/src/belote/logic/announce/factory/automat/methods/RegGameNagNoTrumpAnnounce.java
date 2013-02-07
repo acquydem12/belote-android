@@ -14,7 +14,7 @@ import belote.bean.Player;
 import belote.bean.announce.Announce;
 import belote.bean.pack.card.rank.Rank;
 import belote.logic.announce.factory.automat.methods.base.ConditionListMethod;
-import belote.logic.announce.factory.automat.methods.conditions.PartnerSuitAnnounce;
+import belote.logic.announce.factory.automat.methods.conditions.PartnerTrumpAnnounce;
 import belote.logic.announce.factory.automat.methods.conditions.RankCount;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
 
@@ -30,7 +30,7 @@ public final class RegGameNagNoTrumpAnnounce extends ConditionListMethod {
      */
     public RegGameNagNoTrumpAnnounce(final Game game) {
         super(game);
-        addAnnounceCondition(new MultipleAndCondition(new RankCount(Rank.Ace, 2), new PartnerSuitAnnounce(game)));
+        addAnnounceCondition(new MultipleAndCondition(new RankCount(Rank.Ace, 2), new PartnerTrumpAnnounce(game)));
         addAnnounceCondition(new RankCount(Rank.Ace, 3));
         addAnnounceCondition(new MultipleAndCondition(new RankCount(Rank.Ace, 2), new RankCount(Rank.Ten, 1)));
     }

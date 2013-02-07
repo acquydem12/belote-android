@@ -15,10 +15,10 @@ import belote.bean.announce.Announce;
 import belote.logic.announce.factory.automat.methods.conditions.base.AnnounceCondition;
 
 /**
- * PartnerSuitAnnounce class. Returns true if the announce player partner has declared a suit announce, false otherwise.
+ * PartnerTrumpAnnounce class. Returns true if the announce player partner has declared a suit announce, false otherwise.
  * @author Dimitar Karamanov
  */
-public final class PartnerSuitAnnounce implements AnnounceCondition {
+public final class PartnerTrumpAnnounce implements AnnounceCondition {
 
     /**
      * BelotGame instance.
@@ -29,7 +29,7 @@ public final class PartnerSuitAnnounce implements AnnounceCondition {
      * Constructor.
      * @param game a BelotGame instance.
      */
-    public PartnerSuitAnnounce(final Game game) {
+    public PartnerTrumpAnnounce(final Game game) {
         this.game = game;
     }
 
