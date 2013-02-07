@@ -13,7 +13,7 @@ package belote.bean.announce.suit;
  * Spade class.
  * @author Dimitar Karamanov
  */
-public final class Spade extends TrumpSuit {
+public final class Spade extends ColorSuit {
 
     /**
 	 * SerialVersionUID

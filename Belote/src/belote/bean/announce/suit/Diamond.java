@@ -13,7 +13,7 @@ package belote.bean.announce.suit;
  * Diamond class.
  * @author Dimitar Karamanov
  */
-public final class Diamond extends TrumpSuit {
+public final class Diamond extends ColorSuit {
 
     /**
 	 * SerialVersionUID
