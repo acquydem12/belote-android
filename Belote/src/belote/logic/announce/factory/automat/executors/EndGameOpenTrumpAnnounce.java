@@ -11,24 +11,24 @@ package belote.logic.announce.factory.automat.executors;
 
 import belote.bean.Game;
 import belote.logic.announce.factory.automat.executors.base.AnnounceExecutor;
-import belote.logic.announce.factory.automat.methods.RegGameNormalFiftyOrHundredAnnounce;
-import belote.logic.announce.factory.automat.methods.RegGameNormalTerzaAnnounce;
+import belote.logic.announce.factory.automat.methods.EndGameOpenFiftyOrHundredAnnounce;
+import belote.logic.announce.factory.automat.methods.EndGameOpenTerzaAnnounce;
 
 /**
- * RegGameNormalColorAnnounce class.
+ * EndGameOpenTrumpAnnounce class.
  * @author Dimitar Karamanov
  */
-public final class RegGameNormalColorAnnounce extends AnnounceExecutor {
+public final class EndGameOpenTrumpAnnounce extends AnnounceExecutor {
 
     /**
      * Constructor.
      * @param game BelotGame instance class.
      */
-    public RegGameNormalColorAnnounce(final Game game) {
+    public EndGameOpenTrumpAnnounce(final Game game) {
         super(game);
 
-        register(new RegGameNormalFiftyOrHundredAnnounce(game));
-        register(new RegGameNormalTerzaAnnounce(game));
-        register(new RegGameNormalSimpleAnnounce(game));
+        register(new EndGameOpenFiftyOrHundredAnnounce(game));
+        register(new EndGameOpenTerzaAnnounce(game));
+        register(new EndGameOpenSimpleAnnounce(game));
     }
 }

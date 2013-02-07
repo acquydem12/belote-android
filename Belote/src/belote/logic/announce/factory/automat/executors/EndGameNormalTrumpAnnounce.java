@@ -15,16 +15,16 @@ import belote.logic.announce.factory.automat.methods.EndGameNormalFiftyOrHundred
 import belote.logic.announce.factory.automat.methods.EndGameNormalTerzaAnnounce;
 
 /**
- * EndGameNormalColorAnnounce class.
+ * EndGameNormalTrumpAnnounce class.
  * @author Dimitar Karamanov
  */
-public final class EndGameNormalColorAnnounce extends AnnounceExecutor {
+public final class EndGameNormalTrumpAnnounce extends AnnounceExecutor {
 
     /**
      * Constructor.
      * @param game BelotGame instance class.
      */
-    public EndGameNormalColorAnnounce(final Game game) {
+    public EndGameNormalTrumpAnnounce(final Game game) {
         super(game);
 
         register(new EndGameNormalFiftyOrHundredAnnounce(game));

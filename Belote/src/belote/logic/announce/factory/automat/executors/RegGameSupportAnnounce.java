@@ -12,7 +12,7 @@ package belote.logic.announce.factory.automat.executors;
 import belote.bean.Game;
 import belote.logic.announce.factory.automat.executors.base.AnnounceExecutor;
 import belote.logic.announce.factory.automat.methods.RegGameSupportAllTrumpAnnounce;
-import belote.logic.announce.factory.automat.methods.RegGameSupportNotTrumpAnnounce;
+import belote.logic.announce.factory.automat.methods.RegGameSupportNoTrumpAnnounce;
 import belote.logic.announce.factory.automat.methods.conditions.PartnerSuitAnnounce;
 
 /**
@@ -30,8 +30,8 @@ public final class RegGameSupportAnnounce extends AnnounceExecutor {
         // Pre conditions
         addPreCondition(new PartnerSuitAnnounce(game));
         // Methods
-        register(new RegGameSupportColorAnnounce(game));
+        register(new RegGameSupportTrumpAnnounce(game));
         register(new RegGameSupportAllTrumpAnnounce(game));
-        register(new RegGameSupportNotTrumpAnnounce(game));
+        register(new RegGameSupportNoTrumpAnnounce(game));
     }
 }

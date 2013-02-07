@@ -12,7 +12,7 @@ package belote.logic.announce.factory.automat.executors;
 import belote.bean.Game;
 import belote.logic.announce.factory.automat.executors.base.AnnounceExecutor;
 import belote.logic.announce.factory.automat.methods.RegGameNormalAllTrumpAnnounce;
-import belote.logic.announce.factory.automat.methods.RegGameNormalNotTrumpAnnounce;
+import belote.logic.announce.factory.automat.methods.RegGameNormalNoTrumpAnnounce;
 
 /**
  * RegGameNormalStandardAnnounce class.
@@ -28,7 +28,7 @@ public final class RegGameNormalStandardAnnounce extends AnnounceExecutor {
         super(game);
 
         register(new RegGameNormalAllTrumpAnnounce(game));
-        register(new RegGameNormalNotTrumpAnnounce(game));
-        register(new RegGameNormalColorAnnounce(game));
+        register(new RegGameNormalNoTrumpAnnounce(game));
+        register(new RegGameNormalTrumpAnnounce(game));
     }
 }
