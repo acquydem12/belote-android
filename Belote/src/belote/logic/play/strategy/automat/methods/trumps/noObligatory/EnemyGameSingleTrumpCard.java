@@ -16,7 +16,7 @@ import belote.bean.pack.card.suit.Suit;
 import belote.logic.play.strategy.automat.base.method.BaseTrumpMethod;
 
 /**
- * ColorNoObligatoryEnemyGameSingleTrumpCard class. PlayCardMethod which implements the logic of playing a card when the game is declared by enemy team and the
+ * EnemyGameSingleTrumpCard class. PlayCardMethod which implements the logic of playing a card when the game is declared by enemy team and the
  * player has only single trump card - play it.
  * @author Dimitar Karamanov
  */
