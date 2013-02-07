@@ -17,7 +17,7 @@ import belote.bean.announce.Announce;
 import belote.bean.announce.suit.AnnounceSuit;
 import belote.bean.pack.card.Card;
 import belote.logic.play.points.calculators.AllTrumpPointsCalculator;
-import belote.logic.play.points.calculators.ColorPointsCalculator;
+import belote.logic.play.points.calculators.TrumpPointsCalculator;
 import belote.logic.play.points.calculators.NotTrumpPointsCalculator;
 import belote.logic.play.points.calculators.NullPointsCalculator;
 import belote.logic.play.points.calculators.PointsCalculator;
@@ -44,7 +44,7 @@ public final class PlayGameLogic {
     private final Game game;
 
     /**
-     * Color suit game strategy adviser.
+     * Trump suit game strategy adviser.
      */
     private final BasePlayStrategy clPlayCardStrategy;
 
@@ -64,7 +64,7 @@ public final class PlayGameLogic {
     private final BasePlayStrategy nullPlayCardStrategy;
 
     /**
-     * Color suit game points calculator.
+     * Trump suit game points calculator.
      */
     private final PointsCalculator clPointsCalculator;
 
@@ -115,7 +115,7 @@ public final class PlayGameLogic {
         ntPlayCardStrategy = new NotTrumpPlayStrategy(game);
         nullPlayCardStrategy = new NullPlayCardStrategy(game);
         // Game points calculators
-        clPointsCalculator = new ColorPointsCalculator(game);
+        clPointsCalculator = new TrumpPointsCalculator(game);
         atPointsCalculator = new AllTrumpPointsCalculator(game);
         ntPointsCalculator = new NotTrumpPointsCalculator(game);
         nullPointsCalculator = new NullPointsCalculator(game);
