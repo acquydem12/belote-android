@@ -15,6 +15,8 @@ import belote.bean.announce.Announce;
 import belote.logic.announce.factory.automat.executors.base.AnnounceExecutor;
 import belote.logic.announce.factory.automat.methods.EndGameNagDoubleAnnounce;
 import belote.logic.announce.factory.automat.methods.EndGamePassAnnounce;
+import belote.logic.announce.factory.automat.methods.EndGameTrumpToAllTrumpAnnounce;
+import belote.logic.announce.factory.automat.methods.RegGameTrumpToAllTrumpAnnounce;
 import belote.logic.announce.factory.automat.methods.conditions.PartnerDoubleRedoubleContractAnnounce;
 import belote.logic.announce.factory.automat.methods.conditions.base.NotCondition;
 
@@ -36,6 +38,7 @@ public class BeloteGameAnnounceFactory extends AnnounceExecutor {
         register(new EndGameOpenAnnounce(game));
         register(new EndGameNormalAnnounce(game));
         register(new EndGameSupportAnnounce(game));
+        register(new EndGameTrumpToAllTrumpAnnounce(game));
         register(new EndGameNagDoubleAnnounce(game));
         
         register(new EndGamePassAnnounce(game));
@@ -43,6 +46,7 @@ public class BeloteGameAnnounceFactory extends AnnounceExecutor {
         register(new RegGameOpenAnnounce(game));
         register(new RegGameNormalAnnounce(game));
         register(new RegGameSupportAnnounce(game));
+        register(new RegGameTrumpToAllTrumpAnnounce(game));
         register(new RegGameNagAnnounce(game));
     }
 
