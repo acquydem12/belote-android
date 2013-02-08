@@ -18,7 +18,7 @@ import belote.bean.pack.card.rank.Rank;
 public final class StandardRankComparator extends RankComparator {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = -4489721610300306563L;
 
