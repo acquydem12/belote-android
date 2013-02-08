@@ -14,13 +14,13 @@ import java.io.Serializable;
 import belote.bean.pack.card.rank.Rank;
 
 /**
- * RankComparator interface.
+ * RankComparator base class.
  * @author Dimitar Karamanov
  */
 public abstract class RankComparator implements Serializable {
 
     /**
-	 * 
+	 * SerialVersionUID
 	 */
     private static final long serialVersionUID = 4256022116248582220L;
 
