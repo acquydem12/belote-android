@@ -2,6 +2,7 @@ package belote.logic.announce.factory.automat.methods;
 
 import belote.bean.Game;
 import belote.bean.Player;
+import belote.bean.Team;
 import belote.bean.announce.Announce;
 import belote.logic.announce.factory.automat.base.AnnounceMethod;
 
@@ -24,10 +25,26 @@ public final class RegGameTrumpToAllTrumpAnnounce implements AnnounceMethod {
         Announce playerAnnounce = game.getAnnounceList().getContractAnnounce(player);
         Announce partnerAnnounce = game.getAnnounceList().getContractAnnounce(partner);
         
-        if (playerAnnounce != null && partnerAnnounce != null && playerAnnounce.isTrumpAnnounce() && partnerAnnounce.isTrumpAnnounce()) {
+        boolean oppositeTeamHasNotAnnounce = !hasOppositeTeamTrumpAnnounce(player);
+        boolean teamAttack = player.isSameTeam(game.getDealAttackPlayer());
+        
+        if (playerAnnounce != null && partnerAnnounce != null && playerAnnounce.isTrumpAnnounce() && partnerAnnounce.isTrumpAnnounce()
+                && (oppositeTeamHasNotAnnounce || teamAttack)) {
             return Announce.createATNormalAnnounce(player);
         }
 
         return null;
+    }
+    
+    private boolean hasOppositeTeamTrumpAnnounce(final Player player) {
+        Team oppositeTeam = game.getOppositeTeam(player);
+        for (int i = 0; i < oppositeTeam.getPlayersCount(); i++) {
+            Announce oppositeTeamAnnounce = game.getAnnounceList().getContractAnnounce(oppositeTeam.getPlayer(i));
+            if (oppositeTeamAnnounce != null && oppositeTeamAnnounce.isTrumpAnnounce()) {
+                return true;
+            }
+        }
+        
+        return false;
     }
 }
