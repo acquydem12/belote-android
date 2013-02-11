@@ -30,7 +30,7 @@ public final class RegGameNagAnnounce extends AnnounceExecutor {
      */
     public RegGameNagAnnounce(final Game game) {
         super(game);
-        // Pre conditions
+        // Preconditions
         addPreCondition(new OppositeTeamNormalAnnounce(game));
         // Methods
         register(new RegGameNagAllTrumpDealAttackHasSequenceAnnounce(game));
