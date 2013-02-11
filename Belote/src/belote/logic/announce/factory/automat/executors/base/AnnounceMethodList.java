@@ -15,7 +15,7 @@ import java.util.Iterator;
 import belote.logic.announce.factory.automat.base.AnnounceMethod;
 
 /**
- * AnnounceMethodList class. Wrapper class of system collection used to hold and access PlayCardMethod instances.
+ * AnnounceMethodList class. Wrapper class of system collection used to hold and access AnnounceMethod instances.
  * @author Dimitar Karamanov
  */
 public final class AnnounceMethodList {
@@ -57,14 +57,14 @@ public final class AnnounceMethodList {
 
     /**
      * Returns iterator for the collection.
-     * @return PlayCardMethodIterator iterator.
+     * @return AnnounceMethodIterator iterator.
      */
     public AnnounceMethodIterator iterator() {
         return new AnnounceMethodIteratorImpl(collection.iterator());
     }
 
     /**
-     * PlayableIteratorImpl class. Implements PlayCardMethodIterator interface.
+     * AnnounceMethodIteratorImpl class. Implements AnnounceMethodIterator interface.
      */
     private class AnnounceMethodIteratorImpl implements AnnounceMethodIterator {
 
@@ -90,8 +90,8 @@ public final class AnnounceMethodList {
         }
 
         /**
-         * Returns the next element in the iteration.
-         * @return Playable the next element in the iteration.
+         * AnnounceMethod the next element in the iteration.
+         * @return AnnounceMethod the next element in the iteration.
          */
         public AnnounceMethod next() {
             return enumeration.next();
