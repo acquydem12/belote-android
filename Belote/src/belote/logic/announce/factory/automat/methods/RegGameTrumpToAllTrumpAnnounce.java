@@ -4,9 +4,6 @@ import belote.bean.Game;
 import belote.bean.Player;
 import belote.bean.announce.Announce;
 import belote.logic.announce.factory.automat.methods.base.ConditionListMethod;
-import belote.logic.announce.factory.automat.methods.conditions.OppositeTeamEndGameZone;
-import belote.logic.announce.factory.automat.methods.conditions.TeamAttack;
-import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
 
 public class RegGameTrumpToAllTrumpAnnounce extends ConditionListMethod {
 
@@ -16,8 +13,6 @@ public class RegGameTrumpToAllTrumpAnnounce extends ConditionListMethod {
      */
     public RegGameTrumpToAllTrumpAnnounce(final Game game) {
         super(game);
-        
-        addAnnounceCondition(new MultipleAndCondition(new OppositeTeamEndGameZone(game), new TeamAttack(game)));
     }
 
     /**
