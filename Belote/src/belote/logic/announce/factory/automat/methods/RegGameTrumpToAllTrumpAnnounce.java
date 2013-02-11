@@ -3,24 +3,22 @@ package belote.logic.announce.factory.automat.methods;
 import belote.bean.Game;
 import belote.bean.Player;
 import belote.bean.announce.Announce;
-import belote.logic.announce.factory.automat.methods.base.ConditionListMethod;
+import belote.logic.announce.factory.automat.base.AnnounceMethod;
 
-public class RegGameTrumpToAllTrumpAnnounce extends ConditionListMethod {
+public final class RegGameTrumpToAllTrumpAnnounce implements AnnounceMethod {
+    
+    private final Game game;
 
     /**
      * Constructor.
      * @param game BelotGame instance class.
      */
     public RegGameTrumpToAllTrumpAnnounce(final Game game) {
-        super(game);
+        this.game = game;
     }
 
-    /**
-     * Returns the proper Announce when conditions match.
-     * @param player who is on turn.
-     * @return an Announce instance.
-     */
-    protected Announce createAnnounce(final Player player) {
+    @Override
+    public Announce getAnnounce(final Player player) {
         Player partner = player.getPartner();
         
         Announce playerAnnounce = game.getAnnounceList().getContractAnnounce(player);

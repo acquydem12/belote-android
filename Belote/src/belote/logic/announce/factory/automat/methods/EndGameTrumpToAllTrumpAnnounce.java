@@ -8,7 +8,7 @@ import belote.logic.announce.factory.automat.methods.conditions.OppositeTeamEndG
 import belote.logic.announce.factory.automat.methods.conditions.TeamAttack;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
 
-public class EndGameTrumpToAllTrumpAnnounce extends ConditionListMethod {
+public final class EndGameTrumpToAllTrumpAnnounce extends ConditionListMethod {
 
     /**
      * Constructor.
