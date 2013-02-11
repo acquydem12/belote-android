@@ -24,7 +24,7 @@ import belote.logic.announce.factory.automat.methods.conditions.base.NotConditio
  * BelotGameAnnounce class.
  * @author Dimitar Karamanov
  */
-public class BeloteGameAnnounceFactory extends AnnounceExecutor {
+public final class BeloteGameAnnounceFactory extends AnnounceExecutor {
 
     /**
      * Constructor.

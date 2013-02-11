@@ -25,6 +25,7 @@ import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAnd
  * @author Dimitar Karamanov
  */
 public final class EndGameNormalAllTrumpAnnounce extends ConditionListMethod {
+    
     /**
      * Constructor.
      * @param game BelotGame instance class.

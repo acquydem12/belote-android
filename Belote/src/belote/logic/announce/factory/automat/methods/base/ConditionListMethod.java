@@ -73,7 +73,7 @@ public abstract class ConditionListMethod implements AnnounceMethod {
     }
 
     /**
-     * Adds pre condition to the internal container.
+     * Adds precondition to the internal container.
      * @param announceCondition which to be added.
      */
     protected final void addPreCondition(final AnnounceCondition announceCondition) {
