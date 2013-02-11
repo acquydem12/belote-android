@@ -5,6 +5,8 @@ import belote.bean.Player;
 import belote.bean.Team;
 import belote.bean.announce.Announce;
 import belote.logic.announce.factory.automat.base.AnnounceMethod;
+import belote.logic.announce.factory.transformers.AnnounceTransformer;
+import belote.logic.announce.factory.transformers.DoubleAnnounce;
 
 public final class RegGameTrumpToAllTrumpAnnounce implements AnnounceMethod {
     
@@ -30,7 +32,8 @@ public final class RegGameTrumpToAllTrumpAnnounce implements AnnounceMethod {
         
         if (playerAnnounce != null && partnerAnnounce != null && playerAnnounce.isTrumpAnnounce() && partnerAnnounce.isTrumpAnnounce()
                 && (oppositeTeamHasNotAnnounce || teamAttack)) {
-            return Announce.createATNormalAnnounce(player);
+            AnnounceTransformer doubleAnnounce = new DoubleAnnounce(game);
+            return doubleAnnounce.transform(player, Announce.createATNormalAnnounce(player));
         }
 
         return null;
