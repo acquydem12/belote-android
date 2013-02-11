@@ -7,6 +7,8 @@ import belote.logic.announce.factory.automat.methods.base.ConditionListMethod;
 import belote.logic.announce.factory.automat.methods.conditions.OppositeTeamEndGameZone;
 import belote.logic.announce.factory.automat.methods.conditions.TeamAttack;
 import belote.logic.announce.factory.automat.methods.conditions.base.MultipleAndCondition;
+import belote.logic.announce.factory.transformers.AnnounceTransformer;
+import belote.logic.announce.factory.transformers.DoubleAnnounce;
 
 public final class EndGameTrumpToAllTrumpAnnounce extends ConditionListMethod {
 
@@ -32,7 +34,8 @@ public final class EndGameTrumpToAllTrumpAnnounce extends ConditionListMethod {
         Announce partnerAnnounce = game.getAnnounceList().getContractAnnounce(partner);
         
         if (playerAnnounce != null && partnerAnnounce != null && playerAnnounce.isTrumpAnnounce() && partnerAnnounce.isTrumpAnnounce()) {
-            return Announce.createATNormalAnnounce(player);
+            AnnounceTransformer doubleAnnounce = new DoubleAnnounce(game);
+            return doubleAnnounce.transform(player, Announce.createATNormalAnnounce(player));
         }
 
         return null;
