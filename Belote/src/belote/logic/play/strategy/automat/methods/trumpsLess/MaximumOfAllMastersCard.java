@@ -23,7 +23,7 @@ public class MaximumOfAllMastersCard extends BaseMethod {
      */
     public Card getPlayMethodCard(final Player player) {
         Card result = null;
-        if (isAllCardsMasters(player)) {
+        if (isSecondDefencePosition() && isAllCardsMasters(player)) {
             for (final PackIterator iterator = player.getCards().iterator(); iterator.hasNext();) {
                 final Card card = iterator.next();
                 if (player.getCards().getSuitCount(card.getSuit()) > 1) {
@@ -32,10 +32,10 @@ public class MaximumOfAllMastersCard extends BaseMethod {
                     }
                 }
             }
-        }
-        
-        if (result != null) {
-            player.getJackAceSuits().add(result.getSuit());
+
+            if (result != null) {
+                player.getJackAceSuits().add(result.getSuit());
+            }
         }
         return result;
     }
