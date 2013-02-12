@@ -91,7 +91,7 @@ public class TrumpGameCardValidator extends BaseCardValidator {
             // Return true if the player has no trump card
             if (!player.getCards().hasSuitCard(getTrumpSuit())) {
                 return true; // Check if is played trump card yet (somebody had
-                             // played trump card befor the player)
+                             // played trump card before the player)
             }
             if (game.getTrickCards().hasSuitCard(getTrumpSuit())) {
                 if (validatePlayBiggerTrumpCard(player, card, attackCard)) {
