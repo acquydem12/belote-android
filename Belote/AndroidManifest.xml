@@ -3,7 +3,7 @@
     package="com.karamanov.beloteGame"
     android:installLocation="preferExternal"
     android:versionCode="23"
-    android:versionName="1.23.002" >
+    android:versionName="1.23.003" >
 
     <uses-sdk
         android:minSdkVersion="8"
