@@ -45,6 +45,14 @@ public final class ObligatoryNoFirstRuffCard extends BaseTrumpMethod {
             if (trumpPlayer != null && !trumpPlayer.isSameTeam(player)) {
                 final Card card = player.getCards().findMinAboveCard(maxTrumpCard);
                 if (card != null) {
+                    // Has trump card bigger than enemy player' one.
+                    final int count = player.getCards().getSuitCount(trump);
+                    Card maxPlayerTrumpCard = player.getCards().findMaxSuitCard(trump);
+                    
+                    if (count == TWO_CARDS_COUNT && maxPlayerTrumpCard != null && !isMaxSuitCardLeft(maxPlayerTrumpCard, false)) {
+                        return maxPlayerTrumpCard;
+                    }
+                    
                     return player.getCards().getMaxSequenceCardAfter(card);
                 }
             }
