@@ -12,7 +12,6 @@ package com.karamanov.framework;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.karamanov.beloteGame.Belote;
 import com.karamanov.framework.message.Message;
 import com.karamanov.framework.message.MessageType;
 import com.karamanov.framework.message.Messageable;
@@ -34,9 +33,9 @@ public class MessageActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getApplication() instanceof Belote) {
-            Belote belote = (Belote) getApplication();
-            belote.getMessageProcessor().runMessaging();
+        if (getApplication() instanceof MessageApplication) {
+            MessageApplication messageApplication = (MessageApplication) getApplication();
+            messageApplication.getMessageProcessor().runMessaging();
         }
     }
 
@@ -45,9 +44,9 @@ public class MessageActivity extends Activity {
      */
     protected void onResume() {
         super.onResume();
-        if (getApplication() instanceof Belote) {
-            Belote belote = (Belote) getApplication();
-            belote.getMessageProcessor().runMessaging();
+        if (getApplication() instanceof MessageApplication) {
+            MessageApplication messageApplication = (MessageApplication) getApplication();
+            messageApplication.getMessageProcessor().runMessaging();
         }
     }
 
@@ -55,9 +54,9 @@ public class MessageActivity extends Activity {
      * The canvas is being removed from the screen. Stop the event handling and animation thread.
      */
     protected void onPause() {
-        if (getApplication() instanceof Belote) {
-            Belote belote = (Belote) getApplication();
-            belote.getMessageProcessor().stopMessaging();
+        if (getApplication() instanceof MessageApplication) {
+            MessageApplication messageApplication = (MessageApplication) getApplication();
+            messageApplication.getMessageProcessor().stopMessaging();
         }
         super.onPause();
     }
@@ -75,9 +74,9 @@ public class MessageActivity extends Activity {
      * @param message new message.
      */
     public final void triggerMessage(final Message message, boolean always) {
-        if (getApplication() instanceof Belote) {
-            Belote belote = (Belote) getApplication();
-            belote.getMessageProcessor().sendMessage(message, always);
+        if (getApplication() instanceof MessageApplication) {
+            MessageApplication messageApplication = (MessageApplication) getApplication();
+            messageApplication.getMessageProcessor().sendMessage(message, always);
         }
     }
 
@@ -87,9 +86,9 @@ public class MessageActivity extends Activity {
      * @param messageable message listener.
      */
     public final void addMessageListener(final MessageType messageType, final Messageable messageable) {
-        if (getApplication() instanceof Belote) {
-            Belote belote = (Belote) getApplication();
-            belote.getMessageProcessor().addMessageListener(messageType, messageable);
+        if (getApplication() instanceof MessageApplication) {
+            MessageApplication messageApplication = (MessageApplication) getApplication();
+            messageApplication.getMessageProcessor().addMessageListener(messageType, messageable);
         }
     }
 
@@ -98,14 +97,14 @@ public class MessageActivity extends Activity {
      * @param messageType concrete user message type.
      */
     public final void removeMessageListener(final MessageType messageType) {
-        if (getApplication() instanceof Belote) {
-            Belote belote = (Belote) getApplication();
-            belote.getMessageProcessor().removeMessageListener(messageType);
+        if (getApplication() instanceof MessageApplication) {
+            MessageApplication messageApplication = (MessageApplication) getApplication();
+            messageApplication.getMessageProcessor().removeMessageListener(messageType);
         }
     }
     
     public final void repaint() {
-        Message tMessage = new Message(Belote.MT_PAINT_EVENT);
+        Message tMessage = new Message(MessageApplication.MT_PAINT_EVENT);
         triggerMessage(tMessage, true);
     }
 }
