@@ -23,18 +23,29 @@ public class MaximumOfAllMastersCard extends BaseMethod {
      */
     public Card getPlayMethodCard(final Player player) {
         Card result = null;
-        if (isSecondDefencePosition() && isAllCardsMasters(player)) {
-            for (final PackIterator iterator = player.getCards().iterator(); iterator.hasNext();) {
-                final Card card = iterator.next();
-                if (player.getCards().getSuitCount(card.getSuit()) > 1) {
-                    if (result == null || result.compareRankTo(card) < 0) {
-                        result = card;
+        
+        final Card handAttackSuitCard = game.getTrickCards().getHandAttackSuitCard();
+        if (handAttackSuitCard != null) {
+            final Player partner = player.getPartner();
+            final Player handPlayer = game.getPlayerByCard(handAttackSuitCard);
+            if (handPlayer != null) {
+                if (handPlayer.equals(partner) && isMaxSuitCardLeft(handAttackSuitCard, false)) {
+        
+                    if (isSecondDefencePosition() && isAllCardsMasters(player)) {
+                        for (final PackIterator iterator = player.getCards().iterator(); iterator.hasNext();) {
+                            final Card card = iterator.next();
+                            if (player.getCards().getSuitCount(card.getSuit()) > 1) {
+                                if (result == null || result.compareRankTo(card) < 0) {
+                                    result = card;
+                                }
+                            }
+                        }
+            
+                        if (result != null) {
+                            player.getJackAceSuits().add(result.getSuit());
+                        }
                     }
                 }
-            }
-
-            if (result != null) {
-                player.getJackAceSuits().add(result.getSuit());
             }
         }
         return result;
