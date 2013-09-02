@@ -12,7 +12,6 @@ package belote.logic.announce.factory.automat.executors;
 import belote.bean.Game;
 import belote.logic.announce.factory.automat.executors.base.AnnounceExecutor;
 import belote.logic.announce.factory.automat.methods.RegGameSupportAllTrumpAnnounce;
-import belote.logic.announce.factory.automat.methods.RegGameSupportNoTrumpAnnounce;
 import belote.logic.announce.factory.automat.methods.conditions.PartnerTrumpAnnounce;
 
 /**
@@ -32,6 +31,6 @@ public final class RegGameSupportAnnounce extends AnnounceExecutor {
         // Methods
         register(new RegGameSupportTrumpAnnounce(game));
         register(new RegGameSupportAllTrumpAnnounce(game));
-        register(new RegGameSupportNoTrumpAnnounce(game));
+        //register(new RegGameSupportNoTrumpAnnounce(game));
     }
 }
