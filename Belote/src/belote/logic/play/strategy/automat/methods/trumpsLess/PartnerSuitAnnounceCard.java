@@ -11,16 +11,14 @@ package belote.logic.play.strategy.automat.methods.trumpsLess;
 
 import belote.bean.Game;
 import belote.bean.Player;
-import belote.bean.announce.Announce;
-import belote.bean.announce.AnnounceIterator;
-import belote.bean.announce.AnnounceList;
-import belote.bean.announce.AnnounceUnit;
 import belote.bean.pack.card.Card;
 import belote.bean.pack.card.suit.Suit;
+import belote.bean.pack.card.suit.SuitIterator;
+import belote.bean.pack.card.suit.SuitList;
 import belote.logic.play.strategy.automat.base.method.BaseMethod;
 
 /**
- * PartnerSuitAnnounceCard class. PlayCardMethod which implements the logic of playing card from suit declared by partner during game annouce.
+ * PartnerSuitAnnounceCard class. PlayCardMethod which implements the logic of playing card from suit declared by partner during game announce.
  * @author Dimitar Karamanov
  */
 public final class PartnerSuitAnnounceCard extends BaseMethod {
@@ -40,25 +38,24 @@ public final class PartnerSuitAnnounceCard extends BaseMethod {
      */
     public Card getPlayMethodCard(final Player player) {
         final Player partner = player.getPartner();
-        final AnnounceList partnerAnnounces = game.getAnnounceList().getPlayerAnnounces(partner);
+        
+        final SuitList suits = getTrumpAnnounces(partner);
+        
+        for (final SuitIterator iterator = suits.iterator(); iterator.hasNext();) {
+            Suit suit = iterator.next();
+            
+            Card result;
+            result = player.getCards().findMaxSuitCard(suit);
+            if (result != null && isMaxSuitCardLeft(result, false)) {
+                return result;
+            }
 
-        for (final AnnounceIterator iterator = partnerAnnounces.iterator(); iterator.hasNext();) {
-            final Announce announce = iterator.next();
-            if (announce.isTrumpAnnounce()) {
-                final Suit suit = AnnounceUnit.transformFromAnnounceSuitToSuit(announce.getAnnounceSuit());
-
-                Card result;
-                result = player.getCards().findMaxSuitCard(suit);
-                if (result != null && isMaxSuitCardLeft(result, false)) {
-                    return result;
-                }
-
-                result = player.getCards().findMinSuitCard(suit);
-                if (result != null) {
-                    return result;
-                }
+            result = player.getCards().findMinSuitCard(suit);
+            if (result != null) {
+                return result;
             }
         }
+        
         return null;
     }
 }

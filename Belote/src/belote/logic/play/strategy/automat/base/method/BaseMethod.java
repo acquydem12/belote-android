@@ -24,6 +24,7 @@ import belote.bean.pack.card.Card;
 import belote.bean.pack.card.rank.Rank;
 import belote.bean.pack.card.rank.RankIterator;
 import belote.bean.pack.card.suit.Suit;
+import belote.bean.pack.card.suit.SuitList;
 import belote.bean.pack.sequence.Sequence;
 import belote.bean.pack.sequence.SequenceIterator;
 import belote.bean.pack.sequence.SequenceList;
@@ -493,5 +494,21 @@ public abstract class BaseMethod implements PlayCardMethod {
             }
         }
         return false;
+    }
+    
+    protected SuitList getTrumpAnnounces(final Player player) {
+        SuitList suits = new SuitList();
+    
+        final AnnounceList announces = game.getAnnounceList().getPlayerAnnounces(player);
+
+        for (final AnnounceIterator iterator = announces.iterator(); iterator.hasNext();) {
+            final Announce announce = iterator.next();
+            if (announce.isTrumpAnnounce()) {
+                final Suit suit = AnnounceUnit.transformFromAnnounceSuitToSuit(announce.getAnnounceSuit());
+                suits.add(suit);
+            }
+        }
+        
+        return suits;
     }
 }
