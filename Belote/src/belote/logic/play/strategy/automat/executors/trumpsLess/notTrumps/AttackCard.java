@@ -26,6 +26,7 @@ public final class AttackCard extends PlayCardExecutor {
         super(game);
         // Register play card methods.
         register(new AttackCardOnPartnerContract(game));
+        register(new AttackCardOnDoubleRedouble(game));
         register(new AttackCardStandard(game));
     }
 }
