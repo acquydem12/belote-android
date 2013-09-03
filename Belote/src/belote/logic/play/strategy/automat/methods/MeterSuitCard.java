@@ -41,7 +41,7 @@ public final class MeterSuitCard extends BaseMethod {
         for (final PackIterator iterator = player.getCards().iterator(); iterator.hasNext();) {
             final Card card = iterator.next();
             if ((trump == null || !card.getSuit().equals(trump)) && isMeterSuitCard(player, card)) {
-                return card;
+                return player.getCards().findMaxSuitCard(card.getSuit());
             }
         }
         return null;
