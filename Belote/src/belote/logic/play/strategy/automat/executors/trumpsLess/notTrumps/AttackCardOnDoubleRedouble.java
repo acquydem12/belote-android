@@ -12,7 +12,7 @@ import belote.logic.play.strategy.automat.methods.trumpsLess.PartnerSuitAnnounce
 import belote.logic.play.strategy.automat.methods.trumpsLess.TeamSuitPartnerCard;
 import belote.logic.play.strategy.automat.methods.trumpsLess.notTrump.PromoteTenRankCard;
 
-public class AttackCardOnDoubleRedouble extends PlayCardExecutor {
+class AttackCardOnDoubleRedouble extends PlayCardExecutor {
 
     /**
      * Constructor.
