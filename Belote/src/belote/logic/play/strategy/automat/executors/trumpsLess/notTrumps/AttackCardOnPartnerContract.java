@@ -35,8 +35,8 @@ class AttackCardOnPartnerContract extends PlayCardExecutor {
         super(game);
         // Register play card methods.
         register(new MeterSuitCard(game));
-        register(new TeamSuitPartnerCard(game));
         register(new HandCard(game));
+        register(new TeamSuitPartnerCard(game));
         register(new PartnerSuitAnnounceCard(game));
         register(new PossiblePartnerSuitCard(game));
         register(new DominantSuitCard(game));
