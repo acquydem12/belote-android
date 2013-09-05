@@ -46,9 +46,9 @@ public final class RegGameNormalNoTrumpAnnounce extends ConditionListMethod {
         // teamAttackOrPass
         addAnnounceCondition(new MultipleAndCondition(teamAttackOrPass, new RankCount(Rank.Ace, 3)));
         addAnnounceCondition(new MultipleAndCondition(teamAttackOrPass, new RankCount(Rank.Ace, 2), new RankCount(Rank.Ten, 1)));
-        addAnnounceCondition(new MultipleAndCondition(teamAttackOrPass, new RankCount(Rank.Ace, 1), new RankCount(Rank.Ten, 3)));
+        //addAnnounceCondition(new MultipleAndCondition(teamAttackOrPass, new RankCount(Rank.Ace, 1), new RankCount(Rank.Ten, 3)));
         // teamDefence
-        addAnnounceCondition(new MultipleAndCondition(teamDefence, new RankCount(Rank.Ace, 3)));
+        addAnnounceCondition(new MultipleAndCondition(teamDefence, new RankCount(Rank.Ace, 3), new RankCount(Rank.Ten, 1)));
         addAnnounceCondition(new MultipleAndCondition(teamDefence, new RankCount(Rank.Ace, 2), new RankCount(Rank.Ten, 2)));
         addAnnounceCondition(new MultipleAndCondition(teamDefence, new RankCount(Rank.Ace, 2), new HasSuit(new AceTenKingSuit())));
     }
