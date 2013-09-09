@@ -35,7 +35,7 @@ public final class PossiblePartnerSuitCard extends PlayCardExecutor {
         register(new PartnerJackAceSuitCard(game));
         register(new PartnerPreferredSuitCard(game));
         register(new NoCleanedSuitNoEnemyPreferredCard(game));
-        register(new NoCleanedSuitCard(game));
         register(new LastCleanedSuitCard(game));
+        register(new NoCleanedSuitCard(game));
     }
 }
