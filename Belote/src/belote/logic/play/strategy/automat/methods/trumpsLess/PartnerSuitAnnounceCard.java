@@ -50,7 +50,7 @@ public final class PartnerSuitAnnounceCard extends BaseMethod {
                 return result;
             }
 
-            result = player.getCards().findMinSuitCard(suit);
+            result = player.getCards().findMaxSuitCard(suit);
             if (result != null) {
                 return result;
             }
