@@ -52,9 +52,9 @@ public final class NoTrumpAttackNoObligatoryFirstRuffCardExecutor extends PlayCa
 
             final Card someTrumpCard = game.getTrickCards().findMaxSuitCard(trump);
             final Card handAttackCard = game.getTrickCards().getHandAttackSuitCard();
-            if (handAttackCard != null) {
+            if (handAttackCard != null && someTrumpCard == null) {
                 final Player handPlayer = game.getPlayerByCard(handAttackCard);
-                result = someTrumpCard == null && handPlayer != null && handPlayer.isSameTeam(player);
+                result =  handPlayer != null && handPlayer.isSameTeam(player);
             }
         }
         return result;
