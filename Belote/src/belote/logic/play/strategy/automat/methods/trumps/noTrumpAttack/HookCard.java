@@ -48,7 +48,7 @@ public final class HookCard extends BaseTrumpMethod {
                     final Card handCard = game.getTrickCards().getHandAttackSuitCard();
 
                     if (max != null && handCard != null) {
-                        if ((noTrumps || teamSuit)) {
+                        if (noTrumps || teamSuit) {
                             if (max != null && isMaxSuitCardLeft(max, false)) {
                                 final Card minAboveCard = player.getCards().findMinAboveCard(handCard);
                                 if (minAboveCard == null) {
