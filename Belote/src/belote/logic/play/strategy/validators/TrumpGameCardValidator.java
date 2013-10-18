@@ -85,7 +85,7 @@ public class TrumpGameCardValidator extends BaseCardValidator {
      */
     private boolean validatePlayerCardNoTrumpAttack(final Player player, final Card card, final Card attackCard) {
         if (isSameSuitCard(card, attackCard)) {
-            return true; // The player has no from the attack suit
+            return true;
         }
         if (!player.getCards().hasSuitCard(attackCard.getSuit())) {
             // Return true if the player has no trump card
