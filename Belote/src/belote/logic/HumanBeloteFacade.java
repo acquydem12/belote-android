@@ -109,7 +109,7 @@ public final class HumanBeloteFacade extends BeloteFacade {
         Card card;
         do {
             index = getNextLeftCardIndex(index);
-            if (index == -1) {
+            if (index == -1 || index >= getHumanPlayer().getCards().getSize()) {
                 return null;
             }
             card = getHumanPlayer().getCards().getCard(index);
@@ -143,7 +143,7 @@ public final class HumanBeloteFacade extends BeloteFacade {
         Card card;
         do {
             index = getNextRightCardIndex(index);
-            if (index == -1) {
+            if (index == -1 || index >= getHumanPlayer().getCards().getSize()) {
                 return null;
             }
             card = getHumanPlayer().getCards().getCard(index);

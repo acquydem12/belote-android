@@ -33,9 +33,11 @@ public final class TrickView extends LinearLayout {
 
             if (player.equals(trick.getWinnerPlayer())) {
                 Bitmap picture = decorator.getCardImage(card);
-                final Rectangle rec = new Rectangle(0, 0, picture.getWidth(), picture.getHeight());
-                Bitmap bitmap = ImageUtil.transformToMixedColorImage(picture, Color.clPureYellow, rec);
-                imageView.setImageBitmap(bitmap);
+                if (picture != null) {
+                    final Rectangle rec = new Rectangle(0, 0, picture.getWidth(), picture.getHeight());
+                    Bitmap bitmap = ImageUtil.transformToMixedColorImage(picture, Color.clPureYellow, rec);
+                    imageView.setImageBitmap(bitmap);
+                }
             } else {
                 imageView.setImageBitmap(decorator.getCardImage(card));
             }

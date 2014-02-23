@@ -127,8 +127,11 @@ public final class PictureDecorator {
      * @return Image the card's image.
      */
     public Bitmap getCardImage(final Card card) {
-        Hashtable<Suit, Integer> hashtable = ranks.get(card.getRank());
-        return ((BitmapDrawable) context.getResources().getDrawable(hashtable.get(card.getSuit()).intValue())).getBitmap();
+        if (card != null) {
+            Hashtable<Suit, Integer> hashtable = ranks.get(card.getRank());
+            return ((BitmapDrawable) context.getResources().getDrawable(hashtable.get(card.getSuit()).intValue())).getBitmap();
+        }
+        return null;
     }
 
     /**

@@ -363,11 +363,13 @@ final class PlayDealer extends BaseDealer {
             Card card = beloteFacade.playSingleHand(player);
             invalidateGame();
 
-            ArrayList<MessageData> messages = getMessageList(player, card);
-            if (messages.size() > 0) {
-                displayMessage(player, messages);
-            } else {
-                sleep(PLAY_DELAY);
+            if (card != null) {
+                ArrayList<MessageData> messages = getMessageList(player, card);
+                if (messages.size() > 0) {
+                    displayMessage(player, messages);
+                } else {
+                    sleep(PLAY_DELAY);
+                }
             }
 
         } catch (BelotException be) {

@@ -82,7 +82,7 @@ public final class Game implements Serializable {
     /**
      * Hand cards.
      */
-    private TrickPack trickCards = new TrickPack();
+    private final TrickPack trickCards = new TrickPack();
 
     /**
      * Game mode.
@@ -135,6 +135,9 @@ public final class Game implements Serializable {
      * @return pack size.
      */
     public int getPackSize() {
+        if (pack == null) {
+            return 0;
+        }
         return pack.getSize();
     }
 
