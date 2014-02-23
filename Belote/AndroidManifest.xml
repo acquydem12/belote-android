@@ -2,13 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.karamanov.beloteGame"
     android:installLocation="preferExternal"
-    android:versionCode="24"
-    android:versionName="1.23.004" >
+    android:versionCode="27"
+    android:versionName="1.27" >
 
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="10" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application
         android:name=".Belote"
         android:icon="@drawable/ic_launcher"
