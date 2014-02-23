@@ -240,7 +240,9 @@ abstract class BaseDealer {
      * @param repaint
      */
     protected final void newAnnounceDealRound() {
-        beloteFacade.processTrickData();
+        if (beloteFacade.getGame().getAnnounceList().getContractAnnounce() != null) {
+            beloteFacade.processTrickData();
+        }
         beloteFacade.setNextDealAttackPlayer();
         beloteFacade.newGame();
         beloteFacade.getHumanPlayer().setSelectedCard(null);

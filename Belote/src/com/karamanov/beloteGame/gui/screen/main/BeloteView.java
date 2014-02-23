@@ -101,7 +101,11 @@ public final class BeloteView extends SurfaceView implements SurfaceHolder.Callb
                 // during the above, we don't leave the Surface in an
                 // inconsistent state
                 if (canvas != null) {
-                    getHolder().unlockCanvasAndPost(canvas);
+                    try {
+                        getHolder().unlockCanvasAndPost(canvas);
+                    } catch (Exception e) {
+                        // Native...
+                    }
                 }
             }
         }

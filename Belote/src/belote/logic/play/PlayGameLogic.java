@@ -196,8 +196,10 @@ public final class PlayGameLogic {
         final Announce announce = game.getAnnounceList().getContractAnnounce();
         final Card card = getHelperByAnnounce(announce).getPlayerCard(player);
 
-        if (!getHelperByAnnounce(announce).validatePlayerCard(player, card)) {
-            throw new BelotException("The play of card " + card.toString() + " is not valid");
+        if (card != null) {
+            if (!getHelperByAnnounce(announce).validatePlayerCard(player, card)) {
+                throw new BelotException("The play of card " + card.toString() + " is not valid");
+            }
         }
 
         return card;

@@ -280,7 +280,9 @@ public class BeloteFacade {
      */
     public final Card playSingleHand(Player player) throws BelotException {
         final Card card = belotGameLogic.getPlayerCard(player);
-        removePlayerCard(player, card);
+        if (card != null) {
+            removePlayerCard(player, card);
+        }
         return card;
     }
     
@@ -334,7 +336,9 @@ public class BeloteFacade {
             final Trick trick = new Trick(attackPlayer, game.getTrickAttackPlayer(), game.getTrickCouplePlayer(), game.getTrickCards());
             game.getTrickList().add(trick);
 
-            game.getTrickAttackPlayer().getTeam().getHands().addAll(game.getTrickCards());
+            if (game.getTrickAttackPlayer() != null) {
+                game.getTrickAttackPlayer().getTeam().getHands().addAll(game.getTrickCards());
+            }
 
             game.setTrickCouplePlayer(null);
             game.getTrickCards().clear();
@@ -375,7 +379,10 @@ public class BeloteFacade {
      * @return boolean true if the card is valid, false otherwise.
      */
     public final boolean validatePlayerCard(Player player, Card card) {
-        return belotGameLogic.validatePlayerCard(player, card);
+        if (player != null && card != null) {
+            return belotGameLogic.validatePlayerCard(player, card);
+        }
+        return false;
     }
 
     /**

@@ -141,7 +141,9 @@ public abstract class BasePainter {
      */
     public final void drawCard(final Canvas canvas, final Card card, final int x, final int y) {
         Bitmap bitmap = pictureDecorator.getCardImage(card);
-        canvas.drawBitmap(bitmap, x, y, mSmooth);
+        if (bitmap != null) {
+            canvas.drawBitmap(bitmap, x, y, mSmooth);
+        }
     }
 
     /**
@@ -153,9 +155,11 @@ public abstract class BasePainter {
      */
     public final void drawDarkenedCard(final Canvas canvas, final Card card, final int x, final int y) {
         Bitmap picture = pictureDecorator.getCardImage(card);
-        Bitmap b = ImageUtil.transformToDarkenedImage(picture);
-        canvas.drawBitmap(b, x, y, mSmooth);
-        b.recycle();
+        if (picture != null) {
+            Bitmap b = ImageUtil.transformToDarkenedImage(picture);
+            canvas.drawBitmap(b, x, y, mSmooth);
+            b.recycle();
+        }
     }
 
     /**
@@ -167,10 +171,12 @@ public abstract class BasePainter {
      */
     public final void drawMixedColorCard(final Canvas canvas, final Card card, final int x, final int y, final Color mixedColor) {
         Bitmap picture = pictureDecorator.getCardImage(card);
-        final Rectangle rec = new Rectangle(0, 0, picture.getWidth(), picture.getHeight());
-        Bitmap b = ImageUtil.transformToMixedColorImage(picture, mixedColor, rec);
-        canvas.drawBitmap(b, x, y, mSmooth);
-        b.recycle();
+        if (picture != null) {
+            final Rectangle rec = new Rectangle(0, 0, picture.getWidth(), picture.getHeight());
+            Bitmap b = ImageUtil.transformToMixedColorImage(picture, mixedColor, rec);
+            canvas.drawBitmap(b, x, y, mSmooth);
+            b.recycle();
+        }
     }
 
     /**
