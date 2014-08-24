@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Dimitar Karamanov 2008-2010. All Rights Reserved.
+ * Copyright (c) Dimitar Karamanov 2008-2014. All Rights Reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the source code must retain
