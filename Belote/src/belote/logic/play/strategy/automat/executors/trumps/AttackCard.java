@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Dimitar Karamanov 2008-2010. All Rights Reserved.
+ * Copyright (c) Dimitar Karamanov 2008-2014. All Rights Reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the source code must retain
@@ -13,6 +13,7 @@ import belote.bean.Game;
 import belote.logic.play.strategy.automat.base.executor.PlayCardExecutor;
 import belote.logic.play.strategy.automat.executors.PossiblePartnerSuitCard;
 import belote.logic.play.strategy.automat.methods.MeterSuitCard;
+import belote.logic.play.strategy.automat.methods.trumps.attackCard.DominantAllTrumpCard;
 import belote.logic.play.strategy.automat.methods.trumps.attackCard.DominantNoTrumpCard;
 import belote.logic.play.strategy.automat.methods.trumps.attackCard.DominantTrumpCard;
 import belote.logic.play.strategy.automat.methods.trumps.attackCard.NoTrumpHandCard;
@@ -39,6 +40,7 @@ public final class AttackCard extends PlayCardExecutor {
         register(new MeterSuitCard(game));
         register(new PossiblePartnerSuitCard(game));
         register(new DominantNoTrumpCard(game));
+        register(new DominantAllTrumpCard(game));
         register(new NeedlessCard(game));
     }
 }

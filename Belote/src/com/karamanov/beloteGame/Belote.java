@@ -119,5 +119,8 @@ public class Belote extends MessageApplication {
             } catch (IOException e) {
             }
         }
+        
+        getBeloteFacade(context).setGame(new Game());
+        getBeloteFacade(context).newGame();
     }
 }
