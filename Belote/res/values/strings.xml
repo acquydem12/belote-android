@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="Copyright">Copyright © 2008–2012</string>
+    <string name="Copyright">Copyright © 2008–2014</string>
     <string name="Autor">Dimitar Karamanov</string>
     <string name="Email">santase.belot@gmail.com</string>
     <string name="Version">version</string>
@@ -64,7 +64,7 @@
     <string name="PREF_ALERT_ON_QUIT">Alert on quit</string>
     <string name="PREF_ALERT_ON_QUIT_SUMM">Show alert dialog on application exit</string>
     <string name="PREF_SHOW_BTNS">Show buttons panel</string>
-    <string name="PREF_SHOW_BTNS_SUMM">Show buttons for navigating (usefull for small devices)</string>
+    <string name="PREF_SHOW_BTNS_SUMM">Show buttons for navigating (useful for small devices)</string>
     <string name="PREF_CARDS_RB_ORDER">Black Red cards order</string>
     <string name="PREF_CARDS_RB_ORDER_SUMM">Show players card in sequence Black Red order</string>
     <string name="BridgeBelote">Belote</string>
