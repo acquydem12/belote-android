@@ -55,6 +55,10 @@ public final class DealerFacade {
     public void invalidateGame(int delay) {
         getDealer().invalidateGame(delay);
     }
+    
+    public final int getUpperCardY() {
+        return getDealer().getUpperCardY();
+    }
 
     public void onExit() {
         Belote.terminate(context);

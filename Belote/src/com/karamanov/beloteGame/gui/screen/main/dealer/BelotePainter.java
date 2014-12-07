@@ -656,7 +656,12 @@ final class BelotePainter extends BasePainter {
         paint.setDither(true);
 
         int maxWidth = 0;
-        int height[] = new int[game.getGame().getTeamsCount()];
+        int maxHeight = 0;
+        
+        Rect boundsDigids = new Rect();
+        String maxScore = " 99999";
+        paint.getTextBounds(maxScore, 0, maxScore.length(), boundsDigids);
+        
         for (int i = 0; i < game.getGame().getTeamsCount(); i++) {
             StringBuffer team = new StringBuffer();
             for (int j = 0; j < game.getGame().getTeam(i).getPlayersCount(); j++) {
@@ -670,18 +675,17 @@ final class BelotePainter extends BasePainter {
             String score = team.toString();
             Rect bounds = new Rect();
             paint.getTextBounds(score + "|", 0, score.length() + 1, bounds);
-            canvas.drawText(score, 0, bounds.height() * (i + 1), paint);
-
-            height[i] = bounds.height();
+            
+            maxHeight = Math.max(maxHeight, bounds.height());
             maxWidth = Math.max(maxWidth, bounds.width());
+            
+            canvas.drawText(score, i * (boundsDigids.width() + maxWidth), bounds.height(), paint);
         }
 
-        int h = 0;
         paint.setColor(Color.clCream.getRGB());
         for (int i = 0; i < game.getGame().getTeamsCount(); i++) {
             String score = " " + game.getGame().getTeam(i).getPoints().getAllPoints();
-            h += height[i];
-            canvas.drawText(score, maxWidth, h, paint);
+            canvas.drawText(score, maxWidth + i * (maxWidth + boundsDigids.width()), maxHeight, paint);
         }
     }
 
