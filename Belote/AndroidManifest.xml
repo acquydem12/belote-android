@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.karamanov.beloteGame"
     android:installLocation="preferExternal"
-    android:versionCode="27"
-    android:versionName="1.27" >
+    android:versionCode="33"
+    android:versionName="1.33" >
 
     <uses-sdk
         android:minSdkVersion="8"
