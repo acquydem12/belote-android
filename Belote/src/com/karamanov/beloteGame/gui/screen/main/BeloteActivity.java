@@ -62,6 +62,7 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
+        
         addMessageListener(Belote.MT_KEY_PRESSED, new KeyPressedListener());
         addMessageListener(Belote.MT_TOUCH_EVENT, new TouchListener());
         addMessageListener(Belote.MT_EXIT_EVENT, new ExitListener());
@@ -78,7 +79,7 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
         RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         rlp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         buttonsView.setLayoutParams(rlp);
-
+        
         ImageButton left = new ImageButton(this);
         left.setBackgroundResource(R.drawable.btn_left);
         rlp = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
@@ -112,25 +113,29 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
         buttonsView.setVisibility(showBtns ? View.VISIBLE : View.GONE);
 
         beloteView = new BeloteView(this);
+        
         dealer = new DealerFacade(this, beloteView, buttonsView);
         rlp = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         rlp.addRule(RelativeLayout.ABOVE, buttonsView.getId());
         beloteView.setLayoutParams(rlp);
         
         bodyView = new RelativeLayout(this);
+        
         bodyView.addView(buttonsView);
         bodyView.addView(beloteView);
-
+               
         setContentView(bodyView);
 
         preferences.registerOnSharedPreferenceChangeListener(this);
+        
+       
     }
 
     @Override
     protected void onDestroy() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         preferences.unregisterOnSharedPreferenceChangeListener(this);
-               
+        
         super.onDestroy();
     }
 
@@ -199,6 +204,7 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
 
         if (item.getItemId() == base + MENU_GAME_NEW_INDEX) {
             AlertDialog.Builder myAlertDialog = new AlertDialog.Builder(this);
+            myAlertDialog.setIcon(R.drawable.ic_launcher);
             myAlertDialog.setTitle(getString(R.string.Confirm));
             myAlertDialog.setMessage(getString(R.string.NewEraseQuestion));
             myAlertDialog.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
@@ -299,6 +305,7 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
 
         if (alertOnQuit) {
             AlertDialog.Builder myAlertDialog = new AlertDialog.Builder(this);
+            myAlertDialog.setIcon(R.drawable.ic_launcher);
             myAlertDialog.setTitle(getString(R.string.Confirm));
             myAlertDialog.setMessage(getString(R.string.ExitQuestion));
             
@@ -356,4 +363,16 @@ public final class BeloteActivity extends MessageActivity implements OnSharedPre
             triggerMessage(tMessage);
         }
     }
+    
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        // Pause the AdView.
+        super.onPause();
+    }
+
 }

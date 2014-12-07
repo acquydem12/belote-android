@@ -188,6 +188,18 @@ abstract class BaseDealer {
         }
     }
     
+    
+    public final int getUpperCardY() {
+        Canvas canvas = belotPanel.getBufferedCanvas();
+        int dip4 = Belote.fromPixelToDip(context, 4);
+        if (canvas != null) {
+            Rectangle rect = belotPainter.getPlayerCardRectangle(canvas, beloteFacade, 0, beloteFacade.getHumanPlayer().getPartner());
+            return rect.y + dip4;
+        }
+        
+        return 0;
+    }
+    
     /**
      * Place message screen on position related to provided player.
      * @param messageScreen
